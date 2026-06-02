@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>MyGlow Pilates — Al Manara, Dubai</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+:root{--acc:#AD1457;--acc2:#C2185B;--bg:#07080A;--bg2:#0E0F12;--bg3:#161820;--w:#EEE9E0;--m:#6C6B72;--bd:rgba(255,255,255,.07);}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--w);overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:-60%;width:220%;height:220%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.016;pointer-events:none;z-index:9999;animation:gr .7s steps(1) infinite;}
+@keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-2%,-2%)}50%{transform:translate(2%,1%)}100%{transform:translate(1%,0)}}
+#sp{position:fixed;top:0;left:0;height:1px;width:0%;background:var(--acc);z-index:10000;pointer-events:none;}
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:28px 56px;transition:padding .4s,background .4s;}
+nav.s{background:rgba(7,8,10,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--bd);padding:16px 56px;}
+.nl{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;letter-spacing:.05em;color:var(--w);}
+.nl em{font-style:italic;color:var(--acc);}
+.nc{font-size:.42rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--w);background:transparent;border:1px solid rgba(255,255,255,.25);padding:10px 22px;cursor:pointer;border-radius:40px;transition:border-color .2s,background .2s;}
+.nc:hover{border-color:var(--acc);background:color-mix(in srgb,var(--acc) 10%,transparent);}
+@media(max-width:768px){nav{padding:14px 20px;}nav.s{padding:10px 20px;}}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;overflow:hidden;padding:120px 56px 0;}
+.hero-vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:opacity .9s ease;}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(7,8,10,.65) 0%,rgba(7,8,10,.45) 40%,rgba(7,8,10,.82) 80%,rgba(7,8,10,1) 100%);}
+.hero-body{position:relative;z-index:2;max-width:900px;}
+.hero-kicker{font-size:.4rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);margin-bottom:24px;display:flex;align-items:center;gap:14px;}
+.hero-kicker::before{content:'';width:40px;height:1px;background:var(--acc);opacity:.5;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,9vw,9rem);line-height:.92;letter-spacing:-.01em;color:var(--w);margin-bottom:32px;}
+.hero-title em{font-style:italic;color:var(--acc);}
+.hero-sub{font-size:clamp(.88rem,1.6vw,1.05rem);font-weight:300;color:var(--m);line-height:1.9;max-width:48ch;margin-bottom:48px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.hero-bottom{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04);margin-top:80px;}
+.hero-pill{background:rgba(7,8,10,.7);backdrop-filter:blur(16px);padding:22px 28px;display:flex;align-items:center;gap:16px;}
+.pill-icon{width:36px;height:36px;border-radius:50%;background:color-mix(in srgb,var(--acc) 15%,transparent);display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;}
+.pill-text{font-size:.42rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--w);opacity:.85;}
+.ticker{overflow:hidden;padding:12px 0;border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.tt{display:flex;width:max-content;animation:tk 30s linear infinite;}
+.ti{font-size:.4rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--m);white-space:nowrap;padding:0 36px;display:flex;align-items:center;gap:8px;}
+.ti::after{content:'◇';font-size:.22rem;color:var(--acc);opacity:.6;}
+@keyframes tk{to{transform:translateX(-50%);}}
+.sec{padding:112px 64px;}
+.sec-kicker{font-size:.4rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--acc);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.sec-kicker span{width:20px;height:1px;background:var(--acc);opacity:.4;display:inline-block;}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,6.5rem);font-weight:300;letter-spacing:-.01em;color:var(--w);line-height:.92;margin-bottom:52px;}
+.sec-h em{font-style:italic;color:var(--acc);}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+.svc-card{background:var(--bg2);padding:40px 34px;border-left:2px solid transparent;transition:border-color .3s,background .3s;}
+.svc-card:hover{background:var(--bg3);border-left-color:var(--acc);}
+.svc-num{font-size:.38rem;font-weight:500;letter-spacing:.2em;color:var(--acc);margin-bottom:18px;display:block;opacity:.8;}
+.svc-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--w);line-height:1.2;letter-spacing:.01em;}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:0;}
+.pillar{padding:52px 40px;background:var(--bg2);transition:background .3s;}
+.pillar:hover{background:var(--bg3);}
+.pillar-num{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:var(--acc);line-height:1;margin-bottom:18px;opacity:.7;}
+.pillar-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--w);margin-bottom:14px;letter-spacing:.02em;}
+.pillar-text{font-size:.87rem;font-weight:300;color:var(--m);line-height:1.85;}
+.about-split{display:grid;grid-template-columns:1fr 1fr;gap:2px;align-items:center;}
+.about-text-col{padding:80px 56px;}
+.about-stat-col{background:var(--bg2);padding:80px 52px;display:flex;flex-direction:column;gap:40px;}
+.about-desc{font-size:.92rem;font-weight:300;color:var(--m);line-height:1.94;margin-bottom:36px;}
+.stat-block{}
+.stat-big{font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:300;color:var(--w);line-height:1;margin-bottom:8px;}
+.stat-big em{font-style:italic;color:var(--acc);}
+.stat-small{font-size:.42rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--m);}
+.divider{width:40px;height:1px;background:var(--bd);}
+.cta-sec{position:relative;overflow:hidden;background:var(--bg2);padding:100px 56px;text-align:center;border-top:1px solid var(--bd);}
+.cta-glow{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;height:100%;background:radial-gradient(ellipse 50% 55% at 50% 50%,color-mix(in srgb,var(--acc) 8%,transparent),transparent 65%);pointer-events:none;}
+.cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+.cta-tag{font-size:.4rem;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--acc);margin-bottom:20px;display:block;}
+.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,10vw,11rem);font-weight:300;letter-spacing:-.01em;line-height:.9;color:var(--w);margin-bottom:24px;}
+.cta-h em{font-style:italic;color:var(--acc);}
+.cta-sub{font-size:.9rem;font-weight:300;color:var(--m);line-height:1.85;max-width:44ch;margin:0 auto 44px;}
+footer{background:var(--bg);padding:52px 56px 28px;border-top:1px solid var(--bd);}
+.ft{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px;}
+.fl{font-family:'Cormorant Garamond',serif;font-size:1.45rem;font-weight:600;color:var(--w);}
+.fl em{font-style:italic;color:var(--acc);}
+.fl-sub{font-size:.36rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--m);margin-top:3px;}
+.ft-links{display:flex;gap:28px;}
+.ft-links a{font-size:.4rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--m);text-decoration:none;transition:color .2s;}
+.ft-links a:hover{color:var(--w);}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid rgba(255,255,255,.04);}
+.ft-copy,.ft-frgx{font-size:.44rem;color:var(--m);}
+.ft-frgx a{color:var(--acc);text-decoration:none;}
+.demo-badge{position:fixed;bottom:18px;right:18px;z-index:9998;font-size:.4rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:var(--acc);color:var(--bg);padding:6px 12px;border-radius:2px;box-shadow:0 4px 18px color-mix(in srgb,var(--acc) 35%,transparent);}
+.btn-a{font-size:.44rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--bg);background:var(--acc);border:none;padding:15px 32px;cursor:pointer;border-radius:40px;transition:background .2s;min-height:48px;}
+.btn-a:hover{background:var(--acc2);}
+.btn-o{font-size:.42rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--w);background:none;border:1px solid rgba(255,255,255,.22);padding:15px 28px;cursor:pointer;border-radius:40px;transition:border-color .2s;min-height:48px;}
+.btn-o:hover{border-color:var(--acc);}
+.rv{opacity:0;transform:translateY(22px);}
+.rv.in{transition:opacity .95s ease,transform .95s ease;opacity:1;transform:none;}
+.rvl{opacity:0;transform:translateX(-20px);}
+.rvl.in{transition:opacity .95s ease,transform .95s ease;opacity:1;transform:none;}
+.rvr{opacity:0;transform:translateX(20px);}
+.rvr.in{transition:opacity .95s ease,transform .95s ease;opacity:1;transform:none;}
+@media(max-width:1024px){.svc-grid{grid-template-columns:repeat(2,1fr);}.pillars{grid-template-columns:1fr 1fr;}.about-split{grid-template-columns:1fr;}.hero-bottom{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.hero{padding:100px 20px 0;}.sec{padding:64px 20px;}.cta-sec{padding:72px 20px;}footer{padding:40px 20px 24px;}.svc-grid{grid-template-columns:1fr;}.pillars{grid-template-columns:1fr;}.hero-bottom{grid-template-columns:1fr 1fr;}.about-text-col,.about-stat-col{padding:48px 24px;}}
+</style>
+</head>
+<body>
+<div id="sp"></div>
+<div class="demo-badge">Demo — FRGX Media</div>
+<nav id="nav">
+  <div class="nl">MyGlow Pilates<em>.</em></div>
+  <button class="nc" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Book Now</button>
+</nav>
+<section class="hero">
+  <video class="hero-vid" id="heroVid" autoplay muted playsinline preload="auto">
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260319_055001_8e16d972-3b2b-441c-86ad-2901a54682f9.mp4" type="video/mp4"/>
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-body">
+    <div class="hero-kicker">Reformer Pilates Studio · Al Manara, Dubai</div>
+    <h1 class="hero-title">MyGlow Pilates<em>.</em></h1>
+    <p class="hero-sub">Find your glow. One session at a time.</p>
+    <div class="hero-btns">
+      <button class="btn-a" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">View Classes</button>
+      <button class="btn-o" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Book a Session</button>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <div class="hero-pill">
+      <div class="pill-icon">🧘</div>
+      <div class="pill-text">Expert-Led Classes</div>
+    </div>
+    <div class="hero-pill">
+      <div class="pill-icon">✨</div>
+      <div class="pill-text">Holistic Wellness</div>
+    </div>
+    <div class="hero-pill">
+      <div class="pill-icon">📍</div>
+      <div class="pill-text">Al Manara, Dubai</div>
+    </div>
+  </div>
+</section>
+<div class="ticker"><div class="tt" id="tt"></div></div>
+<section class="sec" id="services">
+  <div class="rv">
+    <div class="sec-kicker"><span></span>01 · Classes & Services</div>
+    <h2 class="sec-h">Move, breathe,<br/><em>restore.</em></h2>
+  </div>
+  <div class="svc-grid"><div class="svc-card"><span class="svc-num">01</span><span class="svc-name">Reformer Pilates</span></div><div class="svc-card"><span class="svc-num">02</span><span class="svc-name">Pre-natal Pilates</span></div><div class="svc-card"><span class="svc-num">03</span><span class="svc-name">Mat Pilates</span></div><div class="svc-card"><span class="svc-num">04</span><span class="svc-name">Private Training</span></div><div class="svc-card"><span class="svc-num">05</span><span class="svc-name">Group Classes</span></div><div class="svc-card"><span class="svc-num">06</span><span class="svc-name">Stretching</span></div></div>
+</section>
+<section class="sec" style="background:var(--bg2);border-top:1px solid var(--bd);padding-bottom:0;" id="pillars">
+  <div class="rv">
+    <div class="sec-kicker"><span></span>02 · Our Approach</div>
+    <h2 class="sec-h">Three pillars<br/><em>of practice.</em></h2>
+  </div>
+  <div class="pillars">
+    <div class="pillar rv">
+      <div class="pillar-num">01</div>
+      <div class="pillar-title">Mind</div>
+      <p class="pillar-text">Every session at MyGlow Pilates starts with intention. We bring you into a space where the mental noise quiets and genuine presence becomes possible.</p>
+    </div>
+    <div class="pillar rv" style="transition-delay:.1s">
+      <div class="pillar-num">02</div>
+      <div class="pillar-title">Body</div>
+      <p class="pillar-text">Our instructors guide you through movement that strengthens, lengthens, and heals — adapting to your level, your body, and your goals.</p>
+    </div>
+    <div class="pillar rv" style="transition-delay:.2s">
+      <div class="pillar-num">03</div>
+      <div class="pillar-title">Spirit</div>
+      <p class="pillar-text">Wellness isn't just physical. MyGlow Pilates is a community — a space where people return because of how they feel when they leave, not just while they're here.</p>
+    </div>
+  </div>
+</section>
+<section style="padding:0;" id="about">
+  <div class="about-split">
+    <div class="about-text-col rvl">
+      <div class="sec-kicker"><span></span>03 · The Studio</div>
+      <h2 class="sec-h">Crafted for<br/><em>stillness.</em></h2>
+      <p class="about-desc">MyGlow Pilates is more than a studio — it's a carefully considered space built for transformation. Located in Al Manara, Dubai, we've spent years creating an environment where every detail, from the way light enters the room to the instructors we bring in, serves your practice.</p>
+      <button class="btn-a" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">Find Your Class</button>
+    </div>
+    <div class="about-stat-col rvr">
+      <div class="stat-block">
+        <div class="stat-big"><span class="count" data-target="200">0</span><em>+</em></div>
+        <div class="stat-small">Classes offered each month</div>
+      </div>
+      <div class="divider"></div>
+      <div class="stat-block">
+        <div class="stat-big"><span class="count" data-target="8">0</span><em>+</em></div>
+        <div class="stat-small">Certified wellness instructors</div>
+      </div>
+      <div class="divider"></div>
+      <div class="stat-block">
+        <div class="stat-big" style="font-size:2rem;font-family:'DM Sans',sans-serif;font-weight:300">All levels</div>
+        <div class="stat-small">Beginners to advanced — always welcome</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="cta-sec" id="cta">
+  <div class="cta-glow"></div>
+  <div class="cta-inner rv">
+    <span class="cta-tag">First Class · On Us</span>
+    <div class="cta-h">Begin<br/><em>here.</em></div>
+    <p class="cta-sub">Your first class at MyGlow Pilates is free. Come as you are, bring nothing but yourself — we'll take care of the rest.</p>
+    <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-a">Book Free Class</button>
+      <button class="btn-o">Learn More</button>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="ft">
+    <div>
+      <div class="fl">MyGlow Pilates<em>.</em></div>
+      <div class="fl-sub">Reformer Pilates Studio · Al Manara, Dubai</div>
+    </div>
+    <div class="ft-links">
+      <a href="#services">Classes</a>
+      <a href="#about">Studio</a>
+      <a href="#cta">Book</a>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-copy">© 2026 MyGlow Pilates. All rights reserved.</p>
+    <p class="ft-frgx">Demo crafted by <a href="#">FRGX Media</a></p>
+  </div>
+</footer>
+<script>
+const sp=document.getElementById('sp'),nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{sp.style.width=(window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';nav.classList.toggle('s',window.scrollY>60);},{passive:true});
+const tt=document.getElementById('tt');
+const ws=['MyGlow Pilates','Reformer Pilates Studio','Al Manara, Dubai','Book Now','All Levels Welcome','Expert Instructors','First Class Free'];
+tt.innerHTML=[...ws,...ws,...ws].map(w=>`<span class="ti">${w}</span>`).join('');
+function countUp(el){const t=+el.dataset.target,dur=1600,s=performance.now();function step(n){const p=Math.min((n-s)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(e*t);if(p<1)requestAnimationFrame(step);else el.textContent=t;}requestAnimationFrame(step);}
+const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');ro.unobserve(x.target);}});},{threshold:.07});
+document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>ro.observe(el));
+const co=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.querySelectorAll('.count').forEach(countUp);co.unobserve(x.target);}});},{threshold:.3});
+document.querySelectorAll('.about-stat-col').forEach(el=>co.observe(el));
+(function(){
+  const v=document.getElementById('heroVid');
+  if(!v)return;
+  v.playbackRate=0.72;
+  let fading=false;
+  v.addEventListener('timeupdate',function(){
+    if(v.duration&&!isNaN(v.duration)&&v.currentTime>v.duration-1.8&&!fading){
+      fading=true;v.style.opacity='0';
+    }
+  });
+  v.addEventListener('ended',function(){
+    v.currentTime=0;v.play().catch(()=>{});
+    setTimeout(()=>{v.style.opacity='1';fading=false;},500);
+  });
+})();
+</script>
+</body>
+</html>
