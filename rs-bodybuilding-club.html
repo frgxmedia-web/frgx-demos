@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>RS Bodybuilding Club — Forged in Iron</title>
+<title>RS Bodybuilding Club — Dubai</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --bg:#080808;--bg2:#0D0D0D;--bg3:#111;
+  --bg:#080808;--bg2:#0D0D0D;--bg3:#121212;
   --acc:#E8390E;--acc2:#FF5A1F;
   --w:#F2F0EE;--m:#6E6A66;--bd:rgba(255,255,255,.07);
-  --r:2rem;--rs:calc(var(--r) - 6px);
+  --r:1.6rem;--rs:calc(var(--r) - 6px);
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--w);overflow-x:hidden;}
 
-/* ── GRAIN ── */
+/* grain */
 body::after{
   content:'';position:fixed;inset:-60%;width:220%;height:220%;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -27,387 +27,378 @@ body::after{
 }
 @keyframes gr{0%{transform:translate(0,0)}25%{transform:translate(-2%,-3%)}50%{transform:translate(3%,1%)}100%{transform:translate(2%,0)}}
 
-/* ── NAV ── */
+/* ─── NAV ─────────────────────────────────── */
 nav{
-  position:fixed;top:24px;left:50%;transform:translateX(-50%);
-  z-index:100;width:calc(100% - 40px);max-width:900px;
-  background:rgba(8,8,8,.72);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  z-index:100;width:calc(100% - 32px);max-width:860px;
+  background:rgba(8,8,8,.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
   border:1px solid var(--bd);border-radius:999px;
-  padding:14px 24px;display:flex;align-items:center;justify-content:space-between;
-  transition:all .5s cubic-bezier(0.32,0.72,0,1);
+  padding:13px 22px;display:flex;align-items:center;justify-content:space-between;
 }
-.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;color:var(--w);}
-.nav-logo span{color:var(--acc);}
-.nav-links{display:flex;gap:28px;list-style:none;}
-.nav-links a{font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--m);text-decoration:none;transition:color .3s cubic-bezier(0.32,0.72,0,1);}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.1em;color:var(--w);}
+.nav-logo em{font-style:normal;color:var(--acc);}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--m);text-decoration:none;transition:color .3s;}
 .nav-links a:hover{color:var(--w);}
 .nav-cta{
   background:var(--acc);color:#fff;border:none;cursor:pointer;
-  font-family:'Plus Jakarta Sans',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  padding:10px 20px;border-radius:999px;
-  transition:all .4s cubic-bezier(0.32,0.72,0,1);
-  text-decoration:none;
+  font-family:'Plus Jakarta Sans',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:9px 18px;border-radius:999px;text-decoration:none;
+  transition:all .35s cubic-bezier(0.32,0.72,0,1);
 }
-.nav-cta:hover{background:var(--acc2);transform:scale(1.04);}
-.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
-.nav-ham span{display:block;width:22px;height:1.5px;background:var(--w);transition:all .4s cubic-bezier(0.32,0.72,0,1);transform-origin:center;}
-.nav-ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
-.nav-ham.open span:nth-child(2){opacity:0;transform:scaleX(0);}
-.nav-ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
-
-/* mobile menu */
-.mob-menu{
+.nav-cta:hover{background:var(--acc2);transform:scale(1.05);}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.ham span{display:block;width:22px;height:1.5px;background:var(--w);transition:all .4s cubic-bezier(0.32,0.72,0,1);transform-origin:center;}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob-overlay{
   position:fixed;inset:0;z-index:99;
-  background:rgba(8,8,8,.96);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;
-  opacity:0;pointer-events:none;
-  transition:opacity .4s cubic-bezier(0.32,0.72,0,1);
+  background:rgba(8,8,8,.97);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;
+  opacity:0;pointer-events:none;transition:opacity .35s;
 }
-.mob-menu.open{opacity:1;pointer-events:all;}
-.mob-menu a{
-  font-family:'Bebas Neue',sans-serif;font-size:3.5rem;letter-spacing:.06em;color:var(--w);text-decoration:none;
-  opacity:0;transform:translateY(20px);
-  transition:color .3s,opacity .5s cubic-bezier(0.32,0.72,0,1),transform .5s cubic-bezier(0.32,0.72,0,1);
+.mob-overlay.open{opacity:1;pointer-events:all;}
+.mob-overlay a{
+  font-family:'Bebas Neue',sans-serif;font-size:3.2rem;letter-spacing:.06em;color:var(--w);text-decoration:none;
+  opacity:0;transform:translateY(18px);
+  transition:color .3s,opacity .45s cubic-bezier(0.32,0.72,0,1),transform .45s cubic-bezier(0.32,0.72,0,1);
 }
-.mob-menu.open a{opacity:1;transform:translateY(0);}
-.mob-menu.open a:nth-child(1){transition-delay:.05s;}
-.mob-menu.open a:nth-child(2){transition-delay:.1s;}
-.mob-menu.open a:nth-child(3){transition-delay:.15s;}
-.mob-menu.open a:nth-child(4){transition-delay:.2s;}
-.mob-menu.open a:nth-child(5){transition-delay:.25s;}
-.mob-menu a:hover{color:var(--acc);}
+.mob-overlay.open a{opacity:1;transform:translateY(0);}
+.mob-overlay.open a:nth-child(1){transition-delay:.04s;}
+.mob-overlay.open a:nth-child(2){transition-delay:.09s;}
+.mob-overlay.open a:nth-child(3){transition-delay:.14s;}
+.mob-overlay.open a:nth-child(4){transition-delay:.19s;}
+.mob-overlay.open a:nth-child(5){transition-delay:.24s;}
+.mob-overlay a:hover{color:var(--acc);}
 
-/* ── HERO ── */
+/* ─── HERO ────────────────────────────────── */
 .hero{
-  min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:0 20px;position:relative;overflow:hidden;
+  min-height:100dvh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:100px 20px 80px;
+  position:relative;overflow:hidden;
 }
+/* grid lines */
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(232,57,14,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(232,57,14,.05) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 75% 75% at 50% 50%,black 20%,transparent 100%);
+}
+/* center glow */
 .hero-glow{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:min(900px,90vw);height:500px;
-  background:radial-gradient(ellipse at center,rgba(232,57,14,.22) 0%,transparent 70%);
-  pointer-events:none;
+  width:min(600px,90vw);height:360px;
+  background:radial-gradient(ellipse at center,rgba(232,57,14,.3) 0%,transparent 68%);
+  pointer-events:none;animation:gpulse 3s ease-in-out infinite;
 }
-.hero-ring{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:600px;height:600px;border-radius:50%;
-  border:1px solid rgba(232,57,14,.08);
-  animation:pulse 4s ease-in-out infinite;
-  pointer-events:none;
-}
-.hero-ring2{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  width:900px;height:900px;border-radius:50%;
-  border:1px solid rgba(232,57,14,.04);
-  animation:pulse 4s ease-in-out infinite .8s;
-  pointer-events:none;
-}
-@keyframes pulse{0%,100%{opacity:.4;transform:translate(-50%,-50%) scale(1);}50%{opacity:1;transform:translate(-50%,-50%) scale(1.03);}}
+@keyframes gpulse{0%,100%{opacity:.65}50%{opacity:1}}
+/* horizontal accent bars */
+.hero-bar{position:absolute;left:0;right:0;height:1px;pointer-events:none;
+  background:linear-gradient(to right,transparent 5%,rgba(232,57,14,.28) 30%,rgba(232,57,14,.28) 70%,transparent 95%);}
+.hero-bar.t{top:calc(50% - clamp(120px,22vw,230px));}
+.hero-bar.b{bottom:calc(50% - clamp(120px,22vw,230px));}
+
+/* eyebrow */
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:8px;
-  background:rgba(232,57,14,.12);border:1px solid rgba(232,57,14,.25);
-  border-radius:999px;padding:6px 16px;
-  font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);
-  margin-bottom:28px;
+  background:rgba(232,57,14,.1);border:1px solid rgba(232,57,14,.22);
+  border-radius:999px;padding:5px 14px;
+  font-size:.6rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);
+  margin-bottom:24px;position:relative;z-index:1;
 }
-.hero-eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--acc);animation:blink 1.5s ease-in-out infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.hero h1{
+.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--acc);animation:blink 1.5s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* BIG RS */
+.hero-rs{position:relative;z-index:1;line-height:.88;user-select:none;}
+.hero-rs .r{
   font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(5rem,14vw,13rem);
-  line-height:.92;letter-spacing:.02em;
-  color:var(--w);margin-bottom:12px;
+  font-size:clamp(9rem,40vw,26rem);
+  color:transparent;
+  -webkit-text-stroke:clamp(1.5px,0.3vw,3px) rgba(242,240,238,.85);
+  display:inline-block;
 }
-.hero h1 em{font-style:normal;color:var(--acc);}
-.hero-sub{
-  font-size:clamp(.85rem,1.5vw,1rem);font-weight:300;color:var(--m);
-  max-width:480px;line-height:1.72;margin:0 auto 44px;letter-spacing:.02em;
+.hero-rs .s{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(9rem,40vw,26rem);
+  color:var(--acc);
+  -webkit-text-stroke:0;
+  text-shadow:0 0 60px rgba(232,57,14,.55),0 0 120px rgba(232,57,14,.25);
+  display:inline-block;
 }
-.hero-btns{display:flex;gap:12px;align-items:center;justify-content:center;flex-wrap:wrap;}
-.btn-primary{
+
+/* club name */
+.hero-club{
+  position:relative;z-index:1;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.2rem,4.5vw,2.6rem);
+  letter-spacing:.42em;
+  color:var(--w);
+  text-transform:uppercase;
+  margin-top:-6px;
+  margin-bottom:28px;
+  padding-right:.42em;/* optical center from letter-spacing */
+}
+.hero-club::before,.hero-club::after{
+  content:'';display:inline-block;
+  width:clamp(20px,4vw,48px);height:1.5px;
+  background:var(--acc);vertical-align:middle;
+  margin:0 clamp(8px,1.5vw,16px);
+  box-shadow:0 0 8px rgba(232,57,14,.5);
+}
+
+/* tagline */
+.hero-tag{
+  font-size:clamp(.78rem,1.4vw,.92rem);font-weight:300;color:var(--m);
+  max-width:380px;line-height:1.78;margin:0 auto 36px;
+  position:relative;z-index:1;
+}
+
+.hero-btns{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+
+/* scroll indicator */
+.hero-scroll{
+  position:absolute;bottom:28px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--m);z-index:1;
+}
+.sline{width:1px;height:40px;background:linear-gradient(to bottom,var(--acc),transparent);animation:sd 2s ease-in-out infinite;}
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ─── BUTTONS ─────────────────────────────── */
+.btn-p{
   display:inline-flex;align-items:center;gap:10px;
   background:var(--acc);color:#fff;text-decoration:none;
-  font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   padding:15px 26px;border-radius:999px;
   transition:all .4s cubic-bezier(0.32,0.72,0,1);
 }
-.btn-primary:hover{background:var(--acc2);transform:scale(1.04);}
-.btn-primary .icon{
-  width:30px;height:30px;border-radius:50%;
-  background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;
+.btn-p:hover{background:var(--acc2);transform:scale(1.04);}
+.btn-p .ico{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.85rem;
   transition:transform .4s cubic-bezier(0.32,0.72,0,1);
 }
-.btn-primary:hover .icon{transform:translate(2px,-2px) scale(1.1);}
-.btn-ghost{
+.btn-p:hover .ico{transform:translate(2px,-2px) scale(1.1);}
+.btn-g{
   display:inline-flex;align-items:center;gap:8px;
   background:transparent;color:var(--w);text-decoration:none;
-  font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
   padding:15px 26px;border-radius:999px;border:1px solid var(--bd);
   transition:all .4s cubic-bezier(0.32,0.72,0,1);
 }
-.btn-ghost:hover{border-color:var(--w);background:rgba(255,255,255,.04);}
-/* gym name under eyebrow */
-.hero-gym-name{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(1.1rem,3vw,1.6rem);
-  letter-spacing:.32em;text-transform:uppercase;
-  color:var(--acc);margin-bottom:10px;
-  text-shadow:0 0 40px rgba(232,57,14,.5);
-}
-.hero-scroll{
-  position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--m);
-}
-.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--acc),transparent);animation:scrolldown 2s ease-in-out infinite;}
-@keyframes scrolldown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.btn-g:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);}
 
-/* ── STATS ── */
-.stats{padding:100px 40px;display:flex;justify-content:center;}
+/* ─── STATS ───────────────────────────────── */
+.stats{padding:70px 20px;}
 .stats-inner{
-  max-width:900px;width:100%;
+  max-width:860px;margin:0 auto;
   display:grid;grid-template-columns:repeat(4,1fr);gap:2px;
   background:var(--bd);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;
 }
-.stat{
-  background:var(--bg2);padding:40px 32px;text-align:center;
-  transition:background .3s cubic-bezier(0.32,0.72,0,1);
-}
+.stat{background:var(--bg2);padding:36px 20px;text-align:center;transition:background .3s;}
 .stat:hover{background:var(--bg3);}
-.stat-n{
-  font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5rem);
-  color:var(--w);line-height:1;
-}
-.stat-n span{color:var(--acc);}
-.stat-l{font-size:.62rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--m);margin-top:6px;}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4.2rem);color:var(--w);line-height:1;}
+.stat-l{font-size:.58rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--m);margin-top:6px;}
 
-/* ── SECTION COMMON ── */
-section{padding:120px 40px;}
+/* ─── SECTION SHARED ──────────────────────── */
+.sec{padding:100px 20px;}
+.sec-inner{max-width:1060px;margin:0 auto;}
 .eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  border-radius:999px;padding:5px 14px;
-  font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);
-  background:rgba(232,57,14,.1);border:1px solid rgba(232,57,14,.2);
-  margin-bottom:20px;
+  display:inline-flex;align-items:center;gap:7px;
+  border-radius:999px;padding:5px 13px;
+  font-size:.58rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);
+  background:rgba(232,57,14,.09);border:1px solid rgba(232,57,14,.18);
+  margin-bottom:16px;
 }
-.section-title{
+.sec-h{
   font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(3rem,7vw,6.5rem);
-  line-height:.95;letter-spacing:.02em;color:var(--w);margin-bottom:20px;
+  font-size:clamp(2.6rem,6.5vw,5.8rem);
+  line-height:.95;letter-spacing:.02em;color:var(--w);margin-bottom:16px;
 }
-.section-sub{font-size:.92rem;font-weight:300;color:var(--m);line-height:1.75;max-width:480px;}
+.sec-sub{font-size:.88rem;font-weight:300;color:var(--m);line-height:1.78;max-width:440px;}
 
-/* ── PROGRAMS BENTO ── */
-.programs{background:var(--bg);}
-.programs-header{max-width:1100px;margin:0 auto 56px;display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+/* ─── PROGRAMS BENTO ──────────────────────── */
+.programs-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:44px;}
 .bento{
-  max-width:1100px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:16px;
+  display:grid;grid-template-columns:repeat(12,1fr);gap:14px;
 }
-.bento-card{
+.bc{
   background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);
-  padding:36px;position:relative;overflow:hidden;cursor:default;
-  transition:all .5s cubic-bezier(0.32,0.72,0,1);
+  padding:32px 28px;position:relative;overflow:hidden;
+  transition:all .45s cubic-bezier(0.32,0.72,0,1);
 }
-.bento-card::before{
+.bc::before{
   content:'';position:absolute;inset:0;border-radius:var(--r);
-  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(232,57,14,.12) 0%,transparent 60%);
-  opacity:0;transition:opacity .4s cubic-bezier(0.32,0.72,0,1);pointer-events:none;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(232,57,14,.13) 0%,transparent 60%);
+  opacity:0;transition:opacity .4s;pointer-events:none;
 }
-.bento-card:hover::before{opacity:1;}
-.bento-card:hover{border-color:rgba(232,57,14,.25);transform:translateY(-3px);}
-.bc1{grid-column:span 7;}
-.bc2{grid-column:span 5;}
-.bc3{grid-column:span 4;}
-.bc4{grid-column:span 4;}
-.bc5{grid-column:span 4;}
-.bc6{grid-column:span 12;}
-.card-icon{
-  width:48px;height:48px;border-radius:14px;
-  background:rgba(232,57,14,.15);border:1px solid rgba(232,57,14,.2);
-  display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:24px;
+.bc:hover::before{opacity:1;}
+.bc:hover{border-color:rgba(232,57,14,.22);transform:translateY(-3px);}
+.bc1{grid-column:span 7;}.bc2{grid-column:span 5;}
+.bc3{grid-column:span 4;}.bc4{grid-column:span 4;}.bc5{grid-column:span 4;}
+.bc6{grid-column:span 12;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.c-ico{
+  width:44px;height:44px;border-radius:12px;
+  background:rgba(232,57,14,.14);border:1px solid rgba(232,57,14,.18);
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:20px;
 }
-.card-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.03em;color:var(--w);margin-bottom:10px;}
-.card-desc{font-size:.82rem;font-weight:300;color:var(--m);line-height:1.7;}
-.card-tag{
-  display:inline-block;margin-top:20px;
-  font-size:.58rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--acc);background:rgba(232,57,14,.1);border:1px solid rgba(232,57,14,.2);
-  padding:5px 12px;border-radius:999px;
+.c-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.03em;color:var(--w);margin-bottom:8px;}
+.c-desc{font-size:.8rem;font-weight:300;color:var(--m);line-height:1.7;}
+.c-tag{
+  display:inline-block;margin-top:16px;
+  font-size:.56rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--acc);background:rgba(232,57,14,.09);border:1px solid rgba(232,57,14,.18);
+  padding:4px 11px;border-radius:999px;
 }
-.card-big-num{
-  font-family:'Bebas Neue',sans-serif;font-size:6rem;line-height:1;
-  color:rgba(255,255,255,.05);position:absolute;bottom:-10px;right:20px;
-  pointer-events:none;
+.c-num{
+  font-family:'Bebas Neue',sans-serif;font-size:5.5rem;line-height:1;
+  color:rgba(255,255,255,.04);position:absolute;bottom:-8px;right:16px;pointer-events:none;
 }
 
-/* ── MEMBERSHIP ── */
+/* ─── MEMBERSHIP ──────────────────────────── */
 .membership{background:var(--bg2);}
-.plans{max-width:1000px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.plan{
-  border-radius:var(--r);padding:6px;
-  background:rgba(255,255,255,.04);border:1px solid var(--bd);
-  transition:all .5s cubic-bezier(0.32,0.72,0,1);
-}
-.plan-inner{
-  background:var(--bg3);border-radius:var(--rs);padding:36px;height:100%;
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.05);
-}
-.plan.featured{
-  background:linear-gradient(135deg,rgba(232,57,14,.3),rgba(255,90,31,.15));
-  border-color:rgba(232,57,14,.4);
-}
-.plan.featured .plan-inner{background:rgba(15,8,6,.9);}
-.plan:hover{transform:translateY(-4px);border-color:rgba(232,57,14,.3);}
-.plan-badge{
-  display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
-  background:var(--acc);color:#fff;padding:5px 12px;border-radius:999px;margin-bottom:20px;
-}
-.plan-name{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;color:var(--w);margin-bottom:6px;}
-.plan-price{
-  font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;color:var(--w);margin:20px 0 4px;
-}
-.plan-price sup{font-size:1.5rem;vertical-align:top;margin-top:10px;color:var(--m);}
-.plan-period{font-size:.72rem;color:var(--m);margin-bottom:28px;}
-.plan-divider{height:1px;background:var(--bd);margin-bottom:28px;}
-.plan-feature{
-  display:flex;align-items:center;gap:10px;
-  font-size:.82rem;color:var(--m);margin-bottom:12px;
-}
-.plan-feature::before{
-  content:'';width:16px;height:16px;border-radius:50%;flex-shrink:0;
-  background:rgba(232,57,14,.15);border:1px solid rgba(232,57,14,.25);
-  display:flex;align-items:center;justify-content:center;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23E8390E' stroke-width='2.5'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.plan{border-radius:var(--r);padding:5px;background:rgba(255,255,255,.03);border:1px solid var(--bd);transition:all .45s cubic-bezier(0.32,0.72,0,1);}
+.plan-in{background:var(--bg3);border-radius:var(--rs);padding:32px;height:100%;box-shadow:inset 0 1px 1px rgba(255,255,255,.04);}
+.plan.feat{background:linear-gradient(135deg,rgba(232,57,14,.28),rgba(255,90,31,.12));border-color:rgba(232,57,14,.38);}
+.plan.feat .plan-in{background:rgba(12,5,3,.92);}
+.plan:hover{transform:translateY(-4px);border-color:rgba(232,57,14,.28);}
+.p-badge{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:var(--acc);color:#fff;padding:4px 11px;border-radius:999px;margin-bottom:16px;}
+.p-name{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:var(--w);margin-bottom:4px;}
+.p-price{font-family:'Bebas Neue',sans-serif;font-size:3.6rem;line-height:1;color:var(--w);margin:16px 0 3px;}
+.p-price sup{font-size:1.3rem;vertical-align:top;margin-top:8px;color:var(--m);}
+.p-period{font-size:.7rem;color:var(--m);margin-bottom:24px;}
+.p-div{height:1px;background:var(--bd);margin-bottom:24px;}
+.p-feat{display:flex;align-items:center;gap:9px;font-size:.8rem;color:var(--m);margin-bottom:10px;}
+.p-feat::before{
+  content:'';width:15px;height:15px;border-radius:50%;flex-shrink:0;
+  background:rgba(232,57,14,.13);border:1px solid rgba(232,57,14,.22);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='9' viewBox='0 0 24 24' fill='none' stroke='%23E8390E' stroke-width='2.5'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");
   background-repeat:no-repeat;background-position:center;
 }
-.plan-cta{
+.p-cta{
   display:block;width:100%;text-align:center;text-decoration:none;
-  margin-top:28px;padding:14px;border-radius:999px;
-  font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  transition:all .4s cubic-bezier(0.32,0.72,0,1);
+  margin-top:24px;padding:13px;border-radius:999px;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  transition:all .35s cubic-bezier(0.32,0.72,0,1);
 }
-.plan-cta.light{background:rgba(255,255,255,.06);color:var(--w);border:1px solid var(--bd);}
-.plan-cta.light:hover{background:rgba(255,255,255,.1);}
-.plan-cta.hot{background:var(--acc);color:#fff;}
-.plan-cta.hot:hover{background:var(--acc2);transform:scale(1.03);}
+.p-cta.l{background:rgba(255,255,255,.05);color:var(--w);border:1px solid var(--bd);}
+.p-cta.l:hover{background:rgba(255,255,255,.09);}
+.p-cta.h{background:var(--acc);color:#fff;}
+.p-cta.h:hover{background:var(--acc2);transform:scale(1.03);}
 
-/* ── TRAINERS ── */
-.trainers{background:var(--bg);}
-.trainers-grid{max-width:1000px;margin:56px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-.trainer-card{
-  border-radius:var(--r);padding:6px;
-  background:rgba(255,255,255,.04);border:1px solid var(--bd);
-  transition:all .5s cubic-bezier(0.32,0.72,0,1);
+/* ─── TRAINERS ────────────────────────────── */
+.trainers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:48px;}
+.t-card{border-radius:var(--r);padding:5px;background:rgba(255,255,255,.03);border:1px solid var(--bd);transition:all .45s cubic-bezier(0.32,0.72,0,1);}
+.t-card:hover{transform:translateY(-3px);border-color:rgba(232,57,14,.28);}
+.t-in{background:var(--bg2);border-radius:var(--rs);overflow:hidden;}
+.t-av{
+  width:100%;aspect-ratio:1;background:var(--bg3);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bebas Neue',sans-serif;font-size:4.5rem;color:rgba(232,57,14,.18);
+  border-bottom:1px solid var(--bd);position:relative;
 }
-.trainer-card:hover{transform:translateY(-4px);border-color:rgba(232,57,14,.3);}
-.trainer-inner{background:var(--bg2);border-radius:var(--rs);overflow:hidden;}
-.trainer-avatar{
-  width:100%;aspect-ratio:1;
-  background:var(--bg3);display:flex;align-items:center;justify-content:center;
-  font-family:'Bebas Neue',sans-serif;font-size:5rem;color:rgba(232,57,14,.2);
-  border-bottom:1px solid var(--bd);
-  position:relative;overflow:hidden;
-}
-.trainer-avatar::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(to bottom,transparent 50%,rgba(8,8,8,.5));
-}
-.trainer-info{padding:24px;}
-.trainer-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;color:var(--w);}
-.trainer-role{font-size:.7rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-top:3px;}
-.trainer-spec{font-size:.8rem;color:var(--m);margin-top:10px;line-height:1.6;}
+.t-av::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(8,8,8,.5));}
+.t-info{padding:22px;}
+.t-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--w);}
+.t-role{font-size:.65rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-top:3px;}
+.t-spec{font-size:.78rem;color:var(--m);margin-top:8px;line-height:1.6;}
 
-/* ── CTA BANNER ── */
-.cta-banner{
-  padding:120px 40px;
-  background:linear-gradient(135deg,rgba(232,57,14,.12) 0%,transparent 60%),var(--bg2);
+/* ─── CTA SECTION ─────────────────────────── */
+.cta-sec{
+  padding:110px 20px;
+  background:linear-gradient(160deg,rgba(232,57,14,.11) 0%,transparent 55%),var(--bg2);
   text-align:center;position:relative;overflow:hidden;
 }
-.cta-banner::before{
+.cta-sec::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(232,57,14,.1) 0%,transparent 70%);
+  background:radial-gradient(ellipse 50% 70% at 50% 50%,rgba(232,57,14,.09) 0%,transparent 70%);
   pointer-events:none;
 }
-.cta-banner .section-title{font-size:clamp(3.5rem,9vw,8rem);}
-.cta-banner p{font-size:.9rem;font-weight:300;color:var(--m);max-width:440px;margin:0 auto 44px;line-height:1.75;}
+.cta-sec .sec-h{font-size:clamp(3rem,9vw,7.5rem);}
+.cta-sec p{font-size:.88rem;font-weight:300;color:var(--m);max-width:400px;margin:0 auto 40px;line-height:1.78;}
 
-/* ── FOOTER ── */
-footer{padding:56px 40px;border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-.footer-logo{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.08em;color:var(--w);}
-.footer-logo span{color:var(--acc);}
-footer p{font-size:.72rem;color:var(--m);}
-.footer-links{display:flex;gap:24px;}
-.footer-links a{font-size:.72rem;color:var(--m);text-decoration:none;letter-spacing:.08em;transition:color .3s;}
-.footer-links a:hover{color:var(--w);}
+/* ─── FOOTER ──────────────────────────────── */
+footer{
+  padding:48px 24px;border-top:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.08em;color:var(--w);}
+.f-logo em{font-style:normal;color:var(--acc);}
+footer p{font-size:.7rem;color:var(--m);}
+.f-links{display:flex;gap:20px;flex-wrap:wrap;}
+.f-links a{font-size:.7rem;color:var(--m);text-decoration:none;letter-spacing:.08em;transition:color .3s;}
+.f-links a:hover{color:var(--w);}
 
-/* ── REVEAL ANIMATIONS ── */
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(0.32,0.72,0,1),transform .8s cubic-bezier(0.32,0.72,0,1);}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-d1{transition-delay:.05s;}
-.reveal-d2{transition-delay:.1s;}
-.reveal-d3{transition-delay:.15s;}
-.reveal-d4{transition-delay:.2s;}
+/* ─── REVEAL ──────────────────────────────── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .75s cubic-bezier(0.32,0.72,0,1),transform .75s cubic-bezier(0.32,0.72,0,1);}
+.rv.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.06s;}.d2{transition-delay:.12s;}.d3{transition-delay:.18s;}.d4{transition-delay:.24s;}
 
-/* ── RESPONSIVE ── */
+/* ─── MOBILE ──────────────────────────────── */
 @media(max-width:768px){
-  nav{padding:12px 18px;top:16px;width:calc(100% - 24px);}
+  /* nav */
+  nav{padding:11px 16px;top:14px;width:calc(100% - 20px);}
   .nav-links,.nav-cta{display:none;}
-  .nav-ham{display:flex;}
+  .ham{display:flex;}
 
-  /* Hero mobile */
-  .hero{padding:0 20px;text-align:center;}
-  .hero h1{font-size:clamp(4.5rem,22vw,7rem);}
-  .hero-gym-name{font-size:clamp(.9rem,4.5vw,1.2rem);letter-spacing:.22em;}
-  .hero-sub{font-size:.85rem;}
-  .hero-btns{flex-direction:column;align-items:center;gap:10px;}
-  .btn-primary,.btn-ghost{width:100%;max-width:280px;justify-content:center;}
+  /* hero */
+  .hero{padding:88px 16px 72px;}
+  .hero-rs .r,.hero-rs .s{font-size:clamp(8rem,44vw,13rem);}
+  .hero-club{font-size:clamp(1rem,4.8vw,1.6rem);letter-spacing:.28em;padding-right:.28em;}
+  .hero-club::before,.hero-club::after{width:clamp(14px,3vw,28px);margin:0 8px;}
+  .hero-tag{font-size:.82rem;}
+  .hero-btns{flex-direction:column;align-items:stretch;gap:10px;width:100%;max-width:300px;margin:0 auto;}
+  .btn-p,.btn-g{justify-content:center;width:100%;}
 
-  /* Stats mobile - 2x2 grid */
-  .stats{padding:0 16px 60px;}
+  /* stats — 2×2 */
+  .stats{padding:0 14px 56px;}
   .stats-inner{grid-template-columns:repeat(2,1fr);}
-  .stat{padding:28px 16px;}
-  .stat-n{font-size:2.8rem;}
+  .stat{padding:28px 14px;}
+  .stat-n{font-size:2.6rem;}
 
-  /* Bento mobile */
-  .bento{grid-template-columns:1fr;gap:12px;padding:0 0px;}
+  /* sections */
+  .sec{padding:72px 16px;}
+  .programs-head{flex-direction:column;align-items:flex-start;gap:10px;}
+
+  /* bento — single col */
+  .bento{grid-template-columns:1fr;gap:12px;}
   .bc1,.bc2,.bc3,.bc4,.bc5,.bc6{grid-column:span 1;}
-  .bento-card{padding:28px 24px;}
-  .bento-card.bc6{flex-direction:column;align-items:flex-start;}
-  .bento-card.bc6 .btn-primary{width:100%;justify-content:center;margin-top:8px;}
+  .bc6{flex-direction:column;align-items:flex-start;}
+  .bc6 .btn-p{width:100%;justify-content:center;}
+  .bc{padding:26px 22px;}
 
-  /* Plans mobile */
+  /* plans — single col, featured first */
   .plans{grid-template-columns:1fr;gap:12px;}
-  .plan.featured{order:-1;}
+  .plan.feat{order:-1;}
+  .plan-in{padding:28px;}
 
-  /* Trainers mobile */
+  /* trainers — single col */
   .trainers-grid{grid-template-columns:1fr;gap:12px;}
 
-  /* Section padding */
-  section{padding:80px 16px;}
-  .stats{padding:40px 16px;}
+  /* cta */
+  .cta-sec{padding:80px 16px;}
+  .cta-sec .hero-btns{flex-direction:column;align-items:stretch;gap:10px;max-width:300px;margin:0 auto;}
 
-  /* CTA mobile */
-  .cta-banner{padding:80px 20px;}
-  .cta-banner .hero-btns{flex-direction:column;align-items:center;}
+  /* footer */
+  footer{flex-direction:column;text-align:center;padding:36px 16px;}
+  .f-links{justify-content:center;}
 
-  /* Footer */
-  footer{flex-direction:column;text-align:center;padding:40px 20px;gap:16px;}
-  .footer-links{justify-content:center;flex-wrap:wrap;}
-
-  /* Programs header */
-  .programs-header{flex-direction:column;text-align:center;align-items:center;}
-
-  /* Section title mobile */
-  .section-title{font-size:clamp(2.5rem,11vw,4rem);}
+  /* section titles */
+  .sec-h{font-size:clamp(2.2rem,10vw,3.5rem);}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo">RS<span>.</span>BBC</div>
+<nav>
+  <div class="nav-logo">RS<em>.</em>BBC</div>
   <ul class="nav-links">
     <li><a href="#programs">Programs</a></li>
     <li><a href="#membership">Membership</a></li>
@@ -415,211 +406,198 @@ footer p{font-size:.72rem;color:var(--m);}
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#membership" class="nav-cta">Join Now</a>
-  <button class="nav-ham" id="ham" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="ham" id="ham"><span></span><span></span><span></span></button>
 </nav>
 
 <!-- MOBILE MENU -->
-<div class="mob-menu" id="mobMenu">
-  <a href="#programs" onclick="closeMenu()">Programs</a>
-  <a href="#membership" onclick="closeMenu()">Membership</a>
-  <a href="#trainers" onclick="closeMenu()">Trainers</a>
-  <a href="#contact" onclick="closeMenu()">Contact</a>
-  <a href="#membership" onclick="closeMenu()">Join Now</a>
+<div class="mob-overlay" id="mob">
+  <a href="#programs" onclick="closeMob()">Programs</a>
+  <a href="#membership" onclick="closeMob()">Membership</a>
+  <a href="#trainers" onclick="closeMob()">Trainers</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+  <a href="#membership" onclick="closeMob()">Join Now</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-glow"></div>
-  <div class="hero-ring"></div>
-  <div class="hero-ring2"></div>
+  <div class="hero-bar t"></div>
+  <div class="hero-bar b"></div>
+
   <div class="hero-eyebrow">🔥 Dubai's Premier Bodybuilding Club</div>
-  <div class="hero-gym-name">RS Bodybuilding Club</div>
-  <h1>FORGED<br/><em>IN IRON</em></h1>
-  <p class="hero-sub">Where serious athletes are built. No shortcuts. No excuses. Just pure, unapologetic strength.</p>
+
+  <div class="hero-rs">
+    <span class="r">R</span><span class="s">S</span>
+  </div>
+
+  <div class="hero-club">Bodybuilding Club</div>
+
+  <p class="hero-tag">Where serious athletes are built.<br/>No shortcuts. No excuses. Pure strength.</p>
+
   <div class="hero-btns">
-    <a href="#membership" class="btn-primary">
-      Start Training
-      <div class="icon">↗</div>
-    </a>
-    <a href="#programs" class="btn-ghost">View Programs</a>
+    <a href="#membership" class="btn-p">Start Training <div class="ico">↗</div></a>
+    <a href="#programs" class="btn-g">View Programs</a>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    Scroll
-  </div>
+
+  <div class="hero-scroll"><div class="sline"></div>Scroll</div>
 </section>
 
 <!-- STATS -->
 <div class="stats">
   <div class="stats-inner">
-    <div class="stat reveal">
-      <div class="stat-n"><span class="count" data-target="800" data-suffix="+">0</span></div>
-      <div class="stat-l">Active Members</div>
-    </div>
-    <div class="stat reveal reveal-d1">
-      <div class="stat-n"><span class="count" data-target="12" data-suffix="+">0</span></div>
-      <div class="stat-l">Expert Coaches</div>
-    </div>
-    <div class="stat reveal reveal-d2">
-      <div class="stat-n"><span class="count" data-target="15" data-suffix="K sqft">0</span></div>
-      <div class="stat-l">Training Space</div>
-    </div>
-    <div class="stat reveal reveal-d3">
-      <div class="stat-n"><span class="count" data-target="6" data-suffix="AM">0</span></div>
-      <div class="stat-l">Opens Daily</div>
-    </div>
+    <div class="stat rv"><div class="stat-n"><span class="cnt" data-to="800" data-sfx="+">0</span></div><div class="stat-l">Active Members</div></div>
+    <div class="stat rv d1"><div class="stat-n"><span class="cnt" data-to="12" data-sfx="+">0</span></div><div class="stat-l">Expert Coaches</div></div>
+    <div class="stat rv d2"><div class="stat-n"><span class="cnt" data-to="15" data-sfx="K sqft">0</span></div><div class="stat-l">Training Space</div></div>
+    <div class="stat rv d3"><div class="stat-n"><span class="cnt" data-to="6" data-sfx="AM">0</span></div><div class="stat-l">Opens Daily</div></div>
   </div>
 </div>
 
 <!-- PROGRAMS -->
-<section class="programs" id="programs">
-  <div class="programs-header">
-    <div>
-      <div class="eyebrow reveal">What We Offer</div>
-      <h2 class="section-title reveal reveal-d1">TRAINING<br/>PROGRAMS</h2>
-    </div>
-    <p class="section-sub reveal reveal-d2">Every program is engineered for results. Picked by elite coaches, built for every level.</p>
-  </div>
-  <div class="bento">
-    <div class="bento-card bc1 reveal">
-      <div class="card-icon">💪</div>
-      <div class="card-title">Competitive Bodybuilding</div>
-      <div class="card-desc">Stage-ready prep from our championship coaches. Periodization, posing, peak week nutrition — everything you need to step on stage.</div>
-      <div class="card-tag">Intermediate–Advanced</div>
-      <div class="card-big-num">01</div>
-    </div>
-    <div class="bento-card bc2 reveal reveal-d1">
-      <div class="card-icon">⚡</div>
-      <div class="card-title">Powerlifting & Strength</div>
-      <div class="card-desc">Max strength, built right. Squat, bench, deadlift — coached to your one-rep max.</div>
-      <div class="card-tag">All Levels</div>
-      <div class="card-big-num">02</div>
-    </div>
-    <div class="bento-card bc3 reveal">
-      <div class="card-icon">🏋️</div>
-      <div class="card-title">Hypertrophy</div>
-      <div class="card-desc">Scientifically driven muscle building with structured progressive overload.</div>
-      <div class="card-tag">All Levels</div>
-      <div class="card-big-num">03</div>
-    </div>
-    <div class="bento-card bc4 reveal reveal-d1">
-      <div class="card-icon">🔥</div>
-      <div class="card-title">Cut & Shred</div>
-      <div class="card-desc">Lean out without losing muscle. Metabolic conditioning meets smart nutrition.</div>
-      <div class="card-tag">Intermediate</div>
-      <div class="card-big-num">04</div>
-    </div>
-    <div class="bento-card bc5 reveal reveal-d2">
-      <div class="card-icon">🌱</div>
-      <div class="card-title">Beginner Foundations</div>
-      <div class="card-desc">Start right. Form, consistency, and habits built from day one.</div>
-      <div class="card-tag">Beginners</div>
-      <div class="card-big-num">05</div>
-    </div>
-    <div class="bento-card bc6 reveal" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+<section class="sec" id="programs" style="background:var(--bg)">
+  <div class="sec-inner">
+    <div class="programs-head">
       <div>
-        <div class="card-icon">🏆</div>
-        <div class="card-title">1-on-1 Personal Training</div>
-        <div class="card-desc" style="max-width:560px;">Fully tailored programming with your dedicated coach. Custom workouts, nutrition plans, and weekly check-ins — designed exclusively around your body and goals.</div>
+        <div class="eyebrow rv">What We Offer</div>
+        <h2 class="sec-h rv d1">TRAINING<br/>PROGRAMS</h2>
       </div>
-      <a href="#membership" class="btn-primary" style="flex-shrink:0;">
-        Book a Session <div class="icon">↗</div>
-      </a>
+      <p class="sec-sub rv d2">Every program engineered for real results. Led by elite coaches.</p>
+    </div>
+    <div class="bento">
+      <div class="bc bc1 rv">
+        <div class="c-ico">💪</div>
+        <div class="c-title">Competitive Bodybuilding</div>
+        <div class="c-desc">Stage-ready prep from championship coaches. Periodization, posing, peak week nutrition — everything to step on stage.</div>
+        <div class="c-tag">Intermediate – Advanced</div>
+        <div class="c-num">01</div>
+      </div>
+      <div class="bc bc2 rv d1">
+        <div class="c-ico">⚡</div>
+        <div class="c-title">Powerlifting & Strength</div>
+        <div class="c-desc">Max strength, built right. Squat, bench, deadlift — coached to your one-rep max.</div>
+        <div class="c-tag">All Levels</div>
+        <div class="c-num">02</div>
+      </div>
+      <div class="bc bc3 rv">
+        <div class="c-ico">🏋️</div>
+        <div class="c-title">Hypertrophy</div>
+        <div class="c-desc">Science-driven muscle building with structured progressive overload.</div>
+        <div class="c-tag">All Levels</div>
+        <div class="c-num">03</div>
+      </div>
+      <div class="bc bc4 rv d1">
+        <div class="c-ico">🔥</div>
+        <div class="c-title">Cut & Shred</div>
+        <div class="c-desc">Lean out without losing muscle. Metabolic conditioning meets smart nutrition.</div>
+        <div class="c-tag">Intermediate</div>
+        <div class="c-num">04</div>
+      </div>
+      <div class="bc bc5 rv d2">
+        <div class="c-ico">🌱</div>
+        <div class="c-title">Beginners</div>
+        <div class="c-desc">Start right. Form, consistency, and habits built from day one.</div>
+        <div class="c-tag">Beginners</div>
+        <div class="c-num">05</div>
+      </div>
+      <div class="bc bc6 rv">
+        <div>
+          <div class="c-ico">🏆</div>
+          <div class="c-title">1-on-1 Personal Training</div>
+          <div class="c-desc" style="max-width:520px;">Fully tailored programming with your dedicated coach. Custom workouts, nutrition plans, weekly check-ins — built exclusively around your goals.</div>
+        </div>
+        <a href="#contact" class="btn-p" style="flex-shrink:0;">Book a Session <div class="ico">↗</div></a>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- MEMBERSHIP -->
-<section class="membership" id="membership">
-  <div style="max-width:1000px;margin:0 auto;text-align:center;">
-    <div class="eyebrow reveal" style="justify-content:center;">Membership Plans</div>
-    <h2 class="section-title reveal reveal-d1">CHOOSE YOUR<br/>LEVEL</h2>
-    <p class="section-sub reveal reveal-d2" style="margin:0 auto;">No lock-in contracts. Cancel anytime. All plans include full gym access.</p>
-  </div>
-  <div class="plans">
-    <div class="plan reveal">
-      <div class="plan-inner">
-        <div class="plan-name">Starter</div>
-        <div class="plan-price"><sup>AED</sup>199</div>
-        <div class="plan-period">/ month</div>
-        <div class="plan-divider"></div>
-        <div class="plan-feature">Full gym access</div>
-        <div class="plan-feature">Locker room</div>
-        <div class="plan-feature">Group classes (2/week)</div>
-        <div class="plan-feature">Fitness assessment</div>
-        <a href="#contact" class="plan-cta light">Get Started</a>
+<section class="sec membership" id="membership">
+  <div class="sec-inner" style="text-align:center;">
+    <div class="eyebrow rv" style="justify-content:center;">Membership Plans</div>
+    <h2 class="sec-h rv d1">CHOOSE YOUR<br/>LEVEL</h2>
+    <p class="sec-sub rv d2" style="margin:0 auto;">No lock-in. Cancel anytime. All plans include full gym access.</p>
+    <div class="plans">
+      <div class="plan rv">
+        <div class="plan-in">
+          <div class="p-name">Starter</div>
+          <div class="p-price"><sup>AED</sup>199</div>
+          <div class="p-period">/ month</div>
+          <div class="p-div"></div>
+          <div class="p-feat">Full gym access</div>
+          <div class="p-feat">Locker room</div>
+          <div class="p-feat">Group classes (2/week)</div>
+          <div class="p-feat">Fitness assessment</div>
+          <a href="#contact" class="p-cta l">Get Started</a>
+        </div>
       </div>
-    </div>
-    <div class="plan featured reveal reveal-d1">
-      <div class="plan-inner">
-        <div class="plan-badge">Most Popular</div>
-        <div class="plan-name">Champion</div>
-        <div class="plan-price"><sup>AED</sup>349</div>
-        <div class="plan-period">/ month</div>
-        <div class="plan-divider"></div>
-        <div class="plan-feature">Everything in Starter</div>
-        <div class="plan-feature">Unlimited group classes</div>
-        <div class="plan-feature">Nutrition consultation</div>
-        <div class="plan-feature">2 PT sessions/month</div>
-        <div class="plan-feature">Progress tracking</div>
-        <a href="#contact" class="plan-cta hot">Join Now</a>
+      <div class="plan feat rv d1">
+        <div class="plan-in">
+          <div class="p-badge">Most Popular</div>
+          <div class="p-name">Champion</div>
+          <div class="p-price"><sup>AED</sup>349</div>
+          <div class="p-period">/ month</div>
+          <div class="p-div"></div>
+          <div class="p-feat">Everything in Starter</div>
+          <div class="p-feat">Unlimited group classes</div>
+          <div class="p-feat">Nutrition consultation</div>
+          <div class="p-feat">2 PT sessions/month</div>
+          <div class="p-feat">Progress tracking</div>
+          <a href="#contact" class="p-cta h">Join Now</a>
+        </div>
       </div>
-    </div>
-    <div class="plan reveal reveal-d2">
-      <div class="plan-inner">
-        <div class="plan-name">Elite</div>
-        <div class="plan-price"><sup>AED</sup>599</div>
-        <div class="plan-period">/ month</div>
-        <div class="plan-divider"></div>
-        <div class="plan-feature">Everything in Champion</div>
-        <div class="plan-feature">Unlimited PT sessions</div>
-        <div class="plan-feature">Custom meal plan</div>
-        <div class="plan-feature">Competition prep</div>
-        <div class="plan-feature">Priority booking</div>
-        <div class="plan-feature">Recovery suite access</div>
-        <a href="#contact" class="plan-cta light">Get Started</a>
+      <div class="plan rv d2">
+        <div class="plan-in">
+          <div class="p-name">Elite</div>
+          <div class="p-price"><sup>AED</sup>599</div>
+          <div class="p-period">/ month</div>
+          <div class="p-div"></div>
+          <div class="p-feat">Everything in Champion</div>
+          <div class="p-feat">Unlimited PT sessions</div>
+          <div class="p-feat">Custom meal plan</div>
+          <div class="p-feat">Competition prep</div>
+          <div class="p-feat">Recovery suite access</div>
+          <a href="#contact" class="p-cta l">Get Started</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- TRAINERS -->
-<section class="trainers" id="trainers">
-  <div style="max-width:1000px;margin:0 auto;text-align:center;">
-    <div class="eyebrow reveal" style="justify-content:center;">The Coaches</div>
-    <h2 class="section-title reveal reveal-d1">TRAINED BY<br/>THE BEST</h2>
-    <p class="section-sub reveal reveal-d2" style="margin:0 auto;">Every coach is a certified professional with real competitive experience behind them.</p>
-  </div>
-  <div class="trainers-grid">
-    <div class="trainer-card reveal">
-      <div class="trainer-inner">
-        <div class="trainer-avatar">RS</div>
-        <div class="trainer-info">
-          <div class="trainer-name">Coach Rahul S.</div>
-          <div class="trainer-role">Head Coach & Founder</div>
-          <div class="trainer-spec">IFBB Pro · 14 years competitive experience · National champion 2018–2021</div>
+<section class="sec" id="trainers" style="background:var(--bg)">
+  <div class="sec-inner" style="text-align:center;">
+    <div class="eyebrow rv" style="justify-content:center;">The Coaches</div>
+    <h2 class="sec-h rv d1">TRAINED BY<br/>THE BEST</h2>
+    <p class="sec-sub rv d2" style="margin:0 auto;">Every coach is certified with real competitive experience.</p>
+    <div class="trainers-grid">
+      <div class="t-card rv">
+        <div class="t-in">
+          <div class="t-av">RS</div>
+          <div class="t-info">
+            <div class="t-name">Coach Rahul S.</div>
+            <div class="t-role">Head Coach & Founder</div>
+            <div class="t-spec">IFBB Pro · 14 years competitive experience · National champion 2018–2021</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="trainer-card reveal reveal-d1">
-      <div class="trainer-inner">
-        <div class="trainer-avatar">AK</div>
-        <div class="trainer-info">
-          <div class="trainer-name">Coach Amir K.</div>
-          <div class="trainer-role">Strength & Powerlifting</div>
-          <div class="trainer-spec">IPF Certified · 3× UAE Powerlifting Champion · Sports Science MSc</div>
+      <div class="t-card rv d1">
+        <div class="t-in">
+          <div class="t-av">AK</div>
+          <div class="t-info">
+            <div class="t-name">Coach Amir K.</div>
+            <div class="t-role">Strength & Powerlifting</div>
+            <div class="t-spec">IPF Certified · 3× UAE Powerlifting Champion · Sports Science MSc</div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="trainer-card reveal reveal-d2">
-      <div class="trainer-inner">
-        <div class="trainer-avatar">SP</div>
-        <div class="trainer-info">
-          <div class="trainer-name">Coach Sara P.</div>
-          <div class="trainer-role">Nutrition & Body Recomp</div>
-          <div class="trainer-spec">Certified Sports Nutritionist · Specialist in women's physique & body transformation</div>
+      <div class="t-card rv d2">
+        <div class="t-in">
+          <div class="t-av">SP</div>
+          <div class="t-info">
+            <div class="t-name">Coach Sara P.</div>
+            <div class="t-role">Nutrition & Body Recomp</div>
+            <div class="t-spec">Certified Sports Nutritionist · Women's physique & body transformation specialist</div>
+          </div>
         </div>
       </div>
     </div>
@@ -627,88 +605,60 @@ footer p{font-size:.72rem;color:var(--m);}
 </section>
 
 <!-- CTA -->
-<section class="cta-banner" id="contact">
-  <div class="eyebrow reveal" style="display:inline-flex;justify-content:center;">Ready to Start?</div>
-  <h2 class="section-title reveal reveal-d1" style="margin:0 auto 20px;">YOUR FIRST<br/><em style="color:var(--acc);font-style:normal;">REP STARTS NOW</em></h2>
-  <p class="reveal reveal-d2">Walk in, talk to our team, and get your first session free. No commitment. No pressure. Just results.</p>
-  <div class="hero-btns reveal reveal-d3">
-    <a href="tel:+971500000000" class="btn-primary">
-      Call Us Now <div class="icon">📞</div>
-    </a>
-    <a href="https://wa.me/971500000000" class="btn-ghost" target="_blank">WhatsApp Us</a>
+<section class="cta-sec" id="contact">
+  <div class="eyebrow rv" style="justify-content:center;display:inline-flex;">Ready to Start?</div>
+  <h2 class="sec-h rv d1" style="font-size:clamp(3rem,9vw,7rem);margin:12px 0 16px;">YOUR FIRST<br/><span style="color:var(--acc)">REP STARTS NOW</span></h2>
+  <p class="rv d2">Walk in, talk to our team, and get your first session free. No commitment. No pressure.</p>
+  <div class="hero-btns rv d3">
+    <a href="tel:+971500000000" class="btn-p">Call Us <div class="ico">📞</div></a>
+    <a href="https://wa.me/971500000000" class="btn-g" target="_blank">WhatsApp Us</a>
   </div>
-  <p style="margin-top:28px;font-size:.75rem;color:var(--m);" class="reveal reveal-d4">📍 Al Quoz Industrial, Dubai &nbsp;·&nbsp; Open 6 AM – 12 AM daily</p>
+  <p style="margin-top:24px;font-size:.72rem;color:var(--m);" class="rv d4">📍 Al Quoz Industrial, Dubai &nbsp;·&nbsp; Open 6 AM – 12 AM daily</p>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">RS<span>.</span>Bodybuilding Club</div>
-  <div class="footer-links">
+  <div class="f-logo">RS<em>.</em>Bodybuilding Club</div>
+  <div class="f-links">
     <a href="#programs">Programs</a>
     <a href="#membership">Membership</a>
     <a href="#trainers">Trainers</a>
     <a href="#contact">Contact</a>
   </div>
-  <p>© 2026 RS Bodybuilding Club. Dubai, UAE.</p>
+  <p>© 2026 RS Bodybuilding Club · Dubai, UAE</p>
 </footer>
 
 <script>
-// ── Reveal on scroll ──────────────────────────────────────────────
-const revealEls = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-}, { threshold: 0.12 });
-revealEls.forEach(el => observer.observe(el));
+// reveal
+const obs = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
-// ── Nav hamburger ─────────────────────────────────────────────────
-const ham = document.getElementById('ham');
-const mobMenu = document.getElementById('mobMenu');
-ham.addEventListener('click', () => {
-  ham.classList.toggle('open');
-  mobMenu.classList.toggle('open');
-});
-function closeMenu() {
-  ham.classList.remove('open');
-  mobMenu.classList.remove('open');
-}
+// hamburger
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+function closeMob(){ham.classList.remove('open');mob.classList.remove('open');}
 
-// ── Bento card glow on mousemove ──────────────────────────────────
-document.querySelectorAll('.bento-card').forEach(card => {
-  card.addEventListener('mousemove', e => {
-    const r = card.getBoundingClientRect();
-    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
-    card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+// bento glow
+document.querySelectorAll('.bc').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+    c.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
   });
 });
 
-// ── Counting animation ────────────────────────────────────────────
-function animateCount(el) {
-  const target = parseInt(el.dataset.target);
-  const suffix = el.dataset.suffix || '';
-  const duration = 1800;
-  const start = performance.now();
-  function step(now) {
-    const elapsed = now - start;
-    const progress = Math.min(elapsed / duration, 1);
-    // ease out cubic
-    const eased = 1 - Math.pow(1 - progress, 3);
-    const current = Math.round(eased * target);
-    el.textContent = current + (progress === 1 ? suffix : '');
-    if (progress < 1) requestAnimationFrame(step);
+// counting
+function doCount(el){
+  const to=parseInt(el.dataset.to),sfx=el.dataset.sfx||'',dur=1800,s=performance.now();
+  function step(n){
+    const p=Math.min((n-s)/dur,1),e=1-Math.pow(1-p,3);
+    el.textContent=Math.round(e*to)+(p===1?sfx:'');
+    if(p<1)requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
 }
-
-const countObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      animateCount(e.target);
-      countObserver.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.count').forEach(el => countObserver.observe(el));
+const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){doCount(e.target);cObs.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('.cnt').forEach(el=>cObs.observe(el));
 </script>
 </body>
 </html>
