@@ -74,7 +74,6 @@ nav{
   text-align:center;padding:100px 20px 80px;
   position:relative;overflow:hidden;
 }
-/* animated grid */
 .hero::before{
   content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
   background-image:
@@ -85,7 +84,6 @@ nav{
   animation:gridmove 12s linear infinite;
 }
 @keyframes gridmove{0%{background-position:0 0}100%{background-position:60px 60px}}
-/* deep glow */
 .hero-glow{
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:0;
   width:min(700px,92vw);height:420px;
@@ -93,15 +91,12 @@ nav{
   pointer-events:none;animation:gp 3s ease-in-out infinite;
 }
 @keyframes gp{0%,100%{opacity:.6;transform:translate(-50%,-50%) scale(1)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.06)}}
-/* horizontal bars */
 .h-bar{position:absolute;left:0;right:0;height:1px;z-index:0;pointer-events:none;
   background:linear-gradient(to right,transparent 3%,rgba(232,57,14,.32) 28%,rgba(232,57,14,.32) 72%,transparent 97%);}
 .h-bar.t{top:calc(50% - clamp(110px,20vw,210px));}
 .h-bar.b{bottom:calc(50% - clamp(110px,20vw,210px));}
-/* floating sparks canvas */
 #sparks{position:absolute;inset:0;pointer-events:none;z-index:0;}
 
-/* eyebrow */
 .eyebrow-pill{
   display:inline-flex;align-items:center;gap:7px;
   background:rgba(232,57,14,.1);border:1px solid rgba(232,57,14,.22);
@@ -112,7 +107,6 @@ nav{
 .eyebrow-pill::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--acc);animation:blink 1.5s ease-in-out infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
 
-/* RS */
 .hero-rs{position:relative;z-index:1;line-height:.85;user-select:none;margin-bottom:0;}
 .hero-rs .r{
   font-family:'Bebas Neue',sans-serif;font-size:clamp(9rem,42vw,27rem);
@@ -127,7 +121,6 @@ nav{
 }
 @keyframes spulse{0%,100%{text-shadow:0 0 50px rgba(232,57,14,.7),0 0 100px rgba(232,57,14,.35),0 0 200px rgba(232,57,14,.15)}50%{text-shadow:0 0 70px rgba(232,57,14,.9),0 0 130px rgba(232,57,14,.5),0 0 250px rgba(232,57,14,.2)}}
 
-/* club name */
 .hero-club{
   position:relative;z-index:1;
   font-family:'Bebas Neue',sans-serif;
@@ -144,7 +137,6 @@ nav{
 }
 .hero-club::after{background:linear-gradient(to left,transparent,var(--acc));}
 
-/* sub */
 .hero-tag{
   font-size:clamp(.78rem,1.3vw,.9rem);font-weight:300;color:var(--m);
   max-width:360px;line-height:1.8;margin:0 auto 34px;
@@ -152,7 +144,6 @@ nav{
 }
 .hero-btns{display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
 
-/* scroll */
 .hero-scroll{
   position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:1;
   display:flex;flex-direction:column;align-items:center;gap:6px;
@@ -239,7 +230,10 @@ nav{
 .bc::before{content:'';position:absolute;inset:0;border-radius:var(--r);background:radial-gradient(circle at var(--mx,50%) var(--my,50%),rgba(232,57,14,.14) 0%,transparent 60%);opacity:0;transition:opacity .4s;pointer-events:none;}
 .bc:hover::before{opacity:1;}.bc:hover{border-color:rgba(232,57,14,.22);transform:translateY(-3px);}
 .bc1{grid-column:span 7;}.bc2{grid-column:span 5;}.bc3{grid-column:span 4;}.bc4{grid-column:span 4;}.bc5{grid-column:span 4;}.bc6{grid-column:span 12;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;}
-.c-ico{width:42px;height:42px;border-radius:11px;background:rgba(232,57,14,.13);border:1px solid rgba(232,57,14,.17);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:18px;}
+/* programme background images */
+.bc1{background-image:linear-gradient(to bottom right,rgba(232,57,14,.08),rgba(6,6,6,.9)),url('https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=700&q=60&fit=crop');background-size:cover;background-position:center;}
+.bc6{background-image:linear-gradient(to right,rgba(6,6,6,.92),rgba(232,57,14,.06)),url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=1200&q=60&fit=crop');background-size:cover;background-position:center top;}
+.c-ico{width:36px;height:36px;border-radius:10px;background:rgba(232,57,14,.13);border:1px solid rgba(232,57,14,.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-bottom:18px;}
 .c-t{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.03em;color:var(--w);margin-bottom:7px;}
 .c-d{font-size:.78rem;font-weight:300;color:var(--m);line-height:1.7;}
 .c-tag{display:inline-block;margin-top:14px;font-size:.54rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);background:rgba(232,57,14,.09);border:1px solid rgba(232,57,14,.17);padding:3px 10px;border-radius:999px;}
@@ -258,6 +252,7 @@ nav{
 .p-price{font-family:'Bebas Neue',sans-serif;font-size:3.4rem;line-height:1;color:var(--w);margin:14px 0 3px;}
 .p-price sup{font-size:1.2rem;vertical-align:top;margin-top:7px;color:var(--m);}
 .p-per{font-size:.68rem;color:var(--m);margin-bottom:20px;}
+.p-save{display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--acc);padding:3px 9px;border-radius:999px;margin-bottom:12px;}
 .p-div{height:1px;background:var(--bd);margin-bottom:20px;}
 .p-f{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--m);margin-bottom:9px;}
 .p-f::before{content:'';width:14px;height:14px;border-radius:50%;flex-shrink:0;background:rgba(232,57,14,.12);border:1px solid rgba(232,57,14,.22);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 24 24' fill='none' stroke='%23E8390E' stroke-width='2.5'%3E%3Cpolyline points='20 6 9 17 4 12'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;}
@@ -272,8 +267,10 @@ nav{
 .t-card{border-radius:var(--r);padding:5px;background:rgba(255,255,255,.03);border:1px solid var(--bd);transition:all .45s cubic-bezier(0.32,0.72,0,1);}
 .t-card:hover{transform:translateY(-3px);border-color:rgba(232,57,14,.26);}
 .t-in{background:var(--bg2);border-radius:var(--rs);overflow:hidden;}
-.t-av{width:100%;aspect-ratio:1;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:4rem;color:rgba(232,57,14,.16);border-bottom:1px solid var(--bd);position:relative;}
-.t-av::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(6,6,6,.5));}
+.t-av{width:100%;aspect-ratio:4/5;background:var(--bg3);overflow:hidden;border-bottom:1px solid var(--bd);position:relative;}
+.t-av img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .55s cubic-bezier(0.32,0.72,0,1);}
+.t-card:hover .t-av img{transform:scale(1.04);}
+.t-av::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(6,6,6,.55));}
 .t-info{padding:20px;}
 .t-name{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:.04em;color:var(--w);}
 .t-role{font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin-top:3px;}
@@ -331,9 +328,15 @@ footer p{font-size:.68rem;color:var(--m);}
 .f-links a{font-size:.68rem;color:var(--m);text-decoration:none;letter-spacing:.08em;transition:color .3s;}
 .f-links a:hover{color:var(--w);}
 
-/* ── REVEAL ── */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .72s cubic-bezier(0.32,0.72,0,1),transform .72s cubic-bezier(0.32,0.72,0,1);}
+/* ── REVEAL ANIMATIONS ── */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .72s cubic-bezier(0.32,0.72,0,1),transform .72s cubic-bezier(0.32,0.72,0,1);}
 .rv.in{opacity:1;transform:translateY(0);}
+/* slide from left */
+.rv-l{opacity:0;transform:translateX(-48px);transition:opacity .72s cubic-bezier(0.32,0.72,0,1),transform .72s cubic-bezier(0.32,0.72,0,1);}
+.rv-l.in{opacity:1;transform:translateX(0);}
+/* slide from right */
+.rv-r{opacity:0;transform:translateX(48px);transition:opacity .72s cubic-bezier(0.32,0.72,0,1),transform .72s cubic-bezier(0.32,0.72,0,1);}
+.rv-r.in{opacity:1;transform:translateX(0);}
 .d1{transition-delay:.07s;}.d2{transition-delay:.14s;}.d3{transition-delay:.21s;}.d4{transition-delay:.28s;}
 
 /* ── MOBILE ── */
@@ -347,7 +350,7 @@ footer p{font-size:.68rem;color:var(--m);}
   .hero-club{font-size:clamp(.95rem,5vw,1.4rem);letter-spacing:.26em;padding-right:.26em;}
   .hero-club::before,.hero-club::after{width:clamp(12px,3vw,24px);margin:0 7px;}
   .hero-tag{font-size:.8rem;}
-  .hero-btns{flex-direction:column;align-items:stretch;width:100%;max-width:280px;margin:0 auto;}
+  .hero-btns{flex-direction:column;align-items:stretch;width:100%;max-width:300px;margin:0 auto;}
   .btn-p,.btn-g{justify-content:center;width:100%;}
 
   .urgent p{font-size:.62rem;letter-spacing:.1em;}
@@ -357,10 +360,13 @@ footer p{font-size:.68rem;color:var(--m);}
   .stat{padding:26px 12px;}
   .stat-n{font-size:2.4rem;}
 
-  .sec{padding:64px 14px;}
+  .sec{padding:60px 14px;}
   .sec-h{font-size:clamp(2rem,10vw,3.2rem);}
 
   .why-grid{grid-template-columns:1fr;gap:10px;}
+  /* on mobile, all side-slide cards just fade up */
+  .rv-l,.rv-r{transform:translateY(22px);}
+  .rv-l.in,.rv-r.in{transform:translateY(0);}
 
   .bento{grid-template-columns:1fr;gap:10px;}
   .bc1,.bc2,.bc3,.bc4,.bc5,.bc6{grid-column:span 1;}
@@ -373,13 +379,15 @@ footer p{font-size:.68rem;color:var(--m);}
   .plan-in{padding:26px;}
 
   .t-grid{grid-template-columns:1fr;gap:10px;}
+  .t-av{aspect-ratio:16/9;}
+  .t-av img{object-position:center 20%;}
 
   .offer-box{padding:36px 20px;}
   .offer-h{font-size:clamp(1.8rem,7vw,2.8rem);}
   .offer-tags{gap:6px;}
 
   .cta-sec{padding:72px 14px;}
-  .cta-sec .hero-btns{flex-direction:column;align-items:stretch;max-width:280px;margin:0 auto;}
+  .cta-sec .hero-btns{flex-direction:column;align-items:stretch;max-width:300px;margin:0 auto;}
 
   footer{flex-direction:column;text-align:center;padding:32px 14px;}
   .f-links{justify-content:center;}
@@ -451,42 +459,42 @@ footer p{font-size:.68rem;color:var(--m);}
       <h2 class="sec-h rv d1" style="text-align:center;">6 REASONS TO JOIN<br/><span style="color:var(--acc)">TODAY, NOT TOMORROW</span></h2>
     </div>
     <div class="why-grid">
-      <div class="why-card hot rv">
+      <div class="why-card hot rv-l">
         <div class="why-in">
           <div class="why-icon">🏆</div>
           <div class="why-title">Championship Coaches</div>
           <div class="why-desc">Our coaches are active competitors — not just certificate holders. They've stood on stage, won, and know exactly what it takes. You're trained by the best in Dubai.</div>
         </div>
       </div>
-      <div class="why-card rv d1">
+      <div class="why-card rv">
         <div class="why-in">
           <div class="why-icon">⚡</div>
           <div class="why-title">Real Equipment, No Excuses</div>
           <div class="why-desc">15,000 sq ft of competition-grade iron. Free weights, machines, cables, power racks — everything you need, zero compromise. No waiting. No crowding.</div>
         </div>
       </div>
-      <div class="why-card rv d2">
+      <div class="why-card rv-r">
         <div class="why-in">
           <div class="why-icon">📈</div>
           <div class="why-title">Results You Can See</div>
           <div class="why-desc">Members average 8–12kg of muscle gain in their first year. Our structured programming makes sure you're progressing every single week, not just showing up.</div>
         </div>
       </div>
-      <div class="why-card rv">
+      <div class="why-card rv-l">
         <div class="why-in">
           <div class="why-icon">🥗</div>
           <div class="why-title">Nutrition Built In</div>
-          <div class="why-desc">Training without nutrition is half the battle. Every Champion & Elite member gets a personalised nutrition consultation from day one — not an upsell, included.</div>
+          <div class="why-desc">Training without nutrition is half the battle. Every member gets a personalised nutrition consultation from day one — not an upsell, it's included in every plan.</div>
         </div>
       </div>
-      <div class="why-card rv d1">
+      <div class="why-card rv">
         <div class="why-in">
           <div class="why-icon">🕕</div>
           <div class="why-title">Open 6AM to Midnight</div>
           <div class="why-desc">Dubai doesn't sleep, and neither do we. Whether you train at dawn before work or late after dinner — the doors are always open. 18 hours, every day.</div>
         </div>
       </div>
-      <div class="why-card hot rv d2">
+      <div class="why-card hot rv-r">
         <div class="why-in">
           <div class="why-icon">💰</div>
           <div class="why-title">First Month 50% Off</div>
@@ -508,13 +516,13 @@ footer p{font-size:.68rem;color:var(--m);}
       <p class="sec-sub rv d2">From first-timers to competitors. Every program engineered for results.</p>
     </div>
     <div class="bento">
-      <div class="bc bc1 rv"><div class="c-ico">💪</div><div class="c-t">Competitive Bodybuilding</div><div class="c-d">Stage-ready prep. Periodization, posing, peak week — everything to step on stage and win.</div><div class="c-tag">Intermediate–Advanced</div><div class="c-num">01</div></div>
-      <div class="bc bc2 rv d1"><div class="c-ico">⚡</div><div class="c-t">Powerlifting & Strength</div><div class="c-d">Squat, bench, deadlift. Coached to your one-rep max with elite programming.</div><div class="c-tag">All Levels</div><div class="c-num">02</div></div>
-      <div class="bc bc3 rv"><div class="c-ico">🏋️</div><div class="c-t">Hypertrophy</div><div class="c-d">Science-driven muscle building with structured progressive overload every week.</div><div class="c-tag">All Levels</div><div class="c-num">03</div></div>
-      <div class="bc bc4 rv d1"><div class="c-ico">🔥</div><div class="c-t">Cut & Shred</div><div class="c-d">Lean out without losing muscle. Metabolic conditioning meets smart nutrition.</div><div class="c-tag">Intermediate</div><div class="c-num">04</div></div>
-      <div class="bc bc5 rv d2"><div class="c-ico">🌱</div><div class="c-t">Beginner Foundations</div><div class="c-d">Start right. Form, consistency, and habits built from day one.</div><div class="c-tag">Beginners</div><div class="c-num">05</div></div>
+      <div class="bc bc1 rv-l"><div class="c-ico">🥇</div><div class="c-t">Competitive Bodybuilding</div><div class="c-d">Stage-ready prep. Periodization, posing, peak week — everything to step on stage and win.</div><div class="c-tag">Intermediate–Advanced</div><div class="c-num">01</div></div>
+      <div class="bc bc2 rv-r"><div class="c-ico">⚡</div><div class="c-t">Powerlifting & Strength</div><div class="c-d">Squat, bench, deadlift. Coached to your one-rep max with elite programming.</div><div class="c-tag">All Levels</div><div class="c-num">02</div></div>
+      <div class="bc bc3 rv-l"><div class="c-ico">📊</div><div class="c-t">Hypertrophy</div><div class="c-d">Science-driven muscle building with structured progressive overload every week.</div><div class="c-tag">All Levels</div><div class="c-num">03</div></div>
+      <div class="bc bc4 rv"><div class="c-ico">🔥</div><div class="c-t">Cut & Shred</div><div class="c-d">Lean out without losing muscle. Metabolic conditioning meets smart nutrition.</div><div class="c-tag">Intermediate</div><div class="c-num">04</div></div>
+      <div class="bc bc5 rv-r"><div class="c-ico">🌱</div><div class="c-t">Beginner Foundations</div><div class="c-d">Start right. Form, consistency, and habits built from day one.</div><div class="c-tag">Beginners</div><div class="c-num">05</div></div>
       <div class="bc bc6 rv">
-        <div><div class="c-ico">🏆</div><div class="c-t">1-on-1 Personal Training</div><div class="c-d" style="max-width:480px;">Fully custom programming with your dedicated coach. Workouts, nutrition, weekly check-ins — built entirely around your body and goals.</div></div>
+        <div><div class="c-ico">👤</div><div class="c-t">1-on-1 Personal Training</div><div class="c-d" style="max-width:480px;">Fully custom programming with your dedicated coach. Workouts, nutrition, weekly check-ins — built entirely around your body and goals.</div></div>
         <a href="#offer" class="btn-p" style="flex-shrink:0;">Book Session <div class="ico">↗</div></a>
       </div>
     </div>
@@ -525,52 +533,64 @@ footer p{font-size:.68rem;color:var(--m);}
 <section class="sec membership" id="membership">
   <div class="sec-in" style="text-align:center;">
     <div class="eyebrow rv" style="justify-content:center;">Membership Plans</div>
-    <h2 class="sec-h rv d1">CHOOSE YOUR LEVEL</h2>
-    <p class="sec-sub rv d2" style="margin:0 auto;">No lock-in contracts. Cancel anytime. All plans include full access.</p>
+    <h2 class="sec-h rv d1">SIMPLE PRICING.<br/><span style="color:var(--acc)">THE LONGER, THE BETTER.</span></h2>
+    <p class="sec-sub rv d2" style="margin:0 auto;">No lock-in contracts. Full gym access. All plans include nutrition consultation.</p>
     <div class="plans">
-      <div class="plan rv">
+
+      <!-- 1 Month -->
+      <div class="plan rv-l">
         <div class="plan-in">
-          <div class="p-name">Starter</div>
-          <div class="p-price"><sup>AED </sup>199</div>
-          <div class="p-per">/ month &nbsp;·&nbsp; <span style="color:var(--acc);font-weight:600">AED 99 first month</span></div>
+          <div class="p-name">1 Month</div>
+          <div class="p-price"><sup>AED </sup>150</div>
+          <div class="p-per">per month</div>
           <div class="p-div"></div>
-          <div class="p-f">Full gym access</div>
-          <div class="p-f">Locker room</div>
-          <div class="p-f">Group classes (2/week)</div>
-          <div class="p-f">Fitness assessment</div>
+          <div class="p-f">Full gym access — all equipment</div>
+          <div class="p-f">Locker room & shower</div>
+          <div class="p-f">Group classes (unlimited)</div>
+          <div class="p-f">Nutrition consultation</div>
+          <div class="p-f">Free fitness assessment</div>
           <a href="#contact" class="p-cta l">Get Started</a>
         </div>
       </div>
-      <div class="plan feat rv d1">
+
+      <!-- 2 Months — Most Popular -->
+      <div class="plan feat rv">
         <div class="plan-in">
           <div class="p-badge">Most Popular</div>
-          <div class="p-name">Champion</div>
-          <div class="p-price"><sup>AED </sup>349</div>
-          <div class="p-per">/ month &nbsp;·&nbsp; <span style="color:var(--acc);font-weight:600">AED 174 first month</span></div>
+          <div class="p-name">2 Months</div>
+          <div class="p-price"><sup>AED </sup>250</div>
+          <div class="p-per">for 2 months</div>
+          <div class="p-save">Save AED 50</div>
           <div class="p-div"></div>
-          <div class="p-f">Everything in Starter</div>
-          <div class="p-f">Unlimited group classes</div>
-          <div class="p-f">Nutrition consultation</div>
-          <div class="p-f">2 PT sessions/month</div>
-          <div class="p-f">Progress tracking</div>
+          <div class="p-f">Everything in 1 Month</div>
+          <div class="p-f">2 PT sessions included</div>
+          <div class="p-f">Progress tracking app</div>
+          <div class="p-f">Priority class booking</div>
+          <div class="p-f">Body composition scan</div>
           <a href="#contact" class="p-cta h">Join Now</a>
         </div>
       </div>
-      <div class="plan rv d2">
+
+      <!-- 3 Months — Best Value -->
+      <div class="plan rv-r">
         <div class="plan-in">
-          <div class="p-name">Elite</div>
-          <div class="p-price"><sup>AED </sup>599</div>
-          <div class="p-per">/ month &nbsp;·&nbsp; <span style="color:var(--acc);font-weight:600">AED 299 first month</span></div>
+          <div class="p-badge" style="background:var(--acc3);">Best Value</div>
+          <div class="p-name">3 Months</div>
+          <div class="p-price"><sup>AED </sup>350</div>
+          <div class="p-per">for 3 months</div>
+          <div class="p-save">Save AED 100</div>
           <div class="p-div"></div>
-          <div class="p-f">Everything in Champion</div>
-          <div class="p-f">Unlimited PT sessions</div>
+          <div class="p-f">Everything in 2 Months</div>
+          <div class="p-f">4 PT sessions included</div>
           <div class="p-f">Custom meal plan</div>
-          <div class="p-f">Competition prep</div>
-          <div class="p-f">Recovery suite access</div>
+          <div class="p-f">Competition prep access</div>
+          <div class="p-f">Recovery suite included</div>
           <a href="#contact" class="p-cta l">Get Started</a>
         </div>
       </div>
+
     </div>
+    <p style="margin-top:22px;font-size:.7rem;color:var(--m);">All new members get 50% off their first month · No lock-in · Cancel anytime</p>
   </div>
 </section>
 
@@ -581,9 +601,42 @@ footer p{font-size:.68rem;color:var(--m);}
     <h2 class="sec-h rv d1">TRAINED BY THE BEST</h2>
     <p class="sec-sub rv d2" style="margin:0 auto;">Every coach is certified with real competitive experience behind them.</p>
     <div class="t-grid">
-      <div class="t-card rv"><div class="t-in"><div class="t-av">RS</div><div class="t-info"><div class="t-name">Coach Rahul S.</div><div class="t-role">Head Coach & Founder</div><div class="t-spec">IFBB Pro · 14 years competitive experience · National champion 2018–2021</div></div></div></div>
-      <div class="t-card rv d1"><div class="t-in"><div class="t-av">AK</div><div class="t-info"><div class="t-name">Coach Amir K.</div><div class="t-role">Strength & Powerlifting</div><div class="t-spec">IPF Certified · 3× UAE Powerlifting Champion · Sports Science MSc</div></div></div></div>
-      <div class="t-card rv d2"><div class="t-in"><div class="t-av">SP</div><div class="t-info"><div class="t-name">Coach Sara P.</div><div class="t-role">Nutrition & Body Recomp</div><div class="t-spec">Certified Sports Nutritionist · Women's physique & transformation specialist</div></div></div></div>
+      <div class="t-card rv-l">
+        <div class="t-in">
+          <div class="t-av">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=600&fit=crop&q=80" alt="Coach Rahul"/>
+          </div>
+          <div class="t-info">
+            <div class="t-name">Coach Rahul S.</div>
+            <div class="t-role">Head Coach & Founder</div>
+            <div class="t-spec">IFBB Pro · 14 years competitive experience · National champion 2018–2021</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card rv">
+        <div class="t-in">
+          <div class="t-av">
+            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&h=600&fit=crop&q=80" alt="Coach Amir"/>
+          </div>
+          <div class="t-info">
+            <div class="t-name">Coach Amir K.</div>
+            <div class="t-role">Strength & Powerlifting</div>
+            <div class="t-spec">IPF Certified · 3× UAE Powerlifting Champion · Sports Science MSc</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card rv-r">
+        <div class="t-in">
+          <div class="t-av">
+            <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=500&h=600&fit=crop&q=80" alt="Coach Sara"/>
+          </div>
+          <div class="t-info">
+            <div class="t-name">Coach Sara P.</div>
+            <div class="t-role">Nutrition & Body Recomp</div>
+            <div class="t-spec">Certified Sports Nutritionist · Women's physique & transformation specialist</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -631,9 +684,14 @@ footer p{font-size:.68rem;color:var(--m);}
 </footer>
 
 <script>
-// ── Reveal ──
-const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+// ── Reveal (fade up + slide left/right) ──
+const rvSel = '.rv,.rv-l,.rv-r';
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+  });
+}, { threshold: .12 });
+document.querySelectorAll(rvSel).forEach(el => obs.observe(el));
 
 // ── Hamburger ──
 const ham=document.getElementById('ham'),mob=document.getElementById('mob');
@@ -650,15 +708,6 @@ document.querySelectorAll('.bc').forEach(c=>{
 });
 
 // ── Count up ──
-function doCount(el){
-  const to=parseInt(el.dataset.to),sfx=el.dataset.sfx||'',dur=1800,s=performance.now();
-  (function step(n){
-    const p=Math.min((n-s)/dur,1),e=1-Math.pow(1-p,3);
-    el.textContent=Math.round(e*to)+(p===1?sfx:'');
-    if(p<1)requestAnimationFrame(step);
-  })(s);
-  // restart - call once
-}
 const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
   const to=parseInt(e.target.dataset.to),sfx=e.target.dataset.sfx||'',dur=1800,s=performance.now();
   const el=e.target;
