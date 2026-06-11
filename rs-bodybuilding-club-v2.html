@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>RS Bodybuilding Club — Dubai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#050505;--bg2:#0D0D0D;--bg3:#141414;--bg4:#1A1A1A;
+  --acc:#E8390E;--acc2:#FF5A1F;
+  --w:#F4F1EE;--w2:rgba(244,241,238,.55);--bd:rgba(255,255,255,.07);
+  --r:1.75rem;--rs:calc(var(--r) - 6px);
+  --ease:cubic-bezier(0.32,0.72,0,1);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--w);overflow-x:hidden;}
+
+/* Film grain — fixed, never scrolls */
+body::after{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.02;pointer-events:none;z-index:50;
+  animation:grain .55s steps(1) infinite;
+}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,-2%)}50%{transform:translate(2%,3%)}100%{transform:translate(-1%,1%)}}
+
+/* ── BANNER ── */
+.banner{
+  background:var(--acc);padding:11px 20px;text-align:center;
+  font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;
+}
+.banner span{border-bottom:1px solid rgba(255,255,255,.5);cursor:pointer;}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:100;
+  width:calc(100% - 24px);max-width:860px;
+  background:rgba(5,5,5,.8);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border:1px solid var(--bd);border-radius:999px;
+  padding:10px 10px 10px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.12em;color:var(--w);flex-shrink:0;}
+.nav-logo b{color:var(--acc);}
+.nav-links{display:flex;gap:20px;list-style:none;}
+.nav-links a{font-size:.64rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .4s var(--ease);}
+.nav-links a:hover{color:var(--w);}
+.nav-pill{
+  background:var(--acc);color:#fff;text-decoration:none;flex-shrink:0;
+  font-size:.64rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  padding:9px 18px;border-radius:999px;
+  transition:all .4s var(--ease);
+  display:flex;align-items:center;gap:8px;
+}
+.nav-pill span{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .4s var(--ease);}
+.nav-pill:hover{background:var(--acc2);}
+.nav-pill:hover span{transform:translate(1px,-1px) scale(1.1);}
+.ham{display:none;flex-direction:column;gap:4.5px;cursor:pointer;background:none;border:none;padding:5px;margin-right:2px;}
+.ham span{display:block;width:20px;height:1.5px;background:var(--w);transition:all .4s var(--ease);transform-origin:center;}
+.ham.open span:nth-child(1){transform:translateY(6px) rotate(45deg);}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.ham.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg);}
+.mob-ov{
+  position:fixed;inset:0;z-index:99;
+  background:rgba(5,5,5,.96);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+  opacity:0;pointer-events:none;transition:opacity .4s var(--ease);
+}
+.mob-ov.open{opacity:1;pointer-events:all;}
+.mob-ov a{
+  font-family:'Bebas Neue',sans-serif;font-size:3.2rem;letter-spacing:.06em;color:var(--w);text-decoration:none;
+  opacity:0;transform:translateY(18px);
+  transition:color .3s,opacity .4s var(--ease),transform .4s var(--ease);
+}
+.mob-ov.open a{opacity:1;transform:translateY(0);}
+.mob-ov.open a:nth-child(1){transition-delay:.05s}
+.mob-ov.open a:nth-child(2){transition-delay:.1s}
+.mob-ov.open a:nth-child(3){transition-delay:.15s}
+.mob-ov.open a:nth-child(4){transition-delay:.2s}
+.mob-ov.open a:nth-child(5){transition-delay:.25s}
+.mob-ov a:hover{color:var(--acc);}
+
+/* ── HERO ── */
+.hero{
+  min-height:100dvh;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 0 80px;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1920&h=1080&fit=crop&q=80');
+  background-size:cover;background-position:center;
+  transform:scale(1.04);transition:transform 8s var(--ease);
+}
+.hero-bg.loaded{transform:scale(1);}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to bottom,rgba(5,5,5,.55) 0%,rgba(5,5,5,.3) 40%,rgba(5,5,5,.92) 100%);
+}
+.hero-content{position:relative;z-index:2;padding:0 clamp(20px,5vw,80px);}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(232,57,14,.12);border:1px solid rgba(232,57,14,.25);
+  border-radius:999px;padding:5px 14px;
+  font-size:.56rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);
+  margin-bottom:20px;
+}
+.hero-eyebrow::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--acc);animation:blink 1.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.1}}
+.hero-headline{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(4.5rem,14vw,13rem);
+  line-height:.88;letter-spacing:.015em;color:var(--w);
+  margin-bottom:0;
+}
+.hero-headline .orange{color:var(--acc);}
+.hero-sub-row{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-top:28px;}
+.hero-cycling{
+  display:flex;align-items:center;gap:12px;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.4rem,3.5vw,2.5rem);letter-spacing:.08em;
+  color:var(--w2);
+}
+.hero-cycle-wrap{position:relative;width:clamp(140px,20vw,220px);height:1.1em;overflow:hidden;}
+.hero-cycle-word{position:absolute;top:0;left:0;color:var(--acc);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.hero-tagline{font-size:.82rem;font-weight:300;color:var(--w2);max-width:280px;line-height:1.78;}
+.hero-btns{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:32px;}
+.hero-social{display:flex;align-items:center;gap:10px;margin-top:20px;}
+.ava-stack{display:flex;margin-right:4px;}
+.ava-stack img{width:32px;height:32px;border-radius:50%;border:2px solid var(--bg);object-fit:cover;margin-left:-8px;}
+.ava-stack img:first-child{margin-left:0;}
+.hero-social-txt{font-size:.68rem;color:var(--w2);}
+.hero-social-txt strong{color:var(--w);font-weight:600;}
+.hero-scroll{
+  position:absolute;bottom:28px;right:clamp(20px,5vw,80px);z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  font-size:.46rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w2);
+}
+.sline{width:1px;height:36px;background:linear-gradient(to bottom,var(--acc),transparent);animation:sd 2s ease-in-out infinite;}
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ── BUTTONS ── */
+.btn-p{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--acc);color:#fff;text-decoration:none;
+  font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:13px 22px;border-radius:999px;
+  transition:all .45s var(--ease);
+  box-shadow:0 0 28px rgba(232,57,14,.3);
+}
+.btn-p:hover{background:var(--acc2);transform:scale(1.03);box-shadow:0 0 40px rgba(232,57,14,.5);}
+.btn-p .ico{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;font-size:.78rem;transition:transform .45s var(--ease);}
+.btn-p:hover .ico{transform:translate(2px,-2px) scale(1.12);}
+.btn-g{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);color:var(--w);text-decoration:none;
+  font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  padding:13px 22px;border-radius:999px;border:1px solid rgba(255,255,255,.1);
+  transition:all .45s var(--ease);
+}
+.btn-g:hover{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.09);}
+
+/* ── TICKER ── */
+.ticker{
+  background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);
+  padding:16px 0;overflow:hidden;position:relative;
+}
+.ticker-track{display:flex;width:max-content;animation:tick 28s linear infinite;}
+.ticker-track:hover{animation-play-state:paused;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tick-item{
+  display:flex;align-items:center;gap:12px;padding:0 40px;
+  font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);
+  white-space:nowrap;
+}
+.tick-item strong{
+  font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--w);
+  margin-right:4px;
+}
+.tick-dot{width:4px;height:4px;border-radius:50%;background:var(--acc);flex-shrink:0;}
+
+/* ── SECTION BASE ── */
+.sec{padding:clamp(72px,10vw,130px) clamp(20px,5vw,80px);}
+.sec-max{max-width:1160px;margin:0 auto;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:7px;border-radius:999px;
+  padding:4px 13px;font-size:.54rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--acc);background:rgba(232,57,14,.09);border:1px solid rgba(232,57,14,.16);margin-bottom:16px;
+}
+.sec-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,6vw,5.8rem);line-height:.92;letter-spacing:.02em;color:var(--w);}
+.sec-sub{font-size:.86rem;font-weight:300;color:var(--w2);line-height:1.82;max-width:400px;}
+
+/* ── PROGRAMS CAROUSEL ── */
+.programs-wrap{background:var(--bg2);}
+.prog-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:48px;}
+.carousel-outer{overflow:hidden;position:relative;}
+.carousel-outer::before,.carousel-outer::after{
+  content:'';position:absolute;top:0;bottom:0;z-index:2;pointer-events:none;width:120px;
+}
+.carousel-outer::before{left:0;background:linear-gradient(to right,var(--bg2),transparent);}
+.carousel-outer::after{right:0;background:linear-gradient(to left,var(--bg2),transparent);}
+.carousel-track{display:flex;gap:14px;width:max-content;animation:slide 36s linear infinite;padding:0 14px;}
+.carousel-track:hover{animation-play-state:paused;}
+@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.prog-card{
+  width:280px;flex-shrink:0;border-radius:var(--r);overflow:hidden;position:relative;
+  background:var(--bg3);border:1px solid var(--bd);
+  transition:transform .55s var(--ease),border-color .4s;cursor:default;
+}
+.prog-card:hover{transform:translateY(-6px);border-color:rgba(232,57,14,.25);}
+.prog-card img{width:100%;height:360px;object-fit:cover;display:block;transition:transform .7s var(--ease);}
+.prog-card:hover img{transform:scale(1.04);}
+.prog-card-info{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(to top,rgba(5,5,5,.94) 0%,rgba(5,5,5,.7) 60%,transparent 100%);
+  padding:28px 20px 20px;
+}
+.prog-cat{font-size:.52rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(232,57,14,.9);margin-bottom:5px;}
+.prog-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.03em;color:var(--w);}
+
+/* ── WHY SECTION ── */
+.why-wrap{background:var(--bg);}
+.why-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:clamp(32px,5vw,80px);align-items:start;margin-top:0;}
+.why-left{position:sticky;top:120px;}
+.why-left .sec-h{margin-bottom:20px;}
+.why-left .sec-sub{margin-bottom:32px;}
+.why-stat-row{display:flex;flex-direction:column;gap:20px;margin-top:40px;}
+.why-stat{display:flex;align-items:center;gap:16px;padding:20px;border-radius:var(--r);background:var(--bg2);border:1px solid var(--bd);}
+.why-stat-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;line-height:1;color:var(--acc);flex-shrink:0;width:90px;}
+.why-stat-info{}
+.why-stat-label{font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);}
+.why-stat-desc{font-size:.82rem;font-weight:300;color:var(--w);margin-top:4px;line-height:1.6;}
+.why-cards{display:flex;flex-direction:column;gap:12px;margin-top:0;}
+/* double-bezel card */
+.wb{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);
+  border-radius:var(--r);padding:5px;
+  transition:all .5s var(--ease);
+}
+.wb:hover{border-color:rgba(232,57,14,.28);transform:translateY(-3px);}
+.wb.hot{border-color:rgba(232,57,14,.22);background:rgba(232,57,14,.04);}
+.wb-in{background:var(--bg3);border-radius:var(--rs);padding:28px;box-shadow:inset 0 1px 1px rgba(255,255,255,.05);}
+.wb-icon{font-size:1.6rem;margin-bottom:14px;}
+.wb-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--w);margin-bottom:8px;}
+.wb-desc{font-size:.78rem;font-weight:300;color:var(--w2);line-height:1.75;}
+
+/* ── PRICING ── */
+.pricing-wrap{background:var(--bg2);}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px;}
+.plan{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:5px;transition:all .5s var(--ease);}
+.plan-in{background:var(--bg3);border-radius:var(--rs);padding:32px;height:100%;}
+.plan.feat{background:linear-gradient(135deg,rgba(232,57,14,.22),rgba(255,90,31,.08));border-color:rgba(232,57,14,.35);}
+.plan.feat .plan-in{background:rgba(8,3,1,.96);}
+.plan:hover{transform:translateY(-5px);border-color:rgba(232,57,14,.3);}
+.plan-badge{display:inline-block;font-size:.52rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;background:var(--acc);color:#fff;padding:4px 11px;border-radius:999px;margin-bottom:16px;}
+.plan-badge.gold{background:linear-gradient(90deg,#b8860b,#d4af37);}
+.plan-dur{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:.04em;color:var(--w);margin-bottom:4px;}
+.plan-price{font-family:'Bebas Neue',sans-serif;font-size:4rem;line-height:1;color:var(--w);margin-top:8px;}
+.plan-price sup{font-size:1.3rem;vertical-align:top;margin-top:10px;color:var(--w2);}
+.plan-save{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);background:rgba(232,57,14,.1);border:1px solid rgba(232,57,14,.2);padding:3px 9px;border-radius:999px;margin:6px 0 16px;}
+.plan-div{height:1px;background:rgba(255,255,255,.07);margin:16px 0;}
+.plan-f{display:flex;align-items:center;gap:9px;font-size:.77rem;font-weight:300;color:var(--w2);margin-bottom:10px;}
+.plan-f::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--acc);flex-shrink:0;}
+.plan-cta{display:block;width:100%;text-align:center;text-decoration:none;margin-top:24px;padding:13px;border-radius:999px;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .4s var(--ease);}
+.plan-cta.s{background:rgba(255,255,255,.06);color:var(--w);border:1px solid rgba(255,255,255,.1);}
+.plan-cta.s:hover{background:rgba(255,255,255,.11);}
+.plan-cta.h{background:var(--acc);color:#fff;box-shadow:0 0 24px rgba(232,57,14,.3);}
+.plan-cta.h:hover{background:var(--acc2);transform:scale(1.03);}
+
+/* ── TRAINERS ── */
+.trainers-wrap{background:var(--bg);}
+.t-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px;}
+.t-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:5px;transition:all .5s var(--ease);}
+.t-card:hover{transform:translateY(-4px);border-color:rgba(232,57,14,.25);}
+.t-in{background:var(--bg2);border-radius:var(--rs);overflow:hidden;}
+.t-photo{width:100%;aspect-ratio:3/4;overflow:hidden;position:relative;}
+.t-photo img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .7s var(--ease);}
+.t-card:hover .t-photo img{transform:scale(1.05);}
+.t-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 45%,rgba(5,5,5,.6));}
+.t-info{padding:22px;}
+.t-name{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.04em;color:var(--w);}
+.t-role{font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-top:3px;}
+.t-spec{font-size:.75rem;font-weight:300;color:var(--w2);margin-top:8px;line-height:1.65;}
+
+/* ── TESTIMONIALS ── */
+.testi-wrap{background:var(--bg2);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:52px;}
+.testi-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:5px;transition:all .5s var(--ease);}
+.testi-card:hover{border-color:rgba(232,57,14,.2);transform:translateY(-3px);}
+.testi-in{background:var(--bg3);border-radius:var(--rs);padding:28px;box-shadow:inset 0 1px 1px rgba(255,255,255,.04);}
+.testi-quote{font-size:2rem;color:var(--acc);line-height:1;margin-bottom:14px;}
+.testi-text{font-size:.83rem;font-weight:300;color:var(--w);line-height:1.82;margin-bottom:20px;}
+.testi-stars{color:var(--acc);font-size:.8rem;letter-spacing:2px;margin-bottom:14px;}
+.testi-author{display:flex;align-items:center;gap:10px;}
+.testi-av{width:38px;height:38px;border-radius:50%;object-fit:cover;border:2px solid rgba(232,57,14,.3);}
+.testi-name{font-size:.78rem;font-weight:600;color:var(--w);}
+.testi-tag{font-size:.6rem;color:var(--w2);letter-spacing:.06em;}
+
+/* ── OFFER ── */
+.offer-wrap{
+  padding:clamp(72px,10vw,130px) clamp(20px,5vw,80px);
+  background:radial-gradient(ellipse 70% 55% at 50% 50%,rgba(232,57,14,.15) 0%,transparent 70%),var(--bg);
+  text-align:center;position:relative;overflow:hidden;
+}
+.offer-wrap::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(232,57,14,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(232,57,14,.04) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:radial-gradient(ellipse 55% 55% at 50% 50%,black,transparent);
+}
+.offer-box{
+  max-width:680px;margin:0 auto;
+  background:rgba(232,57,14,.07);border:1px solid rgba(232,57,14,.18);
+  border-radius:calc(var(--r)*1.4);padding:56px 44px;position:relative;z-index:1;
+  box-shadow:0 0 80px rgba(232,57,14,.07),inset 0 1px 1px rgba(255,255,255,.05);
+}
+.offer-fire{font-size:2.8rem;display:block;margin-bottom:14px;animation:bob 1.3s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.offer-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,6vw,4.2rem);letter-spacing:.03em;line-height:.92;color:var(--w);margin-bottom:12px;}
+.offer-h em{font-style:normal;color:var(--acc);}
+.offer-p{font-size:.87rem;font-weight:300;color:var(--w2);max-width:460px;margin:0 auto 28px;line-height:1.8;}
+.offer-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:28px;}
+.offer-tag{font-size:.6rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--w);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:6px 14px;border-radius:999px;}
+.offer-tag em{font-style:normal;color:var(--acc);}
+.offer-fine{font-size:.6rem;color:var(--w2);margin-top:16px;}
+
+/* ── CTA ── */
+.cta-wrap{
+  position:relative;overflow:hidden;text-align:center;
+  padding:clamp(90px,12vw,160px) clamp(20px,5vw,80px);
+}
+.cta-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('https://images.unsplash.com/photo-1534367507873-d2d7e24c797f?w=1920&h=800&fit=crop&q=70');
+  background-size:cover;background-position:center;
+}
+.cta-overlay{position:absolute;inset:0;z-index:1;background:rgba(5,5,5,.82);}
+.cta-content{position:relative;z-index:2;}
+.cta-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,9vw,8rem);line-height:.88;letter-spacing:.02em;color:var(--w);margin-bottom:16px;}
+.cta-h em{font-style:normal;color:var(--acc);}
+.cta-p{font-size:.88rem;font-weight:300;color:var(--w2);max-width:360px;margin:0 auto 36px;line-height:1.78;}
+
+/* ── FOOTER ── */
+footer{padding:40px clamp(20px,5vw,80px);border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.1em;color:var(--w);}
+.f-logo b{color:var(--acc);}
+footer p{font-size:.66rem;color:var(--w2);}
+.f-links{display:flex;gap:18px;flex-wrap:wrap;}
+.f-links a{font-size:.66rem;color:var(--w2);text-decoration:none;letter-spacing:.08em;transition:color .3s;}
+.f-links a:hover{color:var(--w);}
+
+/* ── REVEALS ── */
+.rv{opacity:0;transform:translateY(28px) blur(6px);transition:opacity .8s var(--ease),transform .8s var(--ease),filter .8s var(--ease);filter:blur(4px);}
+.rv.in{opacity:1;transform:translateY(0);filter:blur(0);}
+.rv-l{opacity:0;transform:translateX(-44px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.rv-l.in{opacity:1;transform:translateX(0);}
+.rv-r{opacity:0;transform:translateX(44px);transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.rv-r.in{opacity:1;transform:translateX(0);}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  nav{padding:8px 8px 8px 18px;top:10px;width:calc(100% - 16px);}
+  .nav-links,.nav-pill{display:none;}
+  .ham{display:flex;}
+
+  .hero{padding:0 0 56px;}
+  .hero-content{padding:0 18px;}
+  .hero-headline{font-size:clamp(3.8rem,18vw,6rem);}
+  .hero-sub-row{flex-direction:column;align-items:flex-start;gap:16px;}
+  .hero-btns{width:100%;}
+  .btn-p,.btn-g{flex:1;justify-content:center;}
+  .hero-scroll{right:18px;}
+
+  .rv-l,.rv-r{transform:translateY(22px);}
+  .rv-l.in,.rv-r.in{transform:translateY(0);}
+
+  .tick-item{padding:0 24px;}
+
+  .why-grid{grid-template-columns:1fr;}
+  .why-left{position:static;}
+  .why-stat-row{flex-direction:row;flex-wrap:wrap;}
+  .why-stat{flex:1;min-width:140px;}
+
+  .plans-grid{grid-template-columns:1fr;}
+  .plan.feat{order:-1;}
+
+  .t-row{grid-template-columns:1fr;}
+  .t-photo{aspect-ratio:16/9;}
+  .t-photo img{object-position:center 15%;}
+
+  .testi-grid{grid-template-columns:1fr;}
+
+  .offer-box{padding:36px 18px;}
+
+  footer{flex-direction:column;text-align:center;padding:28px 18px;}
+  .f-links{justify-content:center;}
+}
+@media(max-width:480px){
+  .hero-headline{font-size:clamp(3.2rem,22vw,5rem);}
+  .hero-btns{flex-direction:column;}
+  .btn-p,.btn-g{flex:none;width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- BANNER -->
+<div class="banner">
+  🔥 Limited time — New members get their first month at 50% off &nbsp;·&nbsp;
+  <span onclick="document.getElementById('offer').scrollIntoView({behavior:'smooth'})">Claim offer →</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">RS<b>.</b>BBC</div>
+  <ul class="nav-links">
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="#membership">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#offer" class="nav-pill">Claim Offer <span>↗</span></a>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE OVERLAY -->
+<div class="mob-ov" id="mob">
+  <a href="#why" onclick="cM()">Why Us</a>
+  <a href="#programs" onclick="cM()">Programs</a>
+  <a href="#membership" onclick="cM()">Pricing</a>
+  <a href="#offer" onclick="cM()">Claim Offer</a>
+  <a href="#contact" onclick="cM()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">🏆 Dubai's #1 Bodybuilding Club</div>
+    <h1 class="hero-headline">
+      RS<br/><span class="orange">Bodybuilding</span><br/>Club
+    </h1>
+    <div class="hero-sub-row">
+      <div>
+        <div class="hero-cycling">
+          GET&nbsp;
+          <div class="hero-cycle-wrap" id="cycleWrap">
+            <span class="hero-cycle-word" id="cw0">STRONGER</span>
+            <span class="hero-cycle-word" id="cw1">LEANER</span>
+            <span class="hero-cycle-word" id="cw2">BIGGER</span>
+          </div>
+        </div>
+        <div class="hero-btns">
+          <a href="#offer" class="btn-p">Claim 50% Off <div class="ico">↗</div></a>
+          <a href="#programs" class="btn-g">View Programs</a>
+        </div>
+        <div class="hero-social">
+          <div class="ava-stack">
+            <img src="https://i.pravatar.cc/40?img=11" alt="member"/>
+            <img src="https://i.pravatar.cc/40?img=22" alt="member"/>
+            <img src="https://i.pravatar.cc/40?img=33" alt="member"/>
+            <img src="https://i.pravatar.cc/40?img=44" alt="member"/>
+          </div>
+          <div class="hero-social-txt"><strong>800+ members</strong> already training with us</div>
+        </div>
+      </div>
+      <p class="hero-tagline">Where serious athletes are made. No shortcuts. No excuses. Pure iron.</p>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="sline"></div>Scroll</div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <!-- 2× for seamless loop -->
+    <div class="tick-item"><strong>800+</strong> Active Members <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>12+</strong> Expert Coaches <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>15K</strong> sq ft of Iron <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>6AM</strong> — Midnight Daily <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>50%</strong> Off First Month <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>30-Day</strong> Money Back Guarantee <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>IFBB</strong> Pro Coaching <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>Dubai's</strong> Premier Gym <div class="tick-dot"></div></div>
+    <!-- dupe -->
+    <div class="tick-item"><strong>800+</strong> Active Members <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>12+</strong> Expert Coaches <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>15K</strong> sq ft of Iron <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>6AM</strong> — Midnight Daily <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>50%</strong> Off First Month <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>30-Day</strong> Money Back Guarantee <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>IFBB</strong> Pro Coaching <div class="tick-dot"></div></div>
+    <div class="tick-item"><strong>Dubai's</strong> Premier Gym <div class="tick-dot"></div></div>
+  </div>
+</div>
+
+<!-- PROGRAMS CAROUSEL -->
+<section class="sec programs-wrap" id="programs">
+  <div class="sec-max">
+    <div class="prog-header">
+      <div>
+        <div class="eyebrow rv">Training Programs</div>
+        <h2 class="sec-h rv d1">BUILT FOR<br/><span style="color:var(--acc)">EVERY GOAL</span></h2>
+      </div>
+      <p class="sec-sub rv d2">From first-timers to stage competitors — every program is engineered for real results.</p>
+    </div>
+  </div>
+  <div class="carousel-outer">
+    <div class="carousel-track">
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=380&h=500&fit=crop&q=75" alt="Competitive Bodybuilding" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">Intermediate – Advanced</div><div class="prog-title">Competitive Bodybuilding</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=380&h=500&fit=crop&q=75" alt="Powerlifting" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">All Levels</div><div class="prog-title">Powerlifting & Strength</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=380&h=500&fit=crop&q=75" alt="Hypertrophy" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">All Levels</div><div class="prog-title">Hypertrophy Training</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=380&h=500&fit=crop&q=75" alt="Personal Training" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">Custom</div><div class="prog-title">1-on-1 Personal Training</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=380&h=500&fit=crop&q=75" alt="Cut & Shred" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">Intermediate</div><div class="prog-title">Cut & Shred Program</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=380&h=500&fit=crop&q=75" alt="Beginner" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">Beginners</div><div class="prog-title">Foundations Program</div></div></div>
+      <!-- dupe for seamless -->
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?w=380&h=500&fit=crop&q=75" alt="Competitive Bodybuilding" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">Intermediate – Advanced</div><div class="prog-title">Competitive Bodybuilding</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=380&h=500&fit=crop&q=75" alt="Powerlifting" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">All Levels</div><div class="prog-title">Powerlifting & Strength</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=380&h=500&fit=crop&q=75" alt="Hypertrophy" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">All Levels</div><div class="prog-title">Hypertrophy Training</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=380&h=500&fit=crop&q=75" alt="Personal Training" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">Custom</div><div class="prog-title">1-on-1 Personal Training</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=380&h=500&fit=crop&q=75" alt="Cut & Shred" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">Intermediate</div><div class="prog-title">Cut & Shred Program</div></div></div>
+      <div class="prog-card"><img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=380&h=500&fit=crop&q=75" alt="Beginner" loading="lazy"/><div class="prog-card-info"><div class="prog-cat">Beginners</div><div class="prog-title">Foundations Program</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="sec why-wrap" id="why">
+  <div class="sec-max">
+    <div class="why-grid">
+      <div class="why-left">
+        <div class="eyebrow rv">Why RS Bodybuilding Club</div>
+        <h2 class="sec-h rv d1">REAL REASONS.<br/><span style="color:var(--acc)">REAL RESULTS.</span></h2>
+        <p class="sec-sub rv d2">We don't chase trends. We build bodies. Here's why 800+ members chose RS and never left.</p>
+        <div class="why-stat-row">
+          <div class="why-stat rv">
+            <div class="why-stat-num"><span class="cnt" data-to="800" data-sfx="+">0</span></div>
+            <div class="why-stat-info"><div class="why-stat-label">Active Members</div><div class="why-stat-desc">Professionals, competitors, and beginners.</div></div>
+          </div>
+          <div class="why-stat rv d1">
+            <div class="why-stat-num"><span class="cnt" data-to="12" data-sfx="+">0</span></div>
+            <div class="why-stat-info"><div class="why-stat-label">Expert Coaches</div><div class="why-stat-desc">Certified, competitive, and dedicated.</div></div>
+          </div>
+          <div class="why-stat rv d2">
+            <div class="why-stat-num"><span class="cnt" data-to="15" data-sfx="K">0</span></div>
+            <div class="why-stat-info"><div class="why-stat-label">Sq Ft of Space</div><div class="why-stat-desc">No crowding. No waiting. Just iron.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="why-cards">
+        <div class="wb hot rv-r">
+          <div class="wb-in">
+            <div class="wb-icon">🏆</div>
+            <div class="wb-title">Championship Coaches</div>
+            <div class="wb-desc">Our coaches are active competitors — not just certificate holders. They've stood on stage, won, and know exactly what it takes. You're trained by the best in Dubai.</div>
+          </div>
+        </div>
+        <div class="wb rv-r d1">
+          <div class="wb-in">
+            <div class="wb-icon">⚡</div>
+            <div class="wb-title">Real Equipment, No Excuses</div>
+            <div class="wb-desc">15,000 sq ft of competition-grade iron. Free weights, machines, cables, power racks — everything you need, zero compromise. No waiting. No crowding.</div>
+          </div>
+        </div>
+        <div class="wb rv-r d2">
+          <div class="wb-in">
+            <div class="wb-icon">📈</div>
+            <div class="wb-title">Results You Can See</div>
+            <div class="wb-desc">Members average 8–12kg of muscle gain in their first year. Our structured programming makes sure you're progressing every single week, not just showing up.</div>
+          </div>
+        </div>
+        <div class="wb rv-r d3">
+          <div class="wb-in">
+            <div class="wb-icon">🥗</div>
+            <div class="wb-title">Nutrition Built Into Every Plan</div>
+            <div class="wb-desc">Training without nutrition is half the battle. Every member gets a personalised nutrition consultation from day one — included, not an upsell.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec pricing-wrap" id="membership">
+  <div class="sec-max" style="text-align:center;">
+    <div class="eyebrow rv" style="justify-content:center;">Membership Plans</div>
+    <h2 class="sec-h rv d1">SIMPLE PRICING.<br/><span style="color:var(--acc)">LONGER = BETTER.</span></h2>
+    <p class="sec-sub rv d2" style="margin:0 auto 0;">Full gym access on every plan. No lock-in. Cancel anytime.</p>
+    <div class="plans-grid">
+      <div class="plan rv-l">
+        <div class="plan-in">
+          <div class="plan-dur">1 Month</div>
+          <div class="plan-price"><sup>AED </sup>150</div>
+          <div class="plan-div"></div>
+          <div class="plan-f">Full gym access — all equipment</div>
+          <div class="plan-f">Locker room & shower</div>
+          <div class="plan-f">Unlimited group classes</div>
+          <div class="plan-f">Nutrition consultation</div>
+          <div class="plan-f">Free fitness assessment</div>
+          <a href="#contact" class="plan-cta s">Get Started</a>
+        </div>
+      </div>
+      <div class="plan feat rv">
+        <div class="plan-in">
+          <div class="plan-badge">Most Popular</div>
+          <div class="plan-dur">2 Months</div>
+          <div class="plan-price"><sup>AED </sup>250</div>
+          <div class="plan-save">Save AED 50</div>
+          <div class="plan-div"></div>
+          <div class="plan-f">Everything in 1 Month</div>
+          <div class="plan-f">2 PT sessions included</div>
+          <div class="plan-f">Progress tracking app</div>
+          <div class="plan-f">Priority class booking</div>
+          <div class="plan-f">Body composition scan</div>
+          <a href="#contact" class="plan-cta h">Join Now</a>
+        </div>
+      </div>
+      <div class="plan rv-r">
+        <div class="plan-in">
+          <div class="plan-badge gold">Best Value</div>
+          <div class="plan-dur">3 Months</div>
+          <div class="plan-price"><sup>AED </sup>350</div>
+          <div class="plan-save">Save AED 100</div>
+          <div class="plan-div"></div>
+          <div class="plan-f">Everything in 2 Months</div>
+          <div class="plan-f">4 PT sessions included</div>
+          <div class="plan-f">Custom meal plan</div>
+          <div class="plan-f">Competition prep access</div>
+          <div class="plan-f">Recovery suite included</div>
+          <a href="#contact" class="plan-cta s">Get Started</a>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:20px;font-size:.68rem;color:var(--w2);" class="rv">All new members get 50% off their first month · No lock-in · Cancel anytime</p>
+  </div>
+</section>
+
+<!-- TRAINERS -->
+<section class="sec trainers-wrap" id="trainers">
+  <div class="sec-max">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="eyebrow rv" style="justify-content:center;">The Coaches</div>
+      <h2 class="sec-h rv d1">TRAINED BY<br/><span style="color:var(--acc)">THE BEST</span></h2>
+      <p class="sec-sub rv d2" style="margin:12px auto 0;">Certified. Competitive. Dedicated to your results.</p>
+    </div>
+    <div class="t-row">
+      <div class="t-card rv-l">
+        <div class="t-in">
+          <div class="t-photo"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&h=660&fit=crop&q=80" alt="Coach Rahul" loading="lazy"/></div>
+          <div class="t-info">
+            <div class="t-name">Coach Rahul S.</div>
+            <div class="t-role">Head Coach & Founder</div>
+            <div class="t-spec">IFBB Pro · 14 years competitive experience · National champion 2018–2021</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card rv">
+        <div class="t-in">
+          <div class="t-photo"><img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=500&h=660&fit=crop&q=80" alt="Coach Amir" loading="lazy"/></div>
+          <div class="t-info">
+            <div class="t-name">Coach Amir K.</div>
+            <div class="t-role">Strength & Powerlifting</div>
+            <div class="t-spec">IPF Certified · 3× UAE Powerlifting Champion · Sports Science MSc</div>
+          </div>
+        </div>
+      </div>
+      <div class="t-card rv-r">
+        <div class="t-in">
+          <div class="t-photo"><img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=500&h=660&fit=crop&q=80" alt="Coach Sara" loading="lazy"/></div>
+          <div class="t-info">
+            <div class="t-name">Coach Sara P.</div>
+            <div class="t-role">Nutrition & Body Recomp</div>
+            <div class="t-spec">Certified Sports Nutritionist · Women's physique & transformation specialist</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec testi-wrap">
+  <div class="sec-max">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="eyebrow rv" style="justify-content:center;">Member Results</div>
+      <h2 class="sec-h rv d1">THEY SHOWED UP.<br/><span style="color:var(--acc)">THEY CHANGED.</span></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card rv-l">
+        <div class="testi-in">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Joined RS 8 months ago with zero experience. Coach Rahul put me on a structured program and I've added 9kg of muscle. The environment here is unlike any other gym in Dubai.</p>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-author">
+            <img class="testi-av" src="https://i.pravatar.cc/80?img=15" alt="Arjun"/>
+            <div><div class="testi-name">Arjun M.</div><div class="testi-tag">Member · 8 months</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card rv">
+        <div class="testi-in">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">The nutrition consultation alone was worth the membership. Coach Sara rebuilt my diet completely. I dropped 14kg while keeping all my strength. Genuinely life-changing.</p>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-author">
+            <img class="testi-av" src="https://i.pravatar.cc/80?img=25" alt="Priya"/>
+            <div><div class="testi-name">Priya K.</div><div class="testi-tag">Member · 1 year</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card rv-r">
+        <div class="testi-in">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">I've trained at 6 gyms across Dubai. RS is in a different league. The equipment is elite, the coaches actually care, and the programming is serious. Best decision I made this year.</p>
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-author">
+            <img class="testi-av" src="https://i.pravatar.cc/80?img=52" alt="Mohammed"/>
+            <div><div class="testi-name">Mohammed A.</div><div class="testi-tag">Member · 6 months</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFER -->
+<section class="offer-wrap" id="offer">
+  <div class="offer-box rv">
+    <span class="offer-fire">🔥</span>
+    <h2 class="offer-h">START THIS WEEK.<br/>PAY <em>HALF PRICE.</em></h2>
+    <p class="offer-p">New members who join this week get their entire first month at 50% off. Try it, train hard, and if you don't see results in 30 days — full refund. No questions asked.</p>
+    <div class="offer-tags">
+      <div class="offer-tag">✓ No Lock-In Contract</div>
+      <div class="offer-tag">✓ <em>50% Off</em> First Month</div>
+      <div class="offer-tag">✓ 30-Day Money Back</div>
+      <div class="offer-tag">✓ Free Fitness Assessment</div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:+971500000000" class="btn-p">Call to Claim <div class="ico">📞</div></a>
+      <a href="https://wa.me/971500000000" class="btn-g" target="_blank" rel="noopener">WhatsApp Us</a>
+    </div>
+    <p class="offer-fine">Offer valid for new members only. Limited spots available this week.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-wrap" id="contact">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <div class="eyebrow rv" style="display:inline-flex;justify-content:center;">Come Visit Us</div>
+    <h2 class="cta-h rv d1">FIRST SESSION<br/><em>IS ON US</em></h2>
+    <p class="cta-p rv d2">Walk in, meet the team, and train for free — no sign-up required. See the gym, feel the energy, meet your future coach.</p>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;" class="rv d3">
+      <a href="tel:+971500000000" class="btn-p">Call Us Now <div class="ico">📞</div></a>
+      <a href="https://wa.me/971500000000" class="btn-g" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+    <p style="margin-top:24px;font-size:.68rem;color:var(--w2);" class="rv d4">📍 Al Quoz Industrial, Dubai &nbsp;·&nbsp; 6 AM – 12 AM daily</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">RS<b>.</b>Bodybuilding Club</div>
+  <div class="f-links">
+    <a href="#why">Why Us</a>
+    <a href="#programs">Programs</a>
+    <a href="#membership">Pricing</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <p>© 2026 RS Bodybuilding Club · Dubai, UAE</p>
+</footer>
+
+<script>
+// ── Page load hero image zoom ──
+window.addEventListener('load',()=>{
+  const bg = document.getElementById('heroBg');
+  if(bg) setTimeout(()=>bg.classList.add('loaded'), 100);
+});
+
+// ── Hamburger ──
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+function cM(){ham.classList.remove('open');mob.classList.remove('open');}
+
+// ── Hero word cycle ──
+(function(){
+  const words=['STRONGER','LEANER','BIGGER'];
+  const els=words.map((_,i)=>document.getElementById('cw'+i));
+  let cur=0;
+  function show(i){
+    els.forEach((el,j)=>{
+      if(!el)return;
+      if(j===i){el.style.opacity='1';el.style.transform='translateY(0)';}
+      else{el.style.opacity='0';el.style.transform=j<i?'translateY(-8px)':'translateY(8px)';}
+    });
+  }
+  // init styles
+  els.forEach(el=>{if(el){el.style.transition='opacity .55s cubic-bezier(0.32,0.72,0,1),transform .55s cubic-bezier(0.32,0.72,0,1)';el.style.opacity='0';el.style.transform='translateY(8px)';}});
+  setTimeout(()=>show(0),200);
+  setInterval(()=>{cur=(cur+1)%words.length;show(cur);},2600);
+})();
+
+// ── Scroll reveals ──
+const obs=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
+
+// ── Count up ──
+const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const el=e.target,to=parseInt(el.dataset.to),sfx=el.dataset.sfx||'',dur=1800,s=performance.now();
+  (function step(n){const p=Math.min((n-s)/dur,1),ev=1-Math.pow(1-p,3);el.textContent=Math.round(ev*to)+(p===1?sfx:'');if(p<1)requestAnimationFrame(step);})(s);
+  cObs.unobserve(e.target);
+}});},{threshold:.6});
+document.querySelectorAll('.cnt').forEach(el=>cObs.observe(el));
+</script>
+</body>
+</html>
