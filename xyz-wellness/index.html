@@ -7,7 +7,7 @@
 <meta name="description" content="A sanctuary for the body and mind. Massage, spa therapy, yoga and holistic wellness in the heart of Dubai."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -18,7 +18,7 @@
   --r:1.75rem;--rs:calc(var(--r) - 6px);
   --ease:cubic-bezier(0.32,0.72,0,1);
   --serif:'Cormorant Garamond',serif;
-  --sans:'Plus Jakarta Sans',sans-serif;
+  --sans:'Poppins',sans-serif;
 }
 html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;}
@@ -55,11 +55,11 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 @keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,40px)}}
 @keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
 .hero-grid{position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.58rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--sage2);margin-bottom:24px;}
-.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--sage2);}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--sage2);margin-bottom:26px;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--sage2);}
 .hero-h{font-family:var(--serif);font-size:clamp(3.2rem,8vw,6.5rem);font-weight:500;line-height:1.0;letter-spacing:-.01em;color:var(--ink);}
 .hero-h i{font-style:italic;color:var(--sage2);}
-.hero-p{font-size:.95rem;font-weight:300;color:var(--ink2);line-height:1.85;max-width:420px;margin:28px 0 36px;}
+.hero-p{font-size:1.02rem;font-weight:300;color:var(--ink2);line-height:1.9;max-width:440px;margin:28px 0 36px;letter-spacing:.005em;}
 .hero-btns{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
 .hero-meta{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
 .hero-meta-item .n{font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--ink);line-height:1;}
@@ -82,19 +82,18 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 
 /* MARQUEE STRIP */
 .strip{background:var(--sage2);padding:16px 0;overflow:hidden;}
-.strip-track{display:flex;width:max-content;animation:tick 32s linear infinite;}
-@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.strip-track{display:flex;width:max-content;will-change:transform;}
 .strip-item{display:flex;align-items:center;gap:14px;padding:0 36px;font-family:var(--serif);font-size:1.5rem;font-style:italic;color:rgba(255,255,255,.92);white-space:nowrap;}
 .strip-item::after{content:'✦';font-style:normal;font-size:.7rem;color:rgba(255,255,255,.5);}
 
 /* SECTION */
 .sec{padding:clamp(72px,10vw,130px) clamp(20px,5vw,80px);}
 .sec-max{max-width:1180px;margin:0 auto;}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sage2);margin-bottom:16px;}
-.eyebrow::before{content:'';width:20px;height:1px;background:var(--sage2);}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--sage2);margin-bottom:18px;}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--sage2);}
 .sec-h{font-family:var(--serif);font-size:clamp(2.4rem,6vw,4.8rem);font-weight:500;line-height:1.02;letter-spacing:-.01em;color:var(--ink);}
 .sec-h i{font-style:italic;color:var(--sage2);}
-.sec-sub{font-size:.92rem;font-weight:300;color:var(--ink2);line-height:1.85;max-width:440px;}
+.sec-sub{font-size:1rem;font-weight:300;color:var(--ink2);line-height:1.9;max-width:460px;letter-spacing:.005em;}
 
 /* SERVICES */
 .serv-head{text-align:center;margin-bottom:56px;display:flex;flex-direction:column;align-items:center;}
@@ -302,6 +301,14 @@ footer p{font-size:.68rem;color:var(--ink2);}
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&fit=crop" alt="Reflexology" loading="lazy"/></div>
         <div class="serv-body"><div class="serv-icon">👣</div><div class="serv-title">Reflexology</div><div class="serv-desc">Pressure-point foot therapy to relieve stress and rebalance your energy.</div><div class="serv-price">From AED 130 · 45 min</div></div>
       </div>
+      <div class="serv-card rv">
+        <div class="serv-img"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80&fit=crop" alt="Zumba" loading="lazy"/></div>
+        <div class="serv-body"><div class="serv-icon">💃</div><div class="serv-title">Zumba Classes</div><div class="serv-desc">High-energy dance fitness that burns, lifts your mood, and never feels like a workout.</div><div class="serv-price">From AED 70 · class</div></div>
+      </div>
+      <div class="serv-card rv d1">
+        <div class="serv-img"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&fit=crop" alt="Personal Training" loading="lazy"/></div>
+        <div class="serv-body"><div class="serv-icon">🤸</div><div class="serv-title">1-on-1 Personal Training</div><div class="serv-desc">A dedicated trainer building a plan around your body, goals and pace — fully personal.</div><div class="serv-price">From AED 200 · session</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -335,16 +342,16 @@ footer p{font-size:.68rem;color:var(--ink2);}
     <h2 class="sec-h rv d1">Wellness, made a <i>habit</i></h2>
     <p class="sec-sub rv d2" style="margin:14px auto 0;">Join as a member and make self-care part of your routine — at a price that rewards consistency.</p>
     <div class="price-grid">
-      <div class="price-card rv-l"><div class="price-name">Day Pass</div><div class="price-amt"><sup>AED </sup>180</div><div class="price-per">per visit</div><div class="price-div"></div>
-        <div class="price-f">One treatment of choice</div><div class="price-f">Access to relaxation lounge</div><div class="price-f">Herbal tea service</div><div class="price-f">No commitment</div>
+      <div class="price-card rv-l"><div class="price-name">1 Month</div><div class="price-amt"><sup>AED </sup>150</div><div class="price-per">per month</div><div class="price-div"></div>
+        <div class="price-f">4 treatments per month</div><div class="price-f">Unlimited yoga & Zumba</div><div class="price-f">Relaxation lounge access</div><div class="price-f">Herbal tea service</div><div class="price-f">No lock-in</div>
         <a href="#contact" class="price-cta s">Book Now</a>
       </div>
-      <div class="price-card feat rv"><div class="price-badge">Most Loved</div><div class="price-name">Monthly</div><div class="price-amt"><sup>AED </sup>650</div><div class="price-per">per month</div><div class="price-div"></div>
-        <div class="price-f">4 treatments per month</div><div class="price-f">Unlimited yoga classes</div><div class="price-f">10% off all add-ons</div><div class="price-f">Priority booking</div><div class="price-f">Free wellness consult</div>
+      <div class="price-card feat rv"><div class="price-badge">Most Loved</div><div class="price-name">2 Months</div><div class="price-amt"><sup>AED </sup>250</div><div class="price-per">for 2 months · save AED 50</div><div class="price-div"></div>
+        <div class="price-f">Everything in 1 Month</div><div class="price-f">2 personal training sessions</div><div class="price-f">10% off all add-ons</div><div class="price-f">Priority booking</div><div class="price-f">Free wellness consult</div>
         <a href="#contact" class="price-cta h">Become a Member</a>
       </div>
-      <div class="price-card rv-r"><div class="price-badge">Best Value</div><div class="price-name">Quarterly</div><div class="price-amt"><sup>AED </sup>1,700</div><div class="price-per">for 3 months</div><div class="price-div"></div>
-        <div class="price-f">Everything in Monthly</div><div class="price-f">2 extra treatments / month</div><div class="price-f">15% off all add-ons</div><div class="price-f">Bring-a-friend pass</div><div class="price-f">Seasonal gift ritual</div>
+      <div class="price-card rv-r"><div class="price-badge">Best Value</div><div class="price-name">3 Months</div><div class="price-amt"><sup>AED </sup>350</div><div class="price-per">for 3 months · save AED 100</div><div class="price-div"></div>
+        <div class="price-f">Everything in 2 Months</div><div class="price-f">4 personal training sessions</div><div class="price-f">15% off all add-ons</div><div class="price-f">Bring-a-friend pass</div><div class="price-f">Seasonal gift ritual</div>
         <a href="#contact" class="price-cta s">Book Now</a>
       </div>
     </div>
@@ -391,6 +398,28 @@ function cM(){ham.classList.remove('open');mob.classList.remove('open');}
 
 const navEl=document.getElementById('nav');
 window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',(window.scrollY||0)>20);},{passive:true});
+
+// Smooth marquee — eases slower on hover, never hard-stops
+function marquee(track,baseSpeed){
+  if(!track)return;
+  let offset=0,speed=baseSpeed,target=baseSpeed,last=performance.now();
+  let half=track.scrollWidth/2;
+  window.addEventListener('resize',()=>{half=track.scrollWidth/2;});
+  const wrap=track.parentElement;
+  wrap.addEventListener('mouseenter',()=>{target=baseSpeed*0.3;});
+  wrap.addEventListener('mouseleave',()=>{target=baseSpeed;});
+  function frame(now){
+    const dt=Math.min((now-last)/1000,0.05);last=now;
+    speed+=(target-speed)*Math.min(1,dt*3.5);
+    offset+=speed*dt;
+    if(offset<=-half)offset+=half;
+    if(offset>0)offset-=half;
+    track.style.transform=`translateX(${offset}px)`;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+marquee(document.querySelector('.strip-track'),-50);
 
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
