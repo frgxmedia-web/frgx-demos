@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>XYZ Wellness — Dubai</title>
+<meta name="description" content="A sanctuary for the body and mind. Massage, spa therapy, yoga and holistic wellness in the heart of Dubai."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#F6F2EB;--bg2:#EFE8DD;--card:#FBF8F2;
+  --ink:#2C2A26;--ink2:#6B655C;
+  --sage:#8A9A7E;--sage2:#6E7E62;--gold:#B89456;--clay:#C08B6E;
+  --bd:rgba(44,42,38,.1);
+  --r:1.75rem;--rs:calc(var(--r) - 6px);
+  --ease:cubic-bezier(0.32,0.72,0,1);
+  --serif:'Cormorant Garamond',serif;
+  --sans:'Plus Jakarta Sans',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.03;pointer-events:none;z-index:60;mix-blend-mode:multiply;}
+
+/* NAV */
+nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 28px);max-width:900px;background:rgba(251,248,242,.7);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--bd);border-radius:999px;padding:11px 11px 11px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:box-shadow .4s var(--ease),background .4s var(--ease);}
+nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,38,.08);}
+.nav-logo{font-family:var(--serif);font-size:1.35rem;font-weight:600;letter-spacing:.02em;color:var(--ink);flex-shrink:0;}
+.nav-logo i{font-style:italic;color:var(--sage2);}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .4s var(--ease);}
+.nav-links a:hover{color:var(--ink);}
+.nav-pill{background:var(--sage2);color:#fff;text-decoration:none;flex-shrink:0;font-size:.64rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:10px 20px;border-radius:999px;transition:all .4s var(--ease);display:flex;align-items:center;gap:8px;}
+.nav-pill span{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:transform .4s var(--ease);}
+.nav-pill:hover{background:var(--sage);}.nav-pill:hover span{transform:translate(1px,-1px) scale(1.1);}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:5px;margin-right:2px;}
+.ham span{display:block;width:20px;height:1.5px;background:var(--ink);transition:all .4s var(--ease);transform-origin:center;}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob-ov{position:fixed;inset:0;z-index:99;background:rgba(246,242,235,.97);backdrop-filter:blur(40px);-webkit-backdrop-filter:blur(40px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;opacity:0;pointer-events:none;transition:opacity .4s var(--ease);}
+.mob-ov.open{opacity:1;pointer-events:all;}
+.mob-ov a{font-family:var(--serif);font-size:2.8rem;color:var(--ink);text-decoration:none;opacity:0;transform:translateY(18px);transition:color .3s,opacity .4s var(--ease),transform .4s var(--ease);}
+.mob-ov.open a{opacity:1;transform:translateY(0);}
+.mob-ov.open a:nth-child(1){transition-delay:.05s}.mob-ov.open a:nth-child(2){transition-delay:.1s}.mob-ov.open a:nth-child(3){transition-delay:.15s}.mob-ov.open a:nth-child(4){transition-delay:.2s}.mob-ov.open a:nth-child(5){transition-delay:.25s}
+.mob-ov a:hover{color:var(--sage2);font-style:italic;}
+
+/* HERO */
+.hero{min-height:100dvh;display:flex;flex-direction:column;justify-content:center;padding:120px clamp(20px,5vw,80px) 60px;position:relative;overflow:hidden;}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;z-index:0;}
+.hero-orb.a{width:480px;height:480px;background:radial-gradient(circle,rgba(138,154,126,.5),transparent 70%);top:-120px;right:-80px;animation:float1 14s ease-in-out infinite;}
+.hero-orb.b{width:420px;height:420px;background:radial-gradient(circle,rgba(184,148,86,.35),transparent 70%);bottom:-140px;left:-100px;animation:float2 17s ease-in-out infinite;}
+@keyframes float1{0%,100%{transform:translate(0,0)}50%{transform:translate(-40px,40px)}}
+@keyframes float2{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
+.hero-grid{position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.58rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--sage2);margin-bottom:24px;}
+.hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--sage2);}
+.hero-h{font-family:var(--serif);font-size:clamp(3.2rem,8vw,6.5rem);font-weight:500;line-height:1.0;letter-spacing:-.01em;color:var(--ink);}
+.hero-h i{font-style:italic;color:var(--sage2);}
+.hero-p{font-size:.95rem;font-weight:300;color:var(--ink2);line-height:1.85;max-width:420px;margin:28px 0 36px;}
+.hero-btns{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
+.hero-meta{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
+.hero-meta-item .n{font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--ink);line-height:1;}
+.hero-meta-item .l{font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin-top:5px;}
+.hero-visual{position:relative;}
+.hero-img-shell{background:var(--card);border:1px solid var(--bd);border-radius:calc(var(--r)*1.3);padding:8px;box-shadow:0 40px 80px -30px rgba(44,42,38,.22);}
+.hero-img-shell img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:calc(var(--r)*1.1);display:block;}
+.hero-badge{position:absolute;bottom:24px;left:-20px;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px 22px;box-shadow:0 20px 50px -20px rgba(44,42,38,.25);display:flex;align-items:center;gap:12px;}
+.hero-badge .ic{width:40px;height:40px;border-radius:50%;background:rgba(138,154,126,.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.hero-badge .t1{font-size:.82rem;font-weight:600;color:var(--ink);}
+.hero-badge .t2{font-size:.62rem;color:var(--ink2);margin-top:2px;}
+
+/* BUTTONS */
+.btn-p{display:inline-flex;align-items:center;gap:9px;background:var(--sage2);color:#fff;text-decoration:none;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 24px;border-radius:999px;transition:all .45s var(--ease);}
+.btn-p:hover{background:var(--sage);transform:scale(1.03);}
+.btn-p .ico{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:.78rem;transition:transform .45s var(--ease);}
+.btn-p:hover .ico{transform:translate(2px,-2px) scale(1.12);}
+.btn-g{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--ink);text-decoration:none;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:14px 24px;border-radius:999px;border:1px solid var(--bd);transition:all .45s var(--ease);}
+.btn-g:hover{border-color:var(--ink2);background:rgba(44,42,38,.03);}
+
+/* MARQUEE STRIP */
+.strip{background:var(--sage2);padding:16px 0;overflow:hidden;}
+.strip-track{display:flex;width:max-content;animation:tick 32s linear infinite;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.strip-item{display:flex;align-items:center;gap:14px;padding:0 36px;font-family:var(--serif);font-size:1.5rem;font-style:italic;color:rgba(255,255,255,.92);white-space:nowrap;}
+.strip-item::after{content:'✦';font-style:normal;font-size:.7rem;color:rgba(255,255,255,.5);}
+
+/* SECTION */
+.sec{padding:clamp(72px,10vw,130px) clamp(20px,5vw,80px);}
+.sec-max{max-width:1180px;margin:0 auto;}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.58rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--sage2);margin-bottom:16px;}
+.eyebrow::before{content:'';width:20px;height:1px;background:var(--sage2);}
+.sec-h{font-family:var(--serif);font-size:clamp(2.4rem,6vw,4.8rem);font-weight:500;line-height:1.02;letter-spacing:-.01em;color:var(--ink);}
+.sec-h i{font-style:italic;color:var(--sage2);}
+.sec-sub{font-size:.92rem;font-weight:300;color:var(--ink2);line-height:1.85;max-width:440px;}
+
+/* SERVICES */
+.serv-head{text-align:center;margin-bottom:56px;display:flex;flex-direction:column;align-items:center;}
+.serv-head .eyebrow{justify-content:center;}
+.serv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.serv-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;transition:all .5s var(--ease);}
+.serv-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(44,42,38,.25);}
+.serv-img{width:100%;aspect-ratio:3/2.4;overflow:hidden;}
+.serv-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
+.serv-card:hover .serv-img img{transform:scale(1.05);}
+.serv-body{padding:26px 26px 30px;}
+.serv-icon{font-size:1.3rem;margin-bottom:12px;}
+.serv-title{font-family:var(--serif);font-size:1.7rem;font-weight:500;color:var(--ink);margin-bottom:8px;}
+.serv-desc{font-size:.82rem;font-weight:300;color:var(--ink2);line-height:1.75;margin-bottom:16px;}
+.serv-price{font-size:.72rem;font-weight:600;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;}
+
+/* ABOUT SPLIT */
+.about{background:var(--bg2);}
+.about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center;}
+.about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.about-imgs .shell{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:7px;}
+.about-imgs img{width:100%;border-radius:var(--rs);display:block;object-fit:cover;}
+.about-imgs .tall{aspect-ratio:3/4.4;}
+.about-imgs .a2{margin-top:36px;}
+.about-list{margin-top:28px;display:flex;flex-direction:column;gap:16px;}
+.about-li{display:flex;gap:14px;align-items:flex-start;}
+.about-li .dot{width:30px;height:30px;border-radius:50%;background:rgba(138,154,126,.18);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;margin-top:2px;}
+.about-li .t1{font-size:.9rem;font-weight:600;color:var(--ink);}
+.about-li .t2{font-size:.8rem;font-weight:300;color:var(--ink2);line-height:1.7;margin-top:3px;}
+
+/* PRICING */
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;}
+.price-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:34px;transition:all .5s var(--ease);}
+.price-card.feat{background:var(--sage2);color:#fff;}
+.price-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(44,42,38,.25);}
+.price-badge{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:#fff;padding:4px 12px;border-radius:999px;margin-bottom:16px;}
+.price-card.feat .price-badge{background:rgba(255,255,255,.22);}
+.price-name{font-family:var(--serif);font-size:1.9rem;font-weight:500;margin-bottom:4px;}
+.price-amt{font-family:var(--serif);font-size:3.4rem;font-weight:500;line-height:1;margin-top:10px;}
+.price-amt sup{font-size:1.1rem;vertical-align:top;margin-top:8px;opacity:.7;}
+.price-per{font-size:.72rem;opacity:.7;margin-bottom:18px;}
+.price-div{height:1px;background:var(--bd);margin:18px 0;}
+.price-card.feat .price-div{background:rgba(255,255,255,.2);}
+.price-f{display:flex;align-items:center;gap:9px;font-size:.8rem;font-weight:300;margin-bottom:11px;}
+.price-f::before{content:'✦';font-size:.62rem;color:var(--gold);flex-shrink:0;}
+.price-card.feat .price-f::before{color:rgba(255,255,255,.85);}
+.price-cta{display:block;width:100%;text-align:center;text-decoration:none;margin-top:24px;padding:13px;border-radius:999px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .4s var(--ease);}
+.price-cta.s{background:rgba(44,42,38,.05);color:var(--ink);border:1px solid var(--bd);}
+.price-cta.s:hover{background:rgba(44,42,38,.09);}
+.price-cta.h{background:#fff;color:var(--sage2);}
+.price-cta.h:hover{transform:scale(1.03);}
+
+/* TESTIMONIAL BIG */
+.quote-wrap{background:var(--bg2);text-align:center;}
+.quote-mark{font-family:var(--serif);font-size:5rem;color:var(--sage);line-height:.5;}
+.quote-text{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:400;font-style:italic;line-height:1.4;color:var(--ink);max-width:880px;margin:24px auto 28px;}
+.quote-author{display:flex;align-items:center;gap:12px;justify-content:center;}
+.quote-author img{width:46px;height:46px;border-radius:50%;object-fit:cover;}
+.quote-name{font-size:.85rem;font-weight:600;color:var(--ink);}
+.quote-tag{font-size:.66rem;color:var(--ink2);}
+
+/* CTA */
+.cta{position:relative;overflow:hidden;text-align:center;padding:clamp(90px,12vw,150px) clamp(20px,5vw,80px);}
+.cta-bg{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&h=900&fit=crop&q=75');background-size:cover;background-position:center;}
+.cta-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(110,126,98,.82),rgba(110,126,98,.88));}
+.cta-c{position:relative;z-index:2;color:#fff;}
+.cta-h{font-family:var(--serif);font-size:clamp(2.6rem,7vw,5.5rem);font-weight:500;line-height:1.02;margin-bottom:16px;}
+.cta-h i{font-style:italic;}
+.cta-p{font-size:.95rem;font-weight:300;opacity:.92;max-width:420px;margin:0 auto 36px;line-height:1.8;}
+.cta .btn-p{background:#fff;color:var(--sage2);}
+.cta .btn-p:hover{background:var(--bg);}
+.cta .btn-p .ico{background:rgba(110,126,98,.15);}
+.cta .btn-g{color:#fff;border-color:rgba(255,255,255,.3);}
+.cta .btn-g:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5);}
+
+/* FOOTER */
+footer{padding:44px clamp(20px,5vw,80px);border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+.f-logo{font-family:var(--serif);font-size:1.3rem;font-weight:600;}
+.f-logo i{font-style:italic;color:var(--sage2);}
+footer p{font-size:.68rem;color:var(--ink2);}
+.f-links{display:flex;gap:20px;flex-wrap:wrap;}
+.f-links a{font-size:.68rem;color:var(--ink2);text-decoration:none;letter-spacing:.06em;transition:color .3s;}
+.f-links a:hover{color:var(--ink);}
+
+/* REVEALS */
+.rv{opacity:0;transform:translateY(28px);filter:blur(4px);transition:opacity .85s var(--ease),transform .85s var(--ease),filter .85s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);filter:blur(0);}
+.rv-l{opacity:0;transform:translateX(-44px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.rv-l.in{opacity:1;transform:translateX(0);}
+.rv-r{opacity:0;transform:translateX(44px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.rv-r.in{opacity:1;transform:translateX(0);}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+/* MOBILE */
+@media(max-width:880px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{order:-1;max-width:380px;margin:0 auto;}
+  .about-grid{grid-template-columns:1fr;}
+  .serv-grid,.price-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  nav{padding:9px 9px 9px 18px;top:12px;width:calc(100% - 18px);}
+  .nav-links,.nav-pill{display:none;}.ham{display:flex;}
+  .hero{padding:110px 18px 50px;}
+  .hero-btns{width:100%;}.btn-p,.btn-g{flex:1;justify-content:center;}
+  .hero-badge{left:0;}
+  .serv-grid,.price-grid{grid-template-columns:1fr;}
+  .price-card.feat{order:-1;}
+  .about-imgs .a2{margin-top:0;}
+  .rv-l,.rv-r{transform:translateY(22px);}.rv-l.in,.rv-r.in{transform:translateY(0);}
+  footer{flex-direction:column;text-align:center;padding:32px 18px;}.f-links{justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">XYZ <i>Wellness</i></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-pill">Book Now <span>↗</span></a>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-ov" id="mob">
+  <a href="#services" onclick="cM()">Services</a>
+  <a href="#about" onclick="cM()">About</a>
+  <a href="#pricing" onclick="cM()">Pricing</a>
+  <a href="#contact" onclick="cM()">Book Now</a>
+  <a href="#contact" onclick="cM()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-orb a"></div>
+  <div class="hero-orb b"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">A Sanctuary in Dubai</div>
+      <h1 class="hero-h">Rest. Restore.<br/><i>Rebalance.</i></h1>
+      <p class="hero-p">A calm escape from the city. Expert therapists, holistic treatments, and a space designed to help your body and mind find stillness again.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-p">Book a Session <div class="ico">↗</div></a>
+        <a href="#services" class="btn-g">Explore Services</a>
+      </div>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><div class="n">10+</div><div class="l">Therapies Offered</div></div>
+        <div class="hero-meta-item"><div class="n">5★</div><div class="l">Rated by Guests</div></div>
+        <div class="hero-meta-item"><div class="n">7</div><div class="l">Days a Week</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-img-shell">
+        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=85&fit=crop" alt="Wellness spa"/>
+      </div>
+      <div class="hero-badge">
+        <div class="ic">🌿</div>
+        <div><div class="t1">100% Natural</div><div class="t2">Organic products only</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <div class="strip-item">Massage Therapy</div><div class="strip-item">Facial & Skincare</div><div class="strip-item">Yoga & Meditation</div><div class="strip-item">Aromatherapy</div><div class="strip-item">Body Treatments</div><div class="strip-item">Reflexology</div>
+    <div class="strip-item">Massage Therapy</div><div class="strip-item">Facial & Skincare</div><div class="strip-item">Yoga & Meditation</div><div class="strip-item">Aromatherapy</div><div class="strip-item">Body Treatments</div><div class="strip-item">Reflexology</div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="sec-max">
+    <div class="serv-head">
+      <div class="eyebrow rv">Our Treatments</div>
+      <h2 class="sec-h rv d1">Treatments crafted<br/>for <i>complete calm</i></h2>
+    </div>
+    <div class="serv-grid">
+      <div class="serv-card rv">
+        <div class="serv-img"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80&fit=crop" alt="Massage" loading="lazy"/></div>
+        <div class="serv-body"><div class="serv-icon">💆</div><div class="serv-title">Massage Therapy</div><div class="serv-desc">Deep tissue, Swedish, and hot stone massage to release tension and restore circulation.</div><div class="serv-price">From AED 180 · 60 min</div></div>
+      </div>
+      <div class="serv-card rv d1">
+        <div class="serv-img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&fit=crop" alt="Facial" loading="lazy"/></div>
+        <div class="serv-body"><div class="serv-icon">✨</div><div class="serv-title">Facials & Skincare</div><div class="serv-desc">Customised facials using organic products to cleanse, hydrate and renew your skin.</div><div class="serv-price">From AED 220 · 75 min</div></div>
+      </div>
+      <div class="serv-card rv d2">
+        <div class="serv-img"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80&fit=crop" alt="Yoga" loading="lazy"/></div>
+        <div class="serv-body"><div class="serv-icon">🧘</div><div class="serv-title">Yoga & Meditation</div><div class="serv-desc">Guided sessions for flexibility, breath and mental clarity — all levels welcome.</div><div class="serv-price">From AED 90 · class</div></div>
+      </div>
+      <div class="serv-card rv">
+        <div class="serv-img"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80&fit=crop" alt="Aromatherapy" loading="lazy"/></div>
+        <div class="serv-body"><div class="serv-icon">🕯️</div><div class="serv-title">Aromatherapy</div><div class="serv-desc">Essential-oil treatments designed to calm the nervous system and lift your mood.</div><div class="serv-price">From AED 160 · 60 min</div></div>
+      </div>
+      <div class="serv-card rv d1">
+        <div class="serv-img"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80&fit=crop" alt="Body treatment" loading="lazy"/></div>
+        <div class="serv-body"><div class="serv-icon">🌸</div><div class="serv-title">Body Treatments</div><div class="serv-desc">Scrubs, wraps and detox rituals that leave your skin glowing and your body renewed.</div><div class="serv-price">From AED 240 · 90 min</div></div>
+      </div>
+      <div class="serv-card rv d2">
+        <div class="serv-img"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&fit=crop" alt="Reflexology" loading="lazy"/></div>
+        <div class="serv-body"><div class="serv-icon">👣</div><div class="serv-title">Reflexology</div><div class="serv-desc">Pressure-point foot therapy to relieve stress and rebalance your energy.</div><div class="serv-price">From AED 130 · 45 min</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec about" id="about">
+  <div class="sec-max">
+    <div class="about-grid">
+      <div class="about-imgs rv-l">
+        <div class="shell"><img class="tall" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=500&q=80&fit=crop" alt="" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=500&q=80&fit=crop'"/></div>
+        <div class="shell a2"><img class="tall" src="https://images.unsplash.com/photo-1556760544-74068565f05c?w=500&q=80&fit=crop" alt="" loading="lazy"/></div>
+      </div>
+      <div>
+        <div class="eyebrow rv">Why XYZ Wellness</div>
+        <h2 class="sec-h rv d1">A space designed<br/>around <i>your peace</i></h2>
+        <p class="sec-sub rv d2" style="margin-top:18px;">Every detail — the light, the scent, the silence — is intentional. We created a place where you can truly switch off and let your body do what it does best: heal.</p>
+        <div class="about-list">
+          <div class="about-li rv"><div class="dot">🌿</div><div><div class="t1">Certified Therapists</div><div class="t2">Trained, experienced and genuinely caring practitioners.</div></div></div>
+          <div class="about-li rv d1"><div class="dot">🧴</div><div><div class="t1">Organic Products Only</div><div class="t2">Natural, cruelty-free, and kind to your skin and the planet.</div></div></div>
+          <div class="about-li rv d2"><div class="dot">🤍</div><div><div class="t1">Private & Tranquil</div><div class="t2">Calm private rooms — your session, your space, your pace.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="sec-max" style="text-align:center;">
+    <div class="eyebrow rv" style="justify-content:center;">Membership</div>
+    <h2 class="sec-h rv d1">Wellness, made a <i>habit</i></h2>
+    <p class="sec-sub rv d2" style="margin:14px auto 0;">Join as a member and make self-care part of your routine — at a price that rewards consistency.</p>
+    <div class="price-grid">
+      <div class="price-card rv-l"><div class="price-name">Day Pass</div><div class="price-amt"><sup>AED </sup>180</div><div class="price-per">per visit</div><div class="price-div"></div>
+        <div class="price-f">One treatment of choice</div><div class="price-f">Access to relaxation lounge</div><div class="price-f">Herbal tea service</div><div class="price-f">No commitment</div>
+        <a href="#contact" class="price-cta s">Book Now</a>
+      </div>
+      <div class="price-card feat rv"><div class="price-badge">Most Loved</div><div class="price-name">Monthly</div><div class="price-amt"><sup>AED </sup>650</div><div class="price-per">per month</div><div class="price-div"></div>
+        <div class="price-f">4 treatments per month</div><div class="price-f">Unlimited yoga classes</div><div class="price-f">10% off all add-ons</div><div class="price-f">Priority booking</div><div class="price-f">Free wellness consult</div>
+        <a href="#contact" class="price-cta h">Become a Member</a>
+      </div>
+      <div class="price-card rv-r"><div class="price-badge">Best Value</div><div class="price-name">Quarterly</div><div class="price-amt"><sup>AED </sup>1,700</div><div class="price-per">for 3 months</div><div class="price-div"></div>
+        <div class="price-f">Everything in Monthly</div><div class="price-f">2 extra treatments / month</div><div class="price-f">15% off all add-ons</div><div class="price-f">Bring-a-friend pass</div><div class="price-f">Seasonal gift ritual</div>
+        <a href="#contact" class="price-cta s">Book Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="sec quote-wrap">
+  <div class="sec-max rv">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">I walked in carrying the whole week on my shoulders and walked out feeling like a different person. This is the calmest place in the city.</p>
+    <div class="quote-author">
+      <img src="https://i.pravatar.cc/80?img=32" alt=""/>
+      <div style="text-align:left;"><div class="quote-name">Layla H.</div><div class="quote-tag">Member · 1 year</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="cta-bg"></div><div class="cta-ov"></div>
+  <div class="cta-c">
+    <div class="eyebrow rv" style="justify-content:center;color:rgba(255,255,255,.85);">Begin Your Ritual</div>
+    <h2 class="cta-h rv d1">Your moment of<br/><i>calm awaits</i></h2>
+    <p class="cta-p rv d2">Book your first session today. Walk in stressed, walk out restored.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;" class="rv d3">
+      <a href="tel:+971500000000" class="btn-p">Call to Book <div class="ico">📞</div></a>
+      <a href="https://wa.me/971500000000" class="btn-g" target="_blank" rel="noopener">WhatsApp Us</a>
+    </div>
+    <p style="margin-top:24px;font-size:.68rem;opacity:.85;" class="rv d3">📍 Dubai, UAE &nbsp;·&nbsp; Open 7 days · 10 AM – 9 PM</p>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">XYZ <i>Wellness</i></div>
+  <div class="f-links"><a href="#services">Services</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
+  <p>© 2026 XYZ Wellness · Dubai, UAE</p>
+</footer>
+
+<script>
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+function cM(){ham.classList.remove('open');mob.classList.remove('open');}
+
+const navEl=document.getElementById('nav');
+window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',(window.scrollY||0)>20);},{passive:true});
+
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
