@@ -70,13 +70,15 @@ nav.scrolled{background:rgba(4,4,4,.92);box-shadow:0 8px 40px rgba(0,0,0,.5);}
   filter:brightness(.42) contrast(1.1);
   will-change:transform,filter,opacity;
 }
-/* moving light sweep */
+/* moving light sweep — rich multi-colour gradient */
 .hero-light{
   position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:screen;
-  background:radial-gradient(ellipse 45% 70% at 50% 45%,rgba(255,120,40,.32) 0%,rgba(232,57,14,.12) 35%,transparent 70%);
-  will-change:transform,opacity;
+  background:
+    radial-gradient(ellipse 42% 66% at 50% 42%,rgba(255,198,112,.30) 0%,rgba(255,120,40,.18) 26%,rgba(214,44,82,.11) 50%,transparent 72%),
+    radial-gradient(ellipse 80% 50% at 50% 60%,rgba(120,70,210,.07) 0%,transparent 60%);
+  will-change:transform,opacity,filter;
 }
-/* RS letters */
+/* RS letters — metallic with warm base + slow shimmer */
 .hero-rs{
   position:relative;z-index:3;text-align:center;line-height:.82;pointer-events:none;
   will-change:transform,opacity,filter;
@@ -84,11 +86,13 @@ nav.scrolled{background:rgba(4,4,4,.92);box-shadow:0 8px 40px rgba(0,0,0,.5);}
 .hero-rs .rs{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(8rem,32vw,24rem);letter-spacing:.02em;
-  background:linear-gradient(180deg,#fff 0%,#bbb 60%,#777 100%);
+  background:linear-gradient(165deg,#ffffff 0%,#f3ede6 38%,#e9ddcf 54%,#d49a5e 80%,#b8763e 100%);
+  background-size:100% 220%;
   -webkit-background-clip:text;background-clip:text;color:transparent;
-  filter:drop-shadow(0 0 60px rgba(232,57,14,.4));
-  display:block;
+  filter:drop-shadow(0 3px 26px rgba(232,57,14,.42)) drop-shadow(0 0 64px rgba(255,150,60,.28));
+  display:block;animation:sheen 6.5s ease-in-out infinite;
 }
+@keyframes sheen{0%,100%{background-position:50% 8%}50%{background-position:50% 92%}}
 .hero-rs .club{
   font-family:'Bebas Neue',sans-serif;
   font-size:clamp(1rem,4vw,2.4rem);letter-spacing:.42em;color:var(--w);
@@ -121,9 +125,7 @@ nav.scrolled{background:rgba(4,4,4,.92);box-shadow:0 8px 40px rgba(0,0,0,.5);}
 
 /* TICKER */
 .ticker{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:16px 0;overflow:hidden;position:relative;z-index:5;}
-.ticker-track{display:flex;width:max-content;animation:tick 30s linear infinite;}
-.ticker-track:hover{animation-play-state:paused;}
-@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ticker-track{display:flex;width:max-content;will-change:transform;}
 .tick-item{display:flex;align-items:center;gap:12px;padding:0 38px;font-size:.57rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);white-space:nowrap;}
 .tick-item strong{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.04em;color:var(--w);margin-right:4px;}
 .tick-dot{width:4px;height:4px;border-radius:50%;background:var(--acc);flex-shrink:0;}
@@ -142,9 +144,7 @@ nav.scrolled{background:rgba(4,4,4,.92);box-shadow:0 8px 40px rgba(0,0,0,.5);}
 .carousel-outer::before,.carousel-outer::after{content:'';position:absolute;top:0;bottom:0;z-index:2;pointer-events:none;width:120px;}
 .carousel-outer::before{left:0;background:linear-gradient(to right,var(--bg2),transparent);}
 .carousel-outer::after{right:0;background:linear-gradient(to left,var(--bg2),transparent);}
-.carousel-track{display:flex;gap:14px;width:max-content;animation:slide 38s linear infinite;padding:0 14px;}
-.carousel-track:hover{animation-play-state:paused;}
-@keyframes slide{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.carousel-track{display:flex;gap:14px;width:max-content;padding:0 14px;will-change:transform;}
 .prog-card{width:280px;flex-shrink:0;border-radius:var(--r);overflow:hidden;position:relative;background:var(--bg3);border:1px solid var(--bd);transition:transform .55s var(--ease),border-color .4s;}
 .prog-card:hover{transform:translateY(-6px);border-color:rgba(232,57,14,.25);}
 .prog-card img{width:100%;height:360px;object-fit:cover;display:block;transition:transform .7s var(--ease);}
@@ -504,10 +504,11 @@ function onScroll(){
   // progress 0→1 through the hero scroll wrap
   const p=clamp((-rect.top)/total,0,1);
 
-  // Light sweeps left → right across full progress
+  // Light sweeps left → right + hue shifts across scroll for colour variety
   const lx=lerp(-60,60,p);            // % translateX
   heroLight.style.transform=`translateX(${lx}%)`;
   heroLight.style.opacity=String(lerp(.5,1,Math.sin(p*Math.PI))); // brightest mid-way
+  heroLight.style.filter=`hue-rotate(${lerp(-18,40,p)}deg) saturate(1.1)`;
 
   // Silhouette: dim → lit as light passes, slight zoom
   const bright=lerp(.55,1.05,clamp(p*1.4,0,1));
@@ -547,6 +548,29 @@ function onScroll(){
 window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(onScroll);ticking=true;}},{passive:true});
 window.addEventListener('resize',onScroll);
 onScroll();
+
+// ── Smooth marquee: runs at speed, eases to slower on hover (never hard-stops) ──
+function marquee(track,baseSpeed){
+  if(!track)return;
+  let offset=0,speed=baseSpeed,target=baseSpeed,last=performance.now();
+  let half=track.scrollWidth/2;
+  window.addEventListener('resize',()=>{half=track.scrollWidth/2;});
+  const wrap=track.parentElement;
+  wrap.addEventListener('mouseenter',()=>{target=baseSpeed*0.28;});
+  wrap.addEventListener('mouseleave',()=>{target=baseSpeed;});
+  function frame(now){
+    const dt=Math.min((now-last)/1000,0.05);last=now;
+    speed+=(target-speed)*Math.min(1,dt*3.5);   // ease speed toward target
+    offset+=speed*dt;
+    if(offset<=-half)offset+=half;
+    if(offset>0)offset-=half;
+    track.style.transform=`translateX(${offset}px)`;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+marquee(document.querySelector('.ticker-track'),-55);     // px/sec, left
+marquee(document.querySelector('.carousel-track'),-48);
 
 // Scroll reveals
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
