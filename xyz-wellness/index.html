@@ -17,7 +17,7 @@
   --bd:rgba(44,42,38,.1);
   --r:1.75rem;--rs:calc(var(--r) - 6px);
   --ease:cubic-bezier(0.32,0.72,0,1);
-  --serif:'Cormorant Garamond',serif;
+  --serif:'Poppins',sans-serif;
   --sans:'Poppins',sans-serif;
 }
 html{scroll-behavior:smooth;}
@@ -28,7 +28,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 28px);max-width:900px;background:rgba(251,248,242,.7);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--bd);border-radius:999px;padding:11px 11px 11px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:box-shadow .4s var(--ease),background .4s var(--ease);}
 nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,38,.08);}
 .nav-logo{font-family:var(--serif);font-size:1.35rem;font-weight:600;letter-spacing:.02em;color:var(--ink);flex-shrink:0;}
-.nav-logo i{font-style:italic;color:var(--sage2);}
+.nav-logo i{font-style:normal;font-weight:300;color:var(--sage2);}
 .nav-links{display:flex;gap:24px;list-style:none;}
 .nav-links a{font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);text-decoration:none;transition:color .4s var(--ease);}
 .nav-links a:hover{color:var(--ink);}
@@ -57,8 +57,8 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .hero-grid{position:relative;z-index:2;max-width:1180px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,5vw,72px);align-items:center;}
 .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--sage2);margin-bottom:26px;}
 .hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--sage2);}
-.hero-h{font-family:var(--serif);font-size:clamp(3.2rem,8vw,6.5rem);font-weight:500;line-height:1.0;letter-spacing:-.01em;color:var(--ink);}
-.hero-h i{font-style:italic;color:var(--sage2);}
+.hero-h{font-family:var(--serif);font-size:clamp(3rem,7.4vw,5.9rem);font-weight:600;line-height:1.04;letter-spacing:-.035em;color:var(--ink);}
+.hero-h i{font-style:normal;font-weight:300;color:var(--sage2);}
 .hero-p{font-size:1.02rem;font-weight:300;color:var(--ink2);line-height:1.9;max-width:440px;margin:28px 0 36px;letter-spacing:.005em;}
 .hero-btns{display:flex;gap:12px;align-items:center;flex-wrap:wrap;}
 .hero-meta{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
@@ -91,8 +91,8 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .sec-max{max-width:1180px;margin:0 auto;}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.7rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--sage2);margin-bottom:18px;}
 .eyebrow::before{content:'';width:26px;height:1px;background:var(--sage2);}
-.sec-h{font-family:var(--serif);font-size:clamp(2.4rem,6vw,4.8rem);font-weight:500;line-height:1.02;letter-spacing:-.01em;color:var(--ink);}
-.sec-h i{font-style:italic;color:var(--sage2);}
+.sec-h{font-family:var(--serif);font-size:clamp(2.2rem,5.4vw,4.2rem);font-weight:600;line-height:1.06;letter-spacing:-.032em;color:var(--ink);}
+.sec-h i{font-style:normal;font-weight:300;color:var(--sage2);}
 .sec-sub{font-size:1rem;font-weight:300;color:var(--ink2);line-height:1.9;max-width:460px;letter-spacing:.005em;}
 
 /* SERVICES */
@@ -105,7 +105,9 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .serv-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease);}
 .serv-card:hover .serv-img img{transform:scale(1.05);}
 .serv-body{padding:26px 26px 30px;}
-.serv-icon{font-size:1.3rem;margin-bottom:12px;}
+.serv-icon{margin-bottom:16px;color:var(--sage2);}
+.serv-icon svg{width:26px;height:26px;stroke:currentColor;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.hero-badge .ic svg,.about-li .dot svg{width:18px;height:18px;stroke:var(--sage2);stroke-width:1.5;fill:none;stroke-linecap:round;stroke-linejoin:round;}
 .serv-title{font-family:var(--serif);font-size:1.7rem;font-weight:500;color:var(--ink);margin-bottom:8px;}
 .serv-desc{font-size:.82rem;font-weight:300;color:var(--ink2);line-height:1.75;margin-bottom:16px;}
 .serv-price{font-size:.72rem;font-weight:600;letter-spacing:.06em;color:var(--gold);text-transform:uppercase;}
@@ -131,8 +133,8 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .price-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(44,42,38,.25);}
 .price-badge{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:#fff;padding:4px 12px;border-radius:999px;margin-bottom:16px;}
 .price-card.feat .price-badge{background:rgba(255,255,255,.22);}
-.price-name{font-family:var(--serif);font-size:1.9rem;font-weight:500;margin-bottom:4px;}
-.price-amt{font-family:var(--serif);font-size:3.4rem;font-weight:500;line-height:1;margin-top:10px;}
+.price-name{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:-.02em;margin-bottom:4px;}
+.price-amt{font-family:var(--serif);font-size:3.4rem;font-weight:600;letter-spacing:-.03em;line-height:1;margin-top:10px;}
 .price-amt sup{font-size:1.1rem;vertical-align:top;margin-top:8px;opacity:.7;}
 .price-per{font-size:.72rem;opacity:.7;margin-bottom:18px;}
 .price-div{height:1px;background:var(--bd);margin:18px 0;}
@@ -149,7 +151,7 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 /* TESTIMONIAL BIG */
 .quote-wrap{background:var(--bg2);text-align:center;}
 .quote-mark{font-family:var(--serif);font-size:5rem;color:var(--sage);line-height:.5;}
-.quote-text{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:400;font-style:italic;line-height:1.4;color:var(--ink);max-width:880px;margin:24px auto 28px;}
+.quote-text{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:300;font-style:normal;line-height:1.45;letter-spacing:-.02em;color:var(--ink);max-width:880px;margin:24px auto 28px;}
 .quote-author{display:flex;align-items:center;gap:12px;justify-content:center;}
 .quote-author img{width:46px;height:46px;border-radius:50%;object-fit:cover;}
 .quote-name{font-size:.85rem;font-weight:600;color:var(--ink);}
@@ -160,8 +162,8 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .cta-bg{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&h=900&fit=crop&q=75');background-size:cover;background-position:center;}
 .cta-ov{position:absolute;inset:0;z-index:1;background:linear-gradient(to bottom,rgba(110,126,98,.82),rgba(110,126,98,.88));}
 .cta-c{position:relative;z-index:2;color:#fff;}
-.cta-h{font-family:var(--serif);font-size:clamp(2.6rem,7vw,5.5rem);font-weight:500;line-height:1.02;margin-bottom:16px;}
-.cta-h i{font-style:italic;}
+.cta-h{font-family:var(--serif);font-size:clamp(2.4rem,6.4vw,4.8rem);font-weight:600;line-height:1.06;letter-spacing:-.032em;margin-bottom:16px;}
+.cta-h i{font-style:normal;font-weight:300;}
 .cta-p{font-size:.95rem;font-weight:300;opacity:.92;max-width:420px;margin:0 auto 36px;line-height:1.8;}
 .cta .btn-p{background:#fff;color:var(--sage2);}
 .cta .btn-p:hover{background:var(--bg);}
@@ -171,8 +173,8 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 
 /* FOOTER */
 footer{padding:44px clamp(20px,5vw,80px);border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
-.f-logo{font-family:var(--serif);font-size:1.3rem;font-weight:600;}
-.f-logo i{font-style:italic;color:var(--sage2);}
+.f-logo{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:-.01em;}
+.f-logo i{font-style:normal;font-weight:300;color:var(--sage2);}
 footer p{font-size:.68rem;color:var(--ink2);}
 .f-links{display:flex;gap:20px;flex-wrap:wrap;}
 .f-links a{font-size:.68rem;color:var(--ink2);text-decoration:none;letter-spacing:.06em;transition:color .3s;}
@@ -254,7 +256,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
         <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800&q=85&fit=crop" alt="Wellness spa"/>
       </div>
       <div class="hero-badge">
-        <div class="ic">🌿</div>
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 20.5A7.5 7.5 0 0 1 3.5 13c0-5.2 4.6-9.5 17-9.5 0 8.3-4.3 13.6-9.5 17Z"/><path d="M3.8 20.2c3.8-6 8-8.2 13.4-9.4"/></svg></div>
         <div><div class="t1">100% Natural</div><div class="t2">Organic products only</div></div>
       </div>
     </div>
@@ -279,35 +281,35 @@ footer p{font-size:.68rem;color:var(--ink2);}
     <div class="serv-grid">
       <div class="serv-card rv">
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80&fit=crop" alt="Massage" loading="lazy"/></div>
-        <div class="serv-body"><div class="serv-icon">💆</div><div class="serv-title">Massage Therapy</div><div class="serv-desc">Deep tissue, Swedish, and hot stone massage to release tension and restore circulation.</div><div class="serv-price">From AED 180 · 60 min</div></div>
+        <div class="serv-body"><div class="serv-icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="15.5" rx="8" ry="4"/><ellipse cx="12" cy="9.5" rx="5.5" ry="2.8"/></svg></div><div class="serv-title">Massage Therapy</div><div class="serv-desc">Deep tissue, Swedish, and hot stone massage to release tension and restore circulation.</div><div class="serv-price">From AED 180 · 60 min</div></div>
       </div>
       <div class="serv-card rv d1">
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80&fit=crop" alt="Facial" loading="lazy"/></div>
-        <div class="serv-body"><div class="serv-icon">✨</div><div class="serv-title">Facials & Skincare</div><div class="serv-desc">Customised facials using organic products to cleanse, hydrate and renew your skin.</div><div class="serv-price">From AED 220 · 75 min</div></div>
+        <div class="serv-body"><div class="serv-icon"><svg viewBox="0 0 24 24"><path d="M12 2c.7 5 3.3 7.6 8 8.3-4.7.7-7.3 3.3-8 8.3-.7-5-3.3-7.6-8-8.3 4.7-.7 7.3-3.3 8-8.3Z"/></svg></div><div class="serv-title">Facials & Skincare</div><div class="serv-desc">Customised facials using organic products to cleanse, hydrate and renew your skin.</div><div class="serv-price">From AED 220 · 75 min</div></div>
       </div>
       <div class="serv-card rv d2">
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80&fit=crop" alt="Yoga" loading="lazy"/></div>
-        <div class="serv-body"><div class="serv-icon">🧘</div><div class="serv-title">Yoga & Meditation</div><div class="serv-desc">Guided sessions for flexibility, breath and mental clarity — all levels welcome.</div><div class="serv-price">From AED 90 · class</div></div>
+        <div class="serv-body"><div class="serv-icon"><svg viewBox="0 0 24 24"><path d="M12 21c-5.5 0-9.5-3.2-9.5-7.2 2.2 0 4.3 1.1 5.4 2.3.1-3.4 1.9-6.6 4.1-8.6 2.2 2 4 5.2 4.1 8.6 1.1-1.2 3.2-2.3 5.4-2.3 0 4-4 7.2-9.5 7.2Z"/><circle cx="12" cy="4.6" r="1.8"/></svg></div><div class="serv-title">Yoga & Meditation</div><div class="serv-desc">Guided sessions for flexibility, breath and mental clarity — all levels welcome.</div><div class="serv-price">From AED 90 · class</div></div>
       </div>
       <div class="serv-card rv">
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&q=80&fit=crop" alt="Aromatherapy" loading="lazy"/></div>
-        <div class="serv-body"><div class="serv-icon">🕯️</div><div class="serv-title">Aromatherapy</div><div class="serv-desc">Essential-oil treatments designed to calm the nervous system and lift your mood.</div><div class="serv-price">From AED 160 · 60 min</div></div>
+        <div class="serv-body"><div class="serv-icon"><svg viewBox="0 0 24 24"><path d="M12 2.5c2.2 2.8 4.3 4.8 4.3 8.2a4.3 4.3 0 0 1-8.6 0c0-1.9 1-3.3 2.4-4.7.4 1.1 1 1.7 1.7 2.1-.1-2 .1-3.7.2-5.6Z"/></svg></div><div class="serv-title">Aromatherapy</div><div class="serv-desc">Essential-oil treatments designed to calm the nervous system and lift your mood.</div><div class="serv-price">From AED 160 · 60 min</div></div>
       </div>
       <div class="serv-card rv d1">
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?w=600&q=80&fit=crop" alt="Body treatment" loading="lazy"/></div>
-        <div class="serv-body"><div class="serv-icon">🌸</div><div class="serv-title">Body Treatments</div><div class="serv-desc">Scrubs, wraps and detox rituals that leave your skin glowing and your body renewed.</div><div class="serv-price">From AED 240 · 90 min</div></div>
+        <div class="serv-body"><div class="serv-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.4"/><circle cx="12" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="12" r="2.4"/></svg></div><div class="serv-title">Body Treatments</div><div class="serv-desc">Scrubs, wraps and detox rituals that leave your skin glowing and your body renewed.</div><div class="serv-price">From AED 240 · 90 min</div></div>
       </div>
       <div class="serv-card rv d2">
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&q=80&fit=crop" alt="Reflexology" loading="lazy"/></div>
-        <div class="serv-body"><div class="serv-icon">👣</div><div class="serv-title">Reflexology</div><div class="serv-desc">Pressure-point foot therapy to relieve stress and rebalance your energy.</div><div class="serv-price">From AED 130 · 45 min</div></div>
+        <div class="serv-body"><div class="serv-icon"><svg viewBox="0 0 24 24"><path d="M12 2.5s6.5 6.6 6.5 11a6.5 6.5 0 0 1-13 0c0-4.4 6.5-11 6.5-11Z"/></svg></div><div class="serv-title">Reflexology</div><div class="serv-desc">Pressure-point foot therapy to relieve stress and rebalance your energy.</div><div class="serv-price">From AED 130 · 45 min</div></div>
       </div>
       <div class="serv-card rv">
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80&fit=crop" alt="Zumba" loading="lazy"/></div>
-        <div class="serv-body"><div class="serv-icon">💃</div><div class="serv-title">Zumba Classes</div><div class="serv-desc">High-energy dance fitness that burns, lifts your mood, and never feels like a workout.</div><div class="serv-price">From AED 70 · class</div></div>
+        <div class="serv-body"><div class="serv-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></div><div class="serv-title">Zumba Classes</div><div class="serv-desc">High-energy dance fitness that burns, lifts your mood, and never feels like a workout.</div><div class="serv-price">From AED 70 · class</div></div>
       </div>
       <div class="serv-card rv d1">
         <div class="serv-img"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80&fit=crop" alt="Personal Training" loading="lazy"/></div>
-        <div class="serv-body"><div class="serv-icon">🤸</div><div class="serv-title">1-on-1 Personal Training</div><div class="serv-desc">A dedicated trainer building a plan around your body, goals and pace — fully personal.</div><div class="serv-price">From AED 200 · session</div></div>
+        <div class="serv-body"><div class="serv-icon"><svg viewBox="0 0 24 24"><path d="M3 9v6M6 7v10M18 7v10M21 9v6M6 12h12"/></svg></div><div class="serv-title">1-on-1 Personal Training</div><div class="serv-desc">A dedicated trainer building a plan around your body, goals and pace — fully personal.</div><div class="serv-price">From AED 200 · session</div></div>
       </div>
     </div>
   </div>
@@ -326,9 +328,9 @@ footer p{font-size:.68rem;color:var(--ink2);}
         <h2 class="sec-h rv d1">A space designed<br/>around <i>your peace</i></h2>
         <p class="sec-sub rv d2" style="margin-top:18px;">Every detail — the light, the scent, the silence — is intentional. We created a place where you can truly switch off and let your body do what it does best: heal.</p>
         <div class="about-list">
-          <div class="about-li rv"><div class="dot">🌿</div><div><div class="t1">Certified Therapists</div><div class="t2">Trained, experienced and genuinely caring practitioners.</div></div></div>
-          <div class="about-li rv d1"><div class="dot">🧴</div><div><div class="t1">Organic Products Only</div><div class="t2">Natural, cruelty-free, and kind to your skin and the planet.</div></div></div>
-          <div class="about-li rv d2"><div class="dot">🤍</div><div><div class="t1">Private & Tranquil</div><div class="t2">Calm private rooms — your session, your space, your pace.</div></div></div>
+          <div class="about-li rv"><div class="dot"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><div><div class="t1">Certified Therapists</div><div class="t2">Trained, experienced and genuinely caring practitioners.</div></div></div>
+          <div class="about-li rv d1"><div class="dot"><svg viewBox="0 0 24 24"><path d="M11 20.5A7.5 7.5 0 0 1 3.5 13c0-5.2 4.6-9.5 17-9.5 0 8.3-4.3 13.6-9.5 17Z"/><path d="M3.8 20.2c3.8-6 8-8.2 13.4-9.4"/></svg></div><div><div class="t1">Organic Products Only</div><div class="t2">Natural, cruelty-free, and kind to your skin and the planet.</div></div></div>
+          <div class="about-li rv d2"><div class="dot"><svg viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.6 6.6 0 0 0 9.8 9.8Z"/></svg></div><div><div class="t1">Private & Tranquil</div><div class="t2">Calm private rooms — your session, your space, your pace.</div></div></div>
         </div>
       </div>
     </div>
