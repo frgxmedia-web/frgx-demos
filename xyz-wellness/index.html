@@ -157,6 +157,30 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .quote-name{font-size:.85rem;font-weight:600;color:var(--ink);}
 .quote-tag{font-size:.66rem;color:var(--ink2);}
 
+/* BOOKING */
+.book-wrap{background:var(--bg);}
+.book-card{max-width:760px;margin:48px auto 0;background:var(--card);border:1px solid var(--bd);border-radius:calc(var(--r)*1.1);padding:clamp(24px,4vw,44px);box-shadow:0 40px 80px -40px rgba(44,42,38,.2);}
+.book-step{margin-bottom:30px;}
+.book-step:last-of-type{margin-bottom:0;}
+.book-label{display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:16px;}
+.book-label .num{width:24px;height:24px;border-radius:50%;background:var(--sage2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;}
+.chip-row{display:flex;gap:10px;flex-wrap:wrap;}
+.chip-row.dates{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;}
+.chip{cursor:pointer;border:1px solid var(--bd);background:var(--bg);border-radius:14px;padding:12px 18px;font-size:.82rem;font-weight:500;color:var(--ink);transition:all .3s var(--ease);user-select:none;white-space:nowrap;}
+.chip:hover{border-color:var(--sage);}
+.chip.sel{background:var(--sage2);color:#fff;border-color:var(--sage2);}
+.chip.date{display:flex;flex-direction:column;align-items:center;gap:2px;min-width:64px;padding:11px 14px;text-align:center;}
+.chip.date .dow{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7;}
+.chip.date .dnum{font-family:var(--serif);font-size:1.3rem;font-weight:600;line-height:1;}
+.chip.date .mon{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;opacity:.7;}
+.book-summary{margin-top:30px;padding:20px 22px;background:rgba(138,154,126,.1);border:1px solid rgba(138,154,126,.25);border-radius:var(--rs);font-size:.86rem;color:var(--ink);line-height:1.6;}
+.book-summary b{color:var(--sage2);font-weight:600;}
+.book-confirm{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:22px;padding:16px;border:none;cursor:pointer;background:var(--sage2);color:#fff;border-radius:999px;font-family:var(--sans);font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .4s var(--ease);text-decoration:none;}
+.book-confirm:hover{background:var(--sage);transform:translateY(-2px);box-shadow:0 16px 34px -14px rgba(110,126,98,.7);}
+.book-confirm:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none;}
+.book-confirm svg{width:18px;height:18px;}
+.book-note{text-align:center;font-size:.66rem;color:var(--ink2);margin-top:14px;}
+
 /* CTA */
 .cta{position:relative;overflow:hidden;text-align:center;padding:clamp(90px,12vw,150px) clamp(20px,5vw,80px);}
 .cta-bg{position:absolute;inset:0;z-index:0;background-image:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1920&h=900&fit=crop&q=75');background-size:cover;background-position:center;}
@@ -220,7 +244,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-pill">Book Now <span>↗</span></a>
+  <a href="#book" class="nav-pill">Book Now <span>↗</span></a>
   <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -228,7 +252,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
   <a href="#services" onclick="cM()">Services</a>
   <a href="#about" onclick="cM()">About</a>
   <a href="#pricing" onclick="cM()">Pricing</a>
-  <a href="#contact" onclick="cM()">Book Now</a>
+  <a href="#book" onclick="cM()">Book Now</a>
   <a href="#contact" onclick="cM()">Contact</a>
 </div>
 
@@ -242,7 +266,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
       <h1 class="hero-h">Rest. Restore.<br/><i>Rebalance.</i></h1>
       <p class="hero-p">A calm escape from the city. Expert therapists, holistic treatments, and a space designed to help your body and mind find stillness again.</p>
       <div class="hero-btns">
-        <a href="#contact" class="btn-p">Book a Session <div class="ico">↗</div></a>
+        <a href="#book" class="btn-p">Book a Session <div class="ico">↗</div></a>
         <a href="#services" class="btn-g">Explore Services</a>
       </div>
       <div class="hero-meta">
@@ -346,7 +370,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
     <div class="price-grid">
       <div class="price-card rv-l"><div class="price-name">1 Month</div><div class="price-amt"><sup>AED </sup>150</div><div class="price-per">per month</div><div class="price-div"></div>
         <div class="price-f">4 treatments per month</div><div class="price-f">Unlimited yoga & Zumba</div><div class="price-f">Relaxation lounge access</div><div class="price-f">Herbal tea service</div><div class="price-f">No lock-in</div>
-        <a href="#contact" class="price-cta s">Book Now</a>
+        <a href="#book" class="price-cta s">Book Now</a>
       </div>
       <div class="price-card feat rv"><div class="price-badge">Most Loved</div><div class="price-name">2 Months</div><div class="price-amt"><sup>AED </sup>250</div><div class="price-per">for 2 months · save AED 50</div><div class="price-div"></div>
         <div class="price-f">Everything in 1 Month</div><div class="price-f">2 personal training sessions</div><div class="price-f">10% off all add-ons</div><div class="price-f">Priority booking</div><div class="price-f">Free wellness consult</div>
@@ -354,7 +378,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
       </div>
       <div class="price-card rv-r"><div class="price-badge">Best Value</div><div class="price-name">3 Months</div><div class="price-amt"><sup>AED </sup>350</div><div class="price-per">for 3 months · save AED 100</div><div class="price-div"></div>
         <div class="price-f">Everything in 2 Months</div><div class="price-f">4 personal training sessions</div><div class="price-f">15% off all add-ons</div><div class="price-f">Bring-a-friend pass</div><div class="price-f">Seasonal gift ritual</div>
-        <a href="#contact" class="price-cta s">Book Now</a>
+        <a href="#book" class="price-cta s">Book Now</a>
       </div>
     </div>
   </div>
@@ -373,6 +397,53 @@ footer p{font-size:.68rem;color:var(--ink2);}
 </section>
 
 <!-- CTA -->
+<!-- BOOKING CALENDAR -->
+<section class="sec book-wrap" id="book">
+  <div class="sec-max" style="text-align:center;">
+    <div class="eyebrow rv" style="justify-content:center;">Book a Session</div>
+    <h2 class="sec-h rv d1">Reserve your <i>time</i></h2>
+    <p class="sec-sub rv d2" style="margin:16px auto 0;">Pick a service, choose a day and time. We'll confirm your booking instantly over WhatsApp.</p>
+
+    <div class="book-card rv d2" style="text-align:left;">
+      <!-- Step 1: service -->
+      <div class="book-step">
+        <div class="book-label"><span class="num">1</span>Choose a service</div>
+        <div class="chip-row" id="svcRow">
+          <div class="chip sel" data-svc="1-on-1 Wellness Session">1-on-1 Wellness Session</div>
+          <div class="chip" data-svc="Mental Therapy / Counselling">Mental Therapy</div>
+          <div class="chip" data-svc="Online Zoom Session">Online Zoom Session</div>
+          <div class="chip" data-svc="Group Class">Group Class</div>
+        </div>
+      </div>
+      <!-- Step 2: date -->
+      <div class="book-step">
+        <div class="book-label"><span class="num">2</span>Pick a day</div>
+        <div class="chip-row dates" id="dateRow"></div>
+      </div>
+      <!-- Step 3: time -->
+      <div class="book-step">
+        <div class="book-label"><span class="num">3</span>Pick a time</div>
+        <div class="chip-row" id="timeRow">
+          <div class="chip" data-time="10:00 AM">10:00 AM</div>
+          <div class="chip" data-time="11:30 AM">11:30 AM</div>
+          <div class="chip" data-time="1:00 PM">1:00 PM</div>
+          <div class="chip" data-time="3:00 PM">3:00 PM</div>
+          <div class="chip" data-time="5:00 PM">5:00 PM</div>
+          <div class="chip" data-time="6:30 PM">6:30 PM</div>
+          <div class="chip" data-time="8:00 PM">8:00 PM</div>
+        </div>
+      </div>
+
+      <div class="book-summary" id="bookSummary">Select a service, day and time to continue.</div>
+      <a href="#" class="book-confirm" id="bookConfirm" target="_blank" rel="noopener" aria-disabled="true">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.86 1.21 3.06c.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg>
+        Confirm on WhatsApp
+      </a>
+      <p class="book-note">No payment now · We reply within minutes to confirm availability</p>
+    </div>
+  </div>
+</section>
+
 <section class="cta" id="contact">
   <div class="cta-bg"></div><div class="cta-ov"></div>
   <div class="cta-c">
@@ -400,6 +471,52 @@ function cM(){ham.classList.remove('open');mob.classList.remove('open');}
 
 const navEl=document.getElementById('nav');
 window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',(window.scrollY||0)>20);},{passive:true});
+
+// ── Booking calendar → WhatsApp ──
+(function(){
+  // TODO: replace with Wellness by Practice WhatsApp number (digits only, country code, no +)
+  const BOOK_WA='971547255591';
+  const dateRow=document.getElementById('dateRow');
+  if(!dateRow)return;
+  const svcRow=document.getElementById('svcRow'),timeRow=document.getElementById('timeRow');
+  const summary=document.getElementById('bookSummary'),confirm=document.getElementById('bookConfirm');
+  const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const state={svc:'1-on-1 Wellness Session',date:null,time:null};
+
+  // build next 7 days
+  const today=new Date();
+  for(let i=0;i<7;i++){
+    const d=new Date(today);d.setDate(today.getDate()+i);
+    const chip=document.createElement('div');
+    chip.className='chip date'+(i===0?'':'');
+    chip.dataset.date=`${DOW[d.getDay()]}, ${d.getDate()} ${MON[d.getMonth()]}`;
+    chip.innerHTML=`<span class="dow">${i===0?'Today':DOW[d.getDay()]}</span><span class="dnum">${d.getDate()}</span><span class="mon">${MON[d.getMonth()]}</span>`;
+    dateRow.appendChild(chip);
+  }
+
+  function single(row,el,key,attr){
+    row.querySelectorAll('.chip').forEach(c=>c.classList.remove('sel'));
+    el.classList.add('sel');state[key]=el.dataset[attr];update();
+  }
+  svcRow.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)single(svcRow,c,'svc','svc');});
+  dateRow.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)single(dateRow,c,'date','date');});
+  timeRow.addEventListener('click',e=>{const c=e.target.closest('.chip');if(c)single(timeRow,c,'time','time');});
+
+  function update(){
+    if(state.date&&state.time){
+      summary.innerHTML=`You're booking a <b>${state.svc}</b><br/>on <b>${state.date}</b> at <b>${state.time}</b>.`;
+      const msg=`Hi Wellness by Practice! I'd like to book a session:%0a%0a• Service: ${state.svc}%0a• Date: ${state.date}%0a• Time: ${state.time}%0a%0aPlease confirm availability. Thank you!`;
+      confirm.href=`https://wa.me/${BOOK_WA}?text=${msg}`;
+      confirm.removeAttribute('aria-disabled');confirm.disabled=false;
+    }else{
+      summary.innerHTML=state.date?`<b>${state.svc}</b> on <b>${state.date}</b> — now pick a time.`:`<b>${state.svc}</b> selected — now pick a day and time.`;
+      confirm.setAttribute('aria-disabled','true');
+    }
+  }
+  confirm.addEventListener('click',e=>{if(confirm.getAttribute('aria-disabled')==='true'){e.preventDefault();}});
+  // default service is preselected
+  svcRow.querySelector('.chip.sel')&&(state.svc=svcRow.querySelector('.chip.sel').dataset.svc);
+})();
 
 // Smooth marquee — eases slower on hover, never hard-stops
 function marquee(track,baseSpeed){
