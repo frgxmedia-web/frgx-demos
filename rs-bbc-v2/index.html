@@ -27,7 +27,8 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(16px,4vw,52px);transition:background .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);border-bottom:1px solid transparent;}
 nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--bd);padding-top:13px;padding-bottom:13px;}
-.nav-logo{font-family:var(--disp);font-size:1.35rem;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:9px;}
+.nav-logo{font-family:var(--disp);font-size:1.35rem;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:11px;}
+.nav-logo img{height:38px;width:38px;border-radius:50%;object-fit:cover;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.4);flex-shrink:0;}
 .nav-logo b{color:var(--acc);}
 .nav-status{display:inline-flex;align-items:center;gap:7px;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--w2);}
 .nav-status .dot{width:7px;height:7px;border-radius:50%;background:#3ED36A;box-shadow:0 0 0 0 rgba(62,211,106,.5);animation:pulse 2s infinite;}
@@ -137,23 +138,44 @@ nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(20px);-webkit-ba
 
 /* PRICING */
 .pricing-wrap{background:var(--bg2);border-top:1px solid var(--bd);}
-.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:54px;}
-.plan{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r);padding:36px 30px;transition:all .5s var(--ease);position:relative;}
+/* toggle */
+.price-toggle{display:inline-flex;gap:5px;background:var(--bg3);border:1px solid var(--bd);border-radius:999px;padding:5px;margin:34px auto 0;position:relative;}
+.pt-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;border:none;background:none;cursor:pointer;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w2);padding:12px 26px;border-radius:999px;transition:color .4s var(--ease);}
+.pt-btn svg{width:15px;height:15px;}
+.pt-btn.active{color:#fff;}
+.pt-glow{position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);background:var(--acc);border-radius:999px;z-index:1;transition:transform .45s var(--ease),background .45s var(--ease);}
+.price-toggle.pool .pt-glow{transform:translateX(100%);background:#2E8FD6;}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px;}
+.plan{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r);padding:34px 30px;transition:all .5s var(--ease);position:relative;text-align:left;}
 .plan:hover{transform:translateY(-5px);border-color:var(--bd2);}
 .plan.feat{border-color:rgba(255,45,45,.4);background:linear-gradient(180deg,rgba(255,45,45,.08),var(--bg3));}
-.plan-badge{position:absolute;top:-11px;left:30px;font-size:.52rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--acc);color:#fff;padding:5px 12px;border-radius:999px;}
-.plan-dur{font-size:.62rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);}
-.plan-price{font-family:var(--disp);font-size:4.4rem;line-height:.9;margin:14px 0 4px;}
+.price-toggle-state-pool .plan.feat{border-color:rgba(46,143,214,.5);background:linear-gradient(180deg,rgba(46,143,214,.1),var(--bg3));}
+.plan-badge{position:absolute;top:-11px;left:30px;font-size:.52rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--acc);color:#fff;padding:5px 12px;border-radius:999px;transition:background .4s var(--ease);}
+.price-toggle-state-pool .plan-badge{background:#2E8FD6;}
+.plan-dur{font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);}
+.plan-type{display:inline-flex;align-items:center;gap:6px;font-size:.56rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);background:rgba(255,45,45,.1);border:1px solid rgba(255,45,45,.22);padding:5px 11px;border-radius:999px;margin-bottom:16px;transition:all .4s var(--ease);}
+.plan-type svg{width:13px;height:13px;}
+.price-toggle-state-pool .plan-type{color:#5BB3F0;background:rgba(46,143,214,.12);border-color:rgba(46,143,214,.3);}
+.plan-price{font-family:var(--disp);font-size:4.2rem;line-height:.9;margin:8px 0 2px;}
 .plan-price sup{font-family:var(--body);font-size:1rem;font-weight:600;vertical-align:top;color:var(--w2);margin-right:4px;}
-.plan-save{display:inline-block;font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);background:rgba(255,45,45,.1);border:1px solid rgba(255,45,45,.22);padding:4px 10px;border-radius:999px;margin-bottom:18px;}
-.plan-div{height:1px;background:var(--bd);margin:18px 0;}
+.plan-permo{font-size:.72rem;font-weight:500;color:var(--w2);margin-bottom:12px;}
+.plan-permo b{color:var(--w);font-weight:700;}
+.plan-save{display:inline-block;font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);background:rgba(255,45,45,.1);border:1px solid rgba(255,45,45,.22);padding:4px 10px;border-radius:999px;margin-bottom:18px;transition:all .4s var(--ease);}
+.price-toggle-state-pool .plan-save{color:#5BB3F0;background:rgba(46,143,214,.12);border-color:rgba(46,143,214,.3);}
+.plan-div{height:1px;background:var(--bd);margin:16px 0;}
 .plan-f{display:flex;align-items:center;gap:10px;font-size:.78rem;font-weight:300;color:var(--w2);margin-bottom:12px;}
 .plan-f svg{flex-shrink:0;color:var(--acc);}
+.price-toggle-state-pool .plan-f svg{color:#5BB3F0;}
+.plan-f.pool-only{color:var(--w);display:none;}
+.price-toggle-state-pool .plan-f.pool-only{display:flex;}
+.plan-price,.plan-permo .permo-num,.type-label{transition:opacity .25s var(--ease);}
 .plan-cta{display:block;text-align:center;text-decoration:none;margin-top:24px;padding:13px;border-radius:999px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:all .4s var(--ease);}
 .plan-cta.s{background:rgba(255,255,255,.06);color:var(--w);border:1px solid var(--bd2);}
 .plan-cta.s:hover{background:rgba(255,255,255,.12);}
 .plan-cta.h{background:var(--acc);color:#fff;}
 .plan-cta.h:hover{background:var(--acc2);transform:translateY(-2px);}
+.price-toggle-state-pool .plan-cta.h{background:#2E8FD6;}
+.price-toggle-state-pool .plan-cta.h:hover{background:#3BA0E8;}
 
 /* BEFORE / AFTER */
 .ba-wrap{background:var(--bg);}
@@ -256,7 +278,7 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
 <body>
 
 <nav id="nav">
-  <div class="nav-logo">RS<b>.</b>BBC</div>
+  <div class="nav-logo"><img src="images/logo-rs.png" alt="RS Bodybuilding Club logo"/>RS<b>.</b>BBC</div>
   <ul class="nav-links">
     <li><a href="#classes">Training</a></li>
     <li><a href="#coaches">Coaches</a></li>
@@ -383,47 +405,83 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
 <section class="sec pricing-wrap" id="membership">
   <div class="sec-max" style="text-align:center;">
     <div class="eyebrow rv" style="justify-content:center;">Membership</div>
-    <h2 class="sec-h rv d1">SIMPLE PRICING.<br/><em>LONGER = BETTER.</em></h2>
-    <p class="sec-sub rv d2" style="margin:18px auto 0;">Full gym access on every plan. No lock-in. Cancel anytime.</p>
-    <div class="plans-grid">
-      <div class="plan rv">
-        <div class="plan-dur">Gym — 1 Month</div>
-        <div class="plan-price"><sup>AED</sup>150</div>
+    <h2 class="sec-h rv d1">PICK YOUR PLAN.<br/><em>COMMIT &amp; SAVE.</em></h2>
+    <p class="sec-sub rv d2" style="margin:18px auto 0;">The longer you train, the less you pay per month. No lock-in, cancel anytime.</p>
+
+    <div class="price-toggle rv d2" id="priceToggle">
+      <span class="pt-glow"></span>
+      <button class="pt-btn active" data-plan="gym">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>Gym Only
+      </button>
+      <button class="pt-btn" data-plan="pool">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>Gym + Pool
+      </button>
+    </div>
+
+    <div class="plans-grid" id="plansGrid">
+      <!-- 1 MONTH -->
+      <div class="plan rv"
+           data-gym-price="150" data-pool-price="250"
+           data-gym-mo="AED 150 / month" data-pool-mo="AED 250 / month"
+           data-gym-save="" data-pool-save="">
+        <span class="plan-type">
+          <svg class="ico-gym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>
+          <span class="type-label">Gym Only</span>
+        </span>
+        <div class="plan-dur">1 Month</div>
+        <div class="plan-price"><sup>AED</sup><span class="price-num">150</span></div>
+        <div class="plan-permo"><b class="permo-num">AED 150 / month</b></div>
         <div class="plan-div"></div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Full gym access · all equipment</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>6 workouts per muscle group</div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Workout programmes &amp; videos</div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Free body composition analysis</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Free diet &amp; nutrition plan</div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Monthly BMA checkup</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Free group classes</div>
+        <div class="plan-f pool-only"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Swimming pool · 1 hr/day</div>
         <a href="https://wa.me/971547255591" class="plan-cta s" target="_blank">Enquire</a>
       </div>
-      <div class="plan feat rv d1">
-        <div class="plan-badge">Best Value</div>
-        <div class="plan-dur">Gym + Pool — 3 Months</div>
-        <div class="plan-price"><sup>AED</sup>600</div>
-        <div class="plan-save">Pool included</div>
+      <!-- 6 MONTHS (FEATURED) -->
+      <div class="plan feat rv d1"
+           data-gym-price="550" data-pool-price="1000"
+           data-gym-mo="≈ AED 92 / month" data-pool-mo="≈ AED 167 / month"
+           data-gym-save="Save AED 350" data-pool-save="Save AED 500">
+        <div class="plan-badge">Most Popular</div>
+        <span class="plan-type">
+          <svg class="ico-gym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>
+          <span class="type-label">Gym Only</span>
+        </span>
+        <div class="plan-dur">6 Months</div>
+        <div class="plan-price"><sup>AED</sup><span class="price-num">550</span></div>
+        <div class="plan-permo"><b class="permo-num">≈ AED 92 / month</b></div>
+        <div class="plan-save">Save AED 350</div>
         <div class="plan-div"></div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Everything in 1 Month</div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Swimming pool access (1 hr/day)</div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Sauna access</div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Progress tracking</div>
+        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Monthly body composition (BMA)</div>
+        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Progress tracking &amp; programmes</div>
+        <div class="plan-f pool-only"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Pool + sauna included</div>
         <a href="https://wa.me/971547255591" class="plan-cta h" target="_blank">Join Now</a>
       </div>
-      <div class="plan rv d2">
-        <div class="plan-dur">Gym + Pool — 1 Year</div>
-        <div class="plan-price"><sup>AED</sup>1600</div>
-        <div class="plan-save">Best long-term rate</div>
+      <!-- 1 YEAR -->
+      <div class="plan rv d2"
+           data-gym-price="900" data-pool-price="1600"
+           data-gym-mo="≈ AED 75 / month" data-pool-mo="≈ AED 133 / month"
+           data-gym-save="Save AED 900 · 50%" data-pool-save="Save AED 1400">
+        <span class="plan-type">
+          <svg class="ico-gym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>
+          <span class="type-label">Gym Only</span>
+        </span>
+        <div class="plan-dur">1 Year</div>
+        <div class="plan-price"><sup>AED</sup><span class="price-num">900</span></div>
+        <div class="plan-permo"><b class="permo-num">≈ AED 75 / month</b></div>
+        <div class="plan-save">Save AED 900 · 50%</div>
         <div class="plan-div"></div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Everything in 3 Months</div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Full year pool &amp; sauna</div>
+        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Everything in 6 Months</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Priority coaching slots</div>
-        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Annual body composition report</div>
+        <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Best rate locked for a year</div>
+        <div class="plan-f pool-only"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Full year pool &amp; sauna</div>
         <a href="https://wa.me/971547255591" class="plan-cta s" target="_blank">Enquire</a>
       </div>
     </div>
-    <p style="margin-top:22px;font-size:.7rem;color:var(--w2);" class="rv">Gym only: 1M AED 150 · 3M AED 350 · 6M AED 550 · 1Y AED 900 &nbsp;|&nbsp; Pool only: 1M AED 200 · 1Y AED 1000 &nbsp;|&nbsp; Walk-in: AED 25/day</p>
+    <p style="margin-top:24px;font-size:.7rem;color:var(--w2);" class="rv">Also available: 3-month plans &nbsp;·&nbsp; Pool-only memberships &nbsp;·&nbsp; Day pass from AED 25 &nbsp;·&nbsp; Free fitness assessment for new members</p>
   </div>
 </section>
 
@@ -640,6 +698,32 @@ marquee(document.querySelector('.gal-track'),-38);
   function up(){dragging=false;}
   sl.addEventListener('mousedown',down);window.addEventListener('mousemove',move);window.addEventListener('mouseup',up);
   sl.addEventListener('touchstart',down,{passive:true});window.addEventListener('touchmove',move,{passive:true});window.addEventListener('touchend',up);
+})();
+
+// ── Pricing toggle (Gym Only ⇄ Gym + Pool) ──
+(function(){
+  const tg=document.getElementById('priceToggle'),grid=document.getElementById('plansGrid');
+  if(!tg||!grid)return;
+  const btns=tg.querySelectorAll('.pt-btn');
+  const gymIco='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>';
+  const poolIco='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>';
+  function apply(plan){
+    const pool=plan==='pool';
+    tg.classList.toggle('pool',pool);
+    grid.classList.toggle('price-toggle-state-pool',pool);
+    btns.forEach(b=>b.classList.toggle('active',b.dataset.plan===plan));
+    grid.querySelectorAll('.plan').forEach(card=>{
+      card.querySelector('.price-num').textContent=card.getAttribute(pool?'data-pool-price':'data-gym-price');
+      card.querySelector('.permo-num').textContent=card.getAttribute(pool?'data-pool-mo':'data-gym-mo');
+      const sv=card.querySelector('.plan-save');
+      if(sv){const t=card.getAttribute(pool?'data-pool-save':'data-gym-save');sv.textContent=t;sv.style.display=t?'inline-block':'none';}
+      const tl=card.querySelector('.type-label'),ti=card.querySelector('.plan-type svg');
+      if(tl)tl.textContent=pool?'Gym + Pool':'Gym Only';
+      if(ti)ti.outerHTML=(pool?poolIco:gymIco).replace('<svg','<svg class="ico-gym"');
+    });
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.plan)));
+  apply('gym');
 })();
 
 // Reveals
