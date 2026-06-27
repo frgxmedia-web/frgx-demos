@@ -64,11 +64,13 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .hero-meta{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
 .hero-meta-item .n{font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--ink);line-height:1;}
 .hero-meta-item .l{font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin-top:5px;}
-.hero-visual{position:relative;}
-.hero-img-shell{border-radius:calc(var(--r)*1.3);overflow:hidden;position:relative;box-shadow:0 40px 80px -20px rgba(44,42,38,.28);border:1px solid var(--bd);aspect-ratio:4/5;}
-.hero-img-shell .bg-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;z-index:0;}
-.hero-img-shell .fg-person{position:relative;z-index:1;width:100%;height:62%;object-fit:cover;object-position:top center;display:block;}
-.hero-badge{position:absolute;bottom:24px;left:-20px;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px 22px;box-shadow:0 20px 50px -20px rgba(44,42,38,.25);display:flex;align-items:center;gap:12px;}
+.hero-visual{position:relative;padding-top:46px;}
+/* Frame = the "box". Portrait sits inside; head pops above the top edge when a
+   cut-out (transparent) photo is supplied. Uses --pop to lift the image up. */
+.hero-frame{position:relative;border-radius:calc(var(--r)*1.3);aspect-ratio:1/1.04;background:radial-gradient(120% 90% at 50% 8%,#F1EADC 0%,#E7DDCC 55%,#DED2BD 100%);box-shadow:0 40px 90px -28px rgba(44,42,38,.34);border:1px solid var(--bd);overflow:visible;}
+.hero-frame::after{content:'';position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.5);pointer-events:none;}
+.hero-frame .pop{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:94%;height:calc(100% + var(--pop,46px));object-fit:cover;object-position:top center;border-radius:calc(var(--r)*1.1);display:block;-webkit-mask-image:linear-gradient(to bottom,transparent 0,transparent calc(var(--pop,46px) - 14px),#000 calc(var(--pop,46px) + 18px));mask-image:linear-gradient(to bottom,transparent 0,transparent calc(var(--pop,46px) - 14px),#000 calc(var(--pop,46px) + 18px));}
+.hero-badge{position:absolute;bottom:24px;left:-20px;z-index:3;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px 22px;box-shadow:0 20px 50px -20px rgba(44,42,38,.25);display:flex;align-items:center;gap:12px;}
 .hero-badge .ic{width:40px;height:40px;border-radius:50%;background:rgba(138,154,126,.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
 .hero-badge .t1{font-size:.82rem;font-weight:600;color:var(--ink);}
 .hero-badge .t2{font-size:.62rem;color:var(--ink2);margin-top:2px;}
@@ -129,30 +131,38 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 
 /* PRICING */
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;}
-.price-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:34px;transition:all .5s var(--ease);}
-.price-card.feat{background:var(--sage2);color:#fff;}
-.price-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px -28px rgba(44,42,38,.25);}
-.price-badge{display:inline-block;font-size:.55rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:#fff;padding:4px 12px;border-radius:999px;margin-bottom:16px;}
+.price-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:38px 34px;transition:transform .5s var(--ease),box-shadow .5s var(--ease);position:relative;}
+.price-card.feat{background:var(--sage2);color:#fff;transform:scale(1.05);box-shadow:0 34px 70px -30px rgba(44,42,38,.4);z-index:2;}
+.price-card:hover{transform:translateY(-8px);box-shadow:0 36px 70px -28px rgba(44,42,38,.3);}
+.price-card.feat:hover{transform:scale(1.05) translateY(-8px);}
+.price-badge{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;background:var(--gold);color:#fff;padding:5px 14px;border-radius:999px;margin-bottom:18px;}
 .price-card.feat .price-badge{background:rgba(255,255,255,.22);}
-.price-name{font-family:var(--serif);font-size:1.5rem;font-weight:600;letter-spacing:-.02em;margin-bottom:4px;}
-.price-amt{font-family:var(--serif);font-size:3.4rem;font-weight:600;letter-spacing:-.03em;line-height:1;margin-top:10px;}
-.price-amt sup{font-size:1.1rem;vertical-align:top;margin-top:8px;opacity:.7;}
-.price-per{font-size:.72rem;opacity:.7;margin-bottom:18px;}
+.price-name{font-family:var(--serif);font-size:1.55rem;font-weight:600;letter-spacing:-.02em;margin-bottom:14px;}
+.price-amt{display:flex;align-items:baseline;gap:11px;font-family:var(--serif);line-height:1;margin-top:6px;}
+.price-amt .cur{font-family:var(--sans);font-size:1rem;font-weight:600;letter-spacing:.1em;opacity:.65;}
+.price-amt .num{font-size:3.9rem;font-weight:600;letter-spacing:-.03em;}
+.price-per{font-size:.78rem;opacity:.72;margin-top:8px;margin-bottom:18px;font-weight:500;}
 .price-div{height:1px;background:var(--bd);margin:18px 0;}
 .price-card.feat .price-div{background:rgba(255,255,255,.2);}
-.price-f{display:flex;align-items:center;gap:9px;font-size:.8rem;font-weight:300;margin-bottom:11px;}
+.price-f{display:flex;align-items:center;gap:9px;font-size:.82rem;font-weight:300;margin-bottom:12px;}
 .price-f::before{content:'✦';font-size:.62rem;color:var(--gold);flex-shrink:0;}
 .price-card.feat .price-f::before{color:rgba(255,255,255,.85);}
-.price-cta{display:block;width:100%;text-align:center;text-decoration:none;margin-top:24px;padding:13px;border-radius:999px;font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;transition:all .4s var(--ease);}
+.price-f.hl{font-size:1rem;font-weight:600;margin-bottom:14px;letter-spacing:-.01em;}
+.price-f.hl::before{font-size:.78rem;}
+.price-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;text-align:center;text-decoration:none;margin-top:26px;padding:15px;border-radius:999px;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:all .35s var(--ease);}
+.price-cta .ar{transition:transform .35s var(--ease);}
+.price-cta:hover .ar{transform:translateX(4px);}
 .price-cta.s{background:rgba(44,42,38,.05);color:var(--ink);border:1px solid var(--bd);}
-.price-cta.s:hover{background:rgba(44,42,38,.09);}
+.price-cta.s:hover{background:var(--sage2);color:#fff;border-color:var(--sage2);transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(110,126,98,.7);}
 .price-cta.h{background:#fff;color:var(--sage2);}
-.price-cta.h:hover{transform:scale(1.03);}
+.price-cta.h:hover{transform:translateY(-2px);box-shadow:0 16px 34px -14px rgba(0,0,0,.3);}
 
 /* TESTIMONIAL BIG */
 .quote-wrap{background:var(--bg2);text-align:center;}
-.quote-mark{font-family:var(--serif);font-size:5rem;color:var(--sage);line-height:.5;}
-.quote-text{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:300;font-style:normal;line-height:1.45;letter-spacing:-.02em;color:var(--ink);max-width:880px;margin:24px auto 28px;}
+.quote-mark{font-family:var(--serif);font-size:5.5rem;color:var(--sage);line-height:.4;height:46px;}
+.quote-text{font-family:var(--serif);font-size:clamp(1.5rem,3.2vw,2.5rem);font-weight:300;font-style:normal;line-height:1.45;letter-spacing:-.02em;color:var(--ink);max-width:880px;margin:18px auto 28px;}
+.quote-name{font-weight:600;font-size:1rem;color:var(--ink);}
+.quote-tag{font-size:.74rem;color:var(--ink2);margin-top:3px;}
 .quote-author{display:flex;align-items:center;gap:12px;justify-content:center;}
 .quote-author img{width:46px;height:46px;border-radius:50%;object-fit:cover;}
 .quote-name{font-size:.85rem;font-weight:600;color:var(--ink);}
@@ -163,6 +173,10 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .book-card{max-width:760px;margin:48px auto 0;background:var(--card);border:1px solid var(--bd);border-radius:calc(var(--r)*1.1);padding:clamp(24px,4vw,44px);box-shadow:0 40px 80px -40px rgba(44,42,38,.2);}
 .book-step{margin-bottom:30px;}
 .book-step:last-of-type{margin-bottom:0;}
+.chip.prog{flex:1 1 200px;display:flex;flex-direction:column;gap:3px;padding:16px 20px;border-radius:16px;}
+.chip.prog b{font-size:.96rem;font-weight:600;}
+.chip.prog span{font-size:.72rem;opacity:.7;}
+.chip.prog.sel span{opacity:.9;}
 .book-label{display:flex;align-items:center;gap:10px;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);margin-bottom:16px;}
 .book-label .num{width:24px;height:24px;border-radius:50%;background:var(--sage2);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;flex-shrink:0;}
 .chip-row{display:flex;gap:10px;flex-wrap:wrap;}
@@ -277,9 +291,8 @@ footer p{font-size:.68rem;color:var(--ink2);}
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-img-shell">
-        <img class="bg-scene" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop" alt=""/>
-        <img class="fg-person" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85&fit=crop" alt="Wellness coach"/>
+      <div class="hero-frame">
+        <img class="pop" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85&fit=crop" alt="Wellness coach"/>
       </div>
       <div class="hero-badge">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 20.5A7.5 7.5 0 0 1 3.5 13c0-5.2 4.6-9.5 17-9.5 0 8.3-4.3 13.6-9.5 17Z"/><path d="M3.8 20.2c3.8-6 8-8.2 13.4-9.4"/></svg></div>
@@ -370,30 +383,30 @@ footer p{font-size:.68rem;color:var(--ink2);}
     <div class="eyebrow rv" style="justify-content:center;">Programs</div>
     <h2 class="sec-h rv d1">Choose your <i>journey</i></h2>
     <p class="sec-sub rv d2" style="margin:14px auto 0;">One-on-one weekly counselling sessions designed around your goals, your pace, and your growth.</p>
-    <div class="price-grid" style="max-width:720px;margin:48px auto 0;grid-template-columns:1fr 1fr;">
+    <div class="price-grid" style="max-width:740px;margin:60px auto 0;grid-template-columns:1fr 1fr;align-items:center;">
       <div class="price-card rv-l">
         <div class="price-name">1-Month Program</div>
-        <div class="price-amt"><sup>AED </sup>1,500</div>
+        <div class="price-amt"><span class="cur">AED</span><span class="num">1,500</span></div>
         <div class="price-per">4 sessions · 1 hour each</div>
         <div class="price-div"></div>
-        <div class="price-f">4 weekly 1-on-1 coaching sessions</div>
-        <div class="price-f">1 hour per session</div>
+        <div class="price-f hl">4 weekly 1-on-1 sessions</div>
+        <div class="price-f">1 full hour per session</div>
         <div class="price-f">Personalised action plan</div>
         <div class="price-f">WhatsApp support between sessions</div>
-        <a href="#book" class="price-cta s">Book Now</a>
+        <a href="#book" class="price-cta s" data-prog="1-Month Program (AED 1,500)" onclick="pickProgram(event,this)">Book Now <span class="ar">→</span></a>
       </div>
       <div class="price-card feat rv">
-        <div class="price-badge">Best Value</div>
+        <div class="price-badge">★ Best Value</div>
         <div class="price-name">3-Month Program</div>
-        <div class="price-amt"><sup>AED </sup>4,500</div>
+        <div class="price-amt"><span class="cur">AED</span><span class="num">4,500</span></div>
         <div class="price-per">12 sessions · 1 hour each</div>
         <div class="price-div"></div>
-        <div class="price-f">12 weekly 1-on-1 coaching sessions</div>
-        <div class="price-f">1 hour per session</div>
+        <div class="price-f hl">12 weekly 1-on-1 sessions</div>
+        <div class="price-f">1 full hour per session</div>
         <div class="price-f">Deep transformation focus</div>
         <div class="price-f">Progress tracking & milestones</div>
         <div class="price-f">Priority WhatsApp support</div>
-        <a href="#book" class="price-cta h">Book Now</a>
+        <a href="#book" class="price-cta h" data-prog="3-Month Program (AED 4,500)" onclick="pickProgram(event,this)">Book Now <span class="ar">→</span></a>
       </div>
     </div>
   </div>
@@ -402,10 +415,10 @@ footer p{font-size:.68rem;color:var(--ink2);}
 <!-- QUOTE -->
 <section class="sec quote-wrap">
   <div class="sec-max rv">
-    <div class="quote-mark">"</div>
+    <div class="quote-mark">&ldquo;</div>
     <p class="quote-text">Wellness is not perfection — it is learning how to care for yourself, consistently. Your healing journey deserves support, structure, and guidance.</p>
     <div class="quote-author">
-      <div style="text-align:left;"><div class="quote-name">Saritha Remesh</div><div class="quote-tag">Certified Neuroscience & Life Coach · Wellness by Practice</div></div>
+      <div style="text-align:center;"><div class="quote-name">Saritha Remesh</div><div class="quote-tag">Certified Neuroscience &amp; Life Coach · Wellness by Practice</div></div>
     </div>
   </div>
 </section>
@@ -415,23 +428,21 @@ footer p{font-size:.68rem;color:var(--ink2);}
 <section class="sec book-wrap" id="book">
   <div class="sec-max" style="text-align:center;">
     <div class="eyebrow rv" style="justify-content:center;">Book a Session</div>
-    <h2 class="sec-h rv d1">Reserve your <i>time</i></h2>
-    <p class="sec-sub rv d2" style="margin:16px auto 0;">Pick a service, choose a day and time. We'll confirm your booking instantly over WhatsApp.</p>
+    <h2 class="sec-h rv d1">Reserve your <i>first session</i></h2>
+    <p class="sec-sub rv d2" style="margin:16px auto 0;">Pick your program, then choose a day and time for your first session. We confirm instantly over WhatsApp.</p>
 
     <div class="book-card rv d2" style="text-align:left;">
-      <!-- Step 1: service -->
+      <!-- Step 1: program -->
       <div class="book-step">
-        <div class="book-label"><span class="num">1</span>Choose a service</div>
+        <div class="book-label"><span class="num">1</span>Choose your program</div>
         <div class="chip-row" id="svcRow">
-          <div class="chip sel" data-svc="1-on-1 Wellness Session">1-on-1 Wellness Session</div>
-          <div class="chip" data-svc="Mental Therapy / Counselling">Mental Therapy</div>
-          <div class="chip" data-svc="Online Zoom Session">Online Zoom Session</div>
-          <div class="chip" data-svc="Group Class">Group Class</div>
+          <div class="chip prog sel" data-svc="1-Month Program (AED 1,500)"><b>1-Month Program</b><span>4 sessions · AED 1,500</span></div>
+          <div class="chip prog" data-svc="3-Month Program (AED 4,500)"><b>3-Month Program</b><span>12 sessions · AED 4,500</span></div>
         </div>
       </div>
       <!-- Step 2: date -->
       <div class="book-step">
-        <div class="book-label"><span class="num">2</span>Pick a day</div>
+        <div class="book-label"><span class="num">2</span>Pick a day for your first session</div>
         <div class="chip-row dates" id="dateRow"></div>
       </div>
       <!-- Step 3: time -->
@@ -495,7 +506,7 @@ window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',(window.
   const svcRow=document.getElementById('svcRow'),timeRow=document.getElementById('timeRow');
   const summary=document.getElementById('bookSummary'),confirm=document.getElementById('bookConfirm');
   const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const state={svc:'1-on-1 Wellness Session',date:null,time:null};
+  const state={svc:'1-Month Program (AED 1,500)',date:null,time:null};
 
   // build next 7 days
   const today=new Date();
@@ -518,18 +529,27 @@ window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',(window.
 
   function update(){
     if(state.date&&state.time){
-      summary.innerHTML=`You're booking a <b>${state.svc}</b><br/>on <b>${state.date}</b> at <b>${state.time}</b>.`;
-      const msg=`Hi Wellness by Practice! I'd like to book a session:%0a%0a• Service: ${state.svc}%0a• Date: ${state.date}%0a• Time: ${state.time}%0a%0aPlease confirm availability. Thank you!`;
+      summary.innerHTML=`You're booking the <b>${state.svc}</b><br/>First session: <b>${state.date}</b> at <b>${state.time}</b>.`;
+      const msg=`Hi Wellness by Practice! I'd like to book the ${state.svc}.%0a%0a• First session: ${state.date}%0a• Time: ${state.time}%0a%0aPlease confirm availability. Thank you!`;
       confirm.href=`https://wa.me/${BOOK_WA}?text=${msg}`;
       confirm.removeAttribute('aria-disabled');confirm.disabled=false;
     }else{
-      summary.innerHTML=state.date?`<b>${state.svc}</b> on <b>${state.date}</b> — now pick a time.`:`<b>${state.svc}</b> selected — now pick a day and time.`;
+      summary.innerHTML=state.date?`<b>${state.svc}</b> · <b>${state.date}</b> — now pick a time.`:`<b>${state.svc}</b> selected — now pick a day and time.`;
       confirm.setAttribute('aria-disabled','true');
     }
   }
   confirm.addEventListener('click',e=>{if(confirm.getAttribute('aria-disabled')==='true'){e.preventDefault();}});
-  // default service is preselected
+  // default program is preselected
   svcRow.querySelector('.chip.sel')&&(state.svc=svcRow.querySelector('.chip.sel').dataset.svc);
+
+  // Pricing "Book Now" → preselect that program + scroll to booking
+  window.pickProgram=function(e,el){
+    e.preventDefault();
+    const want=el.dataset.prog;
+    const chip=[...svcRow.querySelectorAll('.chip')].find(c=>c.dataset.svc===want);
+    if(chip)single(svcRow,chip,'svc','svc');
+    document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'});
+  };
 })();
 
 // Smooth marquee — eases slower on hover, never hard-stops
