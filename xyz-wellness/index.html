@@ -64,12 +64,11 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .hero-meta{display:flex;gap:32px;margin-top:44px;flex-wrap:wrap;}
 .hero-meta-item .n{font-family:var(--serif);font-size:2.4rem;font-weight:500;color:var(--ink);line-height:1;}
 .hero-meta-item .l{font-size:.6rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);margin-top:5px;}
-.hero-visual{position:relative;display:flex;flex-direction:column;gap:10px;}
-.hero-img-shell{background:var(--card);border:1px solid var(--bd);border-radius:calc(var(--r)*1.3);padding:8px;box-shadow:0 24px 60px -20px rgba(44,42,38,.22);}
-.hero-img-shell img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top center;border-radius:calc(var(--r)*1.1);display:block;}
-.hero-bg-strip{border-radius:calc(var(--r)*1.3);overflow:hidden;height:120px;border:1px solid var(--bd);box-shadow:0 12px 40px -10px rgba(44,42,38,.18);}
-.hero-bg-strip img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
-.hero-badge{position:absolute;bottom:140px;left:-20px;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px 22px;box-shadow:0 20px 50px -20px rgba(44,42,38,.25);display:flex;align-items:center;gap:12px;}
+.hero-visual{position:relative;}
+.hero-img-shell{border-radius:calc(var(--r)*1.3);overflow:hidden;position:relative;box-shadow:0 40px 80px -20px rgba(44,42,38,.28);border:1px solid var(--bd);}
+.hero-img-shell .bg-scene{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;z-index:0;}
+.hero-img-shell .fg-person{position:relative;z-index:1;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:top center;display:block;-webkit-mask-image:linear-gradient(to bottom,black 52%,transparent 86%);mask-image:linear-gradient(to bottom,black 52%,transparent 86%);}
+.hero-badge{position:absolute;bottom:24px;left:-20px;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px 22px;box-shadow:0 20px 50px -20px rgba(44,42,38,.25);display:flex;align-items:center;gap:12px;}
 .hero-badge .ic{width:40px;height:40px;border-radius:50%;background:rgba(138,154,126,.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
 .hero-badge .t1{font-size:.82rem;font-weight:600;color:var(--ink);}
 .hero-badge .t2{font-size:.62rem;color:var(--ink2);margin-top:2px;}
@@ -279,10 +278,8 @@ footer p{font-size:.68rem;color:var(--ink2);}
     </div>
     <div class="hero-visual">
       <div class="hero-img-shell">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85&fit=crop" alt="Therapy session"/>
-      </div>
-      <div class="hero-bg-strip">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop" alt=""/>
+        <img class="bg-scene" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop" alt=""/>
+        <img class="fg-person" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&q=85&fit=crop" alt="Wellness coach"/>
       </div>
       <div class="hero-badge">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 20.5A7.5 7.5 0 0 1 3.5 13c0-5.2 4.6-9.5 17-9.5 0 8.3-4.3 13.6-9.5 17Z"/><path d="M3.8 20.2c3.8-6 8-8.2 13.4-9.4"/></svg></div>
