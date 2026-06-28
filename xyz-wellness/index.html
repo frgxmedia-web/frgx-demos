@@ -76,7 +76,7 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 /* Frame = the "box". Portrait sits inside; head pops above the top edge when a
    cut-out (transparent) photo is supplied. Uses --pop to lift the image up. */
 .hero-frame{position:relative;border-radius:calc(var(--r)*1.3);aspect-ratio:1/1.04;background:radial-gradient(120% 90% at 50% 8%,#F1EADC 0%,#E7DDCC 55%,#DED2BD 100%);box-shadow:0 40px 90px -28px rgba(44,42,38,.34);border:1px solid var(--bd);border-top:none;overflow:visible;}
-.hero-frame .pop{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:100%;height:110%;object-fit:contain;object-position:top center;display:block;}
+.hero-frame .pop{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:100%;height:107%;object-fit:contain;object-position:top center;display:block;}
 .hero-badge{position:absolute;bottom:24px;left:-20px;z-index:3;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px 22px;box-shadow:0 20px 50px -20px rgba(44,42,38,.25);display:flex;align-items:center;gap:12px;}
 .hero-badge .ic{width:40px;height:40px;border-radius:50%;background:rgba(138,154,126,.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
 .hero-badge .t1{font-size:.82rem;font-weight:600;color:var(--ink);}
@@ -292,7 +292,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-vid-bg" autoplay muted loop playsinline>
+  <video class="hero-vid-bg" id="heroBgVid" autoplay muted playsinline>
     <source src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260604_125109_19424216-4e2a-4560-b9f2-f1b5f6eb2c2e.mp4" type="video/mp4">
   </video>
   <div class="hero-orb a"></div>
@@ -588,6 +588,27 @@ marquee(document.querySelector('.strip-track'),-50);
 
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>obs.observe(el));
+
+// Smooth video loop with crossfade
+(function(){
+  const vid=document.getElementById('heroBgVid');
+  if(!vid)return;
+  let fading=false;
+  vid.addEventListener('timeupdate',function(){
+    if(!vid.duration||fading)return;
+    if(vid.currentTime>=vid.duration-1.4){
+      fading=true;
+      vid.style.transition='opacity .7s ease';
+      vid.style.opacity='0';
+      setTimeout(()=>{
+        vid.currentTime=0;
+        vid.play();
+        vid.style.opacity='0.72';
+        setTimeout(()=>{fading=false;},750);
+      },700);
+    }
+  });
+})();
 </script>
 </body>
 </html>
