@@ -75,7 +75,7 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 .hero-visual{position:relative;padding-top:160px;}
 /* Frame = the "box". Portrait sits inside; head pops above the top edge when a
    cut-out (transparent) photo is supplied. Uses --pop to lift the image up. */
-.hero-frame{position:relative;border-radius:calc(var(--r)*1.3);aspect-ratio:1/0.88;background:radial-gradient(120% 90% at 50% 8%,#F1EADC 0%,#E7DDCC 55%,#DED2BD 100%);box-shadow:0 40px 90px -28px rgba(44,42,38,.34);border:1px solid var(--bd);border-top:none;overflow:visible;}
+.hero-frame{position:relative;border-radius:calc(var(--r)*1.3);aspect-ratio:1/0.95;background:radial-gradient(120% 90% at 50% 8%,#F1EADC 0%,#E7DDCC 55%,#DED2BD 100%);box-shadow:0 40px 90px -28px rgba(44,42,38,.34);border:1px solid var(--bd);border-top:none;overflow:visible;}
 .hero-frame .pop{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:100%;height:133%;object-fit:contain;object-position:top center;display:block;}
 .hero-badge{position:absolute;bottom:24px;left:-20px;z-index:3;background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:16px 22px;box-shadow:0 20px 50px -20px rgba(44,42,38,.25);display:flex;align-items:center;gap:12px;}
 .hero-badge .ic{width:40px;height:40px;border-radius:50%;background:rgba(138,154,126,.18);display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
@@ -125,11 +125,9 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 /* ABOUT SPLIT */
 .about{background:var(--bg2);}
 .about-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center;}
-.about-imgs{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.about-imgs .shell{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:7px;}
-.about-imgs img{width:100%;border-radius:var(--rs);display:block;object-fit:cover;}
-.about-imgs .tall{aspect-ratio:3/4.4;}
-.about-imgs .a2{margin-top:36px;}
+.about-imgs{padding-top:78px;}
+.coach-frame{position:relative;max-width:400px;margin:0 auto;border-radius:calc(var(--r)*1.3);aspect-ratio:1/0.95;background:radial-gradient(120% 90% at 50% 8%,#F1EADC 0%,#E7DDCC 55%,#DED2BD 100%);box-shadow:0 40px 90px -28px rgba(44,42,38,.28);border:1px solid var(--bd);border-top:none;overflow:visible;}
+.coach-frame .pop{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:100%;height:133%;object-fit:contain;object-position:top center;display:block;}
 .about-list{margin-top:28px;display:flex;flex-direction:column;gap:16px;}
 .about-li{display:flex;gap:14px;align-items:flex-start;}
 .about-li .dot{width:30px;height:30px;border-radius:50%;background:rgba(138,154,126,.18);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;margin-top:2px;}
@@ -138,6 +136,7 @@ nav.scrolled{background:rgba(251,248,242,.92);box-shadow:0 12px 40px rgba(44,42,
 
 /* PRICING */
 .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;}
+.price-grid.price-2{grid-template-columns:1fr 1fr;}
 .price-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:38px 34px;transition:transform .5s var(--ease),box-shadow .5s var(--ease);position:relative;}
 .price-card.feat{background:var(--sage2);color:#fff;transform:scale(1.02);box-shadow:0 24px 60px -28px rgba(44,42,38,.35);z-index:2;}
 .price-card:hover{transform:translateY(-8px);box-shadow:0 36px 70px -28px rgba(44,42,38,.3);}
@@ -246,12 +245,17 @@ footer p{font-size:.68rem;color:var(--ink2);}
 .wa-btn:hover{background:#1ebe5d;transform:translateY(-2px);box-shadow:0 18px 36px -8px rgba(37,211,102,.6);}
 .wa-btn svg{width:18px;height:18px;fill:currentColor;flex-shrink:0;}
 .wa-hours{margin-top:18px;font-size:.68rem;color:var(--ink2);letter-spacing:.06em;}
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:70;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -6px rgba(37,211,102,.6);transition:transform .3s var(--ease);animation:waPulse 2.4s ease-in-out infinite;}
+.wa-float:hover{transform:scale(1.08);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+@keyframes waPulse{0%,100%{box-shadow:0 12px 30px -6px rgba(37,211,102,.6),0 0 0 0 rgba(37,211,102,.45);}50%{box-shadow:0 12px 30px -6px rgba(37,211,102,.6),0 0 0 14px rgba(37,211,102,0);}}
 
 /* MOBILE */
 @media(max-width:880px){
   .hero-grid{grid-template-columns:1fr;}
-  .hero-visual{order:-1;max-width:380px;margin:0 auto;}
+  .hero-visual{order:-1;width:min(330px,74vw);margin:0 auto;padding-top:82px;}
   .about-grid{grid-template-columns:1fr;}
+  .about-imgs{padding-top:64px;}
   .serv-grid,.price-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:768px){
@@ -260,7 +264,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
   .hero{padding:110px 18px 50px;}
   .hero-btns{width:100%;}.btn-p,.btn-g{flex:1;justify-content:center;}
   .hero-badge{left:0;}
-  .serv-grid,.price-grid{grid-template-columns:1fr;}
+  .serv-grid,.price-grid,.price-grid.price-2{grid-template-columns:1fr;}
   .price-card.feat{order:-1;}
   .about-imgs .a2{margin-top:0;}
   .rv-l,.rv-r{transform:translateY(22px);}.rv-l.in,.rv-r.in{transform:translateY(0);}
@@ -318,7 +322,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
       </div>
       <div class="hero-badge">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 20.5A7.5 7.5 0 0 1 3.5 13c0-5.2 4.6-9.5 17-9.5 0 8.3-4.3 13.6-9.5 17Z"/><path d="M3.8 20.2c3.8-6 8-8.2 13.4-9.4"/></svg></div>
-        <div><div class="t1">Safe & Confidential</div><div class="t2">Licensed practitioners</div></div>
+        <div><div class="t1">Safe & Confidential</div><div class="t2">Certified wellness coach</div></div>
       </div>
     </div>
   </div>
@@ -381,8 +385,13 @@ footer p{font-size:.68rem;color:var(--ink2);}
   <div class="sec-max">
     <div class="about-grid">
       <div class="about-imgs rv-l">
-        <div class="shell"><img class="tall" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80&fit=crop" alt="" loading="lazy"/></div>
-        <div class="shell a2"><img class="tall" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=500&q=80&fit=crop" alt="" loading="lazy"/></div>
+        <div class="coach-frame">
+          <img class="pop" src="images/saritha.png" alt="Saritha Remesh — Certified Wellness Coach"/>
+          <div class="hero-badge">
+            <div class="ic"><svg viewBox="0 0 24 24"><path d="M11 20.5A7.5 7.5 0 0 1 3.5 13c0-5.2 4.6-9.5 17-9.5 0 8.3-4.3 13.6-9.5 17Z"/><path d="M3.8 20.2c3.8-6 8-8.2 13.4-9.4"/></svg></div>
+            <div><div class="t1">Saritha Remesh</div><div class="t2">Certified Wellness Coach</div></div>
+          </div>
+        </div>
       </div>
       <div>
         <div class="eyebrow rv">Meet Your Coach</div>
@@ -405,7 +414,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
     <div class="eyebrow rv" style="justify-content:center;">Programs</div>
     <h2 class="sec-h rv d1">Choose your <i>journey</i></h2>
     <p class="sec-sub rv d2" style="margin:14px auto 0;">One-on-one weekly counselling sessions designed around your goals, your pace, and your growth.</p>
-    <div class="price-grid" style="max-width:740px;margin:60px auto 0;grid-template-columns:1fr 1fr;align-items:center;">
+    <div class="price-grid price-2" style="max-width:740px;margin:60px auto 0;align-items:center;">
       <div class="price-card rv-l">
         <div class="price-name">1-Month Program</div>
         <div class="price-amt"><span class="cur">AED</span><span class="num">1,500</span></div>
@@ -454,7 +463,7 @@ footer p{font-size:.68rem;color:var(--ink2);}
     <p class="sec-sub rv d2" style="margin:16px auto 0;">Pick your program, then choose a day and time for your first session. We confirm instantly over WhatsApp.</p>
 
     <div class="book-card rv d2" style="text-align:left;">
-      <div class="book-step" style="margin-bottom:0;">
+      <div class="book-step">
         <div class="book-label"><span class="num">1</span>Choose your program</div>
         <div class="chip-row" id="svcRow">
           <div class="chip prog sel" data-svc="1-Month Program (AED 1,500)"><b>1-Month Program</b><span>4 sessions · AED 1,500</span></div>
@@ -462,12 +471,29 @@ footer p{font-size:.68rem;color:var(--ink2);}
         </div>
       </div>
 
-      <div class="book-summary" id="bookSummary" style="margin-top:24px;"><b>1-Month Program (AED 1,500)</b> selected — tap below to send your inquiry.</div>
+      <div class="book-step">
+        <div class="book-label"><span class="num">2</span>Pick a day</div>
+        <div class="chip-row dates" id="dateRow"></div>
+      </div>
+
+      <div class="book-step" style="margin-bottom:0;">
+        <div class="book-label"><span class="num">3</span>Pick a time</div>
+        <div class="chip-row" id="timeRow">
+          <div class="chip time" data-time="10:00 AM">10:00 AM</div>
+          <div class="chip time" data-time="11:30 AM">11:30 AM</div>
+          <div class="chip time" data-time="1:00 PM">1:00 PM</div>
+          <div class="chip time" data-time="3:00 PM">3:00 PM</div>
+          <div class="chip time" data-time="5:00 PM">5:00 PM</div>
+          <div class="chip time" data-time="7:00 PM">7:00 PM</div>
+        </div>
+      </div>
+
+      <div class="book-summary" id="bookSummary" style="margin-top:24px;"><b>1-Month Program</b> selected — now pick a day &amp; time.</div>
       <a href="#" class="book-confirm" id="bookConfirm" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.64-2.05-.17-.3-.02-.46.13-.6.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.6-.92-2.2-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.86 1.21 3.06c.15.2 2.09 3.2 5.07 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35Z"/></svg>
-        Send Inquiry on WhatsApp
+        Book on WhatsApp
       </a>
-      <p class="book-note">No payment needed · We'll confirm your slot and schedule via WhatsApp</p>
+      <p class="book-note">No payment needed · We'll confirm your slot &amp; schedule via WhatsApp</p>
     </div>
   </div>
 </section>
@@ -507,6 +533,10 @@ footer p{font-size:.68rem;color:var(--ink2);}
   </div>
 </section>
 
+<a class="wa-float" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 2C8.28 2 2 8.28 2 16c0 2.48.67 4.8 1.84 6.8L2 30l7.4-1.82A13.88 13.88 0 0 0 16 30c7.72 0 14-6.28 14-14S23.72 2 16 2Zm7.78 19.56c-.3.84-1.76 1.62-2.4 1.7-.63.08-1.22.3-4.1-1.04-3.45-1.55-5.6-5.08-5.77-5.32-.16-.22-1.35-1.8-1.35-3.44 0-1.63.86-2.44 1.16-2.77.3-.33.66-.42.88-.42l.62.01c.2 0 .47.03.71.55.27.57.9 2.18.98 2.34.08.16.14.35.03.55-.12.22-.18.35-.35.54l-.52.6c-.17.18-.35.38-.15.74.2.36.89 1.47 1.91 2.38 1.31 1.17 2.42 1.53 2.76 1.7.34.18.54.15.74-.1.21-.24.89-1.04 1.13-1.4.24-.36.47-.3.8-.18.33.12 2.08.98 2.44 1.16.36.18.6.27.68.42.09.16.09.88-.2 1.72Z"/></svg>
+</a>
+
 <footer>
   <div class="f-logo">Wellness <i>by Practice</i></div>
   <div class="f-links"><a href="#services">Services</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#contact">Contact</a></div>
@@ -521,45 +551,63 @@ function cM(){ham.classList.remove('open');mob.classList.remove('open');}
 const navEl=document.getElementById('nav');
 window.addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',(window.scrollY||0)>20);},{passive:true});
 
-// ── Booking inquiry → WhatsApp ──
+// ── Booking calendar → WhatsApp ──
 (function(){
   const WA='971XXXXXXXXXX'; // TODO: replace with Saritha's WhatsApp number
   const svcRow=document.getElementById('svcRow');
+  const dateRow=document.getElementById('dateRow');
+  const timeRow=document.getElementById('timeRow');
   const summary=document.getElementById('bookSummary');
   const confirmBtn=document.getElementById('bookConfirm');
-  let svc='1-Month Program (AED 1,500)';
+  let svc='1-Month Program (AED 1,500)', day='', time='';
 
-  function buildLink(){
-    const msg=`Hi! I'd like to enquire about the *${svc}* at Wellness by Practice. Please let me know about availability. Thank you!`;
-    confirmBtn.href=`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
-    summary.innerHTML=`<b>${svc}</b> selected — tap below to send your inquiry.`;
+  // Build next 14 day chips
+  const DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const today=new Date();
+  for(let i=1;i<=14;i++){
+    const d=new Date(today); d.setDate(today.getDate()+i);
+    const label=`${DOW[d.getDay()]} ${d.getDate()} ${MON[d.getMonth()]}`;
+    const chip=document.createElement('div');
+    chip.className='chip date';
+    chip.dataset.day=label;
+    chip.innerHTML=`<span class="dow">${DOW[d.getDay()]}</span><span class="dnum">${d.getDate()}</span><span class="mon">${MON[d.getMonth()]}</span>`;
+    dateRow.appendChild(chip);
   }
 
-  svcRow.addEventListener('click',e=>{
-    const c=e.target.closest('.chip');
-    if(!c)return;
-    svcRow.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
-    c.classList.add('sel');
-    svc=c.dataset.svc;
-    buildLink();
-  });
+  function selOne(row,chip){row.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));chip.classList.add('sel');}
+
+  function buildLink(){
+    const parts=[`*${svc}*`];
+    if(day) parts.push(`on *${day}*`);
+    if(time) parts.push(`at *${time}*`);
+    const msg=`Hi! I'd like to book a session for ${parts.join(' ')} at Wellness by Practice. Please confirm availability. Thank you!`;
+    confirmBtn.href=`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+    if(day&&time){
+      summary.innerHTML=`<b>${svc.replace(/\s*\(.*\)/,'')}</b> · ${day} · ${time} — tap below to confirm on WhatsApp.`;
+    }else{
+      summary.innerHTML=`<b>${svc.replace(/\s*\(.*\)/,'')}</b> selected — now pick a day &amp; time.`;
+    }
+  }
+
+  svcRow.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;selOne(svcRow,c);svc=c.dataset.svc;buildLink();});
+  dateRow.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;selOne(dateRow,c);day=c.dataset.day;buildLink();});
+  timeRow.addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;selOne(timeRow,c);time=c.dataset.time;buildLink();});
 
   window.pickProgram=function(e,el){
     e.preventDefault();
     const want=el.dataset.prog;
     const chip=[...svcRow.querySelectorAll('.chip')].find(c=>c.dataset.svc===want);
-    if(chip){
-      svcRow.querySelectorAll('.chip').forEach(x=>x.classList.remove('sel'));
-      chip.classList.add('sel');
-      svc=chip.dataset.svc;
-      buildLink();
-    }
+    if(chip){selOne(svcRow,chip);svc=chip.dataset.svc;buildLink();}
     document.getElementById('book').scrollIntoView({behavior:'smooth',block:'start'});
   };
 
-  // Wire WhatsApp contact section
+  // Wire WhatsApp contact section + floating button
+  const waMsg=encodeURIComponent("Hi! I'd like to know more about Wellness by Practice.");
   const waBtn=document.getElementById('waContactBtn');
-  if(waBtn) waBtn.href=`https://wa.me/${WA}?text=${encodeURIComponent('Hi! I\'d like to know more about Wellness by Practice.')}`;
+  if(waBtn) waBtn.href=`https://wa.me/${WA}?text=${waMsg}`;
+  const waFloat=document.getElementById('waFloat');
+  if(waFloat) waFloat.href=`https://wa.me/${WA}?text=${waMsg}`;
 
   buildLink();
 })();
