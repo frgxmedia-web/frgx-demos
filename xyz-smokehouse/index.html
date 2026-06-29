@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Smokehouse Barbeque Co — Kannur's BBQ & Grill House</title>
+<meta name="description" content="Kannur's ultimate BBQ & grill destination. Charcoal chicken, mandi, alfaham, mixed platters & all-you-can-eat. SN Park Road, Kannur."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0A0807;--bg2:#110E0B;--bg3:#181210;
+  --acc:#CC3300;--ember:#E85D20;--amber:#F5A623;
+  --w:#F5F0EB;--w2:#A89888;--bd:rgba(200,80,30,.18);
+  --r:14px;--ease:cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--w);overflow-x:hidden;max-width:100%;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(16px,5vw,56px);transition:background .4s,border-color .4s,padding .4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(10,8,7,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--bd);padding-top:12px;padding-bottom:12px;}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:.1em;color:var(--w);display:flex;align-items:center;gap:10px;}
+.nav-logo .fire{color:var(--acc);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--w);}
+.nav-pill{background:var(--acc);color:#fff;text-decoration:none;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:11px 22px;border-radius:999px;transition:all .35s;box-shadow:0 4px 24px rgba(204,51,0,.4);}
+.nav-pill:hover{background:var(--ember);transform:translateY(-1px);}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:5px;}
+.ham span{display:block;width:22px;height:2px;background:var(--w);transition:all .4s;transform-origin:center;}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.ham.open span:nth-child(2){opacity:0;}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mob-ov{position:fixed;inset:0;z-index:99;background:rgba(8,6,5,.97);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .4s;}
+.mob-ov.open{opacity:1;pointer-events:all;}
+.mob-ov a{font-family:'Anton',sans-serif;font-size:2.6rem;text-transform:uppercase;letter-spacing:.04em;color:var(--w);text-decoration:none;opacity:0;transform:translateY(20px);transition:color .3s,opacity .4s,transform .4s;}
+.mob-ov.open a{opacity:1;transform:translateY(0);}
+.mob-ov.open a:nth-child(1){transition-delay:.05s}.mob-ov.open a:nth-child(2){transition-delay:.1s}.mob-ov.open a:nth-child(3){transition-delay:.15s}.mob-ov.open a:nth-child(4){transition-delay:.2s}.mob-ov.open a:nth-child(5){transition-delay:.25s}
+.mob-ov a:hover{color:var(--acc);}
+
+/* HERO */
+.hero{min-height:100dvh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;text-align:center;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,#2A1008 0%,#160A04 40%,#0A0807 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 55%,rgba(204,51,0,.22) 0%,transparent 70%);}
+.smoke-l,.smoke-r{position:absolute;bottom:0;width:320px;height:500px;background:radial-gradient(ellipse 100% 100% at 50% 100%,rgba(204,51,0,.08),transparent 70%);pointer-events:none;z-index:1;}
+.smoke-l{left:-60px;animation:smokeRise 9s ease-in-out infinite;}
+.smoke-r{right:-60px;animation:smokeRise 9s ease-in-out infinite .5s;}
+@keyframes smokeRise{0%,100%{transform:translateY(0) scale(1);opacity:.6}50%{transform:translateY(-60px) scale(1.15);opacity:.3}}
+.hero-glow{position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:600px;height:300px;background:radial-gradient(ellipse,rgba(204,51,0,.3) 0%,rgba(232,93,32,.1) 40%,transparent 70%);filter:blur(30px);pointer-events:none;z-index:1;}
+.hero-inner{position:relative;z-index:3;padding:0 clamp(20px,5vw,80px);}
+.hero-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(204,51,0,.12);border:1px solid rgba(204,51,0,.3);border-radius:999px;padding:7px 18px;font-size:.6rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ember);margin-bottom:28px;}
+.hero-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--acc);animation:blink 1.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+.hero-h{font-family:'Anton',sans-serif;font-size:clamp(4.5rem,18vw,14rem);line-height:.88;letter-spacing:.02em;text-transform:uppercase;color:var(--w);text-shadow:0 0 80px rgba(204,51,0,.5),0 4px 60px rgba(0,0,0,.8);}
+.hero-h span{color:var(--acc);}
+.hero-sub{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.1rem,3.5vw,2.2rem);letter-spacing:.3em;color:var(--w2);margin-top:12px;text-transform:uppercase;}
+.hero-stats{display:flex;gap:clamp(20px,5vw,56px);justify-content:center;flex-wrap:wrap;margin-top:40px;}
+.hs{text-align:center;}
+.hs .n{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3rem);color:var(--w);line-height:1;}
+.hs .n em{color:var(--acc);font-style:normal;}
+.hs .l{font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--w2);margin-top:4px;}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px;}
+.btn-p{display:inline-flex;align-items:center;gap:8px;background:var(--acc);color:#fff;text-decoration:none;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:15px 28px;border-radius:999px;transition:all .35s;box-shadow:0 8px 32px rgba(204,51,0,.45);}
+.btn-p:hover{background:var(--ember);transform:translateY(-2px);box-shadow:0 14px 40px rgba(204,51,0,.55);}
+.btn-g{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--w);text-decoration:none;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:15px 28px;border-radius:999px;border:1px solid rgba(245,240,235,.2);transition:all .35s;}
+.btn-g:hover{border-color:rgba(245,240,235,.5);background:rgba(245,240,235,.06);}
+.hero-scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w2);}
+.hero-scroll-hint .ln{width:1px;height:30px;background:linear-gradient(to bottom,var(--acc),transparent);animation:sd 2s ease-in-out infinite;}
+@keyframes sd{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* STRIP */
+.strip{background:var(--acc);padding:14px 0;overflow:hidden;}
+.strip-track{display:flex;gap:0;width:max-content;will-change:transform;}
+.strip-item{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.18em;color:#fff;padding:0 32px;white-space:nowrap;display:flex;align-items:center;gap:16px;}
+.strip-item::after{content:'✦';opacity:.5;font-size:.7rem;}
+
+/* SECTIONS */
+.sec{padding:clamp(72px,10vw,130px) clamp(20px,5vw,60px);position:relative;}
+.sec-max{max-width:1200px;margin:0 auto;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.62rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--acc);margin-bottom:20px;}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--acc);}
+.sec-h{font-family:'Anton',sans-serif;font-size:clamp(2.4rem,6vw,5.2rem);line-height:1;letter-spacing:.02em;text-transform:uppercase;color:var(--w);}
+.sec-h span{color:var(--acc);}
+.sec-p{font-size:.95rem;font-weight:300;color:var(--w2);line-height:1.8;max-width:500px;margin-top:16px;}
+
+/* AYCE HIGHLIGHT */
+.ayce-band{background:var(--acc);padding:clamp(40px,6vw,70px) clamp(20px,5vw,60px);text-align:center;position:relative;overflow:hidden;}
+.ayce-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(255,255,255,.08),transparent);}
+.ayce-h{font-family:'Anton',sans-serif;font-size:clamp(2rem,8vw,6rem);letter-spacing:.04em;text-transform:uppercase;color:#fff;position:relative;z-index:1;}
+.ayce-sub{font-size:1rem;color:rgba(255,255,255,.8);margin-top:10px;letter-spacing:.06em;position:relative;z-index:1;}
+.ayce-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:8px 20px;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#fff;margin-top:24px;position:relative;z-index:1;}
+
+/* MENU GRID */
+.menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.dish-card{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:28px 24px;transition:all .5s var(--ease);position:relative;overflow:hidden;}
+.dish-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(204,51,0,.07),transparent 60%);opacity:0;transition:opacity .5s;}
+.dish-card:hover{border-color:rgba(204,51,0,.35);transform:translateY(-4px);}
+.dish-card:hover::before{opacity:1;}
+.dish-icon{font-size:2.2rem;margin-bottom:16px;display:block;}
+.dish-name{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.06em;color:var(--w);margin-bottom:8px;}
+.dish-desc{font-size:.84rem;color:var(--w2);line-height:1.7;font-weight:300;}
+.dish-price{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;color:var(--acc);margin-top:14px;letter-spacing:.05em;}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px;}
+.why-card{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:36px 30px;transition:border-color .5s;}
+.why-card:hover{border-color:rgba(204,51,0,.3);}
+.why-num{font-family:'Anton',sans-serif;font-size:4rem;color:rgba(204,51,0,.12);line-height:1;margin-bottom:16px;}
+.why-title{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.06em;color:var(--w);margin-bottom:10px;}
+.why-desc{font-size:.86rem;color:var(--w2);line-height:1.75;font-weight:300;}
+
+/* REVIEWS */
+.rev-rail{overflow:hidden;position:relative;margin-top:52px;}
+.rev-rail::before,.rev-rail::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
+.rev-rail::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
+.rev-rail::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}
+.rev-track{display:flex;gap:16px;width:max-content;will-change:transform;}
+.rev-card{width:320px;flex-shrink:0;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:26px 24px;transition:border-color .4s;}
+.rev-card:hover{border-color:rgba(204,51,0,.3);}
+.rev-stars{color:#FFB800;font-size:.75rem;letter-spacing:2px;margin-bottom:12px;}
+.rev-text{font-size:.88rem;color:var(--w2);line-height:1.75;font-weight:300;margin-bottom:16px;}
+.rev-author{display:flex;align-items:center;gap:10px;}
+.rev-av{width:34px;height:34px;border-radius:50%;background:var(--acc);display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;color:#fff;font-family:'Bebas Neue',sans-serif;flex-shrink:0;}
+.rev-name{font-size:.84rem;font-weight:600;color:var(--w);}
+.rev-via{font-size:.72rem;color:var(--w2);}
+
+/* VISIT */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:56px;}
+.visit-info{display:flex;flex-direction:column;gap:24px;}
+.vi-row{display:flex;gap:16px;align-items:flex-start;}
+.vi-ic{width:42px;height:42px;border-radius:10px;background:rgba(204,51,0,.12);border:1px solid rgba(204,51,0,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.vi-ic svg{width:20px;height:20px;fill:var(--acc);}
+.vi-label{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--w2);margin-bottom:4px;}
+.vi-val{font-size:.96rem;color:var(--w);font-weight:400;line-height:1.55;}
+.vi-val b{color:var(--acc);}
+.visit-map{border-radius:var(--r);overflow:hidden;border:1px solid var(--bd);height:340px;}
+.visit-map iframe{width:100%;height:100%;border:0;filter:grayscale(.4) invert(.9) contrast(.85) hue-rotate(180deg);}
+
+/* CTA */
+.cta-sec{text-align:center;padding:clamp(90px,12vw,160px) clamp(20px,5vw,60px);position:relative;overflow:hidden;}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(204,51,0,.15),transparent 70%);}
+.cta-glow{position:absolute;bottom:-60px;left:50%;transform:translateX(-50%);width:500px;height:200px;background:radial-gradient(ellipse,rgba(204,51,0,.3),transparent 70%);filter:blur(30px);}
+.cta-h{font-family:'Anton',sans-serif;font-size:clamp(2.5rem,8vw,7rem);letter-spacing:.03em;text-transform:uppercase;color:var(--w);position:relative;z-index:1;}
+.cta-h span{color:var(--acc);}
+.cta-p{font-size:.96rem;color:var(--w2);max-width:400px;margin:16px auto 36px;line-height:1.8;position:relative;z-index:1;font-weight:300;}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--bd);padding:clamp(32px,5vw,52px) clamp(20px,5vw,60px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.1em;color:var(--w);}
+.f-logo span{color:var(--acc);}
+.f-links{display:flex;gap:24px;flex-wrap:wrap;}
+.f-links a{font-size:.66rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .3s;}
+.f-links a:hover{color:var(--w);}
+.f-credit{font-size:.66rem;color:var(--w2);letter-spacing:.08em;}
+.f-credit a{color:var(--acc);text-decoration:none;}
+
+/* WA FLOAT */
+.wa-float{position:fixed;bottom:22px;right:22px;z-index:70;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px -6px rgba(37,211,102,.6);transition:transform .3s;animation:waPulse 2.4s ease-in-out infinite;}
+.wa-float:hover{transform:scale(1.08);}
+.wa-float svg{width:30px;height:30px;fill:#fff;}
+@keyframes waPulse{0%,100%{box-shadow:0 12px 30px -6px rgba(37,211,102,.6),0 0 0 0 rgba(37,211,102,.45);}50%{box-shadow:0 12px 30px -6px rgba(37,211,102,.6),0 0 0 14px rgba(37,211,102,0);}}
+
+/* SCROLL REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* MOBILE */
+@media(max-width:860px){
+  .nav-links,.nav-pill{display:none;}.ham{display:flex;}
+  .menu-grid,.why-grid{grid-template-columns:1fr 1fr;}
+  .visit-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .menu-grid{grid-template-columns:1fr;}
+  .why-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:18px;}
+  footer{flex-direction:column;text-align:center;}.f-links{justify-content:center;}
+  .hero-cta{flex-direction:column;align-items:center;}
+  .btn-p,.btn-g{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo"><span class="fire">☁</span>SMOKE<span class="fire">HOUSE</span></div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#ayce">AYCE</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="https://wa.me/919947235715?text=Hi!%20I%27d%20like%20to%20reserve%20a%20table%20at%20Smokehouse%20Barbeque%20Co." class="nav-pill" target="_blank" rel="noopener">Reserve Now</a>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-ov" id="mob">
+  <a href="#menu" onclick="cM()">Menu</a>
+  <a href="#ayce" onclick="cM()">AYCE</a>
+  <a href="#reviews" onclick="cM()">Reviews</a>
+  <a href="#visit" onclick="cM()">Visit</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="smoke-l"></div>
+  <div class="smoke-r"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><span class="dot"></span>Open Now · Till Midnight</div>
+    <h1 class="hero-h">SMOKE<span>HOUSE</span></h1>
+    <div class="hero-sub">Barbeque &amp; Grill Co · Kannur</div>
+    <div class="hero-stats">
+      <div class="hs"><div class="n">3.4<em>★</em></div><div class="l">547 Reviews</div></div>
+      <div class="hs"><div class="n">AYCE<em>✦</em></div><div class="l">All You Can Eat</div></div>
+      <div class="hs"><div class="n">12<em>AM</em></div><div class="l">Open Till</div></div>
+      <div class="hs"><div class="n">₹300<em>+</em></div><div class="l">Per Person</div></div>
+    </div>
+    <div class="hero-cta">
+      <a href="https://wa.me/919947235715?text=Hi!%20I%27d%20like%20to%20reserve%20a%20table%20at%20Smokehouse%20Barbeque%20Co." class="btn-p" target="_blank" rel="noopener">Reserve a Table ↗</a>
+      <a href="#menu" class="btn-g">View Menu</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><div class="ln"></div>Scroll</div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track" id="stripTrack">
+    <div class="strip-item">BBQ Platters</div>
+    <div class="strip-item">Charcoal Chicken</div>
+    <div class="strip-item">Alfaham</div>
+    <div class="strip-item">Mutton Mandi</div>
+    <div class="strip-item">Seafood Grill</div>
+    <div class="strip-item">Rocket Chicken</div>
+    <div class="strip-item">Shawarma</div>
+    <div class="strip-item">Mixed Platters</div>
+    <div class="strip-item">BBQ Platters</div>
+    <div class="strip-item">Charcoal Chicken</div>
+    <div class="strip-item">Alfaham</div>
+    <div class="strip-item">Mutton Mandi</div>
+    <div class="strip-item">Seafood Grill</div>
+    <div class="strip-item">Rocket Chicken</div>
+    <div class="strip-item">Shawarma</div>
+    <div class="strip-item">Mixed Platters</div>
+  </div>
+</div>
+
+<!-- AYCE BAND -->
+<section class="ayce-band" id="ayce">
+  <div class="ayce-h">All You Can Eat — Always</div>
+  <div class="ayce-sub">One price. Unlimited BBQ. Every single day.</div>
+  <div class="ayce-tag">✦ No limits · No extra charges · Just eat</div>
+</section>
+
+<!-- MENU -->
+<section class="sec" id="menu" style="background:var(--bg);">
+  <div class="sec-max">
+    <div class="eyebrow rv">Signature Plates</div>
+    <h2 class="sec-h rv d1">FIRE &amp; <span>SMOKE</span><br>ON A PLATE</h2>
+    <p class="sec-p rv d2">From slow-smoked mutton mandi to sizzling charcoal chicken — every dish is built around the grill.</p>
+    <div class="menu-grid">
+      <div class="dish-card rv">
+        <span class="dish-icon">🍗</span>
+        <div class="dish-name">Spicy Charcoal Chicken</div>
+        <div class="dish-desc">Whole chicken marinated in house spice blend, slow-cooked over charcoal embers. Smokehouse's most ordered dish.</div>
+        <div class="dish-price">Signature</div>
+      </div>
+      <div class="dish-card rv d1">
+        <span class="dish-icon">🔥</span>
+        <div class="dish-name">Rocket Chicken</div>
+        <div class="dish-desc">Secret-recipe marinated chicken on the grill — bold heat, bold flavour. The dish that keeps people coming back.</div>
+        <div class="dish-price">Signature</div>
+      </div>
+      <div class="dish-card rv d2">
+        <span class="dish-icon">🥩</span>
+        <div class="dish-name">Mixed BBQ Platter</div>
+        <div class="dish-desc">Chicken, beef, mutton & seafood — all grilled together. Perfect for groups. Comes with kuboos & dips.</div>
+        <div class="dish-price">₹1,500 / platter</div>
+      </div>
+      <div class="dish-card rv d1">
+        <span class="dish-icon">🫙</span>
+        <div class="dish-name">Mutton Mandi</div>
+        <div class="dish-desc">Slow-roasted on saffron rice with Arabic spices. Tender fall-off-the-bone mutton, traditional Malabar style.</div>
+        <div class="dish-price">Must Try</div>
+      </div>
+      <div class="dish-card rv d2">
+        <span class="dish-icon">🦐</span>
+        <div class="dish-name">Seafood Grill</div>
+        <div class="dish-desc">Fresh prawns and fish — grilled with coastal spice rub. Squeeze of lime, served hot off the grill.</div>
+        <div class="dish-price">Market Price</div>
+      </div>
+      <div class="dish-card rv d3">
+        <span class="dish-icon">🫓</span>
+        <div class="dish-name">Alfaham</div>
+        <div class="dish-desc">Arabic-style flame-grilled whole chicken, seasoned with cumin, coriander and charcoal smoke.</div>
+        <div class="dish-price">Crowd Favourite</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec" style="background:var(--bg2);border-top:1px solid var(--bd);">
+  <div class="sec-max">
+    <div class="eyebrow rv">Why Smokehouse</div>
+    <h2 class="sec-h rv d1">THE <span>GRILL</span><br>EXPERIENCE</h2>
+    <div class="why-grid">
+      <div class="why-card rv">
+        <div class="why-num">01</div>
+        <div class="why-title">Real Charcoal, Every Time</div>
+        <div class="why-desc">No gas shortcuts. Every dish hits live charcoal — that smoke flavour you taste is the real thing.</div>
+      </div>
+      <div class="why-card rv d1">
+        <div class="why-num">02</div>
+        <div class="why-title">All-You-Can-Eat Always</div>
+        <div class="why-desc">Unlike most restaurants that run AYCE only on specific nights — Smokehouse runs it every day. No limits.</div>
+      </div>
+      <div class="why-card rv d2">
+        <div class="why-num">03</div>
+        <div class="why-title">Open Till Midnight</div>
+        <div class="why-desc">Hungry after 10PM? We're open. Grill never stops — dine in till 12AM, takeout till 11:30PM.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews" style="background:var(--bg);">
+  <div class="sec-max">
+    <div class="eyebrow rv">What People Say</div>
+    <h2 class="sec-h rv d1">3.4★ ON <span>GOOGLE</span><br>547 REVIEWS</h2>
+  </div>
+  <div class="rev-rail" style="margin-top:52px;">
+    <div class="rev-track" id="revTrack">
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"The mixed BBQ platter was insane — chicken, mutton, beef, seafood all on one tray. Charcoal flavour is the real deal. Came with a group of 6 and everyone left full and happy."</div>
+        <div class="rev-author"><div class="rev-av">A</div><div><div class="rev-name">Arjun K.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"The Rocket Chicken is something else. I've had alfaham all over Kannur but this spice blend is different. The AYCE deal is the best value in the city."</div>
+        <div class="rev-author"><div class="rev-av">F</div><div><div class="rev-name">Faisal M.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★☆</div>
+        <div class="rev-text">"Mutton mandi was perfectly cooked — tender and aromatic. The charcoal chicken had a real smoky depth. Big portions, worth every rupee. Will be back."</div>
+        <div class="rev-author"><div class="rev-av">S</div><div><div class="rev-name">Sreejith R.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Late night cravings sorted. Came at 11PM and the grill was still going strong. Spicy charcoal chicken and shawarma — both perfect. Love that it's open till midnight."</div>
+        <div class="rev-author"><div class="rev-av">N</div><div><div class="rev-name">Naveen T.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★☆</div>
+        <div class="rev-text">"Great ambience for a BBQ place in Kannur. Went for the AYCE and wasn't disappointed. Seafood grill was fresh, prawns were cooked perfectly. Staff was helpful."</div>
+        <div class="rev-author"><div class="rev-av">M</div><div><div class="rev-name">Muhammed R.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <!-- duplicated for loop -->
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"The mixed BBQ platter was insane — chicken, mutton, beef, seafood all on one tray. Charcoal flavour is the real deal. Came with a group of 6 and everyone left full and happy."</div>
+        <div class="rev-author"><div class="rev-av">A</div><div><div class="rev-name">Arjun K.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"The Rocket Chicken is something else. I've had alfaham all over Kannur but this spice blend is different. The AYCE deal is the best value in the city."</div>
+        <div class="rev-author"><div class="rev-av">F</div><div><div class="rev-name">Faisal M.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★☆</div>
+        <div class="rev-text">"Mutton mandi was perfectly cooked — tender and aromatic. The charcoal chicken had a real smoky depth. Big portions, worth every rupee. Will be back."</div>
+        <div class="rev-author"><div class="rev-av">S</div><div><div class="rev-name">Sreejith R.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★★</div>
+        <div class="rev-text">"Late night cravings sorted. Came at 11PM and the grill was still going strong. Spicy charcoal chicken and shawarma — both perfect. Love that it's open till midnight."</div>
+        <div class="rev-author"><div class="rev-av">N</div><div><div class="rev-name">Naveen T.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-stars">★★★★☆</div>
+        <div class="rev-text">"Great ambience for a BBQ place in Kannur. Went for the AYCE and wasn't disappointed. Seafood grill was fresh, prawns were cooked perfectly. Staff was helpful."</div>
+        <div class="rev-author"><div class="rev-av">M</div><div><div class="rev-name">Muhammed R.</div><div class="rev-via">Google Review</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec" id="visit" style="background:var(--bg2);border-top:1px solid var(--bd);">
+  <div class="sec-max">
+    <div class="eyebrow rv">Find Us</div>
+    <h2 class="sec-h rv d1">COME <span>IN</span></h2>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <div class="vi-row rv">
+          <div class="vi-ic"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div><div class="vi-label">Address</div><div class="vi-val">SN Park Road, Kannur<br>Kerala 670001</div></div>
+        </div>
+        <div class="vi-row rv d1">
+          <div class="vi-ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 17.93V18a1 1 0 0 0-2 0v1.93A8.001 8.001 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8.001 8.001 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8.001 8.001 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8.001 8.001 0 0 1 13 19.93z"/></svg></div>
+          <div><div class="vi-label">Hours</div><div class="vi-val"><b>Open Now</b> · Till <b>12:00 AM</b><br>Takeout till 11:30 PM · Daily</div></div>
+        </div>
+        <div class="vi-row rv d2">
+          <div class="vi-ic"><svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div>
+          <div><div class="vi-label">Phone</div><div class="vi-val">+91 99472 35715</div></div>
+        </div>
+        <div class="vi-row rv d3">
+          <div class="vi-ic"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg></div>
+          <div><div class="vi-label">Avg Cost</div><div class="vi-val">₹300–₹400 per person<br>Mixed Platter ₹1,500 for groups</div></div>
+        </div>
+        <div class="hero-cta" style="justify-content:flex-start;margin-top:8px;">
+          <a href="https://maps.google.com/?q=Smokehouse+Barbeque+Co+SN+Park+Road+Kannur" target="_blank" rel="noopener" class="btn-p" style="font-size:.68rem;padding:12px 22px;">Get Directions ↗</a>
+          <a href="https://wa.me/919947235715?text=Hi!%20I%27d%20like%20to%20know%20more%20about%20Smokehouse%20Barbeque%20Co." target="_blank" rel="noopener" class="btn-g" style="font-size:.68rem;padding:12px 22px;">WhatsApp Us</a>
+        </div>
+      </div>
+      <div class="visit-map rv d1">
+        <iframe loading="lazy" allowfullscreen
+          src="https://maps.google.com/maps?q=Smokehouse+Barbeque+Co,+SN+Park+Road,+Kannur,+Kerala&output=embed&z=15">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="eyebrow rv" style="justify-content:center;">Reserve Your Spot</div>
+  <h2 class="cta-h rv d1">GRILL<span>ED</span><br>TONIGHT?</h2>
+  <p class="cta-p rv d2">Walk in or reserve ahead. SN Park Road, Kannur — open till midnight.</p>
+  <div class="hero-cta rv d3" style="justify-content:center;">
+    <a href="https://wa.me/919947235715?text=Hi!%20I%27d%20like%20to%20reserve%20a%20table%20at%20Smokehouse%20Barbeque%20Co." class="btn-p" target="_blank" rel="noopener">Reserve on WhatsApp ↗</a>
+    <a href="tel:+919947235715" class="btn-g">Call +91 99472 35715</a>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">SMOKE<span>HOUSE</span> BBQ</div>
+  <div class="f-links">
+    <a href="#menu">Menu</a>
+    <a href="#ayce">AYCE</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <div class="f-credit">Crafted by <a href="#">FRGX Media</a></div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/919947235715?text=Hi!%20I%27d%20like%20to%20know%20more%20about%20Smokehouse%20Barbeque%20Co." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);},{ passive:true });
+
+// Hamburger
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+function cM(){ham.classList.remove('open');mob.classList.remove('open');}
+
+// Strip marquee
+(function(){
+  const t=document.getElementById('stripTrack');
+  let x=0;
+  function tick(){x-=.6;if(Math.abs(x)>=t.scrollWidth/2)x=0;t.style.transform=`translateX(${x}px)`;requestAnimationFrame(tick);}
+  tick();
+})();
+
+// Reviews marquee
+(function(){
+  const t=document.getElementById('revTrack');
+  let x=0;
+  function tick(){x-=.4;if(Math.abs(x)>=t.scrollWidth/2)x=0;t.style.transform=`translateX(${x}px)`;requestAnimationFrame(tick);}
+  tick();
+})();
+
+// Scroll reveal
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
