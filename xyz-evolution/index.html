@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>New Evolution Fitness Club — The Complete Fitness Studio · Chalad</title>
+<meta name="description" content="New Evolution Fitness Club, Chalad. The complete fitness studio — strength, cardio, bodybuilding & personal training. It's time to evolve. Chalad Square, Kannur."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#0A0908;--bg2:#121009;--bg3:#1A170F;
+  --gold:#F5C518;--gold2:#FFD84D;
+  --w:#F6F2E8;--w2:#9C948A;--bd:rgba(245,197,24,.16);
+  --disp:'Anton',sans-serif;--head:'Oswald',sans-serif;--body:'Inter',sans-serif;
+  --r:14px;--ease:cubic-bezier(.4,0,.2,1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%;}
+body{font-family:var(--body);background:var(--bg);color:var(--w);overflow-x:hidden;max-width:100%;-webkit-font-smoothing:antialiased;}
+.disp{font-family:var(--disp);text-transform:uppercase;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,5vw,56px);transition:background .4s,border-color .4s,padding .4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(10,9,8,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--bd);padding-top:10px;padding-bottom:10px;}
+.nav-logo{display:flex;align-items:center;gap:11px;}
+.nav-logo img{height:44px;width:44px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.nav-logo .wm{font-family:var(--disp);font-size:1.3rem;letter-spacing:.06em;color:var(--w);line-height:1;}
+.nav-logo .wm b{color:var(--gold);}
+.nav-links{display:flex;gap:30px;list-style:none;}
+.nav-links a{font-family:var(--head);font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-pill{background:var(--gold);color:#0A0908;text-decoration:none;font-family:var(--head);font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 22px;border-radius:999px;transition:all .35s;}
+.nav-pill:hover{background:var(--gold2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,197,24,.3);}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:5px;}
+.ham span{display:block;width:24px;height:2px;background:var(--w);transition:all .4s;transform-origin:center;}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg);background:var(--gold);}
+.ham.open span:nth-child(2){opacity:0;}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:var(--gold);}
+.mob-ov{position:fixed;inset:0;z-index:99;background:rgba(8,7,6,.98);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;opacity:0;pointer-events:none;transition:opacity .4s;}
+.mob-ov.open{opacity:1;pointer-events:all;}
+.mob-ov a{font-family:var(--disp);font-size:2.6rem;text-transform:uppercase;letter-spacing:.03em;color:var(--w);text-decoration:none;opacity:0;transform:translateY(20px);transition:color .3s,opacity .4s,transform .4s;}
+.mob-ov.open a{opacity:1;transform:translateY(0);}
+.mob-ov.open a:nth-child(1){transition-delay:.05s}.mob-ov.open a:nth-child(2){transition-delay:.1s}.mob-ov.open a:nth-child(3){transition-delay:.15s}.mob-ov.open a:nth-child(4){transition-delay:.2s}.mob-ov.open a:nth-child(5){transition-delay:.25s}
+.mob-ov a:hover{color:var(--gold);}
+
+/* HERO */
+.hero{min-height:100dvh;position:relative;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.3) brightness(.42) contrast(1.08);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(10,9,8,.92) 0%,rgba(10,9,8,.65) 50%,rgba(10,9,8,.4) 100%),linear-gradient(to top,var(--bg) 2%,transparent 40%);}
+.hero-glow{position:absolute;top:30%;left:-10%;width:600px;height:400px;background:radial-gradient(ellipse,rgba(245,197,24,.14),transparent 70%);filter:blur(40px);z-index:1;pointer-events:none;}
+.hero-inner{position:relative;z-index:3;max-width:1240px;margin:0 auto;width:100%;padding:0 clamp(20px,5vw,56px);}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.28);border-radius:999px;padding:8px 18px;font-family:var(--head);font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:26px;}
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:blink 1.6s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hero-h{font-family:var(--disp);font-size:clamp(3.6rem,12vw,10rem);line-height:.86;letter-spacing:.01em;text-transform:uppercase;color:var(--w);text-shadow:0 4px 50px rgba(0,0,0,.6);}
+.hero-h span{color:var(--gold);}
+.hero-sub{font-family:var(--head);font-size:clamp(1rem,2.6vw,1.7rem);font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--w2);margin-top:18px;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:38px;}
+.btn-p{display:inline-flex;align-items:center;gap:9px;background:var(--gold);color:#0A0908;text-decoration:none;font-family:var(--head);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:16px 30px;border-radius:999px;transition:all .35s;}
+.btn-p:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 14px 36px rgba(245,197,24,.32);}
+.btn-g{display:inline-flex;align-items:center;gap:9px;background:transparent;color:var(--w);text-decoration:none;font-family:var(--head);font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:16px 30px;border-radius:999px;border:1px solid rgba(246,242,232,.22);transition:all .35s;}
+.btn-g:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{display:flex;gap:clamp(24px,5vw,60px);flex-wrap:wrap;margin-top:50px;padding-top:34px;border-top:1px solid rgba(246,242,232,.1);}
+.hs .n{font-family:var(--disp);font-size:clamp(1.8rem,4vw,2.7rem);color:var(--w);line-height:1;}
+.hs .n em{color:var(--gold);font-style:normal;}
+.hs .l{font-family:var(--head);font-size:.66rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--w2);margin-top:7px;}
+
+/* STRIP */
+.strip{background:var(--gold);padding:15px 0;overflow:hidden;}
+.strip-track{display:flex;width:max-content;will-change:transform;}
+.strip-item{font-family:var(--disp);font-size:1.25rem;letter-spacing:.06em;text-transform:uppercase;color:#0A0908;padding:0 28px;white-space:nowrap;display:flex;align-items:center;gap:28px;}
+.strip-item::after{content:'★';font-size:.85rem;}
+
+/* SECTIONS */
+.sec{padding:clamp(70px,10vw,130px) clamp(20px,5vw,56px);position:relative;}
+.sec-max{max-width:1240px;margin:0 auto;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--head);font-size:.72rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;}
+.eyebrow::before{content:'';width:26px;height:2px;background:var(--gold);}
+.sec-h{font-family:var(--disp);font-size:clamp(2.3rem,6vw,4.8rem);line-height:1;letter-spacing:.01em;text-transform:uppercase;color:var(--w);}
+.sec-h span{color:var(--gold);}
+.sec-p{font-size:.96rem;font-weight:300;color:var(--w2);line-height:1.85;max-width:520px;margin-top:18px;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,64px);align-items:center;}
+.about-imgs{position:relative;}
+.about-imgs .big{width:100%;aspect-ratio:4/4.4;object-fit:cover;border-radius:var(--r);border:1px solid var(--bd);}
+.about-imgs .small{position:absolute;bottom:-28px;right:-18px;width:46%;aspect-ratio:1/1;object-fit:cover;border-radius:var(--r);border:3px solid var(--bg);box-shadow:0 20px 50px rgba(0,0,0,.5);}
+.about-feats{display:flex;flex-direction:column;gap:18px;margin-top:32px;}
+.af{display:flex;gap:14px;align-items:flex-start;}
+.af-ic{width:40px;height:40px;border-radius:10px;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);font-size:1.1rem;}
+.af-t{font-family:var(--head);font-size:1rem;font-weight:600;letter-spacing:.02em;color:var(--w);}
+.af-d{font-size:.85rem;font-weight:300;color:var(--w2);line-height:1.6;margin-top:3px;}
+
+/* QUOTE BAND */
+.quote-band{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);padding:clamp(60px,9vw,110px) clamp(20px,5vw,56px);text-align:center;position:relative;overflow:hidden;}
+.quote-band::before{content:'“';position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-family:var(--disp);font-size:14rem;color:rgba(245,197,24,.07);line-height:1;}
+.quote-h{font-family:var(--disp);font-size:clamp(1.8rem,5vw,3.6rem);line-height:1.12;text-transform:uppercase;color:var(--w);max-width:960px;margin:0 auto;position:relative;z-index:1;}
+.quote-h span{color:var(--gold);}
+.quote-by{font-family:var(--head);font-size:.78rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);margin-top:24px;position:relative;z-index:1;}
+
+/* PROGRAMS */
+.prog-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:54px;}
+.prog-card{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:32px 26px;transition:all .5s var(--ease);position:relative;overflow:hidden;}
+.prog-card:hover{transform:translateY(-5px);border-color:rgba(245,197,24,.4);}
+.prog-card::after{content:'';position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--gold);transition:width .5s var(--ease);}
+.prog-card:hover::after{width:100%;}
+.prog-num{font-family:var(--disp);font-size:3rem;color:rgba(245,197,24,.14);line-height:1;}
+.prog-t{font-family:var(--head);font-size:1.25rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--w);margin-top:12px;}
+.prog-d{font-size:.85rem;font-weight:300;color:var(--w2);line-height:1.7;margin-top:10px;}
+
+/* GALLERY */
+.gal-wrap{overflow:hidden;}
+.gal-rail{overflow:hidden;position:relative;margin-top:48px;}
+.gal-rail::before,.gal-rail::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
+.gal-rail::before{left:0;background:linear-gradient(to right,var(--bg),transparent);}
+.gal-rail::after{right:0;background:linear-gradient(to left,var(--bg),transparent);}
+.gal-track{display:flex;gap:16px;width:max-content;will-change:transform;}
+.gal-track img{width:340px;height:240px;object-fit:cover;border-radius:var(--r);border:1px solid var(--bd);filter:grayscale(.2) contrast(1.05);}
+
+/* OWNER */
+.owner-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,5vw,64px);align-items:center;}
+.owner-img{position:relative;}
+.owner-img img{width:100%;max-width:380px;aspect-ratio:1/1.18;object-fit:cover;border-radius:var(--r);border:1px solid var(--bd);}
+.owner-img::before{content:'';position:absolute;inset:-14px -14px 14px -14px;border:1px solid rgba(245,197,24,.3);border-radius:var(--r);z-index:-1;}
+.owner-quote{font-family:var(--disp);font-size:clamp(1.6rem,3.6vw,2.7rem);line-height:1.18;text-transform:uppercase;color:var(--w);}
+.owner-quote span{color:var(--gold);}
+.owner-name{font-family:var(--head);font-size:1rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:24px;}
+.owner-role{font-size:.82rem;color:var(--w2);margin-top:4px;letter-spacing:.04em;}
+
+/* REVIEWS */
+.rev-rail{overflow:hidden;position:relative;margin-top:50px;}
+.rev-rail::before,.rev-rail::after{content:'';position:absolute;top:0;bottom:0;width:90px;z-index:2;pointer-events:none;}
+.rev-rail::before{left:0;background:linear-gradient(to right,var(--bg2),transparent);}
+.rev-rail::after{right:0;background:linear-gradient(to left,var(--bg2),transparent);}
+.rev-track{display:flex;gap:16px;width:max-content;will-change:transform;}
+.rev-card{width:340px;flex-shrink:0;background:var(--bg);border:1px solid var(--bd);border-radius:var(--r);padding:26px 26px 22px;}
+.rev-stars{color:var(--gold);font-size:.78rem;letter-spacing:2px;margin-bottom:13px;}
+.rev-text{font-size:.9rem;color:var(--w);font-weight:300;line-height:1.75;margin-bottom:18px;}
+.rev-author{display:flex;align-items:center;gap:11px;}
+.rev-av{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:.95rem;color:#0A0908;flex-shrink:0;}
+.rev-name{font-family:var(--head);font-size:.85rem;font-weight:600;color:var(--w);}
+.rev-via{font-size:.72rem;color:var(--w2);}
+
+/* VISIT */
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:54px;}
+.visit-info{display:flex;flex-direction:column;gap:22px;}
+.vi-row{display:flex;gap:15px;align-items:flex-start;}
+.vi-ic{width:42px;height:42px;border-radius:10px;background:rgba(245,197,24,.1);border:1px solid rgba(245,197,24,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.vi-ic svg{width:20px;height:20px;fill:var(--gold);}
+.vi-label{font-family:var(--head);font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--w2);margin-bottom:4px;}
+.vi-val{font-size:.96rem;color:var(--w);line-height:1.55;}
+.vi-val b{color:var(--gold);}
+.visit-map{border-radius:var(--r);overflow:hidden;border:1px solid var(--bd);height:340px;}
+.visit-map iframe{width:100%;height:100%;border:0;filter:grayscale(.3) invert(.9) contrast(.86) hue-rotate(180deg);}
+
+/* CTA */
+.cta-sec{text-align:center;padding:clamp(90px,12vw,160px) clamp(20px,5vw,56px);position:relative;overflow:hidden;border-top:1px solid var(--bd);}
+.cta-glow{position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:560px;height:260px;background:radial-gradient(ellipse,rgba(245,197,24,.16),transparent 70%);filter:blur(36px);}
+.cta-h{font-family:var(--disp);font-size:clamp(2.6rem,9vw,7rem);line-height:.94;letter-spacing:.01em;text-transform:uppercase;color:var(--w);position:relative;z-index:1;}
+.cta-h span{color:var(--gold);}
+.cta-p{font-size:.96rem;color:var(--w2);max-width:420px;margin:18px auto 36px;line-height:1.8;font-weight:300;position:relative;z-index:1;}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--bd);padding:clamp(34px,5vw,54px) clamp(20px,5vw,56px);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.f-logo{display:flex;align-items:center;gap:11px;}
+.f-logo img{height:40px;width:40px;border-radius:50%;}
+.f-logo .wm{font-family:var(--disp);font-size:1.2rem;letter-spacing:.05em;color:var(--w);}
+.f-logo .wm b{color:var(--gold);}
+.f-links{display:flex;gap:24px;flex-wrap:wrap;}
+.f-links a{font-family:var(--head);font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .3s;}
+.f-links a:hover{color:var(--gold);}
+.f-credit{font-size:.68rem;color:var(--w2);letter-spacing:.06em;}
+.f-credit a{color:var(--gold);text-decoration:none;}
+
+/* SCROLL REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* MOBILE */
+@media(max-width:880px){
+  .nav-links,.nav-pill{display:none;}.ham{display:flex;}
+  .about-grid{grid-template-columns:1fr;gap:48px;}
+  .about-imgs{max-width:440px;margin:0 auto;}
+  .prog-grid{grid-template-columns:1fr 1fr;}
+  .owner-grid{grid-template-columns:1fr;gap:40px;}
+  .owner-img{max-width:340px;margin:0 auto;}
+  .visit-grid{grid-template-columns:1fr;}
+}
+@media(max-width:600px){
+  .nav-logo .wm{font-size:1.1rem;}
+  .hero{padding-top:90px;}
+  .hero-h{font-size:clamp(3.2rem,17vw,5rem);}
+  .hero-cta{flex-direction:column;}
+  .btn-p,.btn-g{width:100%;justify-content:center;padding:16px 22px;min-height:54px;}
+  .hero-stats{gap:18px 30px;}
+  .sec{padding:60px 18px;}
+  .sec-h{font-size:clamp(2rem,9vw,3rem);}
+  .prog-grid{grid-template-columns:1fr;}
+  .gal-track img{width:260px;height:185px;}
+  .rev-card{width:280px;}
+  .visit-map{height:260px;}
+  .about-imgs .small{width:42%;bottom:-18px;right:-8px;}
+  footer{flex-direction:column;text-align:center;}.f-links{justify-content:center;}
+  .mob-ov a{font-size:2.1rem;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">
+    <img src="images/logo.png" alt="New Evolution Fitness Club logo"/>
+    <div class="wm">NEW <b>EVOLUTION</b></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Studio</a></li>
+    <li><a href="#programs">Training</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="#visit" class="nav-pill">Join Now</a>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob-ov" id="mob">
+  <a href="#about" onclick="cM()">Studio</a>
+  <a href="#programs" onclick="cM()">Training</a>
+  <a href="#gallery" onclick="cM()">Gallery</a>
+  <a href="#reviews" onclick="cM()">Reviews</a>
+  <a href="#visit" onclick="cM()">Visit</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"><img src="images/floor.png" alt="New Evolution Fitness Club interior"/></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><span class="dot"></span>Chalad Square · Kannur</div>
+    <h1 class="hero-h">IT'S TIME<br>TO <span>EVOLVE</span></h1>
+    <div class="hero-sub">The Complete Fitness Studio</div>
+    <div class="hero-cta">
+      <a href="#visit" class="btn-p">Join The Club ↗</a>
+      <a href="#gallery" class="btn-g">View The Studio</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hs"><div class="n">4.6<em>★</em></div><div class="l">42 Google Reviews</div></div>
+      <div class="hs"><div class="n">11:20<em>PM</em></div><div class="l">Open Till</div></div>
+      <div class="hs"><div class="n">100<em>%</em></div><div class="l">Complete Studio</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track" id="stripTrack">
+    <div class="strip-item">Strength</div><div class="strip-item">Cardio</div><div class="strip-item">Bodybuilding</div><div class="strip-item">Personal Training</div><div class="strip-item">Free Weights</div><div class="strip-item">It's Time To Evolve</div>
+    <div class="strip-item">Strength</div><div class="strip-item">Cardio</div><div class="strip-item">Bodybuilding</div><div class="strip-item">Personal Training</div><div class="strip-item">Free Weights</div><div class="strip-item">It's Time To Evolve</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="sec-max">
+    <div class="about-grid">
+      <div class="about-imgs rv">
+        <img class="big" src="images/interior-1.png" alt="Evolution Fitness training floor"/>
+        <img class="small" src="images/interior-2.png" alt="Evolution Fitness equipment"/>
+      </div>
+      <div>
+        <div class="eyebrow rv">The Studio</div>
+        <h2 class="sec-h rv d1">A COMPLETE<br>FITNESS <span>STUDIO</span></h2>
+        <p class="sec-p rv d2">New Evolution Fitness Club brings serious training to the heart of Chalad. A fully-equipped floor, a focused atmosphere, and trainers who actually care about your progress — everything under one roof.</p>
+        <div class="about-feats">
+          <div class="af rv d2">
+            <div class="af-ic">⚡</div>
+            <div><div class="af-t">Fully Equipped Floor</div><div class="af-d">Free weights, machines, cardio zone — calibrated and ready for every level.</div></div>
+          </div>
+          <div class="af rv d3">
+            <div class="af-ic">★</div>
+            <div><div class="af-t">Expert Trainers</div><div class="af-d">"Excellent atmosphere and good trainers" — the team that pushes you further.</div></div>
+          </div>
+          <div class="af rv d3">
+            <div class="af-ic">✦</div>
+            <div><div class="af-t">Clean & Comfortable</div><div class="af-d">Super clean, well-kept space — a studio you'll actually want to train in.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-band">
+  <div class="quote-h rv">The only person you have to be better than is the <span>person you were yesterday.</span></div>
+  <div class="quote-by rv d1">— New Evolution Fitness Club</div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="sec" id="programs">
+  <div class="sec-max">
+    <div class="eyebrow rv">What We Offer</div>
+    <h2 class="sec-h rv d1">TRAIN YOUR <span>WAY</span></h2>
+    <div class="prog-grid">
+      <div class="prog-card rv">
+        <div class="prog-num">01</div>
+        <div class="prog-t">Strength &amp; Conditioning</div>
+        <div class="prog-d">Build raw power on competition-grade racks and free weights. Structured, progressive, results-driven.</div>
+      </div>
+      <div class="prog-card rv d1">
+        <div class="prog-num">02</div>
+        <div class="prog-t">Bodybuilding</div>
+        <div class="prog-d">Hypertrophy-focused programming to sculpt and grow. Volume, overload and full recovery support.</div>
+      </div>
+      <div class="prog-card rv d2">
+        <div class="prog-num">03</div>
+        <div class="prog-t">Cardio Zone</div>
+        <div class="prog-d">Treadmills, cycles and conditioning equipment to torch fat and build serious endurance.</div>
+      </div>
+      <div class="prog-card rv d3">
+        <div class="prog-num">04</div>
+        <div class="prog-t">Personal Training</div>
+        <div class="prog-d">A dedicated coach and a plan built around you — accountability every single session.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec gal-wrap" id="gallery" style="background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);">
+  <div class="sec-max">
+    <div class="eyebrow rv">Inside Evolution</div>
+    <h2 class="sec-h rv d1">THE <span>FLOOR</span></h2>
+  </div>
+  <div class="gal-rail">
+    <div class="gal-track" id="galTrack">
+      <img src="images/floor.png" alt="Gym floor"/>
+      <img src="images/interior-1.png" alt="Training area"/>
+      <img src="images/interior-2.png" alt="Equipment"/>
+      <img src="images/floor.png" alt="Gym floor"/>
+      <img src="images/interior-1.png" alt="Training area"/>
+      <img src="images/interior-2.png" alt="Equipment"/>
+    </div>
+  </div>
+</section>
+
+<!-- OWNER -->
+<section class="sec" id="owner">
+  <div class="sec-max">
+    <div class="owner-grid">
+      <div class="owner-img rv">
+        <img src="images/owner.png" alt="Founder, New Evolution Fitness Club"/>
+      </div>
+      <div>
+        <div class="eyebrow rv">The Vision</div>
+        <div class="owner-quote rv d1">"We didn't build a gym. We built a place where people <span>evolve</span> — every rep, every day."</div>
+        <div class="owner-name rv d2">The Founder</div>
+        <div class="owner-role rv d2">New Evolution Fitness Club · Chalad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews" style="background:var(--bg2);border-top:1px solid var(--bd);">
+  <div class="sec-max">
+    <div class="eyebrow rv">The Members Speak</div>
+    <h2 class="sec-h rv d1">4.6★ ON <span>GOOGLE</span></h2>
+  </div>
+  <div class="rev-rail">
+    <div class="rev-track" id="revTrack">
+      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">"Excellent atmosphere for workout and good trainers. The vibe really pushes you to give your best every session."</div><div class="rev-author"><div class="rev-av">A</div><div><div class="rev-name">Arun</div><div class="rev-via">Google Review</div></div></div></div>
+      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">"Good service, super clean and comfortable gym. Everything is well maintained and the equipment is top quality."</div><div class="rev-author"><div class="rev-av">S</div><div><div class="rev-name">Sangeeth</div><div class="rev-via">Google Review</div></div></div></div>
+      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">"Best gym in Chalad hands down. The trainers know what they're doing and genuinely help you reach your goals."</div><div class="rev-author"><div class="rev-av">R</div><div><div class="rev-name">Rahul</div><div class="rev-via">Google Review</div></div></div></div>
+      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">"Great equipment, motivating environment and open till late which is perfect for my schedule. Highly recommend."</div><div class="rev-author"><div class="rev-av">N</div><div><div class="rev-name">Nikhil</div><div class="rev-via">Google Review</div></div></div></div>
+      <!-- dup -->
+      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">"Excellent atmosphere for workout and good trainers. The vibe really pushes you to give your best every session."</div><div class="rev-author"><div class="rev-av">A</div><div><div class="rev-name">Arun</div><div class="rev-via">Google Review</div></div></div></div>
+      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">"Good service, super clean and comfortable gym. Everything is well maintained and the equipment is top quality."</div><div class="rev-author"><div class="rev-av">S</div><div><div class="rev-name">Sangeeth</div><div class="rev-via">Google Review</div></div></div></div>
+      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">"Best gym in Chalad hands down. The trainers know what they're doing and genuinely help you reach your goals."</div><div class="rev-author"><div class="rev-av">R</div><div><div class="rev-name">Rahul</div><div class="rev-via">Google Review</div></div></div></div>
+      <div class="rev-card"><div class="rev-stars">★★★★★</div><div class="rev-text">"Great equipment, motivating environment and open till late which is perfect for my schedule. Highly recommend."</div><div class="rev-author"><div class="rev-av">N</div><div><div class="rev-name">Nikhil</div><div class="rev-via">Google Review</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec" id="visit">
+  <div class="sec-max">
+    <div class="eyebrow rv">Find Us</div>
+    <h2 class="sec-h rv d1">COME <span>EVOLVE</span></h2>
+    <div class="visit-grid">
+      <div class="visit-info">
+        <div class="vi-row rv">
+          <div class="vi-ic"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg></div>
+          <div><div class="vi-label">Address</div><div class="vi-val">Second Floor, Chalad Square<br>Podikkund, Chalad, Kannur, Kerala 670014</div></div>
+        </div>
+        <div class="vi-row rv d1">
+          <div class="vi-ic"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm1 17.93V18a1 1 0 0 0-2 0v1.93A8.001 8.001 0 0 1 4.07 13H6a1 1 0 0 0 0-2H4.07A8.001 8.001 0 0 1 11 4.07V6a1 1 0 0 0 2 0V4.07A8.001 8.001 0 0 1 19.93 11H18a1 1 0 0 0 0 2h1.93A8.001 8.001 0 0 1 13 19.93z"/></svg></div>
+          <div><div class="vi-label">Hours</div><div class="vi-val"><b>Open Now</b> · Closes <b>11:20 PM</b><br>Busiest 6 PM – 11 PM · Daily</div></div>
+        </div>
+        <div class="vi-row rv d2">
+          <div class="vi-ic"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zm0 7.5L4.2 6 12 2.4 19.8 6 12 9.5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <div><div class="vi-label">Evolution Fitness Group</div><div class="vi-val">The Complete Fitness Studio<br>It's time to evolve.</div></div>
+        </div>
+        <div class="hero-cta" style="margin-top:8px;">
+          <a href="https://maps.google.com/?q=New+Evolution+Fitness+Club+Chalad+Square+Kannur" target="_blank" rel="noopener" class="btn-p" style="font-size:.78rem;padding:14px 26px;">Get Directions ↗</a>
+        </div>
+      </div>
+      <div class="visit-map rv d1">
+        <iframe loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=New+Evolution+Fitness+Club,+Chalad+Square,+Kannur,+Kerala+670014&output=embed&z=15"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-glow"></div>
+  <div class="eyebrow rv" style="justify-content:center;">Your Time Is Now</div>
+  <h2 class="cta-h rv d1">READY TO <span>EVOLVE?</span></h2>
+  <p class="cta-p rv d2">Walk in, meet the team, and start training today. Second Floor, Chalad Square.</p>
+  <div class="hero-cta rv d3" style="justify-content:center;">
+    <a href="https://maps.google.com/?q=New+Evolution+Fitness+Club+Chalad+Square+Kannur" target="_blank" rel="noopener" class="btn-p">Visit The Studio ↗</a>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">
+    <img src="images/logo.png" alt="Evolution logo"/>
+    <div class="wm">NEW <b>EVOLUTION</b></div>
+  </div>
+  <div class="f-links">
+    <a href="#about">Studio</a>
+    <a href="#programs">Training</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#visit">Visit</a>
+  </div>
+  <div class="f-credit">Crafted by <a href="#">FRGX Media</a></div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>60);},{passive:true});
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');});
+function cM(){ham.classList.remove('open');mob.classList.remove('open');}
+
+function marquee(track,speed){let x=0;function tick(){x+=speed;if(Math.abs(x)>=track.scrollWidth/2)x=0;track.style.transform=`translateX(${x}px)`;requestAnimationFrame(tick);}tick();}
+marquee(document.getElementById('stripTrack'),-.6);
+marquee(document.getElementById('galTrack'),-.5);
+marquee(document.getElementById('revTrack'),-.4);
+
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
