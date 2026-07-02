@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -110,19 +112,31 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .rv.in{opacity:1;transform:translateY(0);}
 .rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}.rv.d4{transition-delay:.48s}
 
-/* ── COLLECTIONS: editorial index list ── */
-.col-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:56px;}
-.edit-list{border-top:1px solid var(--bd2);}
-.edit-row{display:grid;grid-template-columns:56px 1fr minmax(160px,300px) 36px;align-items:center;column-gap:clamp(16px,3vw,36px);padding:clamp(22px,3.4vw,40px) 6px;border-bottom:1px solid var(--bd);text-decoration:none;color:var(--w);position:relative;overflow:hidden;}
-.edit-row::before{content:'';position:absolute;inset:0;background:var(--ice);opacity:0;transition:opacity .6s var(--ease);pointer-events:none;}
-.edit-row:hover::before{opacity:.05;}
-.edit-n{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05rem;color:var(--w3);transition:color .5s var(--ease);position:relative;z-index:1;}
-.edit-row:hover .edit-n{color:var(--ice);}
-.edit-name{font-family:var(--pop);font-weight:600;font-size:clamp(1.55rem,4.6vw,3.1rem);line-height:1;letter-spacing:-.015em;transition:transform .6s var(--ease),color .5s var(--ease);position:relative;z-index:1;}
-.edit-row:hover .edit-name{transform:translateX(12px);color:var(--ice2);}
-.edit-desc{font-size:.82rem;font-weight:300;color:var(--w2);text-align:right;line-height:1.55;position:relative;z-index:1;}
-.edit-ar{font-size:1.15rem;color:var(--w3);text-align:right;transform:translate(-8px,8px) rotate(-8deg);opacity:0;transition:all .55s var(--ease);position:relative;z-index:1;}
-.edit-row:hover .edit-ar{opacity:1;transform:translate(0,0) rotate(0);color:var(--ice);}
+/* ── COLLECTIONS: GSAP card stack (Skiper-style peel/rotate) ── */
+.col-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:0;}
+.stack-stage{position:relative;height:78vh;min-height:460px;max-height:640px;margin-top:clamp(40px,6vw,72px);}
+.stack-card{position:absolute;inset:0;border-radius:2rem;padding:1.5px;background:linear-gradient(155deg,rgba(159,180,196,.35),rgba(255,255,255,.06) 40%,rgba(255,255,255,.02));will-change:transform,opacity;}
+.stack-card-inner{position:relative;height:100%;border-radius:calc(2rem - 1.5px);background:var(--bg2);border:1px solid var(--bd);overflow:hidden;padding:clamp(30px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 0 1px 1px rgba(255,255,255,.06),0 30px 70px -20px rgba(0,0,0,.6);}
+.stack-n{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--ice);}
+.stack-body{margin-top:auto;}
+.stack-name{font-family:var(--pop);font-weight:700;font-size:clamp(2.2rem,6vw,4.4rem);line-height:.96;letter-spacing:-.015em;}
+.stack-desc{font-family:var(--serif);font-size:clamp(1.05rem,2vw,1.4rem);font-weight:300;color:var(--w2);margin-top:18px;max-width:480px;}
+.stack-ar{position:absolute;top:clamp(30px,4vw,56px);right:clamp(30px,4vw,56px);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--w2);}
+.stack-hint{text-align:center;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--w3);margin-top:22px;}
+
+/* ── STORES: double-bezel nested cards ── */
+.store-list{display:flex;flex-direction:column;gap:14px;}
+.store-shell{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:1.6rem;padding:7px;transition:border-color .5s var(--ease),background .5s var(--ease);}
+.store-shell:hover{border-color:var(--bd2);background:rgba(255,255,255,.045);}
+.store{position:relative;display:grid;grid-template-columns:64px 1fr 1.3fr;align-items:baseline;column-gap:clamp(16px,3vw,36px);padding:clamp(20px,2.8vw,32px);border-radius:calc(1.6rem - 7px);background:var(--bg2);box-shadow:inset 0 1px 1px rgba(255,255,255,.05);overflow:hidden;}
+.store-idx{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--w3);position:relative;z-index:1;}
+.store-city{font-family:var(--pop);font-weight:600;font-size:clamp(1.35rem,3vw,2.1rem);letter-spacing:-.01em;position:relative;z-index:1;}
+.store-name{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);margin-top:6px;position:relative;z-index:1;}
+.store-meta{font-size:.86rem;font-weight:300;color:var(--w2);line-height:1.65;text-align:right;position:relative;z-index:1;}
+
+/* ── horizontal text reveal (story quote) ── */
+.hrv-word{display:inline-block;overflow:hidden;vertical-align:top;}
+.hrv-word span{display:inline-block;will-change:transform,opacity;}
 
 /* ── STORY: centered pull-quote + inline stat strip ── */
 .story-wrap{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);text-align:center;}
@@ -190,8 +204,8 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
 @media(max-width:900px){
   .nav-links,.nav-cta{display:none;}
   .ham{display:flex;}
-  .edit-row{grid-template-columns:36px 1fr 30px;}
-  .edit-desc{display:none;}
+  .stack-stage{height:64vh;min-height:400px;}
+  .stack-ar{width:40px;height:40px;font-size:1rem;}
   .store{grid-template-columns:40px 1fr;row-gap:14px;}
   .store-meta{grid-column:1/-1;text-align:left;}
   .val-grid{grid-template-columns:1fr;gap:0;}
@@ -274,14 +288,15 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
       </div>
       <p class="lead rv d2">From boardroom formals to weekend denim — a curated house of premium branded menswear, chosen for fit, fabric and finish.</p>
     </div>
-    <div class="edit-list">
-      <a href="#visit" class="edit-row rv"><span class="edit-n">01</span><span class="edit-name">Formalwear</span><span class="edit-desc">Tailored shirts, trousers &amp; suits built for the man who means business.</span><span class="edit-ar">↗</span></a>
-      <a href="#visit" class="edit-row rv d1"><span class="edit-n">02</span><span class="edit-name">Denim &amp; Casuals</span><span class="edit-desc">Everyday essentials — premium denim, tees and layering that just works.</span><span class="edit-ar">↗</span></a>
-      <a href="#visit" class="edit-row rv d2"><span class="edit-n">03</span><span class="edit-name">Ethnic Wear</span><span class="edit-desc">Kurtas, sherwanis and festive fits for the moments that matter.</span><span class="edit-ar">↗</span></a>
-      <a href="#visit" class="edit-row rv"><span class="edit-n">04</span><span class="edit-name">Footwear</span><span class="edit-desc">From formal leather to street-ready sneakers — the finishing step.</span><span class="edit-ar">↗</span></a>
-      <a href="#visit" class="edit-row rv d1"><span class="edit-n">05</span><span class="edit-name">Accessories</span><span class="edit-desc">Belts, wallets, watches &amp; scent — the details that separate men.</span><span class="edit-ar">↗</span></a>
-      <a href="#visit" class="edit-row rv d2"><span class="edit-n">06</span><span class="edit-name">Brand Labels</span><span class="edit-desc">An extensive line-up of premium branded apparel under one roof.</span><span class="edit-ar">↗</span></a>
+    <div class="stack-stage" id="stackStage">
+      <div class="stack-card" data-i="0"><div class="stack-card-inner"><div class="stack-n">01</div><div class="stack-ar">↗</div><div class="stack-body"><div class="stack-name">Formalwear</div><p class="stack-desc">Tailored shirts, trousers &amp; suits built for the man who means business.</p></div></div></div>
+      <div class="stack-card" data-i="1"><div class="stack-card-inner"><div class="stack-n">02</div><div class="stack-ar">↗</div><div class="stack-body"><div class="stack-name">Denim &amp; Casuals</div><p class="stack-desc">Everyday essentials — premium denim, tees and layering that just works.</p></div></div></div>
+      <div class="stack-card" data-i="2"><div class="stack-card-inner"><div class="stack-n">03</div><div class="stack-ar">↗</div><div class="stack-body"><div class="stack-name">Ethnic Wear</div><p class="stack-desc">Kurtas, sherwanis and festive fits for the moments that matter.</p></div></div></div>
+      <div class="stack-card" data-i="3"><div class="stack-card-inner"><div class="stack-n">04</div><div class="stack-ar">↗</div><div class="stack-body"><div class="stack-name">Footwear</div><p class="stack-desc">From formal leather to street-ready sneakers — the finishing step.</p></div></div></div>
+      <div class="stack-card" data-i="4"><div class="stack-card-inner"><div class="stack-n">05</div><div class="stack-ar">↗</div><div class="stack-body"><div class="stack-name">Accessories</div><p class="stack-desc">Belts, wallets, watches &amp; scent — the details that separate men.</p></div></div></div>
+      <div class="stack-card" data-i="5"><div class="stack-card-inner"><div class="stack-n">06</div><div class="stack-ar">↗</div><div class="stack-body"><div class="stack-name">Brand Labels</div><p class="stack-desc">An extensive line-up of premium branded apparel under one roof.</p></div></div></div>
     </div>
+    <div class="stack-hint">Scroll to browse</div>
   </div>
 </section>
 
@@ -289,7 +304,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
 <section class="sec story-wrap" id="story">
   <div class="mx">
     <div class="eye rv" style="justify-content:center;">Since 2010</div>
-    <p class="story-quote rv d1">What began as one modest gents' shop in Irikkur is now North Kerala's <em>destination for premium men's fashion.</em></p>
+    <p class="story-quote" id="storyQuote">What began as one modest gents&rsquo; shop in Irikkur is now North Kerala&rsquo;s <em>destination for premium men&rsquo;s fashion.</em></p>
     <p class="story-p rv d2">Fifteen years, four stores and one standard that never moved — clothing that earns its place in your wardrobe. Style and comfort, chosen by people who actually care how you walk out the door.</p>
     <div class="stats rv d3">
       <div class="stat"><div class="stat-n">15<em>+</em></div><div class="stat-l">Years of trust</div></div>
@@ -311,10 +326,10 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
       <p class="lead rv d2">Walk into any YŌX and you'll find the same thing — premium menswear and people who know how to dress you.</p>
     </div>
     <div class="store-list">
-      <div class="store rv"><span class="store-idx">01</span><div><div class="store-city">Kannur</div><div class="store-name">Yox Men's Store · Flagship</div></div><p class="store-meta">K.K Building, near Ambala Road, Chalad, Kannur, Kerala 670014<br/>Open daily · 9 AM – 9 PM</p></div>
-      <div class="store rv d1"><span class="store-idx">02</span><div><div class="store-city">Kuthuparamba</div><div class="store-name">Yox Men's Store</div></div><p class="store-meta">Kuthuparamba town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div>
-      <div class="store rv d2"><span class="store-idx">03</span><div><div class="store-city">Irikkur</div><div class="store-name">Yox Gents Shoppe · Est. 2010</div></div><p class="store-meta">Irikkur town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div>
-      <div class="store rv d3"><span class="store-idx">04</span><div><div class="store-city">Iritty</div><div class="store-name">Yox Fashion Store</div></div><p class="store-meta">Iritty town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div>
+      <div class="store-shell rv"><div class="store"><span class="store-idx">01</span><div><div class="store-city">Kannur</div><div class="store-name">Yox Men's Store · Flagship</div></div><p class="store-meta">K.K Building, near Ambala Road, Chalad, Kannur, Kerala 670014<br/>Open daily · 9 AM – 9 PM</p></div></div>
+      <div class="store-shell rv d1"><div class="store"><span class="store-idx">02</span><div><div class="store-city">Kuthuparamba</div><div class="store-name">Yox Men's Store</div></div><p class="store-meta">Kuthuparamba town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div></div>
+      <div class="store-shell rv d2"><div class="store"><span class="store-idx">03</span><div><div class="store-city">Irikkur</div><div class="store-name">Yox Gents Shoppe · Est. 2010</div></div><p class="store-meta">Irikkur town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div></div>
+      <div class="store-shell rv d3"><div class="store"><span class="store-idx">04</span><div><div class="store-city">Iritty</div><div class="store-name">Yox Fashion Store</div></div><p class="store-meta">Iritty town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div></div>
     </div>
   </div>
 </section>
@@ -419,6 +434,71 @@ if(hi&&hi.tagName==='VIDEO'){
 // ── REVEALS ──
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.14});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── COLLECTIONS: GSAP card stack (pin + scrub peel-away) ──
+if(window.gsap&&window.ScrollTrigger){
+  gsap.registerPlugin(ScrollTrigger);
+  const cards=gsap.utils.toArray('.stack-card');
+  const stackY=14,stackRot=2.4,stackScaleStep=.028;
+  cards.forEach((card,i)=>{
+    gsap.set(card,{
+      y:i*stackY,
+      rotation:i===0?0:(i%2===0?stackRot:-stackRot),
+      scale:1-i*stackScaleStep,
+      zIndex:cards.length-i,
+      transformOrigin:'50% 100%'
+    });
+  });
+  const tl=gsap.timeline({
+    scrollTrigger:{
+      trigger:'#stackStage',
+      start:'top top+=90',
+      end:()=>'+='+(cards.length*68)+'%',
+      scrub:.7,
+      pin:true,
+      anticipatePin:1
+    }
+  });
+  cards.forEach((card,i)=>{
+    if(i===cards.length-1)return;
+    const dir=i%2===0?1:-1;
+    tl.to(card,{xPercent:dir*130,rotation:dir*24,opacity:0,duration:1,ease:'power2.in'},i);
+  });
+}
+
+// ── STORY: horizontal text reveal on scroll ──
+if(window.gsap&&window.ScrollTrigger){
+  const q=document.getElementById('storyQuote');
+  if(q){
+    const walker=[...q.childNodes];
+    q.innerHTML='';
+    walker.forEach(node=>{
+      if(node.nodeType===3){
+        node.textContent.split(/(\s+)/).forEach(tok=>{
+          if(!tok.trim()){q.appendChild(document.createTextNode(tok));return;}
+          const wrap=document.createElement('span');wrap.className='hrv-word';
+          const inner=document.createElement('span');inner.textContent=tok;
+          wrap.appendChild(inner);q.appendChild(wrap);
+        });
+      } else if(node.nodeType===1){
+        const em=document.createElement('em');
+        node.textContent.split(/(\s+)/).forEach(tok=>{
+          if(!tok.trim()){em.appendChild(document.createTextNode(tok));return;}
+          const wrap=document.createElement('span');wrap.className='hrv-word';
+          const inner=document.createElement('span');inner.textContent=tok;
+          wrap.appendChild(inner);em.appendChild(wrap);
+        });
+        q.appendChild(em);
+      }
+    });
+    const words=q.querySelectorAll('.hrv-word span');
+    gsap.set(words,{xPercent:-100,opacity:0});
+    gsap.to(words,{
+      xPercent:0,opacity:1,stagger:.025,ease:'power3.out',
+      scrollTrigger:{trigger:q,start:'top 85%',end:'top 40%',scrub:.6}
+    });
+  }
+}
 
 // ── SLOW smooth anchor scroll ──
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
