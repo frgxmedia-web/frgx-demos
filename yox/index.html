@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>YŌX — Men's Store · Premium Menswear, Kannur</title>
+<meta name="description" content="YŌX Men's Store — premium men's fashion for style and comfort. Four stores across Kannur, Iritty, Irikkur & Kuthuparamba. Since 2010."/>
+<meta property="og:title" content="YŌX — Premium Menswear"/>
+<meta property="og:description" content="Style, worn cold. Premium men's fashion across North Kerala since 2010."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#08080A;--bg2:#0C0D10;--bg3:#111318;
+  --w:#F4F4F1;--w2:rgba(244,244,241,.52);--w3:rgba(244,244,241,.3);
+  --ice:#9FB4C4;--ice2:#C4D4E0;
+  --bd:rgba(255,255,255,.09);--bd2:rgba(255,255,255,.16);
+  --r:4px;
+  --ease:cubic-bezier(0.22,0.61,0.36,1);
+  --ease2:cubic-bezier(0.65,0,0.35,1);
+  --pop:'Poppins',sans-serif;--serif:'Cormorant Garamond',serif;
+}
+html{overflow-x:hidden;max-width:100%;}
+body{font-family:var(--pop);background:var(--bg);color:var(--w);overflow-x:hidden;max-width:100%;-webkit-font-smoothing:antialiased;line-height:1.5;}
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.03;pointer-events:none;z-index:9;}
+::selection{background:var(--ice);color:#000;}
+a{color:inherit;}
+img{display:block;max-width:100%;}
+
+/* ── LOGO MARK: bar over the O ── */
+.yox{font-family:var(--pop);font-weight:800;letter-spacing:.02em;white-space:nowrap;}
+.yox .o{position:relative;display:inline-block;}
+.yox .o::before{content:'';position:absolute;left:8%;right:8%;top:-.02em;height:.09em;background:currentColor;border-radius:2px;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px clamp(18px,4vw,58px);transition:background .5s var(--ease),padding .5s var(--ease),border-color .5s var(--ease);border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom-color:var(--bd);padding-top:15px;padding-bottom:15px;}
+.nav-logo{font-size:1.5rem;line-height:1;letter-spacing:.04em;cursor:pointer;}
+.nav-logo .sub{display:block;font-size:.42rem;font-weight:400;letter-spacing:.62em;color:var(--w2);margin-top:5px;padding-left:.1em;}
+.nav-links{display:flex;gap:38px;list-style:none;}
+.nav-links a{font-size:.68rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--w2);text-decoration:none;position:relative;transition:color .4s var(--ease);}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--ice);transition:width .4s var(--ease);}
+.nav-links a:hover{color:var(--w);}
+.nav-links a:hover::after{width:100%;}
+.nav-cta{font-size:.66rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;color:var(--w);border:1px solid var(--bd2);padding:11px 22px;border-radius:999px;transition:all .4s var(--ease);}
+.nav-cta:hover{background:var(--w);color:#000;border-color:var(--w);}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px;z-index:101;}
+.ham span{display:block;width:24px;height:1.5px;background:var(--w);transition:all .4s var(--ease);}
+.ham.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.ham.open span:nth-child(2){opacity:0;}
+.ham.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.mob{position:fixed;inset:0;z-index:99;background:rgba(6,6,8,.98);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;opacity:0;pointer-events:none;transition:opacity .5s var(--ease);}
+.mob.open{opacity:1;pointer-events:all;}
+.mob a{font-family:var(--serif);font-size:2.6rem;font-weight:300;letter-spacing:.02em;color:var(--w);text-decoration:none;opacity:0;transform:translateY(18px);transition:opacity .5s var(--ease),transform .5s var(--ease),color .3s;}
+.mob.open a{opacity:1;transform:translateY(0);}
+.mob.open a:nth-child(1){transition-delay:.06s}.mob.open a:nth-child(2){transition-delay:.12s}.mob.open a:nth-child(3){transition-delay:.18s}.mob.open a:nth-child(4){transition-delay:.24s}.mob.open a:nth-child(5){transition-delay:.3s}
+.mob a:hover{color:var(--ice);}
+
+/* ── HERO ── */
+.hero{position:relative;height:100dvh;min-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.hero-img{position:absolute;inset:0;z-index:0;}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.34;filter:grayscale(.5) contrast(1.05) brightness(.7);will-change:transform;}
+.hero-veil{position:absolute;inset:0;z-index:1;background:
+  radial-gradient(ellipse 90% 70% at 50% 32%,transparent 0%,rgba(8,8,10,.55) 70%,var(--bg) 100%),
+  linear-gradient(to bottom,rgba(8,8,10,.5),transparent 30%,transparent 62%,var(--bg) 100%);}
+#rain{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:.5;}
+.hero-spot{position:absolute;inset:0;z-index:2;pointer-events:none;background:radial-gradient(circle 420px at var(--mx,50%) var(--my,38%),rgba(159,180,196,.1),transparent 70%);transition:background .3s linear;}
+.hero-in{position:relative;z-index:4;text-align:center;padding:0 20px;width:100%;}
+.hero-eye{display:inline-flex;align-items:center;gap:12px;font-size:.56rem;font-weight:400;letter-spacing:.42em;text-transform:uppercase;color:var(--ice);margin-bottom:clamp(26px,4vw,42px);opacity:0;animation:fadeUp 1s var(--ease) .2s forwards;}
+.hero-eye::before,.hero-eye::after{content:'';width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--ice));}
+.hero-eye::after{background:linear-gradient(90deg,var(--ice),transparent);}
+.hero-mark{font-family:var(--pop);font-weight:800;font-size:clamp(6rem,26vw,20rem);line-height:.82;letter-spacing:.01em;position:relative;display:inline-block;}
+.hero-mark .o{position:relative;display:inline-block;}
+.hero-mark .o::before{content:'';position:absolute;left:9%;right:9%;top:.04em;height:.075em;background:var(--w);border-radius:3px;box-shadow:0 0 24px rgba(196,212,224,.35);}
+.hero-mark span{display:inline-block;opacity:0;transform:translateY(40px);animation:markUp .95s var(--ease2) forwards;}
+.hero-mark span:nth-child(1){animation-delay:.35s}.hero-mark span:nth-child(2){animation-delay:.48s}.hero-mark span:nth-child(3){animation-delay:.61s}
+.hero-sub{font-size:clamp(.7rem,2.2vw,1.05rem);font-weight:300;letter-spacing:.66em;text-transform:uppercase;color:var(--w);margin-top:clamp(18px,2.6vw,30px);padding-left:.66em;opacity:0;animation:fadeUp 1s var(--ease) .85s forwards;}
+.hero-tag{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.05rem,3vw,1.5rem);color:var(--w2);margin-top:clamp(22px,3vw,32px);opacity:0;animation:fadeUp 1s var(--ease) 1s forwards;}
+.hero-cta{margin-top:clamp(34px,4.5vw,50px);display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s var(--ease) 1.15s forwards;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+@keyframes markUp{to{opacity:1;transform:translateY(0);}}
+.hero-eye,.hero-cta{transform:translateY(16px);}
+
+.btn{display:inline-flex;align-items:center;gap:11px;font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:16px 30px;border-radius:999px;transition:all .45s var(--ease);cursor:pointer;border:1px solid transparent;}
+.btn-w{background:var(--w);color:#000;}
+.btn-w:hover{background:transparent;color:var(--w);border-color:var(--w);transform:translateY(-2px);}
+.btn-o{background:transparent;color:var(--w);border-color:var(--bd2);}
+.btn-o:hover{border-color:var(--w);background:rgba(255,255,255,.05);transform:translateY(-2px);}
+.btn .ar{transition:transform .45s var(--ease);}
+.btn:hover .ar{transform:translate(4px,-4px);}
+
+/* ── MARQUEE ── */
+.marq{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:var(--bg2);overflow:hidden;padding:20px 0;position:relative;z-index:5;}
+.marq-track{display:flex;width:max-content;will-change:transform;}
+.marq-track span{font-family:var(--serif);font-style:italic;font-size:1.35rem;font-weight:300;color:var(--w2);padding:0 32px;white-space:nowrap;letter-spacing:.02em;}
+.marq-track .dot{color:var(--ice);font-style:normal;}
+
+/* ── SECTION SHELL ── */
+.sec{padding:clamp(80px,11vw,150px) clamp(20px,5vw,58px);position:relative;z-index:5;}
+.mx{max-width:1300px;margin:0 auto;}
+.eye{display:inline-flex;align-items:center;gap:11px;font-size:.6rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--ice);margin-bottom:22px;}
+.eye::before{content:'';width:26px;height:1px;background:var(--ice);}
+.h2{font-family:var(--pop);font-weight:700;font-size:clamp(2.3rem,6vw,4.6rem);line-height:1.02;letter-spacing:-.01em;}
+.h2 em{font-family:var(--serif);font-style:italic;font-weight:300;letter-spacing:0;}
+.lead{font-family:var(--serif);font-size:clamp(1.15rem,2.4vw,1.6rem);font-weight:300;line-height:1.5;color:var(--w2);max-width:560px;}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.2s}.rv.d3{transition-delay:.3s}.rv.d4{transition-delay:.4s}
+
+/* ── COLLECTIONS ── */
+.col-head{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:56px;}
+.col-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;}
+.col{position:relative;background:var(--bg);padding:clamp(34px,4vw,52px) clamp(26px,3vw,42px);min-height:290px;display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;color:var(--w);overflow:hidden;transition:background .6s var(--ease);}
+.col::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--ice);transform:scaleY(0);transform-origin:top;transition:transform .6s var(--ease);}
+.col:hover{background:var(--bg2);}
+.col:hover::before{transform:scaleY(1);}
+.col-n{font-size:.62rem;font-weight:500;letter-spacing:.28em;color:var(--w3);transition:color .5s;}
+.col:hover .col-n{color:var(--ice);}
+.col-body{margin-top:auto;}
+.col-name{font-family:var(--pop);font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.08;letter-spacing:-.01em;transition:transform .6s var(--ease);}
+.col:hover .col-name{transform:translateX(6px);}
+.col-desc{font-size:.82rem;font-weight:300;color:var(--w2);margin-top:12px;max-width:230px;line-height:1.55;}
+.col-ar{position:absolute;top:clamp(34px,4vw,52px);right:clamp(26px,3vw,42px);font-size:1.1rem;color:var(--w3);transform:translate(-6px,6px);opacity:0;transition:all .5s var(--ease);}
+.col:hover .col-ar{opacity:1;transform:translate(0,0);color:var(--ice);}
+
+/* ── STORY / STATS ── */
+.story-wrap{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(40px,6vw,90px);align-items:center;}
+.story-quote{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,3.6vw,2.9rem);line-height:1.28;letter-spacing:-.005em;}
+.story-quote em{font-style:italic;color:var(--ice);}
+.story-p{font-size:.94rem;font-weight:300;line-height:1.75;color:var(--w2);margin-top:26px;max-width:440px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;}
+.stat{background:var(--bg2);padding:clamp(28px,3.4vw,44px) clamp(22px,2.6vw,34px);}
+.stat-n{font-family:var(--pop);font-weight:700;font-size:clamp(2.6rem,5vw,3.8rem);line-height:1;letter-spacing:-.02em;}
+.stat-n em{font-style:normal;color:var(--ice);}
+.stat-l{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--w2);margin-top:12px;}
+
+/* ── STORES ── */
+.store-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.store{position:relative;background:var(--bg2);border:1px solid var(--bd);border-radius:var(--r);padding:clamp(30px,3.4vw,44px);transition:all .5s var(--ease);overflow:hidden;}
+.store::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(159,180,196,.06),transparent 55%);opacity:0;transition:opacity .5s var(--ease);}
+.store:hover{border-color:var(--bd2);transform:translateY(-4px);}
+.store:hover::after{opacity:1;}
+.store-city{font-family:var(--pop);font-weight:600;font-size:clamp(1.3rem,2.6vw,1.7rem);letter-spacing:-.01em;}
+.store-name{font-size:.66rem;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ice);margin-top:8px;}
+.store-meta{font-size:.86rem;font-weight:300;color:var(--w2);margin-top:20px;line-height:1.6;position:relative;z-index:1;}
+
+/* ── VALUES ── */
+.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,50px);}
+.val{border-top:1px solid var(--bd2);padding-top:26px;}
+.val-i{font-family:var(--pop);font-weight:200;font-size:2.4rem;line-height:1;color:var(--ice);margin-bottom:20px;}
+.val-t{font-family:var(--pop);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;}
+.val-d{font-size:.9rem;font-weight:300;line-height:1.7;color:var(--w2);margin-top:12px;}
+
+/* ── CTA BAND ── */
+.cta{position:relative;text-align:center;padding:clamp(90px,13vw,180px) clamp(20px,5vw,58px);overflow:hidden;border-top:1px solid var(--bd);}
+.cta #rain2{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.32;}
+.cta-in{position:relative;z-index:2;}
+.cta-h{font-family:var(--pop);font-weight:700;font-size:clamp(2.6rem,8vw,6.2rem);line-height:.98;letter-spacing:-.02em;}
+.cta-h em{font-family:var(--serif);font-style:italic;font-weight:300;letter-spacing:0;color:var(--ice);}
+.cta-p{font-family:var(--serif);font-size:clamp(1.1rem,2.4vw,1.5rem);font-weight:300;color:var(--w2);margin-top:24px;}
+.cta-btns{margin-top:44px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+/* ── FOOTER ── */
+footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7vw,90px) clamp(20px,5vw,58px) 40px;position:relative;z-index:5;}
+.f-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;max-width:1300px;margin:0 auto;padding-bottom:50px;border-bottom:1px solid var(--bd);}
+.f-logo{font-size:2rem;margin-bottom:18px;}
+.f-logo .sub{display:block;font-size:.44rem;font-weight:400;letter-spacing:.6em;color:var(--w2);margin-top:6px;padding-left:.1em;}
+.f-blurb{font-family:var(--serif);font-size:1.05rem;font-weight:300;font-style:italic;color:var(--w2);max-width:320px;line-height:1.5;}
+.f-col h4{font-size:.6rem;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--w3);margin-bottom:20px;}
+.f-col a,.f-col p{display:block;font-size:.9rem;font-weight:300;color:var(--w2);text-decoration:none;margin-bottom:12px;transition:color .35s;line-height:1.5;}
+.f-col a:hover{color:var(--w);}
+.f-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;max-width:1300px;margin:26px auto 0;font-size:.72rem;font-weight:300;color:var(--w3);letter-spacing:.04em;}
+.f-bot a{color:var(--ice);text-decoration:none;}
+
+/* ── FLOATING WHATSAPP ── */
+.wa{position:fixed;right:22px;bottom:22px;z-index:90;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 34px -8px rgba(37,211,102,.6);transition:transform .4s var(--ease);}
+.wa:hover{transform:scale(1.08) translateY(-2px);}
+
+@media(max-width:900px){
+  .nav-links,.nav-cta{display:none;}
+  .ham{display:flex;}
+  .col-grid{grid-template-columns:1fr 1fr;}
+  .story-grid{grid-template-columns:1fr;gap:44px;}
+  .val-grid{grid-template-columns:1fr;gap:0;}
+  .val{padding:26px 0;}
+  .val:not(:first-child){border-top:1px solid var(--bd);}
+  .f-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:560px){
+  .col-grid{grid-template-columns:1fr;}
+  .store-grid{grid-template-columns:1fr;}
+  .stats{grid-template-columns:1fr 1fr;}
+  .f-top{grid-template-columns:1fr;gap:34px;}
+  .hero-sub{letter-spacing:.42em;padding-left:.42em;}
+  .marq-track span{font-size:1.1rem;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo yox" onclick="scrollTo({top:0,behavior:'smooth'})">Y<span class="o">O</span>X<span class="sub">MENS&nbsp;STORE</span></div>
+  <ul class="nav-links">
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#story">The House</a></li>
+    <li><a href="#stores">Stores</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+  <a href="https://wa.me/918891910531" target="_blank" rel="noopener" class="nav-cta">Enquire</a>
+  <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mob" id="mob">
+  <a href="#collections">Collections</a>
+  <a href="#story">The House</a>
+  <a href="#stores">Stores</a>
+  <a href="#visit">Visit</a>
+  <a href="https://wa.me/918891910531" target="_blank" rel="noopener">Enquire</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="hero">
+  <div class="hero-img">
+    <img id="heroImg" src="images/hero.jpg" alt="" onerror="this.style.display='none'"/>
+  </div>
+  <div class="hero-veil"></div>
+  <canvas id="rain"></canvas>
+  <div class="hero-spot" id="spot"></div>
+  <div class="hero-in">
+    <div class="hero-eye">Premium Menswear · Since 2010</div>
+    <div class="hero-mark yox"><span>Y</span><span class="o">O</span><span>X</span></div>
+    <div class="hero-sub">Men's Store</div>
+    <p class="hero-tag">Style, worn cold.</p>
+    <div class="hero-cta">
+      <a href="#collections" class="btn btn-w">Explore Collections <span class="ar">↗</span></a>
+      <a href="#stores" class="btn btn-o">Find a Store</a>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marq">
+  <div class="marq-track" id="marq">
+    <span>Formalwear</span><span class="dot">·</span><span>Denim</span><span class="dot">·</span><span>Ethnic</span><span class="dot">·</span><span>Casuals</span><span class="dot">·</span><span>Footwear</span><span class="dot">·</span><span>Accessories</span><span class="dot">·</span>
+    <span>Formalwear</span><span class="dot">·</span><span>Denim</span><span class="dot">·</span><span>Ethnic</span><span class="dot">·</span><span>Casuals</span><span class="dot">·</span><span>Footwear</span><span class="dot">·</span><span>Accessories</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- COLLECTIONS -->
+<section class="sec" id="collections">
+  <div class="mx">
+    <div class="col-head">
+      <div>
+        <div class="eye rv">The Edit</div>
+        <h2 class="h2 rv d1">Dressed for<br/>every <em>occasion</em></h2>
+      </div>
+      <p class="lead rv d2">From boardroom formals to weekend denim — a curated house of premium branded menswear, chosen for fit, fabric and finish.</p>
+    </div>
+    <div class="col-grid">
+      <a href="#visit" class="col rv"><div class="col-n">01</div><span class="col-ar">↗</span><div class="col-body"><div class="col-name">Formalwear</div><p class="col-desc">Tailored shirts, trousers &amp; suits built for the man who means business.</p></div></a>
+      <a href="#visit" class="col rv d1"><div class="col-n">02</div><span class="col-ar">↗</span><div class="col-body"><div class="col-name">Denim &amp; Casuals</div><p class="col-desc">Everyday essentials — premium denim, tees and layering that just works.</p></div></a>
+      <a href="#visit" class="col rv d2"><div class="col-n">03</div><span class="col-ar">↗</span><div class="col-body"><div class="col-name">Ethnic Wear</div><p class="col-desc">Kurtas, sherwanis and festive fits for the moments that matter.</p></div></a>
+      <a href="#visit" class="col rv"><div class="col-n">04</div><span class="col-ar">↗</span><div class="col-body"><div class="col-name">Footwear</div><p class="col-desc">From formal leather to street-ready sneakers — the finishing step.</p></div></a>
+      <a href="#visit" class="col rv d1"><div class="col-n">05</div><span class="col-ar">↗</span><div class="col-body"><div class="col-name">Accessories</div><p class="col-desc">Belts, wallets, watches &amp; scent — the details that separate men.</p></div></a>
+      <a href="#visit" class="col rv d2"><div class="col-n">06</div><span class="col-ar">↗</span><div class="col-body"><div class="col-name">Brand Labels</div><p class="col-desc">An extensive line-up of premium branded apparel under one roof.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="sec story-wrap" id="story">
+  <div class="mx">
+    <div class="story-grid">
+      <div>
+        <div class="eye rv">Since 2010</div>
+        <p class="story-quote rv d1">What began as one modest gents' shop in Irikkur is now North Kerala's <em>destination for premium men's fashion.</em></p>
+        <p class="story-p rv d2">Fifteen years, four stores and one standard that never moved — clothing that earns its place in your wardrobe. Style and comfort, chosen by people who actually care how you walk out the door.</p>
+      </div>
+      <div class="stats rv d2">
+        <div class="stat"><div class="stat-n">15<em>+</em></div><div class="stat-l">Years of trust</div></div>
+        <div class="stat"><div class="stat-n">4</div><div class="stat-l">Stores across Kannur</div></div>
+        <div class="stat"><div class="stat-n">20</div><div class="stat-l">Fashion professionals</div></div>
+        <div class="stat"><div class="stat-n">100<em>%</em></div><div class="stat-l">Premium brands</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORES -->
+<section class="sec" id="stores">
+  <div class="mx">
+    <div class="col-head">
+      <div>
+        <div class="eye rv">Find Us</div>
+        <h2 class="h2 rv d1">Four doors.<br/>One <em>standard.</em></h2>
+      </div>
+      <p class="lead rv d2">Walk into any YŌX and you'll find the same thing — premium menswear and people who know how to dress you.</p>
+    </div>
+    <div class="store-grid">
+      <div class="store rv"><div class="store-city">Kannur</div><div class="store-name">Yox Men's Store · Flagship</div><p class="store-meta">K.K Building, near Ambala Road,<br/>Chalad, Kannur, Kerala 670014<br/>Open daily · 9 AM – 9 PM</p></div>
+      <div class="store rv d1"><div class="store-city">Kuthuparamba</div><div class="store-name">Yox Men's Store</div><p class="store-meta">Kuthuparamba town<br/>Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div>
+      <div class="store rv d2"><div class="store-city">Irikkur</div><div class="store-name">Yox Gents Shoppe · Est. 2010</div><p class="store-meta">Irikkur town<br/>Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div>
+      <div class="store rv d3"><div class="store-city">Iritty</div><div class="store-name">Yox Fashion Store</div><p class="store-meta">Iritty town<br/>Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="sec story-wrap">
+  <div class="mx">
+    <div class="val-grid">
+      <div class="val rv"><div class="val-i">01</div><div class="val-t">Premium, always</div><p class="val-d">Only branded, quality-checked apparel makes it to the rack. No filler, no compromise.</p></div>
+      <div class="val rv d1"><div class="val-i">02</div><div class="val-t">Style &amp; comfort</div><p class="val-d">Clothing chosen for how it fits and how it feels — not just how it looks on a hanger.</p></div>
+      <div class="val rv d2"><div class="val-i">03</div><div class="val-t">Dressed by people</div><p class="val-d">Twenty professionals who style you in person. That's something no online cart can do.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="visit">
+  <canvas id="rain2"></canvas>
+  <div class="cta-in">
+    <h2 class="cta-h rv">Your best fit is<br/><em>waiting in-store.</em></h2>
+    <p class="cta-p rv d1">Visit YŌX in Kannur, or message us — we'll get you dressed.</p>
+    <div class="cta-btns rv d2">
+      <a href="https://wa.me/918891910531" target="_blank" rel="noopener" class="btn btn-w">WhatsApp Us <span class="ar">↗</span></a>
+      <a href="tel:+918113910531" class="btn btn-o">Call +91 81139 10531</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-top">
+    <div>
+      <div class="f-logo yox">Y<span class="o">O</span>X<span class="sub">MENS&nbsp;STORE</span></div>
+      <p class="f-blurb">Premium men's fashion for style and comfort. North Kerala, since 2010.</p>
+    </div>
+    <div class="f-col">
+      <h4>Explore</h4>
+      <a href="#collections">Collections</a>
+      <a href="#story">The House</a>
+      <a href="#stores">Stores</a>
+      <a href="#visit">Visit</a>
+    </div>
+    <div class="f-col">
+      <h4>Reach Us</h4>
+      <a href="tel:+918113910531">+91 81139 10531</a>
+      <a href="https://wa.me/918891910531" target="_blank" rel="noopener">WhatsApp · 88919 10531</a>
+      <a href="mailto:yoxinternational@gmail.com">yoxinternational@gmail.com</a>
+      <a href="https://instagram.com/yox.mensstore" target="_blank" rel="noopener">@yox.mensstore</a>
+      <p>Chalad, Kannur, Kerala 670014</p>
+    </div>
+  </div>
+  <div class="f-bot">
+    <div>© 2026 YŌX Men's Store. All rights reserved.</div>
+    <div>Crafted by <a href="#">FRGX Media</a></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/918891910531" target="_blank" rel="noopener" class="wa" aria-label="WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2C6.48 2 2 6.48 2 12c0 1.77.46 3.42 1.27 4.86L2 22l5.25-1.38A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2z"/></svg>
+</a>
+
+<script>
+// ── NAV scroll ──
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+
+// ── MOBILE menu ──
+const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';});
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}));
+
+// ── HERO spotlight follows cursor ──
+const spot=document.getElementById('spot');
+addEventListener('pointermove',e=>{
+  if(innerWidth<900)return;
+  spot.style.setProperty('--mx',e.clientX+'px');
+  spot.style.setProperty('--my',e.clientY+'px');
+},{passive:true});
+
+// ── CANVAS RAIN ──
+function rain(canvas,count,speedBase){
+  const c=canvas.getContext('2d');let w,h,drops;
+  function size(){w=canvas.width=canvas.offsetWidth*devicePixelRatio;h=canvas.height=canvas.offsetHeight*devicePixelRatio;
+    drops=Array.from({length:count},()=>({x:Math.random()*w,y:Math.random()*h,l:(Math.random()*22+14)*devicePixelRatio,v:(Math.random()*4+speedBase)*devicePixelRatio}));}
+  size();addEventListener('resize',size);
+  function frame(){
+    c.clearRect(0,0,w,h);c.strokeStyle='rgba(180,200,215,0.28)';c.lineWidth=1*devicePixelRatio;c.lineCap='round';
+    for(const d of drops){c.beginPath();c.moveTo(d.x,d.y);c.lineTo(d.x-1.2*devicePixelRatio,d.y+d.l);c.stroke();
+      d.y+=d.v;if(d.y>h){d.y=-d.l;d.x=Math.random()*w;}}
+    requestAnimationFrame(frame);}
+  frame();
+}
+rain(document.getElementById('rain'),150,7);
+rain(document.getElementById('rain2'),90,5);
+
+// ── HERO image subtle parallax ──
+const hi=document.getElementById('heroImg');
+addEventListener('scroll',()=>{if(hi&&scrollY<innerHeight)hi.style.transform=`scale(1.06) translateY(${scrollY*0.15}px)`;},{passive:true});
+
+// ── MARQUEE ──
+(function(){
+  const t=document.getElementById('marq');let off=0,half=t.scrollWidth/2,last=performance.now();
+  addEventListener('resize',()=>half=t.scrollWidth/2);
+  function f(now){const dt=Math.min((now-last)/1000,.05);last=now;off-=22*dt;if(off<=-half)off+=half;t.style.transform=`translateX(${off}px)`;requestAnimationFrame(f);}
+  requestAnimationFrame(f);
+})();
+
+// ── REVEALS ──
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.14});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── SLOW smooth anchor scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const id=a.getAttribute('href');if(id==='#')return;
+    const tgt=document.querySelector(id);if(!tgt)return;
+    e.preventDefault();
+    const start=scrollY,end=tgt.getBoundingClientRect().top+start-64,dur=950,t0=performance.now();
+    const ease=t=>t<.5?4*t*t*t:(t-1)*(2*t-2)*(2*t-2)+1;
+    (function step(n){const p=Math.min((n-t0)/dur,1);scrollTo(0,start+(end-start)*ease(p));if(p<1)requestAnimationFrame(step);})(t0);
+  });
+});
+</script>
+</body>
+</html>
