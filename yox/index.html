@@ -90,7 +90,7 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .btn:hover .ar{transform:translate(4px,-4px);}
 
 /* ── MARQUEE ── */
-.marq{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:var(--bg2);overflow:hidden;padding:20px 0;position:relative;z-index:5;}
+.marq{margin-top:clamp(20px,4vh,48px);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);background:var(--bg2);overflow:hidden;padding:20px 0;position:relative;z-index:5;}
 .marq-track{display:flex;width:max-content;will-change:transform;}
 .marq-track span{font-family:var(--serif);font-style:italic;font-size:1.35rem;font-weight:300;color:var(--w2);padding:0 32px;white-space:nowrap;letter-spacing:.02em;}
 .marq-track .dot{color:var(--ice);font-style:normal;}
@@ -136,7 +136,18 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .hrv-word span{display:inline-block;will-change:transform,opacity;}
 
 /* ── STORY: centered pull-quote + inline stat strip ── */
-.story-wrap{background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);text-align:center;}
+.story-wrap{position:relative;background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);text-align:center;overflow:hidden;}
+.story-glass{position:absolute;top:0;left:0;width:170px;height:170px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity .5s ease;
+  backdrop-filter:blur(3px) saturate(1.35) brightness(1.1) url(#story-liquid-distort);
+  -webkit-backdrop-filter:blur(3px) saturate(1.35) brightness(1.1);
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.3),rgba(255,255,255,.03) 45%,rgba(255,255,255,.02) 70%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),inset 0 10px 24px -6px rgba(255,255,255,.5),inset 0 -14px 26px -8px rgba(0,0,0,.35),0 16px 44px -10px rgba(0,0,0,.5);
+}
+.story-glass.on{opacity:1;}
+.story-glass::before{content:'';position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(255,80,80,.16),rgba(255,220,80,.12),rgba(120,255,180,.14),rgba(100,180,255,.16),rgba(200,120,255,.14),rgba(255,80,80,.16));
+  mix-blend-mode:screen;opacity:.45;-webkit-mask:radial-gradient(circle,transparent 62%,black 78%,black 100%);mask:radial-gradient(circle,transparent 62%,black 78%,black 100%);}
+@media(max-width:900px){.story-glass{display:none;}}
 .story-quote{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.28;letter-spacing:-.005em;max-width:900px;margin:0 auto;}
 .story-quote em{font-style:italic;color:var(--ice);}
 .story-p{font-size:.96rem;font-weight:300;line-height:1.8;color:var(--w2);margin:26px auto 0;max-width:520px;}
@@ -297,6 +308,15 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
 
 <!-- STORY -->
 <section class="sec story-wrap" id="story">
+  <svg width="0" height="0" style="position:absolute">
+    <filter id="story-liquid-distort">
+      <feTurbulence type="fractalNoise" baseFrequency="0.014 0.02" numOctaves="2" seed="4" result="noise">
+        <animate attributeName="baseFrequency" values="0.014 0.02;0.017 0.016;0.014 0.02" dur="10s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap id="storyDispMap" in="SourceGraphic" in2="noise" scale="14" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+  <div class="story-glass" id="storyGlass"></div>
   <div class="mx">
     <div class="eye rv" style="justify-content:center;">Since 2010</div>
     <p class="story-quote" id="storyQuote">What began as one modest gents&rsquo; shop in Irikkur is now North Kerala&rsquo;s <em>destination for premium men&rsquo;s fashion.</em></p>
@@ -421,8 +441,8 @@ mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classLi
       fontFamily:"'Poppins',sans-serif",
       color:'#F4F4F1',
       enableHover:true,
-      baseIntensity:.055,
-      hoverIntensity:.22,
+      baseIntensity:.09,
+      hoverIntensity:.3,
       fuzzRange:Math.max(6,fs*.035),
       fps:60,
       direction:'horizontal',
@@ -515,6 +535,37 @@ if(window.gsap&&window.ScrollTrigger){
     tl.to(card,{xPercent:dir*130,rotation:dir*24,opacity:0,duration:1,ease:'power2.in'},i);
   });
 }
+
+// ── STORY: liquid glass follows cursor within the section ──
+(function(){
+  const sec=document.getElementById('story');
+  const glass=document.getElementById('storyGlass');
+  const dispMap=document.getElementById('storyDispMap');
+  if(!sec||!glass||innerWidth<=900)return;
+  let active=false,mx=0,my=0,gx=0,gy=0,pvx=0,pvy=0,raf=null;
+  sec.addEventListener('pointerenter',e=>{
+    active=true;glass.classList.add('on');
+    const r=sec.getBoundingClientRect();
+    gx=mx=e.clientX-r.left;gy=my=e.clientY-r.top;
+    if(!raf)raf=requestAnimationFrame(tick);
+  });
+  sec.addEventListener('pointermove',e=>{
+    const r=sec.getBoundingClientRect();
+    mx=e.clientX-r.left;my=e.clientY-r.top;
+  });
+  sec.addEventListener('pointerleave',()=>{active=false;glass.classList.remove('on');});
+  function tick(){
+    const pgx=gx,pgy=gy;
+    gx+=(mx-gx)*0.15;gy+=(my-gy)*0.15;
+    const vx=gx-pgx,vy=gy-pgy;
+    pvx+=(vx-pvx)*.25;pvy+=(vy-pvy)*.25;
+    const speed=Math.min(Math.hypot(pvx,pvy),20);
+    const w=glass.offsetWidth,h=glass.offsetHeight;
+    glass.style.transform=`translate(${gx-w/2}px,${gy-h/2}px)`;
+    dispMap.setAttribute('scale',(11+speed*0.8).toFixed(1));
+    if(active||speed>0.1){raf=requestAnimationFrame(tick);}else{raf=null;}
+  }
+})();
 
 // ── STORY: horizontal text reveal on scroll ──
 if(window.gsap&&window.ScrollTrigger){
