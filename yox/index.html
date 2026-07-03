@@ -82,6 +82,12 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="js/fuzzy-text.js"></script>
 <script src="js/flowing-menu.js"></script>
+<script type="module">
+  import { Renderer, Program, Triangle, Mesh } from 'https://cdn.jsdelivr.net/npm/ogl@1.0.11/src/index.js';
+  window.OGL = { Renderer, Program, Triangle, Mesh };
+  window.dispatchEvent(new Event('ogl-ready'));
+</script>
+<script src="js/ripple-grid.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -190,25 +196,26 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .stack-ar{position:absolute;top:clamp(30px,4vw,56px);right:clamp(30px,4vw,56px);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--w2);}
 .stack-hint{text-align:center;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--w3);margin-top:22px;}
 
-/* ── STORES: FlowingMenu (hover marquee reveal) ── */
-.fm-wrap{border:1px solid var(--bd);border-radius:1.2rem;overflow:hidden;height:clamp(420px,52vw,560px);}
+/* ── STORES: FlowingMenu (thumb+title+sub always visible; marquee hover on desktop) ── */
+.fm-wrap{border:1px solid var(--bd);border-radius:1.2rem;overflow:hidden;height:clamp(460px,58vw,640px);}
 .fm-menu{display:flex;flex-direction:column;height:100%;margin:0;padding:0;}
 .fm-item{flex:1;position:relative;overflow:hidden;text-align:left;border-top:1px solid var(--bd);}
 .fm-item:first-child{border-top:none;}
-.fm-item-link{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 clamp(24px,4vw,52px);position:relative;cursor:pointer;text-decoration:none;white-space:nowrap;font-family:var(--pop);font-weight:600;font-size:clamp(1.7rem,4.2vw,3rem);letter-spacing:-.01em;z-index:2;}
-.fm-item-link::after{content:'↗';font-size:.55em;opacity:.5;transition:opacity .3s;}
-.fm-item:hover .fm-item-link::after{opacity:1;color:var(--ice);}
+.fm-item-link{display:flex;align-items:center;gap:clamp(14px,2.4vw,26px);height:100%;padding:0 clamp(20px,4vw,52px);position:relative;cursor:pointer;text-decoration:none;z-index:2;}
+.fm-thumb{flex-shrink:0;width:clamp(52px,7vw,84px);height:clamp(52px,7vw,84px);border-radius:.8rem;background-size:cover;background-position:50% 50%;filter:grayscale(.5) contrast(1.05) brightness(.75) sepia(.15) hue-rotate(160deg) saturate(1.3);}
+.fm-item-text{flex:1;min-width:0;}
+.fm-item-title{font-family:var(--pop);font-weight:600;font-size:clamp(1.5rem,3.6vw,2.6rem);letter-spacing:-.01em;line-height:1.1;}
+.fm-item-sub{font-size:.78rem;font-weight:300;color:var(--w2);margin-top:5px;}
+.fm-item-arrow{flex-shrink:0;font-size:1.1rem;opacity:.5;transition:opacity .3s;}
+.fm-item:hover .fm-item-arrow{opacity:1;color:var(--ice);}
 .fm-marquee{position:absolute;top:0;left:0;overflow:hidden;width:100%;height:100%;pointer-events:none;transform:translate3d(0,101%,0);z-index:1;}
 .fm-marquee-inner-wrap{height:100%;width:100%;overflow:hidden;}
 .fm-marquee-inner{display:flex;align-items:center;position:relative;height:100%;width:fit-content;will-change:transform;}
 .fm-marquee-part{display:flex;align-items:center;flex-shrink:0;}
-.fm-marquee-part span{white-space:nowrap;text-transform:uppercase;font-family:var(--pop);font-weight:600;font-size:clamp(1.7rem,4.2vw,3rem);line-height:1;padding:0 1.2vw;letter-spacing:-.01em;}
-.fm-marquee-img{width:180px;height:70%;margin:0 1.4vw;border-radius:.9rem;background-size:cover;background-position:50% 50%;filter:grayscale(.5) contrast(1.05) brightness(.75) sepia(.15) hue-rotate(160deg) saturate(1.3);}
-@media(max-width:560px){.fm-item-link,.fm-marquee-part span{font-size:1.5rem;}.fm-marquee-img{width:120px;}}
-.fm-addr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 30px;margin-top:32px;}
-.fm-addr-grid div{font-size:.82rem;font-weight:300;color:var(--w2);line-height:1.6;}
-.fm-addr-grid span{display:block;font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ice);margin-bottom:4px;}
-@media(max-width:640px){.fm-addr-grid{grid-template-columns:1fr;}}
+.fm-marquee-part span{white-space:nowrap;text-transform:uppercase;font-family:var(--pop);font-weight:600;font-size:clamp(1.5rem,3.6vw,2.6rem);line-height:1;padding:0 1.2vw;letter-spacing:-.01em;}
+.fm-marquee-img{width:150px;height:64%;margin:0 1vw;border-radius:.8rem;background-size:cover;background-position:50% 50%;filter:grayscale(.5) contrast(1.05) brightness(.75) sepia(.15) hue-rotate(160deg) saturate(1.3);}
+@media(max-width:900px){.fm-marquee{display:none;}}
+@media(max-width:560px){.fm-item-title{font-size:1.3rem;}.fm-item-sub{font-size:.7rem;}.fm-thumb{width:48px;height:48px;}}
 
 /* ── horizontal text reveal (story quote) ── */
 .hrv-word{display:inline-block;overflow:hidden;vertical-align:top;}
@@ -216,7 +223,7 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 
 /* ── STORY: centered pull-quote + inline stat strip ── */
 .story-wrap{position:relative;background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);text-align:center;overflow:hidden;}
-.story-glass{position:absolute;top:0;left:0;width:170px;height:170px;border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity .5s ease;
+.story-glass{position:absolute;top:clamp(28px,5vw,56px);right:clamp(6%,8vw,12%);width:clamp(90px,11vw,140px);height:clamp(90px,11vw,140px);border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity 1s ease;animation:storyFloat 7s ease-in-out infinite;
   backdrop-filter:blur(3px) saturate(1.35) brightness(1.1) url(#story-liquid-distort);
   -webkit-backdrop-filter:blur(3px) saturate(1.35) brightness(1.1);
   background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.3),rgba(255,255,255,.03) 45%,rgba(255,255,255,.02) 70%);
@@ -226,7 +233,7 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .story-glass::before{content:'';position:absolute;inset:0;border-radius:50%;
   background:conic-gradient(from 0deg,rgba(255,80,80,.16),rgba(255,220,80,.12),rgba(120,255,180,.14),rgba(100,180,255,.16),rgba(200,120,255,.14),rgba(255,80,80,.16));
   mix-blend-mode:screen;opacity:.45;-webkit-mask:radial-gradient(circle,transparent 62%,black 78%,black 100%);mask:radial-gradient(circle,transparent 62%,black 78%,black 100%);}
-@media(max-width:900px){.story-glass{display:none;}}
+@keyframes storyFloat{0%,100%{transform:translateY(0) translateX(0);}50%{transform:translateY(-14px) translateX(-8px);}}
 .story-quote{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.28;letter-spacing:-.005em;max-width:900px;margin:0 auto;}
 .story-quote em{font-style:italic;color:var(--ice);}
 .story-p{font-size:.96rem;font-weight:300;line-height:1.8;color:var(--w2);margin:26px auto 0;max-width:520px;}
@@ -238,7 +245,8 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .stat-l{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);margin-top:12px;}
 
 /* ── VALUES ── */
-.val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,50px);}
+.ripple-mount{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none;}
+.val-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,50px);}
 .val{border-top:1px solid var(--bd2);padding-top:26px;}
 .val-i{font-family:var(--pop);font-weight:200;font-size:2.4rem;line-height:1;color:var(--ice);margin-bottom:20px;}
 .val-t{font-family:var(--pop);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;}
@@ -289,8 +297,8 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
   .f-top{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:560px){
-  .stats{gap:0;}
-  .stat{padding:0 clamp(14px,5vw,22px);}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd2);border:1px solid var(--bd2);border-radius:.9rem;overflow:hidden;margin-left:auto;margin-right:auto;max-width:340px;}
+  .stat{background:var(--bg2);padding:22px 10px;border-left:none;text-align:center;}
   .f-top{grid-template-columns:1fr;gap:34px;}
   .hero-sub{letter-spacing:.42em;padding-left:.42em;}
   .marq-track span{font-size:1.1rem;}
@@ -409,17 +417,12 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
       <p class="lead rv d2">Walk into any YŌX and you'll find the same thing — premium menswear and people who know how to dress you.</p>
     </div>
     <div id="storesFlow" class="rv"></div>
-    <div class="fm-addr-grid rv d2">
-      <div><span>01 · Kannur, Flagship</span> K.K Building, near Ambala Road, Chalad, Kannur, Kerala 670014</div>
-      <div><span>02 · Kuthuparamba</span> Kuthuparamba town, Kannur, Kerala</div>
-      <div><span>03 · Irikkur, Est. 2010</span> Irikkur town, Kannur, Kerala</div>
-      <div><span>04 · Iritty</span> Iritty town, Kannur, Kerala</div>
-    </div>
   </div>
 </section>
 
 <!-- VALUES -->
 <section class="sec story-wrap">
+  <div class="ripple-mount" id="rippleMount"></div>
   <div class="mx">
     <div class="val-grid">
       <div class="val rv"><div class="val-i">01</div><div class="val-t">Premium, always</div><p class="val-d">Only branded, quality-checked apparel makes it to the rack. No filler, no compromise.</p></div>
@@ -574,14 +577,32 @@ if(hi&&hi.tagName==='VIDEO'){
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.14});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
+// ── VALUES: RippleGrid background (OGL WebGL) ──
+function startRippleGrid(){
+  if(typeof initRippleGrid!=='function'||!window.OGL)return;
+  initRippleGrid('#rippleMount',{
+    gridColor:'#9FB4C4',
+    rippleIntensity:0.035,
+    gridSize:11,
+    gridThickness:10,
+    fadeDistance:1.6,
+    vignetteStrength:2.2,
+    glowIntensity:0.12,
+    opacity:0.5,
+    mouseInteraction:innerWidth>900
+  });
+}
+if(window.OGL) startRippleGrid();
+else addEventListener('ogl-ready',startRippleGrid,{once:true});
+
 // ── STORES: FlowingMenu (hover marquee reveal per location) ──
 if (typeof initFlowingMenu === 'function') {
   initFlowingMenu('#storesFlow', {
     items: [
-      { link: '#visit', text: 'Kannur', image: 'images/store-kannur.jpg' },
-      { link: '#visit', text: 'Kuthuparamba', image: 'images/store-kuthuparamba.jpg' },
-      { link: '#visit', text: 'Irikkur', image: 'images/store-irikkur.jpg' },
-      { link: '#visit', text: 'Iritty', image: 'images/store-iritty.jpg' }
+      { link: '#visit', text: 'Kannur', sub: 'K.K Building, near Ambala Road, Chalad · Flagship', image: 'images/store-kannur.jpg' },
+      { link: '#visit', text: 'Kuthuparamba', sub: 'Kuthuparamba town, Kannur', image: 'images/store-kuthuparamba.jpg' },
+      { link: '#visit', text: 'Irikkur', sub: 'Irikkur town, Kannur · Est. 2010', image: 'images/store-irikkur.jpg' },
+      { link: '#visit', text: 'Iritty', sub: 'Iritty town, Kannur', image: 'images/store-iritty.jpg' }
     ],
     speed: 18,
     textColor: '#F4F4F1',
@@ -623,35 +644,15 @@ if(window.gsap&&window.ScrollTrigger){
   });
 }
 
-// ── STORY: liquid glass follows cursor within the section ──
+// ── STORY: liquid glass, pinned in place with a gentle idle float ──
 (function(){
   const sec=document.getElementById('story');
   const glass=document.getElementById('storyGlass');
-  const dispMap=document.getElementById('storyDispMap');
-  if(!sec||!glass||innerWidth<=900)return;
-  let active=false,mx=0,my=0,gx=0,gy=0,pvx=0,pvy=0,raf=null;
-  sec.addEventListener('pointerenter',e=>{
-    active=true;glass.classList.add('on');
-    const r=sec.getBoundingClientRect();
-    gx=mx=e.clientX-r.left;gy=my=e.clientY-r.top;
-    if(!raf)raf=requestAnimationFrame(tick);
-  });
-  sec.addEventListener('pointermove',e=>{
-    const r=sec.getBoundingClientRect();
-    mx=e.clientX-r.left;my=e.clientY-r.top;
-  });
-  sec.addEventListener('pointerleave',()=>{active=false;glass.classList.remove('on');});
-  function tick(){
-    const pgx=gx,pgy=gy;
-    gx+=(mx-gx)*0.15;gy+=(my-gy)*0.15;
-    const vx=gx-pgx,vy=gy-pgy;
-    pvx+=(vx-pvx)*.25;pvy+=(vy-pvy)*.25;
-    const speed=Math.min(Math.hypot(pvx,pvy),20);
-    const w=glass.offsetWidth,h=glass.offsetHeight;
-    glass.style.transform=`translate(${gx-w/2}px,${gy-h/2}px)`;
-    dispMap.setAttribute('scale',(11+speed*0.8).toFixed(1));
-    if(active||speed>0.1){raf=requestAnimationFrame(tick);}else{raf=null;}
-  }
+  if(!sec||!glass)return;
+  const obs=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting)glass.classList.add('on');
+  }),{threshold:.15});
+  obs.observe(sec);
 })();
 
 // ── STORY: horizontal text reveal on scroll ──
