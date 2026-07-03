@@ -3,9 +3,11 @@
   Requires: GSAP (load via CDN before this script)
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
-  Full-height stacked menu items. On hover, a colored marquee band sweeps in
-  from the edge nearest the cursor, scrolling the item's text + image
-  infinitely while hovered.
+  Full-height stacked menu items. Each row shows a small always-visible
+  thumbnail + title + subtitle (works with no hover, e.g. mobile/touch).
+  On hover (desktop), a colored marquee band sweeps in from the edge nearest
+  the cursor, scrolling the item's text + image infinitely while hovered —
+  a bonus flourish layered on top, not required for the content to be usable.
 
   Usage:
     <div id="flowMenu"></div>
@@ -13,8 +15,8 @@
     <script>
       initFlowingMenu('#flowMenu', {
         items: [
-          { link:'#', text:'Kannur', image:'images/store-1.jpg' },
-          { link:'#', text:'Kuthuparamba', image:'images/store-2.jpg' },
+          { link:'#', text:'Kannur', sub:'K.K Building, Chalad', image:'images/store-1.jpg' },
+          { link:'#', text:'Kuthuparamba', sub:'Kuthuparamba town', image:'images/store-2.jpg' },
         ],
         speed: 15,
         textColor: '#fff',
@@ -56,7 +58,32 @@ function initFlowingMenu(selector, opts) {
     a.className = 'fm-item-link';
     a.href = item.link || '#';
     a.style.color = textColor;
-    a.textContent = item.text;
+
+    if (item.thumb || item.image) {
+      const thumb = document.createElement('div');
+      thumb.className = 'fm-thumb';
+      thumb.style.backgroundImage = `url(${item.thumb || item.image})`;
+      a.appendChild(thumb);
+    }
+
+    const textWrap = document.createElement('div');
+    textWrap.className = 'fm-item-text';
+    const title = document.createElement('div');
+    title.className = 'fm-item-title';
+    title.textContent = item.text;
+    textWrap.appendChild(title);
+    if (item.sub) {
+      const sub = document.createElement('div');
+      sub.className = 'fm-item-sub';
+      sub.textContent = item.sub;
+      textWrap.appendChild(sub);
+    }
+    a.appendChild(textWrap);
+
+    const arrow = document.createElement('span');
+    arrow.className = 'fm-item-arrow';
+    arrow.textContent = '↗';
+    a.appendChild(arrow);
 
     const marquee = document.createElement('div');
     marquee.className = 'fm-marquee';
@@ -116,7 +143,10 @@ function initFlowingMenu(selector, opts) {
       return distTop < distBottom ? 'top' : 'bottom';
     }
 
+    // hover flourish — desktop only, mobile has no hover so content stays
+    // fully usable via the always-visible thumb/title/sub row above
     el.addEventListener('mouseenter', e => {
+      if (innerWidth <= 900) return;
       const rect = el.getBoundingClientRect();
       const edge = closestEdge(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height);
       if (!window.gsap) return;
@@ -126,6 +156,7 @@ function initFlowingMenu(selector, opts) {
         .to([marquee, inner], { y: '0%' }, 0);
     });
     el.addEventListener('mouseleave', e => {
+      if (innerWidth <= 900) return;
       const rect = el.getBoundingClientRect();
       const edge = closestEdge(e.clientX - rect.left, e.clientY - rect.top, rect.width, rect.height);
       if (!window.gsap) return;
