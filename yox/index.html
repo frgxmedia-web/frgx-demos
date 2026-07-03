@@ -7,12 +7,81 @@
 <meta name="description" content="YŌX Men's Store — premium men's fashion for style and comfort. Four stores across Kannur, Iritty, Irikkur & Kuthuparamba. Since 2010."/>
 <meta property="og:title" content="YŌX — Premium Menswear"/>
 <meta property="og:description" content="Premium men's fashion across North Kerala since 2010."/>
+<meta property="og:image" content="images/og-image.jpg"/>
+<meta property="og:type" content="website"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="YŌX — Premium Menswear"/>
+<meta name="twitter:description" content="Premium men's fashion across North Kerala since 2010."/>
+<meta name="twitter:image" content="images/og-image.jpg"/>
+<link rel="icon" type="image/png" href="images/favicon.png"/>
+<link rel="shortcut icon" href="images/favicon.ico"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "YŌX Men's Store",
+  "description": "Premium men's fashion for style and comfort. North Kerala, since 2010.",
+  "telephone": "+91-8113910531",
+  "email": "yoxinternational@gmail.com",
+  "url": "https://frgxmedia-web.github.io/frgx-demos/yox/",
+  "sameAs": ["https://instagram.com/yox.mensstore"],
+  "department": [
+    {
+      "@type": "ClothingStore",
+      "name": "YŌX Men's Store — Kannur (Flagship)",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "K.K Building, near Ambala Road, Chalad",
+        "addressLocality": "Kannur",
+        "addressRegion": "Kerala",
+        "postalCode": "670014",
+        "addressCountry": "IN"
+      },
+      "openingHours": "Mo-Su 09:00-21:00"
+    },
+    {
+      "@type": "ClothingStore",
+      "name": "YŌX Men's Store — Kuthuparamba",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kuthuparamba",
+        "addressRegion": "Kerala",
+        "addressCountry": "IN"
+      },
+      "openingHours": "Mo-Su 09:00-21:00"
+    },
+    {
+      "@type": "ClothingStore",
+      "name": "YŌX Gents Shoppe — Irikkur",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Irikkur",
+        "addressRegion": "Kerala",
+        "addressCountry": "IN"
+      },
+      "openingHours": "Mo-Su 09:00-21:00"
+    },
+    {
+      "@type": "ClothingStore",
+      "name": "YŌX Fashion Store — Iritty",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Iritty",
+        "addressRegion": "Kerala",
+        "addressCountry": "IN"
+      },
+      "openingHours": "Mo-Su 09:00-21:00"
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="js/fuzzy-text.js"></script>
+<script src="js/flowing-menu.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
@@ -23,7 +92,7 @@
   --r:4px;
   --ease:cubic-bezier(0.22,0.61,0.36,1);
   --ease2:cubic-bezier(0.65,0,0.35,1);
-  --pop:'Poppins',sans-serif;--serif:'Cormorant Garamond',serif;
+  --pop:'Archivo',sans-serif;--serif:'Cormorant Garamond',serif;
 }
 html{overflow-x:hidden;max-width:100%;}
 body{font-family:var(--pop);background:var(--bg);color:var(--w);overflow-x:hidden;max-width:100%;-webkit-font-smoothing:antialiased;line-height:1.5;}
@@ -121,15 +190,25 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .stack-ar{position:absolute;top:clamp(30px,4vw,56px);right:clamp(30px,4vw,56px);width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.05);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--w2);}
 .stack-hint{text-align:center;font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--w3);margin-top:22px;}
 
-/* ── STORES: double-bezel nested cards ── */
-.store-list{display:flex;flex-direction:column;gap:14px;}
-.store-shell{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:1.6rem;padding:7px;transition:border-color .5s var(--ease),background .5s var(--ease);}
-.store-shell:hover{border-color:var(--bd2);background:rgba(255,255,255,.045);}
-.store{position:relative;display:grid;grid-template-columns:64px 1fr 1.3fr;align-items:baseline;column-gap:clamp(16px,3vw,36px);padding:clamp(20px,2.8vw,32px);border-radius:calc(1.6rem - 7px);background:var(--bg2);box-shadow:inset 0 1px 1px rgba(255,255,255,.05);overflow:hidden;}
-.store-idx{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--w3);position:relative;z-index:1;}
-.store-city{font-family:var(--pop);font-weight:600;font-size:clamp(1.35rem,3vw,2.1rem);letter-spacing:-.01em;position:relative;z-index:1;}
-.store-name{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);margin-top:6px;position:relative;z-index:1;}
-.store-meta{font-size:.86rem;font-weight:300;color:var(--w2);line-height:1.65;text-align:right;position:relative;z-index:1;}
+/* ── STORES: FlowingMenu (hover marquee reveal) ── */
+.fm-wrap{border:1px solid var(--bd);border-radius:1.2rem;overflow:hidden;height:clamp(420px,52vw,560px);}
+.fm-menu{display:flex;flex-direction:column;height:100%;margin:0;padding:0;}
+.fm-item{flex:1;position:relative;overflow:hidden;text-align:left;border-top:1px solid var(--bd);}
+.fm-item:first-child{border-top:none;}
+.fm-item-link{display:flex;align-items:center;justify-content:space-between;height:100%;padding:0 clamp(24px,4vw,52px);position:relative;cursor:pointer;text-decoration:none;white-space:nowrap;font-family:var(--pop);font-weight:600;font-size:clamp(1.7rem,4.2vw,3rem);letter-spacing:-.01em;z-index:2;}
+.fm-item-link::after{content:'↗';font-size:.55em;opacity:.5;transition:opacity .3s;}
+.fm-item:hover .fm-item-link::after{opacity:1;color:var(--ice);}
+.fm-marquee{position:absolute;top:0;left:0;overflow:hidden;width:100%;height:100%;pointer-events:none;transform:translate3d(0,101%,0);z-index:1;}
+.fm-marquee-inner-wrap{height:100%;width:100%;overflow:hidden;}
+.fm-marquee-inner{display:flex;align-items:center;position:relative;height:100%;width:fit-content;will-change:transform;}
+.fm-marquee-part{display:flex;align-items:center;flex-shrink:0;}
+.fm-marquee-part span{white-space:nowrap;text-transform:uppercase;font-family:var(--pop);font-weight:600;font-size:clamp(1.7rem,4.2vw,3rem);line-height:1;padding:0 1.2vw;letter-spacing:-.01em;}
+.fm-marquee-img{width:180px;height:70%;margin:0 1.4vw;border-radius:.9rem;background-size:cover;background-position:50% 50%;filter:grayscale(.5) contrast(1.05) brightness(.75) sepia(.15) hue-rotate(160deg) saturate(1.3);}
+@media(max-width:560px){.fm-item-link,.fm-marquee-part span{font-size:1.5rem;}.fm-marquee-img{width:120px;}}
+.fm-addr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 30px;margin-top:32px;}
+.fm-addr-grid div{font-size:.82rem;font-weight:300;color:var(--w2);line-height:1.6;}
+.fm-addr-grid span{display:block;font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ice);margin-bottom:4px;}
+@media(max-width:640px){.fm-addr-grid{grid-template-columns:1fr;}}
 
 /* ── horizontal text reveal (story quote) ── */
 .hrv-word{display:inline-block;overflow:hidden;vertical-align:top;}
@@ -157,17 +236,6 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .stat-n{font-family:var(--pop);font-weight:700;font-size:clamp(2.2rem,4.4vw,3.3rem);line-height:1;letter-spacing:-.02em;}
 .stat-n em{font-style:normal;color:var(--ice);}
 .stat-l{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);margin-top:12px;}
-
-/* ── STORES: directory list ── */
-.store-list{border-top:1px solid var(--bd2);}
-.store{display:grid;grid-template-columns:64px 1fr 1.3fr;align-items:baseline;column-gap:clamp(16px,3vw,36px);padding:clamp(24px,3.2vw,38px) 6px;border-bottom:1px solid var(--bd);position:relative;transition:padding .5s var(--ease);}
-.store::before{content:'';position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,rgba(159,180,196,.08),transparent);transition:width .6s var(--ease);}
-.store:hover{padding-left:14px;}
-.store:hover::before{width:100%;}
-.store-idx{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--w3);position:relative;z-index:1;}
-.store-city{font-family:var(--pop);font-weight:600;font-size:clamp(1.35rem,3vw,2.1rem);letter-spacing:-.01em;position:relative;z-index:1;}
-.store-name{font-size:.62rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);margin-top:6px;position:relative;z-index:1;}
-.store-meta{font-size:.86rem;font-weight:300;color:var(--w2);line-height:1.65;text-align:right;position:relative;z-index:1;}
 
 /* ── VALUES ── */
 .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,50px);}
@@ -244,7 +312,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
     <li><a href="#stores">Stores</a></li>
     <li><a href="#visit">Visit</a></li>
   </ul>
-  <a href="https://wa.me/918891910531" target="_blank" rel="noopener" class="nav-cta">Enquire</a>
+  <a href="https://wa.me/918113910531" target="_blank" rel="noopener" class="nav-cta">Enquire</a>
   <button class="ham" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 
@@ -253,7 +321,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
   <a href="#story">The House</a>
   <a href="#stores">Stores</a>
   <a href="#visit">Visit</a>
-  <a href="https://wa.me/918891910531" target="_blank" rel="noopener">Enquire</a>
+  <a href="https://wa.me/918113910531" target="_blank" rel="noopener">Enquire</a>
 </div>
 
 <!-- HERO -->
@@ -325,7 +393,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
       <div class="stat"><div class="stat-n">15<em>+</em></div><div class="stat-l">Years of trust</div></div>
       <div class="stat"><div class="stat-n">4</div><div class="stat-l">Stores across Kannur</div></div>
       <div class="stat"><div class="stat-n">20</div><div class="stat-l">Fashion professionals</div></div>
-      <div class="stat"><div class="stat-n">100<em>%</em></div><div class="stat-l">Premium brands</div></div>
+      <div class="stat"><div class="stat-n">40<em>+</em></div><div class="stat-l">Brands stocked</div></div>
     </div>
   </div>
 </section>
@@ -340,11 +408,12 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
       </div>
       <p class="lead rv d2">Walk into any YŌX and you'll find the same thing — premium menswear and people who know how to dress you.</p>
     </div>
-    <div class="store-list">
-      <div class="store-shell rv"><div class="store"><span class="store-idx">01</span><div><div class="store-city">Kannur</div><div class="store-name">Yox Men's Store · Flagship</div></div><p class="store-meta">K.K Building, near Ambala Road, Chalad, Kannur, Kerala 670014<br/>Open daily · 9 AM – 9 PM</p></div></div>
-      <div class="store-shell rv d1"><div class="store"><span class="store-idx">02</span><div><div class="store-city">Kuthuparamba</div><div class="store-name">Yox Men's Store</div></div><p class="store-meta">Kuthuparamba town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div></div>
-      <div class="store-shell rv d2"><div class="store"><span class="store-idx">03</span><div><div class="store-city">Irikkur</div><div class="store-name">Yox Gents Shoppe · Est. 2010</div></div><p class="store-meta">Irikkur town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div></div>
-      <div class="store-shell rv d3"><div class="store"><span class="store-idx">04</span><div><div class="store-city">Iritty</div><div class="store-name">Yox Fashion Store</div></div><p class="store-meta">Iritty town, Kannur, Kerala<br/>Open daily · 9 AM – 9 PM</p></div></div>
+    <div id="storesFlow" class="rv"></div>
+    <div class="fm-addr-grid rv d2">
+      <div><span>01 · Kannur, Flagship</span> K.K Building, near Ambala Road, Chalad, Kannur, Kerala 670014</div>
+      <div><span>02 · Kuthuparamba</span> Kuthuparamba town, Kannur, Kerala</div>
+      <div><span>03 · Irikkur, Est. 2010</span> Irikkur town, Kannur, Kerala</div>
+      <div><span>04 · Iritty</span> Iritty town, Kannur, Kerala</div>
     </div>
   </div>
 </section>
@@ -366,7 +435,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
     <h2 class="cta-h rv">Your best fit is<br/><em>waiting in-store.</em></h2>
     <p class="cta-p rv d1">Visit YŌX in Kannur, or message us — we'll get you dressed.</p>
     <div class="cta-btns rv d2">
-      <a href="https://wa.me/918891910531" target="_blank" rel="noopener" class="btn btn-w">WhatsApp Us <span class="ar">↗</span></a>
+      <a href="https://wa.me/918113910531" target="_blank" rel="noopener" class="btn btn-w">WhatsApp Us <span class="ar">↗</span></a>
       <a href="tel:+918113910531" class="btn btn-o">Call +91 81139 10531</a>
     </div>
   </div>
@@ -389,7 +458,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
     <div class="f-col">
       <h4>Reach Us</h4>
       <a href="tel:+918113910531">+91 81139 10531</a>
-      <a href="https://wa.me/918891910531" target="_blank" rel="noopener">WhatsApp · 88919 10531</a>
+      <a href="https://wa.me/918113910531" target="_blank" rel="noopener">WhatsApp · 81139 10531</a>
       <a href="mailto:yoxinternational@gmail.com">yoxinternational@gmail.com</a>
       <a href="https://instagram.com/yox.mensstore" target="_blank" rel="noopener">@yox.mensstore</a>
       <p>Chalad, Kannur, Kerala 670014</p>
@@ -401,7 +470,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
   </div>
 </footer>
 
-<a href="https://wa.me/918891910531" target="_blank" rel="noopener" class="wa" aria-label="WhatsApp">
+<a href="https://wa.me/918113910531" target="_blank" rel="noopener" class="wa" aria-label="WhatsApp">
   <svg width="30" height="30" viewBox="0 0 32 32" fill="#fff"><path d="M16.001 3C9.107 3 3.5 8.607 3.5 15.501c0 2.36.653 4.66 1.892 6.665L3 29l6.985-2.353a12.96 12.96 0 0 0 6.016 1.49h.005c6.893 0 12.5-5.607 12.5-12.501C28.506 8.741 22.899 3 16.001 3zm7.394 17.885c-.316.888-1.566 1.63-2.556 1.845-.678.146-1.564.263-4.548-.978-3.816-1.586-6.276-5.463-6.468-5.72-.184-.257-1.554-2.07-1.554-3.947 0-1.877.981-2.797 1.328-3.181.34-.377.744-.472.99-.472.245 0 .49.002.705.013.226.011.53-.086.828.632.316.76 1.075 2.638 1.169 2.83.094.192.157.418.032.674-.126.256-.19.415-.376.638-.188.222-.395.496-.564.667-.188.19-.384.397-.165.78.219.383.973 1.606 2.09 2.601 1.437 1.28 2.649 1.677 3.031 1.867.383.19.606.16.83-.096.223-.256.955-1.113 1.21-1.494.256-.383.51-.32.86-.192.35.128 2.227 1.05 2.609 1.241.383.192.638.287.732.447.096.16.096.926-.22 1.815z"/></svg>
 </a>
 
@@ -438,7 +507,7 @@ mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classLi
     handle=initFuzzyText(canvas,'YOX',{
       fontSizePx:fs,
       fontWeight:800,
-      fontFamily:"'Poppins',sans-serif",
+      fontFamily:"'Archivo',sans-serif",
       color:'#F4F4F1',
       enableHover:true,
       baseIntensity:.09,
@@ -504,6 +573,24 @@ if(hi&&hi.tagName==='VIDEO'){
 // ── REVEALS ──
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}}),{threshold:.14});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// ── STORES: FlowingMenu (hover marquee reveal per location) ──
+if (typeof initFlowingMenu === 'function') {
+  initFlowingMenu('#storesFlow', {
+    items: [
+      { link: '#visit', text: 'Kannur', image: 'images/store-kannur.jpg' },
+      { link: '#visit', text: 'Kuthuparamba', image: 'images/store-kuthuparamba.jpg' },
+      { link: '#visit', text: 'Irikkur', image: 'images/store-irikkur.jpg' },
+      { link: '#visit', text: 'Iritty', image: 'images/store-iritty.jpg' }
+    ],
+    speed: 18,
+    textColor: '#F4F4F1',
+    bgColor: '#0C0D10',
+    marqueeBgColor: '#F4F4F1',
+    marqueeTextColor: '#08080A',
+    borderColor: 'rgba(255,255,255,.09)'
+  });
+}
 
 // ── COLLECTIONS: GSAP card stack (pin + scrub peel-away) ──
 if(window.gsap&&window.ScrollTrigger){
