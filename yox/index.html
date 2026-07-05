@@ -223,17 +223,17 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 
 /* ── STORY: centered pull-quote + inline stat strip ── */
 .story-wrap{position:relative;background:var(--bg2);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);text-align:center;overflow:hidden;}
-.story-glass{position:absolute;top:clamp(28px,5vw,56px);right:clamp(6%,8vw,12%);width:clamp(90px,11vw,140px);height:clamp(90px,11vw,140px);border-radius:50%;pointer-events:none;z-index:1;opacity:0;transition:opacity 1s ease;animation:storyFloat 7s ease-in-out infinite;
+.story-glass{position:absolute;top:0;left:0;width:clamp(90px,11vw,140px);height:clamp(90px,11vw,140px);border-radius:50%;z-index:3;opacity:0;transition:opacity .6s ease;cursor:grab;touch-action:none;will-change:transform;
   backdrop-filter:blur(3px) saturate(1.35) brightness(1.1) url(#story-liquid-distort);
   -webkit-backdrop-filter:blur(3px) saturate(1.35) brightness(1.1);
   background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.3),rgba(255,255,255,.03) 45%,rgba(255,255,255,.02) 70%);
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.4),inset 0 10px 24px -6px rgba(255,255,255,.5),inset 0 -14px 26px -8px rgba(0,0,0,.35),0 16px 44px -10px rgba(0,0,0,.5);
 }
 .story-glass.on{opacity:1;}
+.story-glass.grabbing{cursor:grabbing;}
 .story-glass::before{content:'';position:absolute;inset:0;border-radius:50%;
   background:conic-gradient(from 0deg,rgba(255,80,80,.16),rgba(255,220,80,.12),rgba(120,255,180,.14),rgba(100,180,255,.16),rgba(200,120,255,.14),rgba(255,80,80,.16));
   mix-blend-mode:screen;opacity:.45;-webkit-mask:radial-gradient(circle,transparent 62%,black 78%,black 100%);mask:radial-gradient(circle,transparent 62%,black 78%,black 100%);}
-@keyframes storyFloat{0%,100%{transform:translateY(0) translateX(0);}50%{transform:translateY(-14px) translateX(-8px);}}
 .story-quote{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,4.6vw,3.6rem);line-height:1.28;letter-spacing:-.005em;max-width:900px;margin:0 auto;}
 .story-quote em{font-style:italic;color:var(--ice);}
 .story-p{font-size:.96rem;font-weight:300;line-height:1.8;color:var(--w2);margin:26px auto 0;max-width:520px;}
@@ -245,7 +245,7 @@ nav.scrolled{background:rgba(8,8,10,.72);backdrop-filter:blur(22px);-webkit-back
 .stat-l{font-size:.6rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--w2);margin-top:12px;}
 
 /* ── VALUES ── */
-.ripple-mount{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:none;}
+.ripple-mount{position:absolute;inset:0;z-index:0;opacity:.55;pointer-events:auto;}
 .val-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,50px);}
 .val{border-top:1px solid var(--bd2);padding-top:26px;}
 .val-i{font-family:var(--pop);font-weight:200;font-size:2.4rem;line-height:1;color:var(--ice);margin-bottom:20px;}
@@ -302,7 +302,7 @@ footer{background:var(--bg);border-top:1px solid var(--bd);padding:clamp(56px,7v
   .f-top{grid-template-columns:1fr;gap:34px;}
   .hero-sub{letter-spacing:.42em;padding-left:.42em;}
   .marq-track span{font-size:1.1rem;}
-  .hero-in{padding-top:clamp(60px,11vh,100px);}
+  .hero-in{padding-top:clamp(90px,16vh,140px);}
   .hero-img img,.hero-img video{opacity:.78;filter:grayscale(.35) contrast(1.08) brightness(.72);}
   .hero-veil{background:
     radial-gradient(ellipse 100% 65% at 50% 40%,transparent 0%,rgba(8,8,10,.28) 72%,var(--bg) 100%),
@@ -644,15 +644,74 @@ if(window.gsap&&window.ScrollTrigger){
   });
 }
 
-// ── STORY: liquid glass, pinned in place with a gentle idle float ──
+// ── STORY: liquid glass — cursor-reactive on desktop, drag on touch ──
 (function(){
   const sec=document.getElementById('story');
   const glass=document.getElementById('storyGlass');
+  const dispMap=document.getElementById('storyDispMap');
   if(!sec||!glass)return;
+
   const obs=new IntersectionObserver(es=>es.forEach(e=>{
     if(e.isIntersecting)glass.classList.add('on');
   }),{threshold:.15});
   obs.observe(sec);
+
+  let mx=null,my=null,gx=0,gy=0,pvx=0,pvy=0,raf=null,dragging=false,placed=false;
+
+  function place(x,y){
+    const r=sec.getBoundingClientRect();
+    gx=mx=x-r.left; gy=my=y-r.top; placed=true;
+    if(!raf) raf=requestAnimationFrame(tick);
+  }
+
+  // desktop: hover-follow anywhere in the section
+  sec.addEventListener('pointerenter',e=>{ if(e.pointerType==='mouse') place(e.clientX,e.clientY); });
+  sec.addEventListener('pointermove',e=>{
+    if(e.pointerType!=='mouse'||dragging) return;
+    const r=sec.getBoundingClientRect();
+    mx=e.clientX-r.left; my=e.clientY-r.top;
+    if(!raf) raf=requestAnimationFrame(tick);
+  });
+
+  // mobile/touch: drag the ball directly
+  glass.addEventListener('pointerdown',e=>{
+    dragging=true;
+    glass.classList.add('grabbing');
+    glass.setPointerCapture(e.pointerId);
+    const r=sec.getBoundingClientRect();
+    mx=e.clientX-r.left; my=e.clientY-r.top;
+    if(!raf) raf=requestAnimationFrame(tick);
+  });
+  glass.addEventListener('pointermove',e=>{
+    if(!dragging) return;
+    const r=sec.getBoundingClientRect();
+    mx=e.clientX-r.left; my=e.clientY-r.top;
+  });
+  glass.addEventListener('pointerup',()=>{ dragging=false; glass.classList.remove('grabbing'); });
+  glass.addEventListener('pointercancel',()=>{ dragging=false; glass.classList.remove('grabbing'); });
+
+  function tick(){
+    if(mx===null){raf=null;return;}
+    const pgx=gx,pgy=gy;
+    const lerp=dragging?0.5:0.14;
+    gx+=(mx-gx)*lerp; gy+=(my-gy)*lerp;
+    const vx=gx-pgx,vy=gy-pgy;
+    pvx+=(vx-pvx)*.25; pvy+=(vy-pvy)*.25;
+    const speed=Math.min(Math.hypot(pvx,pvy),20);
+    const w=glass.offsetWidth,h=glass.offsetHeight;
+    glass.style.transform=`translate(${gx-w/2}px,${gy-h/2}px)`;
+    if(dispMap) dispMap.setAttribute('scale',(11+speed*0.8).toFixed(1));
+    raf=requestAnimationFrame(tick);
+  }
+
+  // give it a starting position near its old pinned spot until first interaction
+  function initialPlace(){
+    if(placed) return;
+    const r=sec.getBoundingClientRect();
+    place(r.left+r.width-100, r.top+50);
+  }
+  requestAnimationFrame(initialPlace);
+  addEventListener('resize',()=>{ if(!dragging&&mx===null) initialPlace(); });
 })();
 
 // ── STORY: horizontal text reveal on scroll ──
