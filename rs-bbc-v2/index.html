@@ -138,17 +138,36 @@ nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(20px);-webkit-ba
 /* PRICING */
 .pricing-wrap{background:var(--bg2);border-top:1px solid var(--bd);}
 /* toggle */
-.price-toggle{display:flex;gap:5px;background:var(--bg3);border:1px solid var(--bd);border-radius:999px;padding:5px;margin:34px auto 0;position:relative;overflow-x:auto;max-width:min(100%,900px);scrollbar-width:none;}
-.price-toggle::-webkit-scrollbar{display:none;}
-.pt-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;border:none;background:none;cursor:pointer;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w2);padding:12px 20px;border-radius:999px;transition:color .3s var(--ease),background .3s var(--ease);white-space:nowrap;flex-shrink:0;}
+.price-toggle{display:inline-flex;gap:5px;background:var(--bg3);border:1px solid var(--bd);border-radius:999px;padding:5px;margin:34px auto 0;position:relative;}
+.pt-btn{position:relative;z-index:2;display:inline-flex;align-items:center;gap:8px;border:none;background:none;cursor:pointer;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--w2);padding:12px 22px;border-radius:999px;transition:color .3s var(--ease),background .3s var(--ease);white-space:nowrap;}
 .pt-btn svg{width:15px;height:15px;}
 .pt-btn.active{color:#fff;background:var(--acc);}
 .pt-glow{display:none;}
+.pt-secondary{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px auto 0;max-width:700px;}
+.pt-chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--bd);background:var(--bg3);color:var(--w2);border-radius:999px;padding:8px 16px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .3s var(--ease);}
+.pt-chip svg{width:13px;height:13px;}
+.pt-chip:hover,.pt-chip.active{border-color:var(--acc);color:var(--acc);background:rgba(255,45,45,.08);}
+.sauna-badge{display:inline-flex;align-items:center;gap:5px;font-size:.56rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#f59e0b;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.35);padding:4px 10px;border-radius:999px;margin-bottom:6px;}
 .enquire-panel{display:none;margin-top:40px;text-align:center;padding:60px 30px;border:1px solid var(--bd);border-radius:1.4rem;background:var(--bg3);}
 .enquire-panel.show{display:block;}
 .enquire-panel h3{font-family:var(--disp);font-size:2.4rem;margin-bottom:10px;}
 .enquire-panel p{color:var(--w2);font-size:.9rem;margin-bottom:30px;}
 .enq-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+/* special offers */
+.offers-wrap{background:var(--bg);padding:0 clamp(20px,5vw,52px) clamp(60px,8vh,100px);}
+.offers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:36px;}
+.offer-card{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r);padding:28px;position:relative;overflow:hidden;}
+.offer-card.active-offer{border-color:rgba(255,45,45,.4);}
+.offer-card.ended-offer{opacity:.6;}
+.offer-status{position:absolute;top:18px;right:18px;font-size:.5rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border-radius:999px;}
+.offer-status.live{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.35);}
+.offer-status.ended{background:rgba(255,255,255,.06);color:var(--w2);border:1px solid var(--bd);}
+.offer-title{font-family:var(--disp);font-size:1.4rem;line-height:1.1;margin-bottom:8px;}
+.offer-price{font-size:2rem;font-family:var(--disp);color:var(--acc);margin:10px 0 4px;}
+.offer-price .was{font-size:.85rem;color:var(--w2);text-decoration:line-through;font-family:var(--body);margin-left:6px;}
+.offer-detail{font-size:.75rem;color:var(--w2);line-height:1.7;margin-top:8px;}
+.offer-cta{display:inline-block;margin-top:16px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);border:1px solid rgba(255,45,45,.35);padding:8px 18px;border-radius:999px;text-decoration:none;transition:all .3s var(--ease);}
+.offer-cta:hover{background:var(--acc);color:#fff;}
 .plans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px;}
 .plan{background:var(--bg3);border:1px solid var(--bd);border-radius:var(--r);padding:34px 30px;transition:all .5s var(--ease);position:relative;text-align:left;}
 .plan:hover{transform:translateY(-5px);border-color:var(--bd2);}
@@ -433,25 +452,27 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
       <button class="pt-btn" data-plan="pt">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Personal Training
       </button>
-      <button class="pt-btn" data-plan="combo">
+    </div>
+    <div class="pt-secondary rv d3" id="ptSecondary">
+      <button class="pt-chip" data-plan="combo">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>Combo Package
       </button>
-      <button class="pt-btn" data-plan="family">
+      <button class="pt-chip" data-plan="family">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Family Package
       </button>
-      <button class="pt-btn" data-plan="flowfit">
+      <button class="pt-chip" data-plan="flowfit">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>Flowfit &amp; Dance
       </button>
-      <button class="pt-btn" data-plan="swim">
+      <button class="pt-chip" data-plan="swim">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><path d="M2 18c2-3 4-3 6 0s4 3 6 0 4-3 6 0"/><circle cx="12" cy="6" r="2"/></svg>Swimming Classes
       </button>
-      <button class="pt-btn" data-plan="online-gt">
+      <button class="pt-chip" data-plan="online-gt">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Online General Training
       </button>
-      <button class="pt-btn" data-plan="online-pt">
+      <button class="pt-chip" data-plan="online-pt">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 10l5-5-5-5v3H4v4h11v3z"/><path d="M9 14l-5 5 5 5v-3h11v-4H9v-3z"/></svg>Online Personal Training
       </button>
-      <button class="pt-btn" data-plan="kids">
+      <button class="pt-chip" data-plan="kids">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>Kids Camp
       </button>
     </div>
@@ -479,9 +500,9 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
       </div>
       <!-- 3 MONTHS -->
       <div class="plan rv d1"
-           data-gym-price="390" data-pool-price="680"
-           data-gym-mo="≈ AED 130 / month" data-pool-mo="≈ AED 226 / month"
-           data-gym-save="Save AED 60" data-pool-save="Save AED 70">
+           data-gym-price="390" data-pool-price="449"
+           data-gym-mo="≈ AED 130 / month" data-pool-mo="≈ AED 150 / month"
+           data-gym-save="Save AED 60" data-pool-save="Save AED 301">
         <span class="plan-type">
           <svg class="ico-gym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>
           <span class="type-label">Gym Only</span>
@@ -492,6 +513,7 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
         <div class="plan-save">Save AED 60</div>
         <div class="plan-div"></div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Everything in 1 Month</div>
+        <div class="sauna-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Sauna Included from 3M+</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Sauna access included</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Progress tracking</div>
         <div class="plan-f pool-only"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Pool + sauna included</div>
@@ -499,9 +521,9 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
       </div>
       <!-- 6 MONTHS (FEATURED) -->
       <div class="plan feat rv d1"
-           data-gym-price="550" data-pool-price="1000"
-           data-gym-mo="≈ AED 92 / month" data-pool-mo="≈ AED 167 / month"
-           data-gym-save="Save AED 350" data-pool-save="Save AED 500">
+           data-gym-price="550" data-pool-price="699"
+           data-gym-mo="≈ AED 92 / month" data-pool-mo="≈ AED 117 / month"
+           data-gym-save="Save AED 350" data-pool-save="Save AED 801">
         <div class="plan-badge">Most Popular</div>
         <span class="plan-type">
           <svg class="ico-gym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>
@@ -515,15 +537,16 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Everything in 1 Month</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Monthly body composition (BMA)</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Progress tracking &amp; programmes</div>
+        <div class="sauna-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Sauna Included</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Sauna access included</div>
         <div class="plan-f pool-only"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Pool + sauna included</div>
         <a href="https://wa.me/971547255591" class="plan-cta h" target="_blank">Join Now</a>
       </div>
       <!-- 1 YEAR -->
       <div class="plan rv d2"
-           data-gym-price="900" data-pool-price="1600"
-           data-gym-mo="≈ AED 75 / month" data-pool-mo="≈ AED 133 / month"
-           data-gym-save="Save AED 900 · 50%" data-pool-save="Save AED 1400">
+           data-gym-price="900" data-pool-price="999"
+           data-gym-mo="≈ AED 75 / month" data-pool-mo="≈ AED 83 / month"
+           data-gym-save="Save AED 900 · 50%" data-pool-save="Save AED 2001">
         <span class="plan-type">
           <svg class="ico-gym" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>
           <span class="type-label">Gym Only</span>
@@ -536,6 +559,7 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Everything in 6 Months</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Priority coaching slots</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Best rate locked for a year</div>
+        <div class="sauna-badge"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>Sauna Included</div>
         <div class="plan-f"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Full year sauna access</div>
         <div class="plan-f pool-only"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Full year pool &amp; sauna</div>
         <a href="https://wa.me/971547255591" class="plan-cta s" target="_blank">Join Now</a>
@@ -550,6 +574,82 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
       </div>
     </div>
     <p style="margin-top:24px;font-size:.7rem;color:var(--w2);" class="rv">Also available: Day pass from AED 25 &nbsp;·&nbsp; Free fitness assessment for new members</p>
+  </div>
+</section>
+
+<!-- SPECIAL OFFERS -->
+<section class="sec offers-wrap" id="offers">
+  <div class="sec-max">
+    <div class="eyebrow rv">Limited Time</div>
+    <h2 class="sec-h rv d1">SPECIAL<br/><em>OFFERS</em></h2>
+    <div class="offers-grid">
+      <!-- Kids Summer Camp - ACTIVE -->
+      <div class="offer-card active-offer rv">
+        <span class="offer-status live">Live Now</span>
+        <div class="offer-title">Kids Summer Camp</div>
+        <div style="font-size:.65rem;color:var(--w2);margin-top:4px;">05 Jul – 20 Aug 2026 · Ages 6–15</div>
+        <div class="offer-price">AED 599 <span class="was"></span></div>
+        <div class="offer-detail">
+          45-day camp · 9 AM – 1 PM · Mon–Fri<br/>
+          Strength Training · Painting &amp; Drawing<br/>
+          Self Defence · Fun Sports &amp; Dance
+        </div>
+        <a href="https://wa.me/971547255591" class="offer-cta" target="_blank" rel="noopener">Register Now ↗</a>
+      </div>
+      <!-- Combo Summer Offer - ACTIVE -->
+      <div class="offer-card active-offer rv d1">
+        <span class="offer-status live">Live Now</span>
+        <div class="offer-title">Summer Combo Deal</div>
+        <div style="font-size:.65rem;color:var(--w2);margin-top:4px;">6M Gym + 12 PT Sessions + 1M Pool</div>
+        <div class="offer-price">AED 1,000 <span class="was">AED 1,800</span></div>
+        <div class="offer-detail">
+          6 Months Gym Access<br/>
+          12 Personal Training Sessions (1 month)<br/>
+          1 Month Pool Access<br/>
+          Shape your body in 90 days
+        </div>
+        <a href="https://wa.me/971547255591" class="offer-cta" target="_blank" rel="noopener">Enquire Now ↗</a>
+      </div>
+      <!-- Flowfit Dance - ACTIVE -->
+      <div class="offer-card active-offer rv d2">
+        <span class="offer-status live">Live Now</span>
+        <div class="offer-title">Flowfit Dance Online</div>
+        <div style="font-size:.65rem;color:var(--w2);margin-top:4px;">Body Transformation &amp; Wellness Programme</div>
+        <div class="offer-price">AED 350 <span class="was">AED 450</span></div>
+        <div class="offer-detail">
+          3 Month Package<br/>
+          Zum Fit · Bollywood · Aerobic Fitness<br/>
+          BMA Consultation + Diet Programme<br/>
+          Wellness Consultation · Online Classes
+        </div>
+        <a href="https://wa.me/971547255591" class="offer-cta" target="_blank" rel="noopener">Join Now ↗</a>
+      </div>
+      <!-- Family Package - ACTIVE -->
+      <div class="offer-card active-offer rv d3">
+        <span class="offer-status live">Live Now</span>
+        <div class="offer-title">Family Package</div>
+        <div style="font-size:.65rem;color:var(--w2);margin-top:4px;">2 Adults + 2 Kids · Gym + Pool</div>
+        <div class="offer-price">AED 1,499</div>
+        <div class="offer-detail">
+          1 Year Gym + Pool Access<br/>
+          For the whole family<br/>
+          Best value in Al Nahda
+        </div>
+        <a href="https://wa.me/971547255591" class="offer-cta" target="_blank" rel="noopener">Enquire Now ↗</a>
+      </div>
+      <!-- 7th Anniversary - ENDED -->
+      <div class="offer-card ended-offer rv d4">
+        <span class="offer-status ended">Ended</span>
+        <div class="offer-title">7th Anniversary Special</div>
+        <div style="font-size:.65rem;color:var(--w2);margin-top:4px;">9th June 2026</div>
+        <div class="offer-price" style="color:var(--w2);font-size:1.4rem;">Fitness Challenges</div>
+        <div class="offer-detail">
+          1 Year Gym AED 800 + 30 bonus days<br/>
+          6 Month Gym AED 550 + 15 bonus days<br/>
+          Combo: 6M Gym + 12S PT + Pool AED 1,000
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -798,25 +898,27 @@ marquee(document.getElementById('testiTrack'),-36);
 
 // ── Pricing toggle (Gym Only ⇄ Gym + Pool) ──
 (function(){
-  const tg=document.getElementById('priceToggle'),grid=document.getElementById('plansGrid'),enq=document.getElementById('enquirePanel');
+  const tg=document.getElementById('priceToggle'),grid=document.getElementById('plansGrid'),enq=document.getElementById('enquirePanel'),sec=document.getElementById('ptSecondary');
   if(!tg||!grid)return;
-  const btns=tg.querySelectorAll('.pt-btn');
+  const primaryBtns=tg.querySelectorAll('.pt-btn');
+  const chips=sec?sec.querySelectorAll('.pt-chip'):[];
   const gymIco='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6.5 6.5v11M3 9v6M17.5 6.5v11M21 9v6M6.5 12h11"/></svg>';
   const poolIco='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z"/></svg>';
   const enquireInfo={
     'pt':['Personal Training','Dedicated 1-on-1 coaching with a certified trainer. Custom programme built around your goals.'],
-    'combo':['Combo Package','Gym + pool + personal training bundled. Best value for serious members.'],
-    'family':['Family Package','Train together, save together. Packages for 2–5 family members.'],
-    'flowfit':['Flowfit & Dance Package','Group dance and fitness flow classes. Fun, energetic, results-driven.'],
-    'swim':['Swimming Classes','Expert-led swimming lessons for all levels — beginner to advanced.'],
+    'combo':['Combo Package','6M Gym + 12 PT Sessions + 1M Pool Access — AED 1,000 only. WhatsApp us to enrol.'],
+    'family':['Family Package','2 Adults + 2 Kids · 1 Year Gym + Pool · AED 1,499. Train together, save together.'],
+    'flowfit':['Flowfit & Dance','Online classes: Zum Fit, Bollywood, Aerobics. 3M package AED 350 (was 450). Includes BMA + Diet + Wellness consult.'],
+    'swim':['Swimming Classes','Expert-led swimming lessons for all levels — beginner to advanced. WhatsApp for schedule.'],
     'online-gt':['Online General Training','Remote workout programmes and video guidance. Train from anywhere.'],
-    'online-pt':['Online Personal Training','Live 1-on-1 coaching sessions via video call. Fully personalised.'],
-    'kids':['Kids Summer & Winter Camp','Fun fitness camps for children. Safe, supervised, and packed with activity.']
+    'online-pt':['Online Personal Training','Live 1-on-1 coaching sessions via video call. Fully personalised programme.'],
+    'kids':['Kids Summer Camp','05 Jul – 20 Aug 2026 · Ages 6–15 · AED 599 (45 days) · 9 AM–1 PM Mon–Fri. Activities: Strength, Dance, Self Defence, Arts.']
   };
   function apply(plan){
     const pool=plan==='pool';
     const isPricePlan=plan==='gym'||pool;
-    btns.forEach(b=>b.classList.toggle('active',b.dataset.plan===plan));
+    primaryBtns.forEach(b=>b.classList.toggle('active',b.dataset.plan===plan));
+    chips.forEach(c=>c.classList.toggle('active',c.dataset.plan===plan));
     tg.classList.toggle('pool',pool);
     if(isPricePlan){
       grid.style.display='';
@@ -841,7 +943,8 @@ marquee(document.getElementById('testiTrack'),-36);
       }
     }
   }
-  btns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.plan)));
+  primaryBtns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.plan)));
+  chips.forEach(c=>c.addEventListener('click',()=>apply(c.dataset.plan)));
   apply('gym');
 })();
 
