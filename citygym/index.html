@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>City Gym Kannapuram — City Fitness Centre</title>
+<meta name="description" content="City Gym Kannapuram, near Railway Station. Gents and ladies fitness training, 2nd Floor Madhavi Complex. 3,900+ community, open daily."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0A0A0A;--card:#151513;
+  --ink:#EDEAE2;--ink2:#8F897A;
+  --tan:#C9A36B;--tan2:#A9824F;--red:#8A3B2E;
+  --bd:rgba(237,234,226,.1);
+  --ease:cubic-bezier(.19,1,.22,1);
+  --head:'Oswald',sans-serif;--sans:'Inter',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+::selection{background:var(--tan);color:#0A0A0A;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:14px clamp(16px,4vw,48px);transition:background .4s var(--ease),border-color .4s var(--ease);border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(10,10,10,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-color:var(--bd);}
+.logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);}
+.logo .ring{width:40px;height:40px;border-radius:50%;border:2px solid var(--tan);display:flex;align-items:center;justify-content:center;font-family:var(--head);font-size:.7rem;letter-spacing:.02em;color:var(--tan);}
+.logo .word{font-family:var(--head);font-size:1rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;}
+.nav-cta{border:1px solid var(--tan);color:var(--tan);text-decoration:none;font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:11px 20px;border-radius:2px;transition:background .3s var(--ease),color .3s var(--ease);}
+.nav-cta:hover{background:var(--tan);color:#0A0A0A;}
+.nav-cta:active{transform:scale(.98);}
+
+/* HERO */
+.hero{min-height:100dvh;position:relative;display:flex;align-items:center;overflow:hidden;padding:120px clamp(16px,4vw,48px) 60px;}
+.hero-bg{position:absolute;inset:0;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(70%) contrast(1.15) brightness(.4);}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.5) 0%,rgba(10,10,10,.35) 45%,#0A0A0A 96%);}
+.hero-inner{position:relative;z-index:2;max-width:1400px;margin:0 auto;width:100%;}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--bd);border-radius:999px;padding:7px 16px 7px 7px;margin-bottom:28px;}
+.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--tan);}
+.hero-badge span{font-size:.72rem;font-weight:600;letter-spacing:.04em;color:var(--ink2);}
+.clip-wrap{overflow:hidden;}
+.hero-h{font-family:var(--head);font-weight:700;font-size:clamp(2.9rem,9vw,7rem);line-height:.98;text-transform:uppercase;letter-spacing:-.01em;clip-path:inset(0 0 100% 0);transform:translateY(100%);}
+.hero-h .tan{color:var(--tan);}
+.hero-sub{margin-top:22px;max-width:480px;color:var(--ink2);font-size:1.02rem;}
+.hero-cta-row{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+.btn-solid{background:var(--tan);color:#0A0A0A;text-decoration:none;font-weight:700;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:16px 28px;border-radius:2px;transition:background .3s var(--ease),transform .2s var(--ease);}
+.btn-solid:hover{background:#DEB77E;}
+.btn-solid:active{transform:scale(.98);}
+.btn-line{border:1px solid rgba(237,234,226,.3);color:var(--ink);text-decoration:none;font-weight:600;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:16px 28px;border-radius:2px;transition:border-color .3s var(--ease),color .3s var(--ease);}
+.btn-line:hover{border-color:var(--tan);color:var(--tan);}
+
+/* STAT STRIP */
+.statwrap{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);max-width:1400px;margin:0 auto;}
+.stat{padding:clamp(28px,4vw,48px) 16px;text-align:center;}
+.stat+.stat{border-left:1px solid var(--bd);}
+.stat .n{font-family:var(--head);font-size:clamp(2rem,5vw,3.4rem);color:var(--tan);line-height:1;font-weight:700;}
+.stat .l{margin-top:8px;font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);}
+
+/* SECTIONS */
+.sec{padding:clamp(64px,9vw,120px) clamp(16px,4vw,48px);}
+.sec-max{max-width:1400px;margin:0 auto;}
+.sec-h{font-family:var(--head);font-weight:700;font-size:clamp(2.1rem,5.5vw,3.8rem);text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;}
+.sec-h .tan{color:var(--tan);}
+
+/* TILT CARDS (parallax tilt) */
+.tilt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;}
+.tilt{position:relative;background:var(--card);border:1px solid var(--bd);border-radius:6px;padding:30px 26px;transform-style:preserve-3d;transition:transform .15s ease,border-color .3s var(--ease);will-change:transform;}
+.tilt:hover{border-color:rgba(201,163,107,.4);}
+.tilt .ic{width:46px;height:46px;border-radius:50%;background:rgba(201,163,107,.12);display:flex;align-items:center;justify-content:center;color:var(--tan);margin-bottom:20px;}
+.tilt h3{font-family:var(--head);font-size:1.2rem;text-transform:uppercase;font-weight:600;letter-spacing:.01em;}
+.tilt p{margin-top:8px;color:var(--ink2);font-size:.86rem;}
+
+/* MARQUEE (max one per page) */
+.mq{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);overflow:hidden;padding:16px 0;}
+.mq-track{display:flex;width:max-content;animation:mq 30s linear infinite;}
+.mq span{font-family:var(--head);font-size:1.3rem;text-transform:uppercase;letter-spacing:.03em;color:var(--ink2);padding:0 30px;white-space:nowrap;display:flex;align-items:center;gap:30px;}
+.mq span::after{content:'•';color:var(--tan);}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none;}}
+
+/* HORIZONTAL GALLERY */
+.gal-wrap{margin-top:44px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;display:flex;gap:14px;padding-bottom:14px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--tan2) var(--card);}
+.gal-wrap::-webkit-scrollbar{height:6px;}
+.gal-wrap::-webkit-scrollbar-thumb{background:var(--tan2);border-radius:99px;}
+.gal-item{scroll-snap-align:start;flex:0 0 clamp(220px,32vw,340px);border-radius:6px;overflow:hidden;aspect-ratio:3/4;}
+.gal-item img{width:100%;height:100%;object-fit:cover;filter:grayscale(35%) contrast(1.06);transition:transform .6s var(--ease),filter .5s var(--ease);}
+.gal-item:hover img{transform:scale(1.06);filter:grayscale(0%) contrast(1.1);}
+
+/* TIMINGS TABLE */
+.timings{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:clamp(28px,4vw,44px);margin-top:44px;}
+.tim-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--bd);}
+.tim-row:last-child{border-bottom:none;}
+.tim-row .k{font-family:var(--head);font-weight:600;font-size:1rem;text-transform:uppercase;letter-spacing:.02em;}
+.tim-row .v{color:var(--tan);font-weight:600;font-size:.92rem;text-align:right;}
+
+/* HEAD COACH */
+.split{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,5vw,64px);align-items:center;}
+.split-img{border-radius:6px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--bd);}
+.split-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(45%) contrast(1.1);}
+.split-body p{color:var(--ink2);margin-top:18px;max-width:52ch;}
+.split-tag{display:inline-block;color:var(--tan);font-weight:600;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;}
+
+/* VISIT */
+.visit{background:linear-gradient(135deg,var(--card),#0A0A0A);border:1px solid var(--bd);border-radius:10px;padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,48px);align-items:center;}
+.visit p{color:var(--ink2);margin-top:14px;max-width:46ch;}
+.visit .meta{margin-top:22px;font-size:.88rem;font-weight:500;line-height:2;color:var(--ink2);}
+.visit .meta b{color:var(--ink);font-weight:600;}
+.visit-actions{display:flex;flex-direction:column;gap:12px;}
+
+/* FOOTER */
+footer{padding:32px clamp(16px,4vw,48px);border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--ink2);font-size:.8rem;}
+footer a{color:var(--ink);text-decoration:none;font-weight:600;}
+footer a:hover{color:var(--tan);}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;}}
+
+/* RIPPLE */
+.ripple-wrap{position:relative;overflow:hidden;}
+.ripple{position:absolute;border-radius:50%;background:rgba(201,163,107,.35);transform:scale(0);animation:rip .6s ease-out forwards;pointer-events:none;}
+@keyframes rip{to{transform:scale(2.6);opacity:0;}}
+
+/* MOBILE */
+@media (max-width:880px){
+  .statgrid{grid-template-columns:repeat(2,1fr);}
+  .stat:nth-child(3){border-left:none;}
+  .tilt-grid{grid-template-columns:1fr;}
+  .split{grid-template-columns:1fr;}
+  .split-img{aspect-ratio:16/11;}
+  .visit{grid-template-columns:1fr;}
+  .tim-row{flex-direction:column;gap:4px;align-items:flex-start;}
+  .tim-row .v{text-align:left;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#top">
+    <span class="ring">CG</span>
+    <span class="word">City Gym</span>
+  </a>
+  <a class="nav-cta ripple-wrap" href="tel:+919999999999">Visit Us</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1800&q=80&fit=crop" alt="City Gym Kannapuram training floor" fetchpriority="high"/>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-badge rv"><span class="dot"></span><span>Kannapuram · Est. Community 3,900+</span></div>
+    <div class="clip-wrap"><h1 class="hero-h" id="heroH">City Fitness,<br/><span class="tan">Done Right.</span></h1></div>
+    <p class="hero-sub rv">City Gym Kannapuram trains gents and ladies under one roof, near the railway station. Real coaching, honest hours, no gimmicks.</p>
+    <div class="hero-cta-row rv">
+      <a class="btn-solid ripple-wrap" href="#visit">Get Directions</a>
+      <a class="btn-line ripple-wrap" href="#timings">Check Timings</a>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<div class="statwrap">
+  <div class="statgrid">
+    <div class="stat rv"><div class="n" data-to="3931">0</div><div class="l">Community Members</div></div>
+    <div class="stat rv"><div class="n" data-to="70">0</div><div class="l">Posts &amp; Sessions Shared</div></div>
+    <div class="stat rv"><div class="n" data-to="2">0</div><div class="l">Daily Shifts</div></div>
+    <div class="stat rv"><div class="n" data-to="7">0</div><div class="l">Days a Week</div></div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="sec">
+  <div class="sec-max">
+    <h2 class="sec-h rv">What you get<br/>on the <span class="tan">floor.</span></h2>
+    <div class="tilt-grid">
+      <div class="tilt rv" data-tilt>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Two Daily Shifts</h3>
+        <p>Morning and evening slots so training fits around work, not the other way round.</p>
+      </div>
+      <div class="tilt rv" data-tilt>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21v-2a4 4 0 0 1 4-4h4"/><circle cx="9" cy="7" r="3"/><circle cx="17" cy="11" r="3"/><path d="M14 21v-1a3 3 0 0 1 6 0v1"/></svg></div>
+        <h3>Gents &amp; Ladies</h3>
+        <p>Shared floor, shared standards. Every member trains with the same access and attention.</p>
+      </div>
+      <div class="tilt rv" data-tilt>
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>Second Floor, Central</h3>
+        <p>Madhavi Complex, near the railway station. Easy to find, easy to get to daily.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE (single use) -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <span>Strength</span><span>Conditioning</span><span>Free Weights</span><span>Cardio</span><span>Personal Coaching</span><span>Group Sessions</span>
+    <span>Strength</span><span>Conditioning</span><span>Free Weights</span><span>Cardio</span><span>Personal Coaching</span><span>Group Sessions</span>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section class="sec">
+  <div class="sec-max">
+    <h2 class="sec-h rv">Inside the <span class="tan">gym.</span></h2>
+    <div class="gal-wrap">
+      <div class="gal-item rv"><img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=700&q=80&fit=crop" alt="Free weight training area" loading="lazy"/></div>
+      <div class="gal-item rv"><img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=700&q=80&fit=crop" alt="Gym equipment floor" loading="lazy"/></div>
+      <div class="gal-item rv"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=700&q=80&fit=crop" alt="Training session" loading="lazy"/></div>
+      <div class="gal-item rv"><img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=700&q=80&fit=crop" alt="Coaching in progress" loading="lazy"/></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMINGS -->
+<section class="sec" id="timings" style="padding-top:0;">
+  <div class="sec-max">
+    <h2 class="sec-h rv">Open <span class="tan">daily.</span></h2>
+    <div class="timings rv">
+      <div class="tim-row"><span class="k">Gents &amp; Ladies — Morning</span><span class="v">5:30 AM – 10:00 AM</span></div>
+      <div class="tim-row"><span class="k">Gents &amp; Ladies — Evening</span><span class="v">4:00 PM – 9:00 PM</span></div>
+      <div class="tim-row"><span class="k">Location</span><span class="v">2nd Floor, Madhavi Complex, Near Railway Station, Kannapuram</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HEAD -->
+<section class="sec" style="padding-top:0;">
+  <div class="sec-max split">
+    <div class="split-img rv">
+      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=900&q=80&fit=crop" alt="Gym head coaching" loading="lazy"/>
+    </div>
+    <div class="split-body rv">
+      <span class="split-tag">Gym Head</span>
+      <h2 class="sec-h">Trained by<br/>someone who <span class="tan">shows up.</span></h2>
+      <p>City Gym runs on direct coaching, not a rotating cast of trainers. The person who signs you up is the person spotting your lifts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec" id="visit" style="padding-top:0;">
+  <div class="sec-max">
+    <div class="visit rv">
+      <div>
+        <h2 class="sec-h">Come train<br/>with us.</h2>
+        <p>Walk in during any shift, or message ahead on Instagram and we will have you sorted.</p>
+        <div class="meta">
+          <b>Address:</b> 2nd Floor, Madhavi Complex, Near Railway Station, Kannapuram, Kannur 670301<br/>
+          <b>Hours:</b> Gents &amp; Ladies, 5:30 AM – 10 AM &amp; 4 PM – 9 PM, daily
+        </div>
+      </div>
+      <div class="visit-actions">
+        <a class="btn-solid ripple-wrap" href="https://www.google.com/maps/search/City+Gym+Kannapuram" target="_blank" rel="noopener">Get Directions</a>
+        <a class="btn-line ripple-wrap" href="https://www.instagram.com/city_gym_kannapuram" target="_blank" rel="noopener">@city_gym_kannapuram</a>
+        <a class="btn-line ripple-wrap" href="https://www.facebook.com/CityGymKannapuram" target="_blank" rel="noopener">Facebook Page</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 City Gym Kannapuram, City Fitness Centre.</div>
+  <a href="https://www.instagram.com/city_gym_kannapuram" target="_blank" rel="noopener">Instagram</a>
+</footer>
+
+<script>
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* scroll reveal */
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+/* nav scrolled */
+const navEl=document.querySelector('nav');
+addEventListener('scroll',()=>{navEl.classList.toggle('scrolled',scrollY>30);},{passive:true});
+
+/* CLIP-WIPE headline reveal */
+(function(){
+  const h=document.getElementById('heroH');
+  if(reduce){h.style.clipPath='none';h.style.transform='none';return;}
+  requestAnimationFrame(()=>{
+    setTimeout(()=>{
+      h.style.transition='clip-path 1.1s cubic-bezier(.19,1,.22,1),transform 1.1s cubic-bezier(.19,1,.22,1)';
+      h.style.clipPath='inset(0 0 0% 0)';
+      h.style.transform='translateY(0)';
+    },150);
+  });
+})();
+
+/* COUNT UP stats */
+(function(){
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      io.unobserve(e.target);
+      const n=e.target.querySelector('.n'),to=+n.dataset.to;
+      if(reduce){n.textContent=to.toLocaleString();return;}
+      const dur=1300,t0=performance.now();
+      (function tick(t){
+        const p=Math.min((t-t0)/dur,1),eased=1-Math.pow(1-p,3);
+        n.textContent=Math.round(to*eased).toLocaleString();
+        if(p<1)requestAnimationFrame(tick);
+      })(t0);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.stat').forEach(el=>io.observe(el));
+})();
+
+/* PARALLAX TILT cards */
+if(!reduce&&matchMedia('(pointer:fine)').matches){
+  document.querySelectorAll('[data-tilt]').forEach(card=>{
+    card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5,py=(e.clientY-r.top)/r.height-.5;
+      card.style.transform=`perspective(600px) rotateX(${-py*7}deg) rotateY(${px*7}deg) translateZ(4px)`;
+    });
+    card.addEventListener('pointerleave',()=>{card.style.transform='';});
+  });
+}
+
+/* RIPPLE on buttons */
+document.querySelectorAll('.ripple-wrap').forEach(btn=>{
+  btn.addEventListener('pointerdown',e=>{
+    const r=btn.getBoundingClientRect();
+    const d=Math.max(r.width,r.height);
+    const rip=document.createElement('span');
+    rip.className='ripple';
+    rip.style.width=rip.style.height=d+'px';
+    rip.style.left=(e.clientX-r.left-d/2)+'px';
+    rip.style.top=(e.clientY-r.top-d/2)+'px';
+    btn.appendChild(rip);
+    setTimeout(()=>rip.remove(),650);
+  });
+});
+</script>
+</body>
+</html>
