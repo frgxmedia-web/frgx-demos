@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Body Camp — Gym in Kannur | Find Your Power</title>
+<meta name="description" content="Body Camp, Kannur's 5-star rated gym. World-class equipment, expert trainers, strength and conditioning. Axis Bank building, near Onden Hotel. Open daily till 10 PM."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#0C0C0D;--bg2:#131315;--card:#18181B;
+  --ink:#F4F2ED;--ink2:#9C9A94;
+  --gold:#FFC21A;--gold2:#E0A800;
+  --bd:rgba(244,242,237,.09);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --disp:'Anton',sans-serif;
+  --sans:'Manrope',sans-serif;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+img{max-width:100%;display:block;}
+::selection{background:var(--gold);color:#0C0C0D;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px clamp(16px,4vw,48px);background:linear-gradient(rgba(12,12,13,.92),rgba(12,12,13,.75) 70%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);}
+.logo .mark{width:38px;height:38px;border-radius:50%;background:var(--gold);color:#0C0C0D;display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-size:.95rem;letter-spacing:.02em;}
+.logo .word{font-family:var(--disp);font-size:1.05rem;letter-spacing:.08em;text-transform:uppercase;}
+.nav-cta{background:var(--gold);color:#0C0C0D;text-decoration:none;font-weight:800;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:12px 22px;border-radius:4px;transition:transform .3s var(--ease),background .3s var(--ease);}
+.nav-cta:hover{background:var(--gold2);}
+.nav-cta:active{transform:scale(.98);}
+
+/* HERO */
+.hero{min-height:100dvh;position:relative;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.hero-img{position:absolute;inset:0;}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:center;filter:grayscale(35%) contrast(1.08) brightness(.55);}
+.hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,12,13,.55) 0%,rgba(12,12,13,.15) 40%,rgba(12,12,13,.92) 88%);}
+.hero-inner{position:relative;z-index:2;padding:0 clamp(16px,4vw,48px) clamp(28px,5vh,56px);max-width:1400px;width:100%;margin:0 auto;}
+.hero-h{font-family:var(--disp);font-size:clamp(3.4rem,13vw,10.5rem);line-height:.92;letter-spacing:.01em;text-transform:uppercase;}
+.hero-h .row2{display:block;color:var(--gold);}
+.hero-sub{margin-top:18px;max-width:420px;color:var(--ink2);font-size:.98rem;font-weight:500;}
+.hero-cta-row{display:flex;gap:12px;margin-top:26px;flex-wrap:wrap;}
+.btn-solid{background:var(--gold);color:#0C0C0D;text-decoration:none;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:16px 30px;border-radius:4px;transition:background .3s var(--ease),transform .2s var(--ease);}
+.btn-solid:hover{background:var(--gold2);}
+.btn-solid:active{transform:scale(.98);}
+.btn-line{border:1px solid rgba(244,242,237,.35);color:var(--ink);text-decoration:none;font-weight:700;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;padding:16px 30px;border-radius:4px;transition:border-color .3s var(--ease),background .3s var(--ease);}
+.btn-line:hover{border-color:var(--gold);color:var(--gold);}
+.hero-rating{display:flex;align-items:center;gap:10px;margin-top:30px;font-size:.82rem;color:var(--ink2);font-weight:600;}
+.hero-rating .stars{color:var(--gold);letter-spacing:2px;font-size:.9rem;}
+.hero-rating b{color:var(--ink);}
+
+/* MARQUEE */
+.mq{background:var(--gold);color:#0C0C0D;overflow:hidden;padding:13px 0;}
+.mq-track{display:flex;width:max-content;animation:mq 26s linear infinite;}
+.mq span{font-family:var(--disp);font-size:1.15rem;text-transform:uppercase;letter-spacing:.06em;padding:0 28px;white-space:nowrap;}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.mq-track{animation:none;}}
+
+/* SECTIONS */
+.sec{padding:clamp(64px,9vw,120px) clamp(16px,4vw,48px);}
+.sec-max{max-width:1400px;margin:0 auto;}
+.sec-h{font-family:var(--disp);font-size:clamp(2.2rem,6.5vw,4.6rem);line-height:1;text-transform:uppercase;letter-spacing:.01em;}
+.sec-h .gold{color:var(--gold);}
+
+/* PROGRAMS asymmetric grid */
+.prog-grid{display:grid;grid-template-columns:1.35fr 1fr;grid-template-rows:auto auto;gap:14px;margin-top:44px;}
+.prog{position:relative;border-radius:8px;overflow:hidden;min-height:300px;display:flex;align-items:flex-end;}
+.prog img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(30%) brightness(.62);transition:transform .8s var(--ease),filter .6s var(--ease);}
+.prog:hover img{transform:scale(1.05);filter:grayscale(0%) brightness(.72);}
+.prog .in{position:relative;z-index:2;padding:22px;width:100%;background:linear-gradient(transparent,rgba(12,12,13,.85));}
+.prog .t{font-family:var(--disp);font-size:1.5rem;text-transform:uppercase;letter-spacing:.03em;}
+.prog .d{color:var(--ink2);font-size:.84rem;margin-top:5px;max-width:340px;}
+.prog.tall{grid-row:span 2;min-height:520px;}
+
+/* NUMBERS */
+.numwrap{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);}
+.numgrid{display:grid;grid-template-columns:repeat(3,1fr);max-width:1400px;margin:0 auto;}
+.num{padding:clamp(32px,5vw,56px) 20px;text-align:center;}
+.num+.num{border-left:1px solid var(--bd);}
+.num .n{font-family:var(--disp);font-size:clamp(2.6rem,7vw,4.8rem);color:var(--gold);line-height:1;}
+.num .l{margin-top:8px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink2);}
+
+/* COACH SPLIT */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);align-items:center;}
+.split-img{border-radius:8px;overflow:hidden;aspect-ratio:4/5;}
+.split-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(25%) contrast(1.05);}
+.split-body p{color:var(--ink2);margin-top:20px;max-width:52ch;}
+.split-li{display:flex;gap:14px;margin-top:26px;align-items:baseline;}
+.split-li .tick{color:var(--gold);font-weight:800;flex-shrink:0;}
+.split-li .tx b{display:block;color:var(--ink);font-size:.95rem;}
+.split-li .tx span{color:var(--ink2);font-size:.85rem;}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:44px;}
+.rev{background:var(--card);border:1px solid var(--bd);border-radius:8px;padding:28px;}
+.rev .stars{color:var(--gold);letter-spacing:3px;margin-bottom:14px;}
+.rev p{font-size:.95rem;color:var(--ink);}
+.rev .who{margin-top:16px;font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);}
+
+/* VISIT */
+.visit{background:var(--gold);color:#0C0C0D;border-radius:12px;padding:clamp(36px,6vw,72px);display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(24px,4vw,56px);align-items:center;}
+.visit .sec-h{color:#0C0C0D;}
+.visit p{font-weight:600;margin-top:14px;max-width:44ch;}
+.visit .meta{margin-top:22px;font-size:.9rem;font-weight:700;line-height:2;}
+.visit-actions{display:flex;flex-direction:column;gap:12px;}
+.btn-dark{background:#0C0C0D;color:var(--gold);text-decoration:none;text-align:center;font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:18px 30px;border-radius:6px;transition:opacity .3s var(--ease),transform .2s var(--ease);}
+.btn-dark:hover{opacity:.85;}
+.btn-dark:active{transform:scale(.98);}
+.btn-darkline{border:2px solid #0C0C0D;color:#0C0C0D;text-decoration:none;text-align:center;font-weight:800;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;padding:16px 30px;border-radius:6px;transition:background .3s var(--ease),color .3s var(--ease);}
+.btn-darkline:hover{background:#0C0C0D;color:var(--gold);}
+
+/* FOOTER */
+footer{padding:36px clamp(16px,4vw,48px);border-top:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--ink2);font-size:.8rem;}
+footer a{color:var(--ink);text-decoration:none;font-weight:700;}
+footer a:hover{color:var(--gold);}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;}}
+
+/* MOBILE */
+@media (max-width:820px){
+  .prog-grid{grid-template-columns:1fr;}
+  .prog.tall{grid-row:auto;min-height:340px;}
+  .prog{min-height:260px;}
+  .split{grid-template-columns:1fr;}
+  .split-img{aspect-ratio:16/11;}
+  .rev-grid{grid-template-columns:1fr;}
+  .visit{grid-template-columns:1fr;}
+  .numgrid{grid-template-columns:1fr;}
+  .num+.num{border-left:none;border-top:1px solid var(--bd);}
+  .hero-sub{font-size:.92rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#top">
+    <span class="mark">BC</span>
+    <span class="word">Body Camp</span>
+  </a>
+  <a class="nav-cta" href="tel:+919746549454">Call Now</a>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1800&q=80&fit=crop" alt="Body Camp gym floor with barbells and racks" fetchpriority="high"/>
+  </div>
+  <div class="hero-inner">
+    <h1 class="hero-h">Find Your<span class="row2">Power.</span></h1>
+    <p class="hero-sub">Kannur's premium fitness camp. World-class equipment, expert trainers, zero excuses.</p>
+    <div class="hero-cta-row">
+      <a class="btn-solid" href="tel:+919746549454">Join Body Camp</a>
+      <a class="btn-line" href="#programs">See Programs</a>
+    </div>
+    <div class="hero-rating"><span class="stars">★★★★★</span> <b>5.0</b> · 26 Google reviews</div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <span>Strength</span><span>Conditioning</span><span>Personal Training</span><span>Muscle Building</span><span>Fat Loss</span><span>Functional Fitness</span>
+    <span>Strength</span><span>Conditioning</span><span>Personal Training</span><span>Muscle Building</span><span>Fat Loss</span><span>Functional Fitness</span>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<section class="sec" id="programs">
+  <div class="sec-max">
+    <h2 class="sec-h rv">Train for<br/><span class="gold">anything.</span></h2>
+    <div class="prog-grid">
+      <div class="prog tall rv">
+        <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=1200&q=80&fit=crop" alt="Strength training with barbell" loading="lazy"/>
+        <div class="in">
+          <div class="t">Strength Training</div>
+          <div class="d">Full free-weight floor, squat racks, deadlift platforms and progressive coaching for serious lifting.</div>
+        </div>
+      </div>
+      <div class="prog rv">
+        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=1000&q=80&fit=crop" alt="Conditioning workout" loading="lazy"/>
+        <div class="in">
+          <div class="t">Conditioning &amp; Fat Loss</div>
+          <div class="d">Cardio and circuit programs built around your goal, not a template.</div>
+        </div>
+      </div>
+      <div class="prog rv">
+        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=1000&q=80&fit=crop" alt="Personal training session" loading="lazy"/>
+        <div class="in">
+          <div class="t">Personal Training</div>
+          <div class="d">One-on-one coaching with expert trainers who track every rep.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numwrap">
+  <div class="numgrid">
+    <div class="num rv"><div class="n">5.0</div><div class="l">Google Rating</div></div>
+    <div class="num rv"><div class="n">3.7K</div><div class="l">Community &amp; Followers</div></div>
+    <div class="num rv"><div class="n">7</div><div class="l">Days Open Weekly</div></div>
+  </div>
+</div>
+
+<!-- WHY -->
+<section class="sec">
+  <div class="sec-max split">
+    <div class="split-img rv">
+      <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=1200&q=80&fit=crop" alt="Training at Body Camp" loading="lazy"/>
+    </div>
+    <div class="split-body">
+      <h2 class="sec-h rv">Built <span class="gold">different.</span></h2>
+      <p class="rv">Body Camp is not a machine showroom. It is a training floor with real coaching, real programming, and a crew that shows up for each other.</p>
+      <div class="split-li rv"><span class="tick">✓</span><div class="tx"><b>World-class equipment</b><span>Premium racks, plates and machines maintained daily.</span></div></div>
+      <div class="split-li rv"><span class="tick">✓</span><div class="tx"><b>Expert trainers</b><span>Certified coaches on the floor at all hours, not just at sign-up.</span></div></div>
+      <div class="split-li rv"><span class="tick">✓</span><div class="tx"><b>Every level welcome</b><span>First-timers to competitive lifters. Your pace, your program.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="sec" style="padding-top:0;">
+  <div class="sec-max">
+    <h2 class="sec-h rv">5.0 stars.<br/><span class="gold">26 reviews.</span></h2>
+    <div class="rev-grid">
+      <div class="rev rv">
+        <div class="stars">★★★★★</div>
+        <p>Best gym in Kannur. The trainers actually correct your form and push you properly.</p>
+        <div class="who">Google Review</div>
+      </div>
+      <div class="rev rv">
+        <div class="stars">★★★★★</div>
+        <p>Clean, well-equipped and never overcrowded. Worth every rupee.</p>
+        <div class="who">Google Review</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section class="sec" id="visit" style="padding-top:0;">
+  <div class="sec-max">
+    <div class="visit rv">
+      <div>
+        <h2 class="sec-h">Start<br/>today.</h2>
+        <p>Walk in for a free tour, or call ahead and we will have a trainer waiting for you.</p>
+        <div class="meta">
+          Axis Bank Building, near Onden Hotel<br/>
+          Aaratu Road, Kannur, Kerala 670001<br/>
+          Open daily · Closes 10 PM
+        </div>
+      </div>
+      <div class="visit-actions">
+        <a class="btn-dark" href="tel:+919746549454">Call 097465 49454</a>
+        <a class="btn-darkline" href="https://www.google.com/maps/search/BodyCamp+gym+Kannur" target="_blank" rel="noopener">Get Directions</a>
+        <a class="btn-darkline" href="https://www.instagram.com/bodycampkannur" target="_blank" rel="noopener">@bodycampkannur</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Body Camp, Kannur. Find Your Power.</div>
+  <a href="https://www.instagram.com/bodycampkannur" target="_blank" rel="noopener">Instagram</a>
+</footer>
+
+<script>
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
