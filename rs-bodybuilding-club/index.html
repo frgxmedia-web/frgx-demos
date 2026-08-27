@@ -28,7 +28,7 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px clamp(16px,4vw,52px);transition:background .4s var(--ease),border-color .4s var(--ease),padding .4s var(--ease);border-bottom:1px solid transparent;}
 nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom-color:var(--bd);padding-top:13px;padding-bottom:13px;}
 .nav-logo{font-family:var(--disp);font-size:1.35rem;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:11px;}
-.nav-logo img{height:42px;width:auto;border-radius:6px;object-fit:contain;background:transparent;flex-shrink:0;}
+.nav-logo img{height:56px;width:auto;border-radius:6px;object-fit:contain;background:transparent;flex-shrink:0;}
 .nav-logo b{color:var(--acc);}
 .nav-status{display:inline-flex;align-items:center;gap:7px;font-size:.58rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--w2);}
 .nav-status .dot{width:7px;height:7px;border-radius:50%;background:#3ED36A;box-shadow:0 0 0 0 rgba(62,211,106,.5);animation:pulse 2s infinite;}
@@ -37,7 +37,7 @@ nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(20px);-webkit-ba
 .nav-links a{font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--w2);text-decoration:none;transition:color .35s var(--ease);}
 .nav-links a:hover{color:var(--w);}
 .nav-right{display:flex;align-items:center;gap:18px;}
-.nav-seal{height:42px;width:42px;object-fit:contain;flex-shrink:0;}
+.nav-seal{height:56px;width:56px;object-fit:contain;flex-shrink:0;}
 .nav-pill{background:var(--w);color:#0A0A0B;text-decoration:none;font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:11px 20px;border-radius:999px;transition:all .35s var(--ease);}
 .nav-pill:hover{background:var(--acc);color:#fff;}
 .ham{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:5px;}
@@ -191,6 +191,10 @@ nav.scrolled{background:rgba(10,10,11,.82);backdrop-filter:blur(20px);-webkit-ba
 .offer-status.live{background:rgba(34,197,94,.15);color:#22c55e;border:1px solid rgba(34,197,94,.35);}
 .offer-status.ended{background:rgba(255,255,255,.06);color:var(--w2);border:1px solid var(--bd);}
 .offer-title{font-family:var(--disp);font-size:1.4rem;line-height:1.1;margin-bottom:8px;}
+.offers-photos{display:flex;gap:16px;justify-content:center;margin:28px 0 8px;}
+.offers-photo{width:104px;height:104px;border-radius:50%;overflow:hidden;border:2px solid var(--acc);flex-shrink:0;}
+.offers-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+@media(max-width:600px){.offers-photo{width:76px;height:76px;}}
 .offer-price{font-size:2rem;font-family:var(--disp);color:var(--acc);margin:10px 0 4px;}
 .offer-price .was{font-size:.85rem;color:var(--w2);text-decoration:line-through;font-family:var(--body);margin-left:6px;}
 .offer-detail{font-size:.75rem;color:var(--w2);line-height:1.7;margin-top:8px;}
@@ -638,6 +642,11 @@ footer{background:var(--bg);padding:46px clamp(20px,5vw,52px) 40px;border-top:1p
   <div class="sec-max">
     <div class="eyebrow rv">Limited Time</div>
     <h2 class="sec-h rv d1">SPECIAL<br/><em>OFFERS</em></h2>
+    <div class="offers-photos rv d1">
+      <div class="offers-photo"><img src="images/hero.jpg" alt="RS Bodybuilding Club gym floor"/></div>
+      <div class="offers-photo"><img src="images/pool.jpg" alt="RS Bodybuilding Club pool"/></div>
+      <div class="offers-photo"><img src="images/team-2.jpg" alt="RS Bodybuilding Club trainer"/></div>
+    </div>
     <div class="offers-grid">
       <!-- Kids Summer Camp - ACTIVE -->
       <div class="offer-card active-offer rv">
